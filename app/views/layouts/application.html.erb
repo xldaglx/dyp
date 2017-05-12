@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promodescuentos</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Cien Promociones </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user.try(:admin?) %>
+          <li><a href="#">Moderar <span class="badge">8</span></a></li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to "Compartir", new_deal_path %></li>
+          <li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>
+        <% else %>
+          <li><a href="#">Compartir </a></li>
+          <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+          <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
+          <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li>
+        <% end %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+   	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <%= render "welcome/login_modal" %>
+    <%= render "welcome/sign_up_modal" %>
+  </body>
+</html>

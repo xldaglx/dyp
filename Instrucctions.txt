@@ -1,0 +1,72 @@
+Agregar -> gem 'devise' a gemfile
+rails generate devise:install
+Agregar -> config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } a enrivonments/development.rb
+rails generate controller Welcome index
+
+Crear views de devise rails devise:views
+rails generate devise MODEL
+rake db:migrate
+
+Now you're able to identify administrators:
+
+if current_user.admin?
+  # do something
+end
+If the page could potentially not have a current_user set then:
+
+if current_user.try(:admin?)
+  # do something
+end
+
+
+-----
+Link
+Descripción
+Imagen
+Titulo
+Tipo de Oferta
+Precio
+Expiracion
+
+References user_id 
+
+rails g scaffold Deals title:string description:string imagen:string link:string price:string expiration:string user:references
+
+
+Cambiar el nombre de la columna de la base de datos por type_deals además de agregar en las vistas y en los permitidos
+
+
+-------
+
+brew install chromedriver
+
+##################################################
+#  NOTE FOR UPGRADING FROM 4.3.0 OR EARLIER       #
+##################################################
+
+Paperclip is now compatible with aws-sdk >= 2.0.0.
+
+If you are using S3 storage, aws-sdk >= 2.0.0 requires you to make a few small
+changes:
+
+* You must set the `s3_region`
+* If you are explicitly setting permissions anywhere, such as in an initializer,
+  note that the format of the permissions changed from using an underscore to
+  using a hyphen. For example, `:public_read` needs to be changed to
+  `public-read`.
+
+For a walkthrough of upgrading from 4 to 5 and aws-sdk >= 2.0 you can watch
+http://rubythursday.com/episodes/ruby-snack-27-upgrade-paperclip-and-aws-sdk-in-prep-for-rails-5
+
+
+
+rails generate paperclip deal promoimage
+
+
+
+
+
+
+
+
+ssss
