@@ -1,4 +1,3 @@
-Welcome Lalo
 
 Agregar -> gem 'devise' a gemfile
 rails generate devise:install
