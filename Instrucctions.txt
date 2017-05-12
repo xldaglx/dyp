@@ -1,3 +1,5 @@
+Welcome Lalo
+
 Agregar -> gem 'devise' a gemfile
 rails generate devise:install
 Agregar -> config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } a enrivonments/development.rb
@@ -31,6 +33,7 @@ Expiracion
 References user_id 
 
 rails g scaffold Deals title:string description:string imagen:string link:string price:string expiration:string user:references
+rails g scaffold Categories description:string
 
 
 Cambiar el nombre de la columna de la base de datos por type_deals además de agregar en las vistas y en los permitidos

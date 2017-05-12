@@ -10569,3 +10569,160 @@ Processing by DealsController#new as HTML
 Completed 200 OK in 54ms (Views: 50.9ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/deals/new" for ::1 at 2017-05-12 11:02:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by DealsController#new as HTML
+  Rendering deals/new.html.erb within layouts/application
+  Rendered deals/_form.html.erb (231.0ms)
+  Rendered deals/new.html.erb within layouts/application (237.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered welcome/_login_modal.html.erb (34.7ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.1ms)
+Completed 200 OK in 755ms (Views: 681.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/deals/new" for ::1 at 2017-05-12 11:14:48 -0500
+Processing by DealsController#new as HTML
+  Rendering deals/new.html.erb within layouts/application
+  Rendered deals/_form.html.erb (3.5ms)
+  Rendered deals/new.html.erb within layouts/application (5.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered welcome/_login_modal.html.erb (4.7ms)
+  Rendered welcome/_sign_up_modal.html.erb (3.0ms)
+Completed 200 OK in 85ms (Views: 83.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-12 11:14:55 -0500
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered welcome/_login_modal.html.erb (5.1ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.3ms)
+Completed 200 OK in 85ms (Views: 81.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/deals/new" for ::1 at 2017-05-12 11:14:58 -0500
+Processing by DealsController#new as HTML
+  Rendering deals/new.html.erb within layouts/application
+  Rendered deals/_form.html.erb (6.5ms)
+  Rendered deals/new.html.erb within layouts/application (8.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered welcome/_login_modal.html.erb (3.6ms)
+  Rendered welcome/_sign_up_modal.html.erb (1.9ms)
+Completed 200 OK in 68ms (Views: 65.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-12 11:15:04 -0500
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered welcome/_login_modal.html.erb (4.7ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.2ms)
+Completed 200 OK in 57ms (Views: 54.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/deals/new" for ::1 at 2017-05-12 11:15:05 -0500
+Processing by DealsController#new as HTML
+  Rendering deals/new.html.erb within layouts/application
+  Rendered deals/_form.html.erb (4.6ms)
+  Rendered deals/new.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered welcome/_login_modal.html.erb (4.6ms)
+  Rendered welcome/_sign_up_modal.html.erb (1.7ms)
+Completed 200 OK in 73ms (Views: 70.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-12 11:15:06 -0500
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered welcome/_login_modal.html.erb (4.0ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.3ms)
+Completed 200 OK in 54ms (Views: 52.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2017-05-12 11:15:15 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tlKmSosR5C5+PbTSwCrRhrN+hgmbuW8fg32WCH3powFFyiCPw82lOF/7e7h3Qz+xGVA29BGQVqCRD11UYBVCBg=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2017-05-12 11:15:15 -0500
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered welcome/_login_modal.html.erb (3.4ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.2ms)
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2017-05-12 11:15:17 -0500
+Started GET "/users/auth/facebook" for ::1 at 2017-05-12 11:15:18 -0500
+Started GET "/users/auth/facebook/callback?code=AQBHCkDtDRqJr1RHzllbuCBI8cJ-EsvGqJAhTrq4RlUU61RUjCDAUFUkXGqqbBV7hEb33p23ayADce3RrUOTH4RXF0atuBBTtfscWsUhCQ3QRGaxvik2K67H16k0kIYV2dcF0Ap7SImfk5o1tZ42tJM9JvVfXzTOrOFrU1Sy9WlfxTcFSSIzboWNNXInNbAHvQskNPYe0lLeYitdqUzASx0huKqH0B_iN8Erc_QfJZecNGCLvlsdgDJAipp4MXHBRazOYmhWqGhDmdX0L4_YiRL41XA91kgSqIiK6_lYzjgKfkJF-ijnCr2vn-fmCfzK8Us&state=a2c4613b977a22175f3b9539fa445541976ad77611dbbaf4" for ::1 at 2017-05-12 11:15:18 -0500
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQBHCkDtDRqJr1RHzllbuCBI8cJ-EsvGqJAhTrq4RlUU61RUjCDAUFUkXGqqbBV7hEb33p23ayADce3RrUOTH4RXF0atuBBTtfscWsUhCQ3QRGaxvik2K67H16k0kIYV2dcF0Ap7SImfk5o1tZ42tJM9JvVfXzTOrOFrU1Sy9WlfxTcFSSIzboWNNXInNbAHvQskNPYe0lLeYitdqUzASx0huKqH0B_iN8Erc_QfJZecNGCLvlsdgDJAipp4MXHBRazOYmhWqGhDmdX0L4_YiRL41XA91kgSqIiK6_lYzjgKfkJF-ijnCr2vn-fmCfzK8Us", "state"=>"a2c4613b977a22175f3b9539fa445541976ad77611dbbaf4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`provider` = 'facebook' AND `users`.`uid` = '10154840714364171' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2017-05-12 16:15:19', `last_sign_in_at` = '2017-05-12 15:28:09', `sign_in_count` = 9, `updated_at` = '2017-05-12 16:15:19' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2017-05-12 11:15:19 -0500
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered welcome/_login_modal.html.erb (3.9ms)
+  Rendered welcome/_sign_up_modal.html.erb (2.6ms)
+Completed 200 OK in 48ms (Views: 46.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/deals/new" for ::1 at 2017-05-12 11:15:25 -0500
+Processing by DealsController#new as HTML
+  Rendering deals/new.html.erb within layouts/application
+  Rendered deals/_form.html.erb (3.3ms)
+  Rendered deals/new.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered welcome/_login_modal.html.erb (3.4ms)
+  Rendered welcome/_sign_up_modal.html.erb (1.9ms)
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('4200982122261753675', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCategories (20170512162535)
+  [1m[35m (50.3ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170512162535')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('4200982122261753675')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `categories`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'categories'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `deals`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'deals'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
