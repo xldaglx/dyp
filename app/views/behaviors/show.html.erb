@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @behavior.grade %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @behavior.user %>
+</p>
+
+<p>
+  <strong>Deal:</strong>
+  <%= @behavior.deal %>
+</p>
+
+<%= link_to 'Edit', edit_behavior_path(@behavior) %> |
+<%= link_to 'Back', behaviors_path %>

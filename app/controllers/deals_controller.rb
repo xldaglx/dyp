@@ -7,18 +7,25 @@ class DealsController < ApplicationController
     @deals = Deal.all
   end
 
+  def moderate
+    @deals = Deal.where('status = 0')
+  end
+
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @comments = Comment.where("deal_id = "+params[:id])
   end
 
   # GET /deals/new
   def new
     @deal = Deal.new
+    @categories = Category.all
   end
 
   # GET /deals/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /deals
@@ -26,14 +33,44 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
     @deal.user_id = current_user.id
+    @deal.status = 0
+    @deal.rank = 0
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
+        format.html { redirect_to @deal, notice: 'Tu promoción ha sido enviada, la revisaremos y la publicaremos tan pronto como sea posible.' }
         format.json { render :show, status: :created, location: @deal }
       else
         format.html { render :new }
         format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  def rank
+    promoid = params['promoid']
+    @deal =  Deal.find(promoid)
+    number = params['number']
+    if number == "positive"
+      number = "1"
+      @deal.rank = @deal.rank.to_i + 1
+    else
+      number = "0"
+      @deal.rank = @deal.rank.to_i - 1
+    end
+    @deal.save
+
+    userid = 1
+    if user_signed_in?
+      userid = current_user.id
+    end
+    @behavior = Behavior.new(grade: number, user_id: userid, deal_id: promoid)
+
+    @behavior.save
+    respond_to do |format|
+       format.html
+       format.js {} 
+       format.json { 
+          render json: {:success => 'success'}
+      } 
     end
   end
   def scrapp
@@ -110,6 +147,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage)
+      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id ,:status, :rank)
     end
 end

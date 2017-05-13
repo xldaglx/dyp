@@ -19,14 +19,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Cien Promociones </a>
+      <a class="navbar-brand" href="/">Descuentosypromociones.mx </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin?) %>
-          <li><a href="#">Moderar <span class="badge">8</span></a></li>
+          <li><a href="/moderate">Moderar <span class="badge">8</span></a></li>
         <% end %>
         <% if user_signed_in? %>
           <li><%= link_to "Compartir", new_deal_path %></li>

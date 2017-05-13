@@ -10,12 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512162535) do
+ActiveRecord::Schema.define(version: 20170513223901) do
+
+  create_table "behaviors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "grade"
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deal_id"], name: "index_behaviors_on_deal_id", using: :btree
+    t.index ["user_id"], name: "index_behaviors_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["deal_id"], name: "index_comments_on_deal_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -33,6 +53,10 @@ ActiveRecord::Schema.define(version: 20170512162535) do
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
     t.datetime "promoimage_updated_at"
+    t.integer  "category_id"
+    t.integer  "status"
+    t.integer  "rank"
+    t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
   end
 
@@ -52,9 +76,15 @@ ActiveRecord::Schema.define(version: 20170512162535) do
     t.string   "provider"
     t.string   "uid"
     t.boolean  "admin",                  default: false
+    t.string   "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "behaviors", "deals"
+  add_foreign_key "behaviors", "users"
+  add_foreign_key "comments", "deals"
+  add_foreign_key "comments", "users"
+  add_foreign_key "deals", "categories"
   add_foreign_key "deals", "users"
 end

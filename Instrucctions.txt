@@ -33,6 +33,8 @@ References user_id
 
 rails g scaffold Deals title:string description:string imagen:string link:string price:string expiration:string user:references
 rails g scaffold Categories description:string
+rails g scaffold Behavior grade:integer user:references deal:references
+rails g scaffold Comments description:string user:references deal:references
 
 
 Cambiar el nombre de la columna de la base de datos por type_deals además de agregar en las vistas y en los permitidos
@@ -66,7 +68,24 @@ rails generate paperclip deal promoimage
 
 
 
-
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Abarrotes y alimentos', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Autos', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Bebés y Niños', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Celulares', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Restaurantes', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Computadoras', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Deportes y ejercicio<', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Entretenimiento y tiempo libre', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Hogar y jardín', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Ofertas permanentes', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Ropa y accesorios', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Salud y Belleza', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Servicios', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Tecnología', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Televisiones', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Varios', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Viajes', NOW(), NOW());
+INSERT INTO categories (description, created_at, updated_at) VALUES ('Videojuegos', NOW(), NOW());
 
 
 

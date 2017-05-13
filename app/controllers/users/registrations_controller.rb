@@ -41,10 +41,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation)
+      u.permit(:email, :password, :password_confirmation, :nickname)
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:password, :password_confirmation, :email)
+      u.permit(:password, :password_confirmation, :email, :nickname)
     end
   end
   # The path used after sign up.

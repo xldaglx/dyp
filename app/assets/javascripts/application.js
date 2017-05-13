@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require jquery.validate
+//= require jquery.validate.localization/messages_es
 function loader(){
 	
 }

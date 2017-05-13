@@ -59,3 +59,4 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
 gem 'watir'
 gem "paperclip", "~> 5.0.0"
+gem 'jquery-validation-rails'

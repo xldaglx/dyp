@@ -1,0 +1,23 @@
+I"u(function() {
+  $('#new_deal').validate({
+    rules: {
+      'deal[title]': {
+        required: true
+      },
+      'deal[description]': {
+        required: true
+      },
+      'deal[price]': {
+        required: true
+      },
+      'deal[category_id]': {
+        required: true
+      },
+      'deal[type_deal]': {
+        required: true
+      }
+    }
+  });
+
+}).call(this);
+:ET

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @deal.title %>
@@ -32,8 +30,51 @@
 
 <p>
   <strong>User:</strong>
-  <%= @deal.user %>
+  <%= @deal.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
-<%= link_to 'Back', deals_path %>
+<%= @deal.rank %>
+<% if user_signed_in? %>
+  <% if @deal.behaviors.exists? user_id: current_user.id  %>
+   <% @deal.behaviors.each do |item| %>
+      <% @grade = item.grade %>
+      <% if @grade == 1 %>
+        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
+      <% else %>
+        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a>
+      <% end %>
+    <% end %>
+  <% else %>
+        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
+        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a> 
+  <% end %>
+<% else %>
+        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
+        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a> 
+<% end %>
+
+<% if @deal.comments.exists? %>
+ <% @deal.comments.each do |item| %>
+    <%= item.description %>
+ <% end %>
+<% end %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('.rank').click(function(event) {   
+      promoid = $(this).attr('promoid');
+      number = $(this).attr('id');
+      $.ajax({
+        url:  "/updateRank",
+        dataType: "json",
+        data: {
+           promoid: promoid,
+           number: number
+        },
+        success: function(data) { 
+          console.log(data);
+        }
+      });
+    });
+  });
+</script>
