@@ -1,5 +1,6 @@
-<%= form_for @deal,  html: { multipart: true } do |f| %>
-  <% if deal.errors.any? %>
+
+<%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
+  <% if @deal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
 
@@ -10,55 +11,23 @@
       </ul>
     </div>
   <% end %>
-  <div id="scrapp-images"></div>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= f.label :type_deal %>
-    <%= f.text_field :type_deal %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
+    <%= f.text_field :link, label: "Enlace de la promoción", placeholder: "http://www.enlacealapromocion.com" %>
+    <div id="scrapp-images" class="row"></div>  
+    <%= f.text_field :title, label: "Título", placeholder: "Artículo o Promoción" %>
     <%= f.text_field :description %>
-  </div>
-
-    <%= f.hidden_field :imagen %>
-
-  <div class="field">
-    <%= f.label :link %>
     <%= f.text_field :link %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
     <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :expiration %>
     <%= f.text_field :expiration %>
-  </div>
-
-  <div class="field">
-    <%= f.label :category_id %>
     <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
-
-  </div>
-
-  <div class="field">
-  <%= f.file_field :promoimage %>
-  </div>
-  <div class="actions">
+    <%= f.text_field :type_deal %>
+    <%= f.hidden_field :imagen %>
     <%= f.submit %>
-  </div>
+
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#deal_link').blur(function(event) {   
+    $('#deal_link').change(function(event) {   
       url_input = $(this).val();
       $.ajax({
         url:  "/image/scrapp",
@@ -69,9 +38,8 @@
         success: function(data) { 
           count=0;
           for (i in data.images) {
-              $('#scrapp-images').append('<img src="'+data.images[i]+'">');
+              $('#scrapp-images').append('<div class="col-xs-6"><img src="'+data.images[i]+'" class="img-responsive"></div>');
               if(count == 0){
-                console.log("Entro");
                 $('#deal_imagen').val(data.images[i]);                
               }
               count++;

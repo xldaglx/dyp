@@ -10,6 +10,38 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require rails_bootstrap_forms
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+body{
+	background-color:#f8f8f8;
+	}
+.navbar{
+	border-radius:0px;
+	margin-bottom:0px;
+}
+.white{
+	background-color:#FFF;
+}
+.navbar-white{
+	background-color: #FFF;
+	border-color:#999;	
+}
+.navbar-blue{
+	background-color: #043152;
+}
+.navbar-blue a {
+    color:#FFFFFF;
+}
+.navbar-brand{
+	font-weight:200;
+}
+.navbar-brand span{
+	font-weight:400;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color:#d93438;
+}

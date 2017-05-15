@@ -1,0 +1,24 @@
+
+<%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
+  <% if @deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+
+      <ul>
+      <% deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.text_field :title, label: "Título", placeholder: "Artículo o Promoción" %>
+    <%= f.text_field :description %>
+    <%= f.file_field :imagen %>
+    <%= f.text_field :price %>
+    <%= f.text_field :expiration %>
+    <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
+    <%= f.text_field :type_deal %>
+    <%= f.submit %>
+
+<% end %>

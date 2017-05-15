@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-blue">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Descuentosypromociones.mx </a>
+      <a class="navbar-brand" href="/">Descuentosy<span class="bold">Promociones.mx</span> </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,24 +38,31 @@
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+  </nav>
+  <nav class="navbar navbar-white">
+  <div class="container">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Nuevas</a></li>
+        <li><a href="#">Promociones Calientes</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin?) %>
-          <li><a href="/moderate">Moderar <span class="badge">8</span></a></li>
+          <li><a href="/moderate">Moderar </a></li>
         <% end %>
         <% if user_signed_in? %>
-          <li><%= link_to "Compartir", new_deal_path %></li>
-          <li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>
+          <li><%= link_to "Compartir", new_deal_path, class: 'btn btn-default' %></li>
+          <!--<li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>-->
         <% else %>
           <li><a href="#">Compartir </a></li>
           <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
           <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
           <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li>
         <% end %>
-
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div><!-- /.container -->
   </nav>
    	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
