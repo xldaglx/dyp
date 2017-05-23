@@ -12,40 +12,74 @@
     </div>
   <% end %>
 
-    <%= f.text_field :link, label: "Enlace de la promoción", placeholder: "http://www.enlacealapromocion.com" %>
+    <%= f.text_field :link, label: "Enlace de la promoción", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción" %>
     <div id="scrapp-images" class="row"></div>  
+    <div class="loader-image"><img src="/images/spinner.gif"></div>
     <%= f.text_field :title, label: "Título", placeholder: "Artículo o Promoción" %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
     <%= f.text_field :link %>
     <%= f.text_field :price %>
     <%= f.text_field :expiration %>
     <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
     <%= f.text_field :type_deal %>
-    <%= f.hidden_field :imagen %>
+    <%= f.text_field :imagen, style: "display:none" %>
     <%= f.submit %>
 
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#deal_link').change(function(event) {   
-      url_input = $(this).val();
+    $('#deal_link').change(function(event) {
+      var url_input = $(this).val();
       $.ajax({
-        url:  "/image/scrapp",
+        url:  "/validate/link",
         dataType: "json",
         data: {
            url_host: url_input
         },
         success: function(data) { 
-          count=0;
-          for (i in data.images) {
-              $('#scrapp-images').append('<div class="col-xs-6"><img src="'+data.images[i]+'" class="img-responsive"></div>');
-              if(count == 0){
-                $('#deal_imagen').val(data.images[i]);                
-              }
-              count++;
+          if(data.message == "exists"){
+            alert("La promoción ya existe");
+          }else{
+
           }
         }
       });
+      /*
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if (url_input.match(regex)) {
+        if(url_input.length > 10){ 
+        $('#scrapp-images').html('');
+          $('.loader-image').show();
+          $.ajax({
+            url:  "/image/scrapp",
+            dataType: "json",
+            data: {
+               url_host: url_input
+            },
+            success: function(data) { 
+              $('.loader-image').hide();
+              count=0;
+              for (i in data.images) {
+                  $('#scrapp-images').append('<div class="col-xs-2"><img src="'+data.images[i]+'" class="img-responsive image-to-load"></div>');
+                  if(count == 0){
+                    $('#deal_imagen').val(data.images[i]);                
+                  }
+                  count++;
+              }
+              $('.image-to-load').click(function(event) {
+                $('#deal_imagen').val($(this).attr('src'));
+              });
+              if(count == 0){
+                $('#deal_imagen').show();
+              }
+            }
+          });
+        }
+      } else {
+        alert("No match");
+      }
+    */
     });
   });
 </script>

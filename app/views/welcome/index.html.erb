@@ -1,2 +1,114 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+  <div class="col-lg-8">
+    <h3>Promoción TOP</h3>
+    <% if @hot_deal.rank > 0 %>
+      Thums up <%= @hot_deal.rank %>
+    <% else %>
+      Thums down <%= @hot_deal.rank %>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= image_tag @hot_deal.promoimage.url(:big), class: 'img-responsive' %>
+      </div>
+      <div class="col-sm-6">
+        <p class="category"><%= @hot_deal.category.description %></p>
+        <p class="comments"><%= @hot_deal.comments.count %> comentarios</p>
+        <h2 class="nombre"><%= @hot_deal.title %></h2>
+        <p class="price"><%= @hot_deal.price %></p>
+        <p class="promocion"><%= link_to "Ver mas", deal_path(@hot_deal) %></p>
+        <% if @hot_deal.link.present? %>
+        <p class="promocion"><a href="<%= @hot_deal.link %>">Ver promoción</a></p>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <h3>Más votadas</h3>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      </ol>
+
+    <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+          <% count = 0 %>
+          <% @top_voted.each do |deal| %>
+          <% if count == 0 %>
+            <div class="item active">
+          <% else %>
+            <div class="item">
+          <% end %>
+              <p class="category"><%= deal.category.description %></p>
+              <h2 class="nombre"><%= deal.title %></h2>
+              <p class="price"><%= deal.price %></p>
+              <p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p>
+              <% if deal.link.present? %>
+              <p class="promocion"><a href="<%= deal.link %>">Ver promoción</a></p>
+              <% end %>
+              <% if deal.promoimage.exists? %>
+              <%= image_tag deal.promoimage.url(:big), class: 'img-responsive' %>
+              <% end %>
+              <% if deal.imagen.present? %>
+              <%= image_tag deal.imagen, class: 'img-responsive' %>
+              <% end %>
+          </div>
+          <% count = count + 1 %>
+          <% end %>
+      </div>
+
+    <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+<hr><hr>
+<div class="row">
+    <% @deals.each do |deal| %>
+    <div class="col-sm-4">
+ 
+      <div class="row">
+        <div class="col-sm-6">
+              <% if deal.promoimage.exists? %>
+              <%= image_tag deal.promoimage.url(:big), class: 'img-responsive' %>
+              <% end %>
+              <% if deal.imagen.present? %>
+              <%= image_tag deal.imagen, class: 'img-responsive' %>
+              <% end %>
+        </div>
+        <div class="col-sm-6">
+
+            <%= deal.title %>
+            <%= deal.description %>
+            <%= deal.link %>
+            <%= deal.price %>
+            <%= deal.expiration %>
+            <%= deal.user.nickname %>
+          <p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p>
+          <% if @hot_deal.link.present? %>
+          <p class="promocion"><a href="<%= @hot_deal.link %>">Ver promoción</a></p>
+          <% end %>
+          
+        </div>
+      </div>
+  
+    </div>
+    <% end %>
+</div>
+
+<h1>Deals</h1>
+
+  <tbody>
+  </tbody>
+</table>
+
+<br>

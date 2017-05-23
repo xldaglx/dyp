@@ -1,4 +1,4 @@
-<%= form_for @deal,  html: { multipart: true } do |f| %>
+<%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
   <% if deal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
@@ -10,56 +10,19 @@
       </ul>
     </div>
   <% end %>
-  <div id="scrapp-images"></div>
-  <div class="field">
-    <%= f.label :title %>
     <%= f.text_field :title, :required => true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
     <%= f.text_field :description %>
-  </div>
-
-    <%= f.hidden_field :imagen %>
-
-  <div class="field">
-    <%= f.label :link %>
+    <%= f.file_field :imagen %>
     <%= f.text_field :link %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
     <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :expiration %>
     <%= f.text_field :expiration %>
-  </div>
-<% if current_user.admin? %>
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
-  </div>
-<% end %>
-
-  <div class="field">
-    <%= f.label :category_id %>
+    <% if current_user.admin? %>
+        <%= f.text_field :status %>
+    <% end %>
     <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
-
-  </div>
-
-  <div class="field">
-    <%= f.label :type_deal %>
     <%= f.text_field :type_deal %>
-  </div>
-  <div class="field">
-  <%= f.file_field :promoimage %>
-  </div>
-  <div class="actions">
+    <%= f.file_field :promoimage %>
     <%= f.submit %>
-  </div>
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {

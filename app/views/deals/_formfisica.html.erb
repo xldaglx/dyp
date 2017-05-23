@@ -14,7 +14,7 @@
 
     <%= f.text_field :title, label: "Título", placeholder: "Artículo o Promoción" %>
     <%= f.text_field :description %>
-    <%= f.file_field :imagen %>
+    <%= f.file_field :promoimage %>
     <%= f.text_field :price %>
     <%= f.text_field :expiration %>
     <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
