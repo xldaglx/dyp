@@ -73,6 +73,27 @@ class DealsController < ApplicationController
       } 
     end
   end
+  def validatelink
+    url_host = params['url_host'].to_s;
+    @deals = Deal.all.where('link LIKE "%'+url_host+'%"')
+    if @deals.exists?
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => 'exists'}
+        } 
+      end
+    else
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => 'success'}
+        }       
+      end
+    end
+  end
   def scrapp
     require 'nokogiri' #start by loading the nokogiri gem
     require 'open-uri' #this is required to open the URLs we are going to scrape
@@ -91,8 +112,7 @@ class DealsController < ApplicationController
       img_urls = doc.css('.pzlcontainerviewer img').map{ |i| i['src'] }
     when /bestbuy/
       p 'bestbuy'
-      image = doc.at("meta[name='twitter:image']")['content']
-      img_urls.push(image)
+      img_urls = doc.xpath('//div[@class="product-img-box"]/descendant::img/@src').map(&:value)
     when /amazon/
       p 'Amazon'
       img_urls = doc.css('.imgTagWrapper img').map{ |i| i['src'] }
@@ -103,12 +123,14 @@ class DealsController < ApplicationController
       p 'Walmart'
       img_urls = doc.xpath('//meta[@property="og:image"]/@content').map(&:value)
     else
-       img_urls = doc.xpath('//meta[@property="og:image"]/@content').map(&:value)
+       img_urls = doc.xpath('/descendant::img/@src').map(&:value)
     end 
-
+    if img_urls.present?
+    p "si hay imagenes"
+    end
    respond_to do |format|
      format.html
-     format.js {} 
+     format.js {}   
      format.json { 
         render json: {:images => img_urls}
      } 
