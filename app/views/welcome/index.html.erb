@@ -60,7 +60,7 @@
       <div class="col-sm-6 white">
         <div class="row">
           <div class="col-sm-6"><p class="category"><%= @hot_deal.category.description %></p></div>
-          <div class="col-sm-6"><p class="comments"><%= @hot_deal.comments.count %> comentarios</p></div>
+          <div class="col-sm-6 right"><p class="comments"><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></p></div>
         </div>        
         <h2 class="name"><%= @hot_deal.title %></h2>
         <p class="price"><%= @hot_deal.price %></p>
