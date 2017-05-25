@@ -15,6 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 body{
 	background-color:#f8f8f8;
 	}
@@ -49,4 +50,59 @@ body{
 .loader-image{
 	display:none;
 	text-align:center;
+}
+.header-box{
+	background:white;
+	border-bottom: 1px solid #F8F8F8;
+}
+.title-small{
+	font-size:14px;
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.title-medium{
+	font-size:16px;	
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.title-big{
+	font-size:18px;
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.thumbs{
+	font-size:25px;
+	font-weight:500;
+	text-transform:uppercase;
+	text-align:right;
+}
+.thumbs .up{
+	border-left: 1px solid #F8F8F8;
+    padding: 0px 10px;
+}
+.thumbs .down{
+    padding-left: 10px;
+}
+.thumb-hot{
+	color:#ec131c;
+}
+.thumb-warmer{
+	color: #ea9d35;
+}
+.thumb-warm{
+	color: #eaca35;
+}
+.thumb-cold{
+	color:#559ed3;
+}
+.content-box .name{
+	font-weight: 300;
+}
+.content-box .price{
+	color: #e03346;
+	font-size:25px;
+	font-weight:500;
 }

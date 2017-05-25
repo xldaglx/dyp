@@ -61,4 +61,5 @@ gem 'watir'
 gem "paperclip", "~> 5.0.0"
 gem 'jquery-validation-rails'
 gem 'bootstrap_form'
-gem 'trix'
+gem 'trix' #Editor TextArea WYWYG
+gem "font-awesome-rails"
