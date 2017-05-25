@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513223901) do
+ActiveRecord::Schema.define(version: 20170524030511) do
 
   create_table "behaviors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "grade"
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20170513223901) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
     t.string   "link"
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
     t.integer  "type_deal"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -56,8 +56,16 @@ ActiveRecord::Schema.define(version: 20170513223901) do
     t.integer  "category_id"
     t.integer  "status"
     t.integer  "rank"
+    t.integer  "store_id"
     t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
+    t.index ["store_id"], name: "index_deals_on_store_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
+  end
+
+  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,5 +94,6 @@ ActiveRecord::Schema.define(version: 20170513223901) do
   add_foreign_key "comments", "deals"
   add_foreign_key "comments", "users"
   add_foreign_key "deals", "categories"
+  add_foreign_key "deals", "stores"
   add_foreign_key "deals", "users"
 end

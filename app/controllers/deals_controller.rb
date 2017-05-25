@@ -21,11 +21,13 @@ class DealsController < ApplicationController
   def new
     @deal = Deal.new
     @categories = Category.all
+    @stores = Store.all
   end
 
   # GET /deals/1/edit
   def edit
     @categories = Category.all
+    @stores = Store.all
   end
 
   # POST /deals
@@ -102,6 +104,7 @@ class DealsController < ApplicationController
     OpenSSL::SSL.const_set(:VERIFY_PEER, OpenSSL::SSL::VERIFY_NONE)    
     url = params['url_host']
     img_urls = Array.new
+    title = ""
     #img_urls = Array.new #create an empty array to store the image urls in
     browser = Watir::Browser.new
     browser.goto url
@@ -113,9 +116,11 @@ class DealsController < ApplicationController
     when /bestbuy/
       p 'bestbuy'
       img_urls = doc.xpath('//div[@class="product-img-box"]/descendant::img/@src').map(&:value)
+
     when /amazon/
       p 'Amazon'
       img_urls = doc.css('.imgTagWrapper img').map{ |i| i['src'] }
+      p title = doc.xpath('//span[@id="productTitle"]/text()[1]')
     when /elektra/
       p 'Elektra'
       img_urls = doc.css('.ccz-small').map{ |i| i['src'] }
@@ -132,7 +137,7 @@ class DealsController < ApplicationController
      format.html
      format.js {}   
      format.json { 
-        render json: {:images => img_urls}
+        render json: {:images => img_urls, :title => title}
      } 
    end
     browser.close
@@ -169,6 +174,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id ,:status, :rank)
+      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank)
     end
 end

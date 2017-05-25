@@ -35,6 +35,7 @@ rails g scaffold Deals title:string description:string imagen:string link:string
 rails g scaffold Categories description:string
 rails g scaffold Behavior grade:integer user:references deal:references
 rails g scaffold Comments description:string user:references deal:references
+rails g scaffold Stores description:string
 
 
 Cambiar el nombre de la columna de la base de datos por type_deals además de agregar en las vistas y en los permitidos
