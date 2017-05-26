@@ -78,7 +78,6 @@
         <% if @hot_deal.link.present? %>
           <a href="<%= @hot_deal.link %>" class="btn btn-primary">Ver promoción</a>
         <% end %>
-        
       </div>
     </div>
   </div>
@@ -90,7 +89,7 @@
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
     <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner white" role="listbox">
           <% count = 0 %>
           <% @top_voted.each do |deal| %>
           <% if count == 0 %>
@@ -98,17 +97,74 @@
           <% else %>
             <div class="item">
           <% end %>
-              <p class="category"><%= deal.category.description %></p>
-              <h2 class="nombre"><%= deal.title %></h2>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="thumbs">
+                  <% if deal.rank < 0 %>
+                    <span class="thumb-cold">
+                      <%= deal.rank %>
+                    </span>
+                  <% elsif deal.rank >= 0 && deal.rank <= 100 %>
+                    <span class="thumb-warm">
+                      <%= deal.rank %>
+                      <%= fa_icon "thermometer-empty" %>
+                    </span>
+                  <% elsif deal.rank >= 101 && deal.rank <= 200 %>
+                    <span class="thumb-warmer">
+                      <%= deal.rank %>
+                    </span>
+                  <% else %>
+                    <span class="thumb-hot">
+                      <%= deal.rank %>
+                    </span>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <% if deal.behaviors.exists? user_id: current_user.id  %>
+                     <% deal.behaviors.each do |item| %>
+                        <% @grade = item.grade %>
+                        <% if @grade == 1 %>
+                          <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                          <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                        <% else %>
+                          <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                          <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                          <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
+                          <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+                    <% end %>
+                  <% else %>
+                          <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
+                          <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-sm-6 right">
+                <p class="comments"><%= deal.comments.count %> <%= fa_icon 'comment' %></p>
+              </div>
+            </div>
+              <div class="image-box">
+                <% if deal.imagen.present? %>
+                  <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
+                <% else %>
+                   <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+                <% end %>
+              </div>
+              <p class="store"><%= deal.store.description %>
+                <span>
+                  <% if deal.type_deal == 1 %> 
+                    Online 
+                  <% else %> 
+                    Física 
+                  <%end%>
+                </span>
+              </p>
+              <h2 class="name"><%= deal.title %></h2>
               <p class="price"><%= deal.price %></p>
-              <p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p>
+              <p class="promocion"><%= link_to "Ver mas", deal_path(deal), class: 'btn btn-primary' %></p>
               <% if deal.link.present? %>
-              <p class="promocion"><a href="<%= deal.link %>">Ver promoción</a></p>
-              <% end %>
-              <% if deal.imagen.present? %>
-                <%= image_tag deal.imagen, class: 'img-responsive' %>
-              <% else %>
-              <%= image_tag deal.promoimage.url(:big), class: 'img-responsive' %>
+              <p class="promocion"><a href="<%= deal.link %>" class="btn btn-primary">Ver promoción</a></p>
               <% end %>
           </div>
           <% count = count + 1 %>
