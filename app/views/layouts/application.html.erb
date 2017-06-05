@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <div class="container">
+  <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+        </div>
+  </div>
+</div>
   <nav class="navbar navbar-blue">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,10 +32,14 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group stylish-input-group">
+              <input type="text" class="form-control"  placeholder="Buscar ..." >
+              <span class="input-group-addon">
+                  <button type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>  
+              </span>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
@@ -46,7 +56,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Nuevas</a></li>
-        <li><a href="#">Promociones Calientes</a></li>
+        <li><a href="#">Promociones Hot</a></li>
+        <li><a href="#">Categorias y Tiendas</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin?) %>
@@ -84,5 +95,25 @@
     </footer>
     <%= render "welcome/login_modal" %>
     <%= render "welcome/sign_up_modal" %>
+    <style type="text/css">
+.stylish-input-group .input-group-addon{
+    background: transparent; 
+    padding: 5px;
+}
+.stylish-input-group input {
+  color: white;
+}
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+  background: transparent;
+}
+.stylish-input-group button{
+    border:0;
+    color: white;
+    background:transparent;
+}
+    </style>
   </body>
 </html>
