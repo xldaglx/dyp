@@ -1,0 +1,51 @@
+<%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
+  <% if deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+
+      <ul>
+      <% deal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.text_field :title, :required => true %>
+    <%= f.text_field :description %>
+    <%= f.text_field :link %>
+    <%= f.text_field :price %>
+    <%= f.text_field :expiration %>
+    <% if current_user.admin? %>
+        <%= f.text_field :status %>
+    <% end %>
+    <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
+    <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una opción", label: "Tienda" %>
+    <%= f.text_field :type_deal %>
+    <%= f.file_field :promoimage %>
+    <%= f.submit %>
+<% end %>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('#deal_link').blur(function(event) {   
+      url_input = $(this).val();
+      $.ajax({
+        url:  "/image/scrapp",
+        dataType: "json",
+        data: {
+           url_host: url_input
+        },
+        success: function(data) { 
+          count=0;
+          for (i in data.images) {
+              $('#scrapp-images').append('<img src="'+data.images[i]+'">');
+              if(count == 0){
+                console.log("Entro");
+                $('#deal_imagen').val(data.images[i]);                
+              }
+              count++;
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,33 @@
+<!-- Login -->
+<div class="modal fade" tabindex="-1" role="dialog" id="login">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+      <div class="modal-body">
+        Ingresar 
+    		<%= devise_error_messages! %>
+        <div class="field">
+     		<%= f.label :email, "Usuario" %><br />
+  		  <%= f.email_field :email, autofocus: true %>
+  		  </div>
+
+  		  <div class="field">
+  		    <%= f.label :password, "Contraseña" %>
+  		    <% if @minimum_password_length %>
+  		    <em>(<%= @minimum_password_length %> characters minimum)</em>
+  		    <% end %><br />
+      		<%= f.password_field :password, autocomplete: "off" %>
+  		  </div>
+        <%= f.submit "Sign up" %>
+      </div>
+      <div class="modal-footer">
+          <%= link_to "Connecta con Facebook", user_facebook_omniauth_authorize_path %>
+          <%= link_to "Crear cuenta", "#sign_up", "data-toggle" => "modal"%>
+      </div>
+	<% end %>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

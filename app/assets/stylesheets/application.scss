@@ -1,0 +1,142 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require rails_bootstrap_forms
+ *= require trix
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+body{
+	background-color:#f8f8f8;
+	}
+.navbar{
+	border-radius:0px;
+	margin-bottom:0px;
+}
+.white{
+	background-color:#FFF;
+}
+.navbar-white{
+	background-color: #FFF;
+	border-color:#999;	
+}
+.navbar-blue{
+	background-color: #043152;
+}
+.navbar-blue a {
+    color:#FFFFFF;
+}
+.navbar-brand{
+	font-weight:200;
+}
+.navbar-brand span{
+	font-weight:400;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color:#d93438;
+}
+.loader-image{
+	display:none;
+	text-align:center;
+}
+.header-box{
+	background:white;
+	border-bottom: 1px solid #F8F8F8;
+}
+.title-small{
+	font-size:14px;
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.title-medium{
+	font-size:16px;	
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.title-big{
+	font-size:18px;
+	font-weight:500;
+	text-transform:uppercase;
+	padding:10px;
+}
+.thumbs{
+	font-size:25px;
+	font-weight:500;
+	text-transform:uppercase;
+	text-align:right;
+}
+.carousel-inner .thumbs{
+	font-size:18px;	
+	text-align:left;
+	padding-left:10px;
+}
+.carousel-inner .comments{
+	padding-right:10px;
+}
+.thumbs .up{
+	border-left: 1px solid #F8F8F8;
+    padding: 0px 10px;
+}
+.thumbs .down{
+    padding-left: 10px;
+}
+.thumb-hot{
+	color:#ec131c;
+}
+.thumb-warmer{
+	color: #ea9d35;
+}
+.thumb-warm{
+	color: #eaca35;
+}
+.thumb-cold{
+	color:#559ed3;
+}
+.content-box .name{
+	font-weight: 300;
+}
+.carousel-inner h2.name{
+	font-weight: 300;
+	font-size:16px !important;
+	padding:0px 10px;
+	margin-top:0px;
+	margin-bottom:10px;
+}
+.carousel-inner .store{
+	font-weight: 300;
+	font-size:14px !important;
+	padding:0px 10px;
+}
+.carousel-inner .store > span{
+	color: #e03346;
+	font-size:12px;
+}
+.price{
+	color: #e03346;
+}
+.carousel-inner .price{
+	font-size:20	px;
+	font-weight:500;
+	padding-left:10px;
+}
+.content-box .price{
+	font-size:25px;
+	font-weight:500;
+}
+.right{
+	text-align:right;
+}
