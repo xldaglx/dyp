@@ -2,12 +2,23 @@
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <head>
-    <title>Promodescuentos</title>
+    <title>Descuentos y Promociones MX</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style type="text/css">
+      h1{
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .head-des{
+        margin-bottom: 15px;
+      }
+      .alert{
+        padding: 10px;
+        margin-bottom: 10px;
+      }
       .stylish-input-group .input-group-addon{
         background: transparent; 
         padding: 5px;
@@ -260,6 +271,10 @@
       .sub-stores img{
         margin-bottom: 5px;
         border:1px solid #eaeaea;
+      }
+      .sub-stores img:hover{
+        margin-bottom: 5px;
+        border:1px solid #bababa;
       }
       .sub-stores span{
         font-weight: bold;
@@ -565,8 +580,8 @@
     </div>
     <!-- TERMINA SUBMENU MOBILE -->
   </nav>
-   	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   	<div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
     <div class="container">
       <%= yield %>
     </div>
