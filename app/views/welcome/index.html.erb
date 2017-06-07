@@ -187,20 +187,19 @@
 <div class="row">
     <% @deals.each do |deal| %>
     <div class="col-sm-4">
- 
       <div class="row">
         <div class="col-sm-6">
-              <% if deal.promoimage.exists? %>
-              <%= image_tag deal.promoimage.url(:big), class: 'img-responsive' %>
-              <% end %>
-              <% if deal.imagen.present? %>
-              <%= image_tag deal.imagen, class: 'img-responsive' %>
-              <% end %>
+                   <%= image_tag deal.promoimage.url(:thumb), class: 'img-responsive' %>
+                <% if deal.imagen.present? %>
+                  <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
+                <% else %>
+                   <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+                <% end %>
         </div>
         <div class="col-sm-6">
-
             <%= deal.title %>
-            <%= deal.description %>
+            <%= truncate(deal.description , :length => 25, :omission => '...') %>
+
             <%= deal.link %>
             <%= deal.price %>
             <%= deal.expiration %>
