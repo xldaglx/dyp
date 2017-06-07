@@ -8,26 +8,56 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style type="text/css">
+      .stylish-input-group .input-group-addon{
+        background: transparent; 
+        padding: 5px;
+      }
+      .stylish-input-group input {
+        color: white;
+      }
+      .stylish-input-group .form-control{
+        border-right:0; 
+        box-shadow:0 0 0; 
+        border-color:#ccc;
+        background: transparent;
+      }
+      .stylish-input-group button{
+          border:0;
+          color: white;
+          background:transparent;
+      }
       .navbar{
         border: none;
       }
       .navbar-brand{
         padding: 7px;
         height: 70px;
-        margin-left: 0px !putoimportant;
+        margin-left: 0px !important;
       }
       .navbar-white{
         border-bottom: 2px solid #d1cfcf;
-        height: 60px;
       }
       .navbar-nav > li > .mi-cuenta{
-        line-height: 33px;
+        line-height: 38px;
         font-size: 13px;
         font-weight: 200;
         color: #FFF;
       }
       .navbar-collapse{
         padding: 0px;
+      }
+      .nav > li{
+        float: left;
+      }
+      .nav li > a{
+        color: #525457;
+        font-weight: 400;
+        font-size: 13px;
+        padding:15px 13px;
+      }
+      li > a:hover{
+        color: #d93438;
+        text-decoration:none;
       }
       .form-control{
         background: transparent;
@@ -41,30 +71,26 @@
         margin-right: 0px;
         border: 1px solid #FFF;
       }
-      .navbar-form{
-        padding: 0px;
-      }
-      .btn-buscar{
+      .btn-lupa{
+        border: 1px solid #ccc !important;
+        padding: 0px 10px;
+        height: 34px;
+        margin-top: 3px;
+        margin-left: -5px;
+        border-left: 0px !important;
         -webkit-border-radius: 0px 20px 20px 0px;
         -moz-border-radius: 0px 20px 20px 0px;
         border-radius: 0px 20px 20px 0px;
-        margin-top: 8px;
-        margin-left: -5px;
-        padding: 7px 12px;
-        font-size: 13px;
-        color: #FFF;
-        background-color: #da1f1f;
-        border: 1px solid #FFF;
-        border-left: 1px solid #f26868;
       }
-      .btn-buscar:hover{
+      .input-group-addon{
+        border: none;
+        margin-top: 8px;
         color: #FFF;
-        background-color: #b71212;
-        border: 1px solid #FFF;
-        border-left: 1px solid #f26868;
+        font-size: 18px;
+        font-weight: 200;
       }
       .btn-compartir{
-        color: #FFF;
+        color: #FFF !important;
         height: 35px !important;
         width: 180px;
         line-height: 4px !important;
@@ -92,30 +118,255 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b71212', endColorstr='#7f0707',GradientType=0 ); /* IE6-9 */
       }
       .navbar-nav > li > a {
-        line-height: 25px;
-        height: 60px;
+        line-height: 22px;
+      }
+      .navbar-right{
+        margin-right: 0px;
+      }
+      .navbar-toggle{
+        float: left;
+        padding: 12px 12px;
+        margin-top: 7px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        margin-right: 5px;
+      }
+      .navbar-toggle .icon-bar{
+        background:#525457 ;
+        width: 25px;
+        height: 2px;
+        border-radius: 0px;
+      }
+      .container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse{
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+      .navbar-form{
+          margin: 0px;
+          padding: 10px 10px;
+      }
+      .navbar-nav{
+        margin: 0px;
+      }
+      .logotipo{
+        display: none;
+
+      }
+      .logotipo-s img{
+        display: block;
+        width: 50px;
+        margin-top: 3px;
+      }
+      .nav .ver-mobile,  .ver-mobile{
+        display: block;
+      }
+      .nav .ver-desktop, .ver-desktop{
+        display: none;
+      }
+      .menu-mobile{
+        margin: 17px 0px;
+        float: right;
+      }
+      .menu-mobile a{
+        color: #FFF;
+        float: right;
+        margin-left: 20px;
+        margin-right: 10px;
+        font-size: 17px;
+        line-height: 35px;
+      }
+      .menu-desktop{
+        display: none;
+      }
+      .buscar-s{
+        color: #FFF;
+        font-size: 17px;
+        margin: 3px 5px 0px 20px;
+        padding: 0px;
+      }
+      .menu-mobile .btn-compartir-s{
+        font-size: 12px;
+        font-weight: 400;
+        width: 75px;
+        text-align: center;
+        float: right;
+        height: 33px !important;
+        margin: 2px 0px 0px 15px;
+        line-height: 19px !important;
+      }
+      .nav .filtro{
+        float: right;
+        font-size: 16px;
+      }
+      .submenu{
+        background: #fafafa;
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        border-top: 1px solid #ccc;
+        font-size: 13px;
+        z-index: 100;
+      }
+      .submenu .sub-titulo{
+        border-top: 0px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-top: 0px;
+        font-size: 15px;
+      }
+      .submenu li{
+        font-size: 13px;
+        margin: 0px 0px;
+        padding: 13px 27px;
+        border-top: 1px solid #ccc;
+      }
+      .submenu li a{
+        color: #525457;
+        font-size: 12px; 
+      }
+      .flecha-down{
+        font-size: 10px;
+        margin-left: 3px;
+      }
+      .cerrar-menu{
+        background: #333;
+        color: #FFF !important;
+        float: left;
+        width: 100%;
+      }
+      .cerrar-menu a{
+        color: #FFF !important;
+        font-size: 13px;
+      }
+      .icono-cerrar{
+        float: right;
+      }
+      .nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+        background: transparent;
+      }
+      @media screen and (min-width: 768px) {
+        .navbar-nav > li > a {
+          line-height: 25px;
+        }
+        .logotipo img{
+          width: 275px;
+          margin-top: 0px;
+        }
+        .nav > li > a{
+          color: #525457;
+          font-weight: 400;
+          font-size: 14px;
+        }
+        .navbar-form{
+          margin: 0px;
+          padding: 10px 15px;
+        }
+        .logotipo-s{
+          display: none;
+        }
+        .logotipo{
+          display: block;
+        }
+        .nav .ver-mobile, .ver-mobile{
+          display: none;
+        }
+        .nav .ver-desktop, .ver-desktop{
+          display: block;
+        }
+        .navbar-white{
+          border-bottom: 2px solid #d1cfcf;
+          height: 60px;
+        }
+      }
+      .nav > li.dropdown.open {
+        position: static;
+      }
+      .dropdown-menu{
+        padding: 20px 20px 50px 20px;
+      }
+      .nav > li.dropdown.open .dropdown-menu {
+        display: table;
+        border-radius: 0px;
+        width: 100%;
+        text-align: center;
+        left: 0;
+        right: 0;
+      }
+      .dropdown-menu > li {
+        display: table-cell;
+        height: 50px;
+        line-height: 50px;
+        vertical-align: middle;
+      }
+      .submenu-cat{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+      .dropdown-menu h2{
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 10px 0px 15px 28px;
+        text-align: left;
+      }
+      .dropdown-menu .ver-mas-link{
+        font-size: 13px;
+        margin: 15px 0px 15px 14px;
+        text-align: left;
+      }
+      .dropdown-menu .ver-mas-link a{
+        color: #d93438;
+      }
+      .submenu-cat li{
+        text-align: left;
+        padding: 5px 0px;
+        font-size: 13px;
+        font-weight: 200;
+      }
+      .no-padding{
+        padding: 0px;
+      }
+      .glyphicon-menu-right{
+        font-size:10px;
+      }
+      @media screen and (max-width: 767px) {
+        .dropdown-menu > li {
+          display: block;
+        }
       }
     </style>
   </head>
 
   <body>
   <div class="container">
-  <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-        </div>
+    <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+          </div>
+    </div>
   </div>
-</div>
   <nav class="navbar navbar-blue">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <!--button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="glyphicon glyphicon-search"></span>
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Descuentosy<span class="bold">Promociones.mx</span> </a>
+        </button-->
+        <!-- Menu Mobile -->
+        <div class="menu-mobile ver-mobile">
+          <%= link_to "Compartir", new_deal_path, class: 'btn btn-compartir-s btn-compartir btn-default' %>
+          <button type="button" class="buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+          <a class="mi-cuenta-s" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></a>
+        </div>
+        <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
+        <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -124,7 +375,7 @@
           <div class="input-group stylish-input-group">
               <input type="text" class="form-control"  placeholder="Buscar ..." >
               <span class="input-group-addon">
-                  <button type="submit">
+                  <button type="submit" class="btn-lupa">
                       <span class="glyphicon glyphicon-search"></span>
                   </button>  
               </span>
@@ -132,7 +383,7 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-          <li><a href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta </a></li>
+          <li class="ver-desktop"><a class="mi-cuenta" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta </a></li>
           <% else %>
           <li><%= link_to "Iniciar sesión", "#login", "data-toggle" => "modal"%></li>    
           <% end %>
@@ -141,29 +392,98 @@
     </div><!-- /.container -->
   </nav>
   <nav class="navbar navbar-white">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="container">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Nuevas</a></li>
-        <li><a href="#">Promociones Hot</a></li>
-        <li><a href="#">Categorias y Tiendas</a></li>
+          <li class=" active"><a href="#">Nuevas</a></li>
+          <li class="ver-desktop"><a href="#">Promociones Top</a></li>
+          <li class="ver-mobile"><a href="#">TOP</a></li>
+          <li class="dropdown ver-desktop"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
+            <div class="row dropdown-menu">
+              <div class="container">
+                <div class="col-md-6 no-padding">
+                  <h2>Promociones por Categoría</h2>
+                  <div class="col-md-6">
+                    <ul class="submenu-cat">
+                      <li><a href="#">Abarrotes y Alimentos</a></li>
+                      <li><a href="#">Autos</a></li>
+                      <li><a href="#">Bebés y Niños</a></li>
+                      <li><a href="#">Celulares</a></li>
+                      <li><a href="#">Computadoras</a></li>
+                      <li><a href="#">Restaurantes</a></li>
+                      <li><a href="#">Deportes y Ejercicios</a></li>
+                      <li><a href="#">Entretenimiento</a></li>
+                      <li><a href="#">Hogar y Jardín</a></li>
+                      <li><a href="#">Ropa y Accesorios</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6 no-padding">
+                    <ul class="submenu-cat">
+                      <li><a href="#">Salud y Belleza</a></li>
+                      <li><a href="#">Servicios</a></li>
+                      <li><a href="#">Tecnología</a></li>
+                      <li><a href="#">Televisiones</a></li>
+                      <li><a href="#">Viajes</a></li>
+                      <li><a href="#">Videojuegos</a></li>
+                      <li><a href="#">Varios</a></li>
+                      <li><a href="#">Ofertas Online</a></li>
+                      <li><a href="#">Ofertas en Tienda Física</a></li>
+                      <li><a href="#">Ofertas Permanentes</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-12 ver-mas-link"><a href="#">Ver todas las Categorías <span class="glyphicon glyphicon-menu-right"></span></a></div>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="ver-mobile"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
+          <li class="ver-mobile filtro"><a href="#"><span class="glyphicon glyphicon-filter"></span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user.try(:admin?) %>
-          <li><a href="/moderate">Moderar </a></li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li><%= link_to "Compartir", new_deal_path, class: 'btn btn-default' %></li>
-          <!--<li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>-->
-        <% else %>
-          <li><a href="#">Compartir </a></li>
-          <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
-          <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
-          <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li>
-        <% end %>
+          <% if current_user.try(:admin?) %>
+            <li class="ver-desktop"><a href="/moderate">Moderar </a></li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li class="ver-desktop"><%= link_to "+ Compartir", new_deal_path, class: 'btn btn-compartir btn-default' %></li>
+            <!--<li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>-->
+          <% else %>
+            <li><a href="#">Compartir </a></li>
+            <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+            <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
+            <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li>
+          <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container -->
+      
+    </div><!-- /.container -->
+    <!-- INICIA SUBMENU DESKTOP -->
+    
+    <!-- TERMINA SUBMENU DESKTOP -->
+    <!-- INICIA SUBMENU MOBILE -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-menu-s">
+      <ul class="ver-mobile submenu">
+        <li><a>Abarrotes y Alimentos</a></li>
+        <li><a>Autos</a></li>
+        <li><a>Bebés y Niños</a></li>
+        <li><a>Celulares</a></li>
+        <li><a>Computadoras</a></li>
+        <li><a>Restaurantes</a></li>
+        <li><a>Deportes y Ejercicios</a></li>
+        <li><a>Ver todas...</a></li>
+        <li class="separador"></li>
+        <li class="sub-titulo">BUSCA POR TIENDA</li>
+        <li><a>Best Buy</a></li>
+        <li><a>Amazon</a></li>
+        <li><a>Walmart</a></li>
+        <li><a>Chedraui</a></li>
+        <li><a>Comercial Mexicana</a></li>
+        <li><a>Elektra</a></li>
+        <li><a>Coopel</a></li>
+        <li><a>Ver todas...</a></li>
+        <a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s"><li class="cerrar-menu">Cerrar menú <span class="icono-cerrar glyphicon glyphicon-chevron-up"></li></a>
+      </ul>
+    </div>
+    <!-- TERMINA SUBMENU MOBILE -->
   </nav>
    	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -184,25 +504,5 @@
     </footer>
     <%= render "welcome/login_modal" %>
     <%= render "welcome/sign_up_modal" %>
-    <style type="text/css">
-.stylish-input-group .input-group-addon{
-    background: transparent; 
-    padding: 5px;
-}
-.stylish-input-group input {
-  color: white;
-}
-.stylish-input-group .form-control{
-  border-right:0; 
-  box-shadow:0 0 0; 
-  border-color:#ccc;
-  background: transparent;
-}
-.stylish-input-group button{
-    border:0;
-    color: white;
-    background:transparent;
-}
-    </style>
   </body>
 </html>
