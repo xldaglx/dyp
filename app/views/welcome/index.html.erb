@@ -8,27 +8,30 @@
     <div class="col-lg-8 hot-deal">
       <div class="header-box">
         <div class="row">
-          <div class="col-xs-7">
+          <div class="col-xs-6">
             <div class="title-big">Promoción TOP</div>
           </div>
-          <div class="col-xs-5">
+          <div class="col-xs-6">
             <div class="thumbs">
               <% if @hot_deal.rank < 0 %>
                 <span class="thumb-cold">
-                  <%= @hot_deal.rank %>
+                  <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
+                  <%= fa_icon "thermometer-empty" %>
                 </span>
               <% elsif @hot_deal.rank >= 0 && @hot_deal.rank <= 100 %>
                 <span class="thumb-warm">
-                  <%= @hot_deal.rank %>
                   <%= fa_icon "thermometer-empty" %>
+                  <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
                 </span>
               <% elsif @hot_deal.rank >= 101 && @hot_deal.rank <= 200 %>
                 <span class="thumb-warmer">
-                  <%= @hot_deal.rank %>
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
                 </span>
               <% else %>
                 <span class="thumb-hot">
-                  <%= @hot_deal.rank %>
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
                 </span>
               <% end %>
             <% if user_signed_in? %>
@@ -105,24 +108,27 @@
                 <div class="item">
               <% end %>
                 <div class="row">
-                  <div class="col-xs-6">
+                  <div class="col-xs-8">
                     <div class="thumbs">
                       <% if deal.rank < 0 %>
                         <span class="thumb-cold">
-                          <%= deal.rank %>
+                          <%= fa_icon "thermometer-empty" %>
+                          <%= deal.rank %> <span class="grados-sign">&#186;</span>
                         </span>
                       <% elsif deal.rank >= 0 && deal.rank <= 100 %>
                         <span class="thumb-warm">
-                          <%= deal.rank %>
                           <%= fa_icon "thermometer-empty" %>
+                          <%= deal.rank %> <span class="grados-sign">&#186;</span>
                         </span>
                       <% elsif deal.rank >= 101 && deal.rank <= 200 %>
                         <span class="thumb-warmer">
-                          <%= deal.rank %>
+                          <%= fa_icon "thermometer-empty" %>
+                          <%= deal.rank %> <span class="grados-sign">&#186;</span>
                         </span>
                       <% else %>
                         <span class="thumb-hot">
-                          <%= deal.rank %>
+                          <%= fa_icon "thermometer-empty" %>
+                          <%= deal.rank %> <span class="grados-sign">&#186;</span>
                         </span>
                       <% end %>
                       <% if user_signed_in? %>
@@ -147,7 +153,7 @@
                       <% end %>
                     </div>
                   </div>
-                  <div class="col-xs-6 right">
+                  <div class="col-xs-4 right">
                     <p class="comments"><a href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a></p>
                   </div>
                 </div>
@@ -202,51 +208,12 @@
     <% @deals.each do |deal| %>
     <div id="offer-container">
       <div class="col-sm-4">
-        <div class="col-sm-12 oferta-head no-padding">
-          <div class="usuario">
-            <a href=""><%= deal.user.nickname %></a>
-          </div>
-          <div class="thumbs-oferta">
-            <% if deal.rank < 0 %>
-              <span class="thumb-cold">
-                <%= deal.rank %>
-              </span>
-            <% elsif deal.rank >= 0 && deal.rank <= 100 %>
-              <span class="thumb-warm">
-                <%= deal.rank %>
-                <%= fa_icon "thermometer-empty" %>
-              </span>
-            <% elsif deal.rank >= 101 && deal.rank <= 200 %>
-              <span class="thumb-warmer">
-                <%= deal.rank %>
-              </span>
-            <% else %>
-              <span class="thumb-hot">
-                <%= deal.rank %>
-              </span>
-            <% end %>
-            <% if user_signed_in? %>
-              <% if deal.behaviors.exists? user_id: current_user.id  %>
-               <% deal.behaviors.each do |item| %>
-                  <% @grade = item.grade %>
-                  <% if @grade == 1 %>
-                    <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                    <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
-                  <% else %>
-                    <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                    <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
-                  <% end %>
-                <% end %>
-              <% else %>
-                    <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
-                    <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
-              <% end %>
-            <% else %>
-                    <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
-                    <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
-            <% end %>
-          </div>
-          <div class="fecha">
+        <div class="col-xs-12 oferta-head no-padding">
+          <div class="col-xs-5">
+            <div class="usuario">
+              <a href=""><%= deal.user.nickname %></a>
+            </div>
+            <div class="fecha">
             <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
             <% 
               t1 = Time.now
@@ -257,15 +224,77 @@
               d2 = f2.day
             %>
             <% if f1 == f2 %>
-            Publicados hace <%= distance_of_time_in_words(t2, t1) %>
-            <% else %>
-            Publicado hace <%= distance_of_time_in_words(f2, f1) %>
+              Hace <%= distance_of_time_in_words(t2, t1) %>
+              <% else %>
+              Hace <%= distance_of_time_in_words(f2, f1) %>
             <% end %>
+            </div>
+          </div>
+          <div class="col-xs-7">
+            <div class="thumbs-oferta">
+              <% if deal.rank < 0 %>
+                <span class="thumb-cold">
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= deal.rank %> <span class="grados-sign">&#186;</span>
+                </span>
+              <% elsif deal.rank >= 0 && deal.rank <= 100 %>
+                <span class="thumb-warm">
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= deal.rank %> <span class="grados-sign">&#186;</span>
+                </span>
+              <% elsif deal.rank >= 101 && deal.rank <= 200 %>
+                <span class="thumb-warmer">
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= deal.rank %> <span class="grados-sign">&#186;</span>
+                </span>
+              <% else %>
+                <span class="thumb-hot">
+                  <%= fa_icon "thermometer-empty" %>
+                  <%= deal.rank %> <span class="grados-sign">&#186;</span>
+                </span>
+              <% end %>
+              <% if user_signed_in? %>
+                <% if deal.behaviors.exists? user_id: current_user.id  %>
+                 <% deal.behaviors.each do |item| %>
+                    <% @grade = item.grade %>
+                    <% if @grade == 1 %>
+                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                    <% else %>
+                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                      <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
+                      <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+                <% end %>
+              <% else %>
+                      <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
+                      <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
+              <% end %>
+            </div>
           </div>
         </div>
-        <div class="col-sm-12 termo-gris no-padding"></div>
+        <!--INICIA BARRA DE TERMÓMETRO-->
+        <div class="col-sm-12 termo-gris no-padding">
+          <% if deal.rank < 0 %>
+                <span class="bar-cold">
+                </span>
+              <% elsif deal.rank >= 0 && deal.rank <= 100 %>
+                <span class="bar-warm">
+                </span>
+              <% elsif deal.rank >= 101 && deal.rank <= 200 %>
+                <span class="bar-warmer">
+                </span>
+              <% else %>
+                <span class="bar-hot">
+                </span>
+              <% end %>
+        </div>   
+        <!--TERMINA BARRA DE TERMÓMETRO-->
         <div class="row oferta">
-          <div class="col-sm-5">
+          <div class="col-xs-5">
             <a href="">
               <% if deal.imagen.present? %>
                 <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
@@ -274,7 +303,7 @@
               <% end %>
             </a>
           </div>
-          <div class="col-sm-7 oferta-individual no-padding">
+          <div class="col-xs-7 oferta-individual no-padding">
             <div class="category">
               <a href=""><%= @hot_deal.category.description %></a>
             </div>
@@ -297,7 +326,7 @@
               <a class="btn btn-rojo-small" href="<%= @hot_deal.link %>">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             </div>
             <% end %>
-            <a class="comments" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
+            <a class="comments ver-desktop" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
             <!--ALGUNOS DE ESTOS SON LOS MISMOS DE ARRIBA->
             <!--%= truncate(deal.description , :length => 25, :omission => '...') %>
             <!--%= deal.link %-->

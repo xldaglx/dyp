@@ -94,17 +94,85 @@ body{
 .thumbs .down{
     padding-left: 10px;
 }
+.hot-deal .thumb-hot{
+  font-size: 25px;
+}
+.hot-deal .thumb-warm{
+  font-size: 25px;
+}
+.hot-deal .thumb-cold{
+  font-size: 25px;
+}
 .thumb-hot{
-	color:#ec131c;
+	color:#c0392b;
+  font-weight: bold;
+  font-size: 21px;
 }
 .thumb-warmer{
-	color: #ea9d35;
+	color: #e67e22;
+  font-weight: bold;
+  font-size: 21px;
 }
 .thumb-warm{
-	color: #eaca35;
+	color: #f39c12;
+  font-weight: bold;
+  font-size: 21px;
 }
 .thumb-cold{
-	color:#559ed3;
+	color:#3498db;
+  font-weight: bold;
+  font-size: 21px;
+}
+.bar-cold{
+  width: 100%;
+  float: left;
+  height: 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bcd4e5+0,359ce6+100 */
+  background: #3498db; /* Old browsers */
+  background: -moz-linear-gradient(left, #bcd4e5 0%, #3498db 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #bcd4e5 0%,#3498db 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #bcd4e5 0%,#3498db 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcd4e5', endColorstr='#3498db',GradientType=1 ); /* IE6-9 */
+}
+.bar-warm{
+  width: 100%;
+  float: left;
+  height: 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8de64+0,fbd41e+100 */
+  background: #f1c40f; /* Old browsers */
+  background: -moz-linear-gradient(left, #f1c40f 0%, #f39c12 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #f1c40f 0%,#f39c12 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #f1c40f 0%,#f39c12 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1c40f', endColorstr='#f39c12',GradientType); /* IE6-9 */
+}
+.bar-warmer{
+  width: 100%;
+  float: left;
+  height: 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbd41e+0,de7d0a+100 */
+  background: #e67e22; /* Old browsers */
+  background: -moz-linear-gradient(left, #e67e22 0%, #d35400 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #e67e22 0%,#d35400 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #e67e22 0%,#d35400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e67e22', endColorstr='#d35400',GradientType=1 ); /* IE6-9 */
+}
+.bar-hot{
+  width: 100%;
+  float: left;
+  height: 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#df8612+0,f41811+100 */
+  background: #e74c3c; /* Old browsers */
+  background: -moz-linear-gradient(left, #e74c3c 0%, #c0392b 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #e74c3c 0%,#c0392b 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #e74c3c 0%,#c0392b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e74c3c', endColorstr='#c0392b',GradientType=1); /* IE6-9 */
+}
+.grados-sign{
+  font-weight: 200;
+  margin-left: -4px;
+  top: -5px;
+  position: relative;
+  font-size: 15px; 
 }
 .content-box .name{
 	font-weight: 300;
@@ -418,9 +486,6 @@ body{
       .nav > li.dropdown.open {
         position: static;
       }
-      .dropdown-menu{
-        padding: 20px 20px 30px 20px;
-      }
       .nav > li.dropdown.open .dropdown-menu {
         border-bottom: 3px solid #d93438;
         display: table;
@@ -429,6 +494,7 @@ body{
         text-align: center;
         left: 0;
         right: 0;
+        padding: 20px 0px 30px 0px;
       }
       .dropdown-menu > li {
         display: table-cell;
@@ -579,10 +645,10 @@ body{
     background-color: #FFF;
     border:1px solid #efefef;
     margin-bottom: 30px;
-    min-height: 432px;
+    min-height: 425px;
   }
   .mas-votadas{
-    min-height: 432px;
+    min-height: 425px;
     border:1px solid #efefef;
     background: #FFF;
   }
@@ -594,13 +660,14 @@ body{
     border:1px solid #efefef;
     margin: 0px 0px 30px 0px;
     padding: 23px 15px;
-    min-height: 250px;
+    min-height: 240px;
   }
   .oferta img{
     margin-top: 20px;
   }
   .image-box{
     text-align: center;
+    margin-bottom:20px;
   }
   .image-box img{
     margin: 0 auto;
@@ -632,7 +699,7 @@ body{
   }
   .oferta-individual .name{
     color: #333;
-    max-height: 40px;
+    height: 40px;
     line-height: 20px;
     margin-top: 0px;
     overflow:hidden;
@@ -675,12 +742,13 @@ body{
     float: right;
   }
   .oferta-head{
-    padding: 7px 20px 10px 20px;
+    padding: 7px 0px;
   }
   .termo-gris{
     width: 100%;
     background:#efefef;
-    height: 4px;
+    height: 2px;
+    float:left;
   }
   .oferta-head .usuario a{
     color: #666;
@@ -715,7 +783,7 @@ body{
     color: #d93438;
   }
   .fis-web{
-    margin-left: 10px;
+    margin-left: 5px;
     font-weight: 200;
     font-size: 12px;
     text-transform: none;
@@ -791,13 +859,63 @@ body{
   .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active{
     text-align: left;
   }
+  .thumbs-oferta{
+    text-align: right;
+    font-size: 20px;
+  }
+  .thumbs-oferta .up{
+    padding-left:9px;
+    border-left: 1px solid #eaeaea;
+  }
+  .thumbs-oferta .down{
+    margin-left:14px;
+    margin-right:5px;
+  }
   @media screen and (max-width: 767px) {
+    .grados-sign{
+      margin-left: 0px;
+      top: -5px; 
+    }
+    .hot-deal{
+      margin-bottom:10px;
+    }
+    .hot-deal .grados-sign{
+      margin-left: -4px;
+      top: -4px;
+      font-size: 14px;
+    }
+    .hot-deal .thumb-warm{
+      font-size:20px;
+    }
+    .oferta{
+      padding: 15px 10px;
+      margin: 0px 0px 10px 0px;
+    }
     .oferta-head{
-      padding: 7px 20px 10px 20px;
       background: #FFF;
+      float:left;
       border-top: 1px solid #efefef;
       border-left: 1px solid #efefef;
-      border-right: 1px solid #efefef;
+    }
+    .oferta-individual .name{
+      max-height: 35px;
+      line-height: 18px;
+      font-size: 13px;
+    }
+    .oferta-individual .price{
+      font-size: 15px;
+    }
+    .oferta-individual .store{
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .oferta-individual .category a{
+      font-size: 11px;
+    }
+    .fis-web{
+      font-weight: 400;
+      font-size: 11px;
+      text-transform: none;
     }
     .cont-hot-deal .name{
       font-size: 18px;
@@ -809,8 +927,8 @@ body{
       font-weight: 400;
     }
     .title-big{
-      padding: 15px;
-      font-size: 13px;
+      padding: 15px 0px 15px 10px;
+      font-size: 12px;
       font-weight: bold;
     }
     .thumbs{
