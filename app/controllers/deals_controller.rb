@@ -8,7 +8,7 @@ class DealsController < ApplicationController
   end
 
   def moderate
-    @deals = Deal.where('status = 1')
+    @deals = Deal.all
   end
 
   # GET /deals/1

@@ -315,7 +315,7 @@
             <div class="col-xs-6 right"><p class="comments"><a href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
           </div>        
           <h2 class="name"><a href=""><%= @hot_deal.title %></a></h2>
-          <p class="price"><%= @hot_deal.price %></p>
+          <p class="price"><%= number_to_currency(@hot_deal.price) %></p>
           <p class="store"><a href=""><%= @hot_deal.store.description %></a>
             <span class="fis-web">
               <% if @hot_deal.type_deal == 1 %> 
@@ -444,66 +444,116 @@
     <h1>Más Promociones</h1>
   </div>
     <% @deals.each do |deal| %>
-    <div class="col-sm-4">
-      <div class="col-sm-12 oferta-head no-padding">
-        <div class="usuario">
-          <a href=""><%= deal.user.nickname %></a>
-        </div>
-        <div class="fecha">
-          <%= deal.expiration %>
-        </div>
-      </div>
-      <div class="col-sm-12 termo-gris no-padding">
-      </div>
-      <div class="row oferta">
-        <div class="col-sm-5">
-          <a href="">
-            <% if deal.imagen.present? %>
-              <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
+    <div id="offer-container">
+      <div class="col-sm-4">
+        <div class="col-sm-12 oferta-head no-padding">
+          <div class="usuario">
+            <a href=""><%= deal.user.nickname %></a>
+          </div>
+          <div class="thumbs-oferta">
+            <% if deal.rank < 0 %>
+              <span class="thumb-cold">
+                <%= deal.rank %>
+              </span>
+            <% elsif deal.rank >= 0 && deal.rank <= 100 %>
+              <span class="thumb-warm">
+                <%= deal.rank %>
+                <%= fa_icon "thermometer-empty" %>
+              </span>
+            <% elsif deal.rank >= 101 && deal.rank <= 200 %>
+              <span class="thumb-warmer">
+                <%= deal.rank %>
+              </span>
             <% else %>
-                <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+              <span class="thumb-hot">
+                <%= deal.rank %>
+              </span>
             <% end %>
-          </a>
+            <% if user_signed_in? %>
+              <% if deal.behaviors.exists? user_id: current_user.id  %>
+               <% deal.behaviors.each do |item| %>
+                  <% @grade = item.grade %>
+                  <% if @grade == 1 %>
+                    <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                    <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                  <% else %>
+                    <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
+                    <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                  <% end %>
+                <% end %>
+              <% else %>
+                    <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
+                    <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+              <% end %>
+            <% else %>
+                    <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
+                    <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
+            <% end %>
+          </div>
+          <div class="fecha">
+            <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
+            <% 
+              t1 = Time.now
+              t2 = deal.created_at
+              f1 = Date.today
+              f2 = deal.created_at.to_date
+              d1 = f1.day
+              d2 = f2.day
+            %>
+            <% if f1 == f2 %>
+            Publicados hace <%= distance_of_time_in_words(t2, t1) %>
+            <% else %>
+            Publicado hace <%= distance_of_time_in_words(f2, f1) %>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-7 oferta-individual no-padding">
-          <div class="category">
-            <a href=""><%= @hot_deal.category.description %></a>
+        <div class="col-sm-12 termo-gris no-padding"></div>
+        <div class="row oferta">
+          <div class="col-sm-5">
+            <a href="">
+              <% if deal.imagen.present? %>
+                <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
+              <% else %>
+                  <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+              <% end %>
+            </a>
           </div>
-          <div class="name">
-            <a href=""><%= deal.title %></a>
+          <div class="col-sm-7 oferta-individual no-padding">
+            <div class="category">
+              <a href=""><%= @hot_deal.category.description %></a>
+            </div>
+            <div class="name">
+              <a href=""><%= deal.title %></a>
+            </div>
+            <div class="price"><%= number_to_currency(deal.price) %></div>
+            <div class="store"><a href=""><%= @hot_deal.store.description %></a>
+              <span class="fis-web">
+                <% if @hot_deal.type_deal == 1 %> 
+                  Online 
+                <% else %> 
+                  Tienda Física 
+                <%end%>
+              </span>
+            </div>
+            <!--p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p-->
+            <% if @hot_deal.link.present? %>
+            <div class="btn-oferta-individual">
+              <a class="btn btn-rojo-small" href="<%= @hot_deal.link %>">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+            </div>
+            <% end %>
+            <a class="comments" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
+            <!--ALGUNOS DE ESTOS SON LOS MISMOS DE ARRIBA->
+            <!--%= truncate(deal.description , :length => 25, :omission => '...') %>
+            <!--%= deal.link %-->
+            <!--%= deal.price %-->
+            <!--%= deal.expiration %-->
           </div>
-          <div class="price">$<%= deal.price %></div>
-          <div class="store"><a href=""><%= @hot_deal.store.description %></a>
-            <span class="fis-web">
-              <% if @hot_deal.type_deal == 1 %> 
-                Online 
-              <% else %> 
-                Tienda Física 
-              <%end%>
-            </span>
-          </div>
-          <!--p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p-->
-          <% if @hot_deal.link.present? %>
-          <div class="btn-oferta-individual">
-            <a class="btn btn-rojo-small" href="<%= @hot_deal.link %>">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
-          </div>
-          <% end %>
-          <a class="comments" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
-          <!--ALGUNOS DE ESTOS SON LOS MISMOS DE ARRIBA->
-          <!--%= truncate(deal.description , :length => 25, :omission => '...') %>
-          <!--%= deal.link %-->
-          <!--%= deal.price %-->
-          <!--%= deal.expiration %-->
         </div>
       </div>
     </div>
     <% end %>
 </div>
-
-  <tbody>
-  </tbody>
-</table>
-
+<%= paginate @deals %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('.rank').click(function(event) {   
