@@ -506,7 +506,7 @@
           <li class="dropdown ver-desktop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
             <!-- INICIA SUBMENU DESKTOP -->
             <div class="row dropdown-menu">
-              <div class="container">
+              <div class="container drow">
                 <div class="col-md-6 no-padding">
                   <h2>Promociones por Categoría</h2>
                   <div class="col-md-6">
@@ -592,5 +592,10 @@
     </footer>
     <%= render "welcome/login_modal" %>
     <%= render "welcome/sign_up_modal" %>
+    <script type="text/javascript">
+      $(document).on('click', '.dropdown-menu', function (e) {
+        e.stopPropagation();
+      });
+      </script>
   </body>
 </html>
