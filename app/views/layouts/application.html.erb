@@ -33,7 +33,9 @@
           <button type="button" class="buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="glyphicon glyphicon-search"></span>
           </button>
+          <% if user_signed_in? %>
           <a class="mi-cuenta-s" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></a>
+          <% end %>
         </div>
         <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
         <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
