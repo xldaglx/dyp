@@ -18,7 +18,7 @@
 @import "font-awesome";
 body{
   background-color:#f8f8f8;
-  }
+}
 .navbar{
   border-radius:0px;
   margin-bottom:0px;
@@ -80,9 +80,9 @@ body{
   text-align:right;
 }
 .carousel-inner .thumbs{
-  font-size:18px; 
+  font-size:20px; 
   text-align:left;
-  padding-left:10px;
+  padding-left: 20px;
 }
 .carousel-inner .comments{
   padding-right:10px;
@@ -92,7 +92,7 @@ body{
     padding: 0px 10px;
 }
 .thumbs .down{
-    padding-left: 10px;
+    padding: 0px 5px;
 }
 .hot-deal .thumb-hot{
   font-size: 25px;
@@ -200,10 +200,6 @@ body{
   font-size:20  px;
   font-weight:500;
   padding-left:10px;
-}
-.content-box .price{
-  font-size:25px;
-  font-weight:500;
 }
 .right{
   text-align:right;
@@ -537,6 +533,9 @@ li > a:hover{
 .no-padding{
   padding: 0px;
 }
+.no-margin{
+  margin: 0px !important;
+}
 .no-padding-head{
   padding: 0px;
 }
@@ -618,12 +617,13 @@ li > a:hover{
 .oferta{
   background:#FFF;
   border:1px solid #efefef;
-  margin: 0px 0px 30px 0px;
+  margin: 0px 0px 20px 0px;
   padding: 23px 15px;
   min-height: 240px;
 }
 .oferta img{
   margin-top: 20px;
+  padding: 5px;
 }
 .image-box{
   text-align: center;
@@ -733,6 +733,7 @@ li > a:hover{
 .content-box .price{
   font-size: 35px;
   font-weight: 400;
+  margin-top: 10px;
 }
 .carousel-inner .price{
   font-size: 20px;
@@ -814,24 +815,55 @@ li > a:hover{
   color: #333;
 }
 .no-padding-m{
-  padding: 0px 0px 0px 20px;
+  padding: 0px 10px;
 }
 .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active{
   text-align: left;
 }
 .thumbs-oferta{
   text-align: right;
-  font-size: 20px;
+  font-size: 22px;
 }
 .thumbs-oferta .up{
   padding-left:9px;
   border-left: 1px solid #eaeaea;
 }
 .thumbs-oferta .down{
-  margin-left:14px;
+  margin-left:10px;
   margin-right:5px;
 }
+.fa-thumbs-up{
+  color: #d93438;
+}
+.fa-thumbs-up:hover{
+  color: #b31217;
+}
+.icon-gray{
+  color: #ccc;
+}
+.fa-thumbs-down{
+  color: #999;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH /* Internet Explorer */;
+}
+.fa-thumbs-down:hover{
+  color: #777;
+}
+.thumbs-oferta .down span i, .thumbs-oferta .up span i, 
+.mas-votadas .up span i, .mas-votadas .down span i, 
+.hot-deal .up span i, .hot-deal .down span i{
+  color:#e3e2e2;
+}
 @media screen and (max-width: 767px) {
+  .carousel-inner .thumbs{
+    padding-left: 10px;
+  }
+  .container-m{
+    padding: 0px 2px !important;
+  }
   h1{
     font-size: 18px;
     font-weight: bold;
@@ -854,7 +886,7 @@ li > a:hover{
   }
   .oferta{
     padding: 15px 10px;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 7px 0px !important;
   }
   .oferta-head{
     background: #FFF;
@@ -890,6 +922,7 @@ li > a:hover{
   .content-box .price{
     font-size: 25px;
     font-weight: 400;
+    margin-top:0px;
   }
   .title-big{
     padding: 15px 0px 15px 10px;
@@ -897,7 +930,7 @@ li > a:hover{
     font-weight: bold;
   }
   .thumbs{
-    font-size: 18px;
+    font-size: 22px;
   }
   .cont-hot-deal .category{
     font-size: 13px;
@@ -918,6 +951,12 @@ li > a:hover{
   }
   .menu-footer li{
     width: 100%;
+  }
+  .row{
+    margin: 10px 0px;
+  }
+  .container{
+  padding: 0px 5px;
   }
 }
 @media screen and (min-width: 768px) {

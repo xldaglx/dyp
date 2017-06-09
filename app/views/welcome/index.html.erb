@@ -1,18 +1,21 @@
 <div class="row">
   <!-- HOT Deals -->
-  <div class="container">
+  <div class="container container-m">
     <div class="col-md-12 no-padding head-des">
       <h1>Nuevas Promociones</h1>
-      <p class="ver-desktop">Descubre diariamente nuevas promociones como La Promoción del Día, Promociones y Ofertas Relámpago, Promociones Destacadas y Liquidaciones en tiendas Online y Físicas.</p>
+      <p class="ver-desktop">
+        Descubre diariamente nuevas promociones como La Promoción del Día, Promociones y Ofertas Relámpago, Promociones Destacadas y Liquidaciones en tiendas Online y Físicas.
+      </p>
     </div>
-      <div class="col-lg-8 hot-deal">
-        <div class="header-box">
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="title-big">Promoción TOP</div>
-            </div>
-            <div class="col-xs-6">
-              <div class="thumbs">
+    <!--INICIA HOT DEAL-->
+    <div class="col-lg-8 hot-deal">
+      <div class="header-box">
+        <div class="row no-margin">
+          <div class="col-xs-6 no-padding">
+            <div class="title-big">Promoción TOP</div>
+          </div>
+          <div class="col-xs-6 no-padding">
+            <div class="thumbs">
                 <% if @hot_deal.rank < 0 %>
                   <span class="thumb-cold">
                     <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
@@ -34,31 +37,33 @@
                     <%= @hot_deal.rank %> <span class="grados-sign">&#186;</span>
                   </span>
                 <% end %>
-              <% if user_signed_in? %>
-                <% if @hot_deal.behaviors.exists? user_id: current_user.id  %>
-                 <% @hot_deal.behaviors.each do |item| %>
-                    <% @grade = item.grade %>
-                    <% if @grade == 1 %>
-                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
-                    <% else %>
-                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                <% if user_signed_in? %>
+                  <% if @hot_deal.behaviors.exists? user_id: current_user.id  %>
+                   <% @hot_deal.behaviors.each do |item| %>
+                      <% @grade = item.grade %>
+                      <% if @grade == 1 %>
+                        <span class="down" id="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                        <span class="up" id="positive"><span><%= fa_icon "thumbs-up" %></span></span>
+                        <!--a href="#" class="down" id="negative"><%= fa_icon "thumbs-down" %></a>
+                        <a href="#" class="up" id="positive"><%= fa_icon "thumbs-up" %></a-->
+                      <% else %>
+                        <a href="#" class="down" id="negative"><%= fa_icon "thumbs-down" %></a>
+                        <a href="#" class="up" id="positive"><%= fa_icon "thumbs-up" %></a>
+                      <% end %>
                     <% end %>
+                  <% else %>
+                        <a href="#" id="negative" class="rank down" promoid="<%= @hot_deal.id %>"><%= fa_icon "thumbs-down" %></a>
+                        <a href="#" id="positive" class="rank up" promoid="<%= @hot_deal.id %>"><%= fa_icon "thumbs-up" %></a>
                   <% end %>
                 <% else %>
-                      <a href="#" id="negative" class="rank down" promoid="<%= @hot_deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" id="positive" class="rank up" promoid="<%= @hot_deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+                        <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
+                        <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
                 <% end %>
-              <% else %>
-                      <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
-              <% end %>
-              </div>
             </div>
           </div>
         </div>
-        <div class="content-box">
+      </div>
+      <div class="content-box">
           <div class="col-sm-5 white hot-deal-img">
             <a href="">
               <% if @hot_deal.imagen.present? %>
@@ -69,8 +74,8 @@
             </a>
           </div>
           <div class="col-sm-7 white cont-hot-deal">
-            <div class="row">
-              <div class="col-xs-6"><p class="category"><a href=""><%= @hot_deal.category.description %></a></p></div>
+            <div class="row no-margin">
+              <div class="col-xs-6 no-padding"><p class="category"><a href=""><%= @hot_deal.category.description %></a></p></div>
               <div class="col-xs-6 right"><p class="comments"><a href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
             </div>        
             <h2 class="name"><a href=""><%= @hot_deal.title %></a></h2>
@@ -89,10 +94,12 @@
               <a href="<%= @hot_deal.link %>" class="btn btn-rojo">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             <% end %>
           </div>
-        </div>
       </div>
-      <!-- More voted -->
-      <div class="col-lg-4 no-padding-m">
+    </div>
+    <!--TERMINA HOT DEAL-->
+
+    <!-- INICIA MÁS VOTADAS -->
+    <div class="col-lg-4 no-padding-m">
         <div class="mas-votadas">
           <div class="header-box">
             <div class="title-big">Más votadas</div>
@@ -135,22 +142,22 @@
                           <% if deal.behaviors.exists? user_id: current_user.id  %>
                            <% deal.behaviors.each do |item| %>
                               <% @grade = item.grade %>
-                              <% if @grade == 1 %>
-                                <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                                <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
-                              <% else %>
-                                <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                                <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                                <% if @grade == 1 %>
+                                  <span class="down" id="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                                  <span class="up" id="positive"><span><%= fa_icon "thumbs-up" %></span></span>
+                                <% else %>
+                                  <a href="#" class="down" id="negative"><%= fa_icon "thumbs-down" %></a>
+                                  <a href="#" class="up" id="positive"><%= fa_icon "thumbs-up" %></a>
                               <% end %>
                             <% end %>
                           <% else %>
-                                <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
-                                <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+                                <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-down" %></a>
+                                <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-up" %></a>
                           <% end %>
-                        <% else %>
-                                <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
-                                <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
-                        <% end %>
+                          <% else %>
+                                  <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
+                                  <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
+                          <% end %>
                       </div>
                     </div>
                     <div class="col-xs-4 right">
@@ -198,16 +205,19 @@
             </a>
           </div>
         </div>
-      </div>
+    </div>
+    <!-- TERMINA MÁS VOTADAS -->
   </div>
 </div>
+
+<!-- INICIA LISTADO DE PROMOCIONES -->
 <div class="row">
   <div class="container">
     <h1>Más Promociones</h1>
   </div>
     <% @deals.each do |deal| %>
     <div id="offer-container">
-      <div class="col-sm-4">
+      <div class="col-sm-4 no-padding-m">
         <div class="col-xs-12 oferta-head no-padding">
           <div class="col-xs-5">
             <div class="usuario">
@@ -258,20 +268,20 @@
                  <% deal.behaviors.each do |item| %>
                     <% @grade = item.grade %>
                     <% if @grade == 1 %>
-                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                      <span class="down" id="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                      <span class="up" id="positive"><span><%= fa_icon "thumbs-up" %></span></span>
                     <% else %>
-                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-o-up" %></a>
+                      <a href="#" class="down" id="negative"><%= fa_icon "thumbs-down" %></a>
+                      <a href="#" class="up" id="positive"><%= fa_icon "thumbs-up" %></a>
                     <% end %>
                   <% end %>
                 <% else %>
-                      <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-o-up" %></a>
+                      <a href="#" id="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-down" %></a>
+                      <a href="#" id="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-up" %></a>
                 <% end %>
               <% else %>
-                      <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-o-down" %></a>
-                      <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-o-up" %></a>
+                      <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
+                      <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
               <% end %>
             </div>
           </div>
@@ -338,6 +348,7 @@
     </div>
     <% end %>
 </div>
+<!-- TERMINA LISTADO DE PROMOCIONES -->
 <%= paginate @deals %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
