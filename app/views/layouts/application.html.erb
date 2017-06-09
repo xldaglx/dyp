@@ -10,12 +10,6 @@
   </head>
 
   <body>
-  <div class="container">
-    <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
-          </div>
-    </div>
-  </div>
   <nav class="navbar navbar-blue">
     <div class="container no-padding-head">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,13 +22,18 @@
           <span class="icon-bar"></span>
         </button-->
         <!-- Menu Mobile -->
-        <div class="menu-mobile ver-mobile">
+
+        <div class="menu-mobile visible-xs">
           <%= link_to "Compartir", new_deal_path, class: 'btn btn-compartir-s btn-compartir btn-default' %>
           <button type="button" class="buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="glyphicon glyphicon-search"></span>
           </button>
           <% if user_signed_in? %>
-          <a class="mi-cuenta-s" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></a>
+          <a class="mi-cuenta-s" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span></a>
+          <a class="mi-cuenta-s"><%= link_to "Salir", destroy_user_session_path, :method => :delete %><span class="glyphicon glyphicon-user"></span></a>
+          <% else %>
+          <a class="mi-cuenta-s" href="/myprofile/">
+          <%= link_to "", "#login", "data-toggle" => "modal", class: "glyphicon glyphicon-user"%>
           <% end %>
         </div>
         <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
@@ -53,12 +52,24 @@
               </span>
           </div>
         </form>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-          <li class="ver-desktop"><a class="mi-cuenta" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta </a></li>
-          <% else %>
-          <li><%= link_to "Iniciar sesión", "#login", "data-toggle" => "modal"%></li>    
-          <% end %>
+        <!--MI CUENTA MENU LOGUEADO-->
+        <ul class="nav navbar-nav navbar-right visible-lg">
+            <% if user_signed_in? %>
+            <li>
+              <a class="mi-cuenta" href="/myprofile/<%= current_user.id %>">
+                <span class="glyphicon glyphicon-user"></span> Mi Cuenta
+              </a>
+            </li>
+            <li>
+              <a class="mi-cuenta" href="">
+                <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+              </a>
+            </li>
+            <% else %>
+            <li class="mi-cuenta-log">
+              <span class="glyphicon glyphicon-user"></span> <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal"%>
+            </li>    
+            <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
@@ -67,9 +78,9 @@
     <div class="container no-padding-head">
       <ul class="nav navbar-nav">
           <li class=" active"><a href="#">Nuevas</a></li>
-          <li class="ver-desktop promotop"><a href="#">Promociones Top</a></li>
-          <li class="ver-mobile"><a href="#">TOP</a></li>
-          <li class="dropdown ver-desktop"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
+          <li class="visible-lg promotop"><a href="#">Promociones Top</a></li>
+          <li class="visible-xs"><a href="#">TOP</a></li>
+          <li class="dropdown visible-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
             <!-- INICIA SUBMENU DESKTOP -->
             <div class="row dropdown-menu">
               <div class="container drow no-padding">
@@ -110,21 +121,36 @@
             </div>
             <!-- TERMINA SUBMENU DESKTOP -->
           </li>
-          <li class="ver-mobile"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
-          <li class="ver-mobile filtro"><a href="#"><span class="glyphicon glyphicon-filter"></span></a></li>
+          <li class="visible-xs"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
+          <li class="visible-xs filtro"><a href="#"><span class="glyphicon glyphicon-filter"></span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
-            <li class="ver-desktop"><a href="/moderate">Moderar </a></li>
+            <li class="visible-lg"><a href="/moderate">Moderar </a></li>
           <% end %>
           <% if user_signed_in? %>
-            <li class="ver-desktop"><%= link_to "+ Compartir", new_deal_path, class: 'btn btn-compartir btn-default' %></li>
+            <li class="visible-lg">
+              <a href="#" class="filtrar">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
+            </li>
+            <li class="visible-lg"><%= link_to "+ Compartir", new_deal_path, class: 'btn btn-compartir btn-default' %></li>
             <!--<li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>-->
           <% else %>
-            <li><a href="#">Compartir </a></li>
-            <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+            <li class="dropdown visible-lg">
+              <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
+              <!-- INICIA SUBMENU DESKTOP -->
+              <div class="row dropdown-menu">
+                <div class="container drow no-padding">
+                  <%= render "layouts/sub_filtros" %><!-- Carga el submenu de filtros -->
+                </div>
+              </div>
+              <!-- TERMINA SUBMENU DESKTOP -->
+            </li>
+            <li>
+              <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir-s btn-compartir btn-default' %>
+            </li>
+            <!--li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
             <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
-            <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li>
+            <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li-->
           <% end %>
       </ul>
       
@@ -132,7 +158,7 @@
 
     <!-- INICIA SUBMENU MOBILE -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-menu-s">
-      <ul class="ver-mobile submenu">
+      <ul class="visible-xs submenu">
         <li><a>Abarrotes y Alimentos</a></li>
         <li><a>Autos</a></li>
         <li><a>Bebés y Niños</a></li>

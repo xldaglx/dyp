@@ -254,6 +254,21 @@ h1{
   font-weight: 200;
   color: #FFF;
 }
+.navbar-nav > .mi-cuenta-log span{
+  color: #FFF;
+  float:left;
+  line-height: 62px;
+}
+.navbar-nav > .mi-cuenta-log a{
+  font-size: 13px;
+  font-weight: 200;
+  float:left;
+  line-height:38px;
+  color: #FFF;
+}
+.navbar-nav > .mi-cuenta-log a, .navbar-nav > .mi-cuenta-log a:hover, .navbar-nav > .mi-cuenta-log a:focus {
+  color: #FFF;
+}
 .navbar-collapse{
   padding: 0px;
 }
@@ -380,10 +395,10 @@ li > a:hover{
   width: 50px;
   margin-top: 3px;
 }
-.nav .ver-mobile,  .ver-mobile{
+.nav .visible-xs,  .visible-xs{
   display: block;
 }
-.nav .ver-desktop, .ver-desktop{
+.nav .visible-lg, .visible-lg{
   display: none;
 }
 .menu-mobile{
@@ -393,10 +408,11 @@ li > a:hover{
 .menu-mobile a{
   color: #FFF;
   float: right;
-  margin-left: 20px;
+  margin-left: 3px;
   margin-right: 10px;
   font-size: 17px;
   line-height: 35px;
+  text-decoration: none;
 }
 .menu-desktop{
   display: none;
@@ -857,7 +873,16 @@ li > a:hover{
 .hot-deal .up span i, .hot-deal .down span i{
   color:#e3e2e2;
 }
+.filtrar{
+  margin-right:15px;
+}
+.navbar-form .input-group > .form-control{
+  width:137px;
+}
 @media screen and (max-width: 767px) {
+  .navbar-form .input-group > .form-control{
+    width:100%;
+  }
   .carousel-inner .thumbs{
     padding-left: 10px;
   }
@@ -988,10 +1013,10 @@ li > a:hover{
   .logotipo{
     display: block;
   }
-  .nav .ver-mobile, .ver-mobile{
+  .nav .visible-xs, .visible-xs{
     display: none;
   }
-  .nav .ver-desktop, .ver-desktop{
+  .nav .visible-lg, .visible-lg{
     display: block;
   }
   .navbar-white{

@@ -1,0 +1,48 @@
+<style type="text/css">
+	.form-filtros{
+		text-align: left;
+		padding: 5px 30px;
+		font-size: 13px;
+	}
+	.check-filter{
+		padding: 5px 2px 15px 2px;
+	}
+	.radios-filter{
+		padding: 5px 2px;
+		font-weight: bold;
+	}
+	.radios-filter i{
+		color: #d93438;
+		font-size: 30px;
+    	margin: 0px 3px 0px 10px;
+    	vertical-align: middle;
+    	text-align: center;
+    	width: 30px;
+	}
+	.radios-filter .fa-shopping-bag{
+		font-size: 25px;
+	}
+</style>
+<form action="">
+<div class="row">
+	<div class="col-md-6">
+		<img class="img-responsive" src="/images/banner-filtros.jpg" />
+	</div>
+	<div class="col-md-6 form-filtros">
+		<div class="check-filter">
+			<input type="checkbox" name="vehicle" value="Bike"> Ocultar Promociones Vencidas
+		</div>
+		<div class="radios-filter">
+			<input type="radio" name="gender" value="male" checked> <i class="fa fa-laptop" aria-hidden="true"></i> Mostrar sólo Promociones Online
+		</div>
+	  	<div class="radios-filter">
+	  		<input type="radio" name="gender" value="female"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Mostrar sólo Promociones en Tienda Física
+	  	</div>
+	</div>
+</div>
+<div class="row">
+	<div class="container">
+		<input type="submit" value="Aplicar Filtros">
+	</div>
+</div>
+</form>

@@ -3,7 +3,7 @@
   <div class="container container-m">
     <div class="col-md-12 no-padding head-des">
       <h1>Nuevas Promociones</h1>
-      <p class="ver-desktop">
+      <p class="visible-lg">
         Descubre diariamente nuevas promociones como La Promoción del Día, Promociones y Ofertas Relámpago, Promociones Destacadas y Liquidaciones en tiendas Online y Físicas.
       </p>
     </div>
@@ -89,7 +89,7 @@
                 <%end%>
               </span>
             </p>
-            <!--%= link_to "Leer más", deal_path(@hot_deal), class: 'btn btn-rojo ver-mobile' %-->
+            <!--%= link_to "Leer más", deal_path(@hot_deal), class: 'btn btn-rojo visible-xs' %-->
             <% if @hot_deal.link.present? %>
               <a href="<%= @hot_deal.link %>" class="btn btn-rojo">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             <% end %>
@@ -336,7 +336,7 @@
               <a class="btn btn-rojo-small" href="<%= @hot_deal.link %>">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             </div>
             <% end %>
-            <a class="comments ver-desktop" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
+            <a class="comments visible-lg" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
             <!--ALGUNOS DE ESTOS SON LOS MISMOS DE ARRIBA->
             <!--%= truncate(deal.description , :length => 25, :omission => '...') %>
             <!--%= deal.link %-->
