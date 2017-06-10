@@ -65,13 +65,12 @@ class DealsController < ApplicationController
       userid = current_user.id
     end
     @behavior = Behavior.new(grade: number, user_id: userid, deal_id: promoid)
-
     @behavior.save
     respond_to do |format|
        format.html
        format.js {} 
        format.json { 
-          render json: {:success => 'success'}
+          render json: {:message => 'success', :rank => @deal.rank, :number => number}
       } 
     end
   end

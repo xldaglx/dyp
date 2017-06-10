@@ -103,6 +103,9 @@ body{
 .hot-deal .thumb-cold{
   font-size: 25px;
 }
+.hot-deal .thumb-empty{
+  font-size: 25px;
+}
 .thumb-hot{
   color:#c0392b;
   font-weight: bold;
@@ -120,6 +123,11 @@ body{
 }
 .thumb-cold{
   color:#3498db;
+  font-weight: bold;
+  font-size: 21px;
+}
+.thumb-empty{
+  color:#999;
   font-weight: bold;
   font-size: 21px;
 }
@@ -858,7 +866,7 @@ li > a:hover{
   color: #ccc;
 }
 .fa-thumbs-down{
-  color: #999;
+  color: #3498db;
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
@@ -866,7 +874,7 @@ li > a:hover{
   filter: FlipH /* Internet Explorer */;
 }
 .fa-thumbs-down:hover{
-  color: #777;
+  color: #8bb8d6;
 }
 .thumbs-oferta .down span i, .thumbs-oferta .up span i, 
 .mas-votadas .up span i, .mas-votadas .down span i, 
