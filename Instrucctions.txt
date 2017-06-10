@@ -90,3 +90,7 @@ INSERT INTO categories (description, created_at, updated_at) VALUES ('Videojuego
 
 # Corre un proceso de RAILS en un archivo
 rails runner populate-slug.rb
+
+2017-06-09
+rake db:migrate
+rails runner populate-slug.rb
