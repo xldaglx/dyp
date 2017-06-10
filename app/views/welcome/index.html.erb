@@ -65,7 +65,7 @@
       </div>
       <div class="content-box">
           <div class="col-sm-5 white hot-deal-img">
-            <a href="">
+            <a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>">
               <% if @hot_deal.imagen.present? %>
                 <%= image_tag @hot_deal.imagen, class: 'img-responsive' %>
               <% else %>
@@ -76,9 +76,9 @@
           <div class="col-sm-7 white cont-hot-deal">
             <div class="row no-margin">
               <div class="col-xs-6 no-padding"><p class="category"><a href=""><%= @hot_deal.category.description %></a></p></div>
-              <div class="col-xs-6 right"><p class="comments"><a href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
+              <div class="col-xs-6 right"><p class="comments"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>#comments"><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
             </div>        
-            <h2 class="name"><a href=""><%= @hot_deal.title %></a></h2>
+            <h2 class="name"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>"><%= @hot_deal.title %></a></h2>
             <p class="price"><%= number_to_currency(@hot_deal.price) %></p>
             <p class="store"><a href=""><%= @hot_deal.store.description %></a>
               <span class="fis-web">
@@ -91,7 +91,7 @@
             </p>
             <!--%= link_to "Leer más", deal_path(@hot_deal), class: 'btn btn-rojo visible-xs' %-->
             <% if @hot_deal.link.present? %>
-              <a href="<%= @hot_deal.link %>" class="btn btn-rojo">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+              <a href="<%= @hot_deal.link %>" class="btn btn-rojo" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             <% end %>
           </div>
       </div>
@@ -161,12 +161,12 @@
                       </div>
                     </div>
                     <div class="col-xs-4 right">
-                      <p class="comments"><a href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a></p>
+                      <p class="comments"><a href="descuentos/<%= deal.id %>-<%= deal.slug %>#comments"><%= deal.comments.count %> <%= fa_icon 'comment' %></a></p>
                     </div>
                   </div>
                   <div class="promo-votada">
                     <div class="image-box">
-                      <a href="">
+                      <a href="descuentos/<%= deal.id %>-<%= deal.slug %>">
                         <% if deal.imagen.present? %>
                           <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
                         <% else %>
@@ -183,11 +183,11 @@
                         <%end%>
                       </span>
                     </p>
-                    <h2 class="name"><a href=""><%= deal.title %></a></h2>
+                    <h2 class="name"><a href="descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a></h2>
                     <p class="price"><%= deal.price %></p>
-                    <!--p class="promocion"><%= link_to "Ver mas", deal_path(deal), class: 'btn btn-primary' %></p-->
+                    <!--p class="promocion"><%= link_to "Ver mas", descuento_path(deal), class: 'btn btn-primary' %></p-->
                     <!--% if deal.link.present? %-->
-                    <p class="promocion"><a href="<%= deal.link %>" class="btn btn-rojo-small">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a></p>
+                    <p class="promocion"><a href="<%= deal.link %>" class="btn btn-rojo-small" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a></p>
                     <!--% end %-->
                   </div>
                 </div>
@@ -286,7 +286,6 @@
             </div>
           </div>
         </div>
-        <!--INICIA BARRA DE TERMÓMETRO-->
         <div class="col-sm-12 termo-gris no-padding">
           <% if deal.rank < 0 %>
                 <span class="bar-cold">
@@ -302,10 +301,9 @@
                 </span>
               <% end %>
         </div>   
-        <!--TERMINA BARRA DE TERMÓMETRO-->
         <div class="row oferta">
           <div class="col-xs-5">
-            <a href="">
+            <a href="descuentos/<%= deal.id %>-<%= deal.slug %>">
               <% if deal.imagen.present? %>
                 <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
               <% else %>
@@ -315,33 +313,28 @@
           </div>
           <div class="col-xs-7 oferta-individual no-padding">
             <div class="category">
-              <a href=""><%= @hot_deal.category.description %></a>
+              <a href=""><%= deal.category.description %></a>
             </div>
             <div class="name">
-              <a href=""><%= deal.title %></a>
+              <a href="descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a>
             </div>
             <div class="price"><%= number_to_currency(deal.price) %></div>
-            <div class="store"><a href=""><%= @hot_deal.store.description %></a>
+            <div class="store"><a href=""><%= deal.store.description %></a>
               <span class="fis-web">
-                <% if @hot_deal.type_deal == 1 %> 
+                <% if deal.type_deal == 1 %> 
                   Online 
                 <% else %> 
                   Tienda Física 
                 <%end%>
               </span>
             </div>
-            <!--p class="promocion"><%= link_to "Ver mas", deal_path(deal) %></p-->
-            <% if @hot_deal.link.present? %>
+            <!--p class="promocion"><%= link_to "Ver mas", descuento_path(deal) %></p-->
+            <% if deal.link.present? %>
             <div class="btn-oferta-individual">
-              <a class="btn btn-rojo-small" href="<%= @hot_deal.link %>">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+              <a class="btn btn-rojo-small" href="<%= deal.link %>" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
             </div>
             <% end %>
-            <a class="comments visible-lg" href=""><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a> 
-            <!--ALGUNOS DE ESTOS SON LOS MISMOS DE ARRIBA->
-            <!--%= truncate(deal.description , :length => 25, :omission => '...') %>
-            <!--%= deal.link %-->
-            <!--%= deal.price %-->
-            <!--%= deal.expiration %-->
+            <a class="comments visible-lg" href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a> 
           </div>
         </div>
       </div>

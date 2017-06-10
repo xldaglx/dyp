@@ -88,7 +88,5 @@ INSERT INTO categories (description, created_at, updated_at) VALUES ('Varios', N
 INSERT INTO categories (description, created_at, updated_at) VALUES ('Viajes', NOW(), NOW());
 INSERT INTO categories (description, created_at, updated_at) VALUES ('Videojuegos', NOW(), NOW());
 
-
-
-
-ssss
+# Corre un proceso de RAILS en un archivo
+rails runner populate-slug.rb

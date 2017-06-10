@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524030511) do
+ActiveRecord::Schema.define(version: 20170610020217) do
 
   create_table "behaviors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "grade"
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20170524030511) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
-    t.string   "link"
+    t.string   "link",                    limit: 355
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "type"
+    t.integer  "type_deal"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170524030511) do
     t.integer  "status"
     t.integer  "rank"
     t.integer  "store_id"
+    t.string   "slug"
     t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
     t.index ["store_id"], name: "index_deals_on_store_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
@@ -85,6 +86,10 @@ ActiveRecord::Schema.define(version: 20170524030511) do
     t.string   "uid"
     t.boolean  "admin",                  default: false
     t.string   "nickname"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
