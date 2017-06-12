@@ -8,7 +8,7 @@
       </p>
     </div>
     <!--INICIA HOT DEAL-->
-    <div class="col-lg-8 hot-deal">
+    <div class="col-sm-8 hot-deal">
       <div class="header-box">
         <div class="row no-margin">
           <div class="col-xs-6 no-padding">
@@ -80,7 +80,7 @@
     <!--TERMINA HOT DEAL-->
 
     <!-- INICIA MÁS VOTADAS -->
-    <div class="col-lg-4 no-padding-m">
+    <div class="col-sm-4 no-padding-m">
         <div class="mas-votadas">
           <div class="header-box">
             <div class="title-big">Más votadas</div>
@@ -148,7 +148,7 @@
                       </span>
                     </p>
                     <h2 class="name"><a href="descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a></h2>
-                    <p class="price"><%= deal.price %></p>
+                    <p class="price"><%= number_to_currency(deal.price) %></p>
                     <!--p class="promocion"><%= link_to "Ver mas", descuento_path(deal), class: 'btn btn-primary' %></p-->
                     <!--% if deal.link.present? %-->
                     <p class="promocion"><a href="<%= deal.link %>" class="btn btn-rojo-small" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a></p>
