@@ -66,6 +66,7 @@ http://rubythursday.com/episodes/ruby-snack-27-upgrade-paperclip-and-aws-sdk-in-
 
 
 rails generate paperclip deal promoimage
+rails generate paperclip store logo
 
 
 
