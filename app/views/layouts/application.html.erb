@@ -21,57 +21,32 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button-->
-        <!-- Menu Mobile -->
-
-        <div class="menu-mobile visible-xs">
-          <%= link_to "Compartir", new_descuento_path, class: 'btn btn-compartir-s btn-compartir btn-default' %>
-          <button type="button" class="buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-          <% if user_signed_in? %>
-          <a class="mi-cuenta-s" href="/myprofile/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span></a>
-          <a class="mi-cuenta-s"><%= link_to "Salir", destroy_user_session_path, :method => :delete %><span class="glyphicon glyphicon-user"></span></a>
-          <% else %>
-          <a class="mi-cuenta-s" href="/myprofile/">
-          <%= link_to "", "#login", "data-toggle" => "modal", class: "glyphicon glyphicon-user"%>
-          <% end %>
-        </div>
-        <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
-        <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-right">
-          <div class="input-group stylish-input-group">
-              <input type="text" class="form-control"  placeholder="Buscar ..." >
-              <span class="input-group-addon">
-                  <button type="submit" class="btn-lupa">
-                      <span class="glyphicon glyphicon-search"></span>
-                  </button>  
-              </span>
+        <!-- Menu PRINCIPAL-->
+        <div class="container">
+          <div class="col-xs-4">
+            <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
+            <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
           </div>
-        </form>
-        <!--MI CUENTA MENU LOGUEADO-->
-        <ul class="nav navbar-nav navbar-right visible-lg">
+          <div class="col-xs-8 menu-mobile">
+            <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
+            <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
             <% if user_signed_in? %>
-            <li>
-              <a class="mi-cuenta" href="/myprofile/<%= current_user.id %>">
-                <span class="glyphicon glyphicon-user"></span> Mi Cuenta
-              </a>
-            </li>
-            <li>
-              <a class="mi-cuenta" href="">
-                <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-              </a>
-            </li>
+              <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:'visible-lg' %>
+              <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: "visible-lg glyphicon glyphicon-user"%>
+              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
             <% else %>
-            <li class="mi-cuenta-log">
-              <span class="glyphicon glyphicon-user"></span> <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal"%>
-            </li>    
+            <div class="menu-sign">
+              <div class="mi-cuenta visible-lg">
+                <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal"%>
+              </div>
+              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
+            </div>
             <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+            <button type="button" class="visible-xs buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>
+            </button>
+            </div>
+          </div>        
+      </div>      
     </div><!-- /.container -->
   </nav>
   <nav class="navbar navbar-white">
@@ -83,46 +58,12 @@
           <li class="dropdown visible-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
             <!-- INICIA SUBMENU DESKTOP -->
             <div class="row dropdown-menu">
-              <div class="container drow no-padding">
-                <div class="col-md-6 no-padding">
-                  <h2>Promociones por Categoría</h2>
-                  <div class="col-md-6 no-padding">
-                    <ul class="submenu-cat">
-                      <li><a href="#">Abarrotes y Alimentos</a></li>
-                      <li><a href="#">Autos</a></li>
-                      <li><a href="#">Bebés y Niños</a></li>
-                      <li><a href="#">Celulares</a></li>
-                      <li><a href="#">Computadoras</a></li>
-                      <li><a href="#">Restaurantes</a></li>
-                      <li><a href="#">Deportes y Ejercicios</a></li>
-                      <li><a href="#">Entretenimiento</a></li>
-                      <li><a href="#">Hogar y Jardín</a></li>
-                      <li><a href="#">Ropa y Accesorios</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-6 no-padding">
-                    <ul class="submenu-cat">
-                      <li><a href="#">Salud y Belleza</a></li>
-                      <li><a href="#">Servicios</a></li>
-                      <li><a href="#">Tecnología</a></li>
-                      <li><a href="#">Televisiones</a></li>
-                      <li><a href="#">Viajes</a></li>
-                      <li><a href="#">Videojuegos</a></li>
-                      <li><a href="#">Varios</a></li>
-                      <li><a href="#">Ofertas Online</a></li>
-                      <li><a href="#">Ofertas en Tienda Física</a></li>
-                      <li><a href="#">Ofertas Permanentes</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-md-12 no-padding ver-mas-link"><a href="#">Ver todas las Categorías <span class="glyphicon glyphicon-menu-right"></span></a></div>
-                </div>
-                <%= render "layouts/tiendas_menu" %><!-- Carga las tiendas para desktop -->
-              </div>
+              <%= render "layouts/tiendas_menu" %><!-- Carga el submenu de Categorías y Tiendas -->
             </div>
             <!-- TERMINA SUBMENU DESKTOP -->
           </li>
           <li class="visible-xs"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
-          <li class="visible-xs filtro"><a href="#"><span class="glyphicon glyphicon-filter"></span></a></li>
+          <li class="visible-xs"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
@@ -132,8 +73,6 @@
             <li class="visible-lg">
               <a href="#" class="filtrar">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
             </li>
-            <li class="visible-lg"><%= link_to "+ Compartir", new_descuento_path, class: 'btn btn-compartir btn-default' %></li>
-            <!--<li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>        </li>-->
           <% else %>
             <li class="dropdown visible-lg">
               <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
@@ -146,31 +85,36 @@
               <!-- TERMINA SUBMENU DESKTOP -->
             </li>
             <li>
-              <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir-s btn-compartir btn-default' %>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-right">
+                  <div class="input-group stylish-input-group">
+                      <input type="text" class="form-control"  placeholder="Buscar ..." >
+                      <span class="input-group-addon">
+                          <button type="submit" class="btn-lupa">
+                              <span class="glyphicon glyphicon-search"></span>
+                          </button>  
+                      </span>
+                  </div>
+                </form>
+              </div><!-- /.navbar-collapse -->
             </li>
             <!--li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
             <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
             <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li-->
           <% end %>
       </ul>
-      
     </div><!-- /.container -->
-
-    <!-- INICIA SUBMENU MOBILE -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-menu-s">
-      <ul class="visible-xs submenu">
-        <li><a>Abarrotes y Alimentos</a></li>
-        <li><a>Autos</a></li>
-        <li><a>Bebés y Niños</a></li>
-        <li><a>Celulares</a></li>
-        <li><a>Computadoras</a></li>
-        <li><a>Restaurantes</a></li>
-        <li><a>Deportes y Ejercicios</a></li>
-        <li><a>Ver todas...</a></li>
-        <%= render "layouts/tiendas_menu_m" %><!-- carga las tiendas para mobile -->
-      </ul>
-    </div>
-    <!-- TERMINA SUBMENU MOBILE -->
+      <!-- INICIA FILTROS MOBILE -->
+      <div class="collapse navbar-collapse-filtros" id="bs-example-navbar-collapse-menu-filtros">
+        <%= render "layouts/filtros_m" %><!-- carga el contenido de filtros para mobile -->
+      </div>
+      <!-- TERMINA FILTROS MOBILE -->
+      <!-- INICIA SUBMENU MOBILE -->
+      <div class="collapse navbar-collapse-submenu" id="bs-example-navbar-collapse-menu-s">
+        <%= render "layouts/tiendas_menu_m" %><!-- carga el submenu de Categorías y Tiendas para mobile -->
+      </div>
+      <!-- TERMINA SUBMENU MOBILE -->
+    
   </nav>
     <% if notice.present? %>
    	<div class="notice"><%= notice %></div>

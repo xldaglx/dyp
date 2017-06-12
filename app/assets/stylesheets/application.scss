@@ -94,6 +94,9 @@ body{
 .thumbs .down{
     padding: 0px 5px;
 }
+.hot-deal .thumbs, .mas-votadas .thumbs{
+  line-height: 48px;
+}
 .hot-deal .thumb-hot{
   font-size: 25px;
 }
@@ -232,7 +235,7 @@ h1{
   padding: 5px;
 }
 .stylish-input-group input {
-  color: white;
+  color: #333;
 }
 .stylish-input-group .form-control{
   border-right:0; 
@@ -242,7 +245,7 @@ h1{
 }
 .stylish-input-group button{
     border:0;
-    color: white;
+    color: #999;
     background:transparent;
 }
 .navbar{
@@ -256,26 +259,24 @@ h1{
 .navbar-white{
   border-bottom: 2px solid #d1cfcf;
 }
-.navbar-nav > li > .mi-cuenta{
-  line-height: 38px;
-  font-size: 13px;
+.mi-cuenta{
+  float: right;
   font-weight: 200;
   color: #FFF;
 }
-.navbar-nav > .mi-cuenta-log span{
-  color: #FFF;
-  float:left;
-  line-height: 62px;
+.mi-cuenta .glyphicon-user{
+  margin-right: 5px;
+  line-height: 30px;
+  color: #FFF !important;
 }
-.navbar-nav > .mi-cuenta-log a{
+.mi-cuenta a{
   font-size: 13px;
   font-weight: 200;
-  float:left;
   line-height:38px;
   color: #FFF;
 }
-.navbar-nav > .mi-cuenta-log a, .navbar-nav > .mi-cuenta-log a:hover, .navbar-nav > .mi-cuenta-log a:focus {
-  color: #FFF;
+.mi-cuenta a:hover{
+  color: #d93438;
 }
 .navbar-collapse{
   padding: 0px;
@@ -319,21 +320,22 @@ li > a:hover{
 .input-group-addon{
   border: none;
   margin-top: 8px;
-  color: #FFF;
+  color: #333;
   font-size: 18px;
   font-weight: 200;
 }
 .btn-compartir{
+  font-size:15px !important;
   color: #FFF !important;
   height: 35px !important;
   width: 180px;
-  line-height: 4px !important;
+  line-height: 19px !important;
   font-weight: bold;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: none;
-  margin-top: 10px;
+  margin: 0px 15px 0px 15px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e52d27+0,b31217+96,7f0707+100 */
   background: #e52d27; /* Old browsers */
   background: -moz-linear-gradient(top, #e52d27 0%, #b31217 96%, #7f0707 100%); /* FF3.6-15 */
@@ -428,11 +430,12 @@ li > a:hover{
 .buscar-s{
   color: #FFF;
   font-size: 17px;
-  margin: 3px 5px 0px 20px;
+  margin: 5px 20px 0px 0px;
   padding: 0px;
+  float:right;
 }
 .menu-mobile .btn-compartir-s{
-  font-size: 12px;
+  font-size: 12px !important;
   font-weight: 400;
   width: 75px;
   text-align: center;
@@ -473,7 +476,7 @@ li > a:hover{
 }
 .flecha-down{
   font-size: 10px;
-  margin-left: 3px;
+  margin-left: 6px;
 }
 .cerrar-menu{
   background: #333;
@@ -663,7 +666,7 @@ li > a:hover{
 }
 .thumbs{
   font-size: 26px;
-  line-height: 50px;
+  line-height: 30px;
 }
 .cont-hot-deal{
   padding: 30px;
@@ -790,6 +793,29 @@ li > a:hover{
 .hot-deal-img{
   padding: 20px 25px;
 }
+.btn-filtros{
+  width: 100%;
+  text-align:center;
+}
+.btn-negro{
+  font-size:13px !important;
+  color: #FFF !important;
+  height: 35px !important;
+  width: 160px;
+  line-height: 19px !important;
+  font-weight: bold;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: none;
+  margin: 20px 15px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#545454+0,353535+100,353535+101 */
+  background: #545454; /* Old browsers */
+  background: -moz-linear-gradient(top, #545454 0%, #353535 100%, #353535 101%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #545454 0%,#353535 100%,#353535 101%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #545454 0%,#353535 100%,#353535 101%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#545454', endColorstr='#353535',GradientType=0 ); /* IE6-9 */
+}  
 .btn-rojo{
   font-size: 13px;
   padding: 7px 25px;
@@ -884,10 +910,68 @@ li > a:hover{
 .filtrar{
   margin-right:15px;
 }
+.glyphicon-filter{
+  font-size: 12px;
+  margin-right: 5px;
+  float: left;
+  line-height: 23px;
+}
+.filtrar-txt{
+  float:left;
+}
 .navbar-form .input-group > .form-control{
   width:137px;
 }
+.derecha{
+  float:right !important;
+}
+.menu-sign a{
+  font-size:13px;
+  margin-right:25px;
+  font-weight: 200;
+}
+.radios-filter{
+  padding: 5px 2px;
+  font-weight: bold;
+}
+.radios-filter i{
+  color: #d93438;
+  font-size: 30px;
+  margin: 0px 3px 0px 10px;
+  vertical-align: middle;
+  text-align: center;
+  width: 30px;
+}
+.radios-filter .fa-shopping-bag{
+  font-size: 15px;
+}
+.form-filtros{
+    text-align: left;
+    padding: 5px 30px;
+    font-size: 13px;
+}
+.check-filter{
+   padding: 5px 2px 15px 2px;
+}
 @media screen and (max-width: 767px) {
+  .radios-filter i{
+    font-size: 18px !important;
+    margin: 0px 3px 0px 0px !important;
+    width: 20px !important;
+  }
+  .radios-filter .fa-shopping-bag{
+  font-size: 15px !important;
+}
+  .menu-sign a{
+    font-size:16px;
+    margin-right:5px;
+  }
+  .filtrar{
+    margin-right:0px;
+  }
+  .glyphicon-filter{
+    margin-right: 0px;
+  }
   .navbar-form .input-group > .form-control{
     width:100%;
   }
@@ -1013,7 +1097,7 @@ li > a:hover{
   }
   .navbar-form{
     margin: 0px;
-    padding: 10px 0px 10px 15px;
+    padding: 5px 15px 0px 0px;
   }
   .logotipo-s{
     display: none;
