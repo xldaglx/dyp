@@ -56,7 +56,7 @@
           </div>
           <div class="col-sm-7 white cont-hot-deal">
             <div class="row no-margin">
-              <div class="col-xs-6 no-padding"><p class="category"><a href=""><%= @hot_deal.category.description %></a></p></div>
+              <div class="col-xs-6 no-padding"><p class="category"><a href="descuentos-por-categoria/<%= @hot_deal.category.id %>/<%= @hot_deal.category.slug %>"><%= @hot_deal.category.description %></a></p></div>
               <div class="col-xs-6 right"><p class="comments"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>#comments"><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
             </div>        
             <h2 class="name"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>"><%= @hot_deal.title %></a></h2>
@@ -260,7 +260,7 @@
           </div>
           <div class="col-xs-7 oferta-individual no-padding">
             <div class="category">
-              <a href=""><%= deal.category.description %></a>
+              <a href="descuentos-por-categoria/<%= deal.category.id %>/<%= deal.category.slug %>"><%= deal.category.description %></a>
             </div>
             <div class="name">
               <a href="descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a>

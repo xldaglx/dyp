@@ -12,6 +12,11 @@ class DealsController < ApplicationController
     @tienda = Store.find(params[:id])
   end
 
+  def categories
+    @deals = Deal.where("category_id = "+params[:id]).page(params[:page]).per(9)
+    @category = Category.find(params[:id])
+  end
+
   def moderate
     @deals = Deal.all
   end
