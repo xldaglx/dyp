@@ -1,30 +1,44 @@
 <!-- Login -->
 <div class="modal fade" tabindex="-1" role="dialog" id="login">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
 
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       
       <div class="modal-body">
-        Ingresar 
+        <p class="titulo-modal">Ingresar</p>
     		<%= devise_error_messages! %>
         <div class="field">
-     		<%= f.label :email, "Usuario" %><br />
-  		  <%= f.email_field :email, autofocus: true %>
+       		<%= f.label :email, "Usuario*" %><br />
+    		  <%= f.email_field :email, autofocus: true%>
   		  </div>
 
-  		  <div class="field">
-  		    <%= f.label :password, "Contraseña" %>
+  		  <div class="field password">
+  		    <%= f.label :password, "Contraseña*" %>
   		    <% if @minimum_password_length %>
   		    <em>(<%= @minimum_password_length %> characters minimum)</em>
   		    <% end %><br />
       		<%= f.password_field :password, autocomplete: "off" %>
   		  </div>
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Iniciar sesión", class:"btn btn-login" %>
+        <div class="check-filter">
+          <input type="checkbox" name="vehicle" value="Bike"> Recordar mi sesión
+        </div>
+      </div>
+      <div class="separador"></div>
+      <div class="modal-body2">
+        <p class="titulo-modal">¿Aún no tienes Cuenta? <span>no te preocupes, también puedes:</span></p>
+        <div class="row bloque-facebook">
+          <div class="col-xs-2 no-padding icono-face">
+            <span class=""><i class="fa fa-facebook" aria-hidden="true"></i></span>
+          </div>
+          <div class="col-xs-10 no-padding">
+            <%= link_to " Ingresar con Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-facebook" %>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-          <%= link_to "Connecta con Facebook", user_facebook_omniauth_authorize_path %>
-          <%= link_to "Crear cuenta", "#sign_up", "data-toggle" => "modal"%>
+            <%= link_to "Crear mi cuenta", "#sign_up", "data-toggle" => "modal", class:"titulo-modal" %>
       </div>
 	<% end %>
 
