@@ -1,27 +1,30 @@
 <!-- Login -->
 <div class="modal fade" tabindex="-1" role="dialog" id="sign_up">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
 
 	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="titulo-modal">Crear mi cuenta</h4>
       </div>
-      <div class="modal-body">
+      <div class="img-login">
+        <img class="img-responsive" src="/images/logo-login.jpg" />
+      </div>
+      <div class="modal-body2 crear-cuenta">
   		<%= devise_error_messages! %>
-         <div class="field">
-   		 <%= f.label :email %><br />
-		<%= f.email_field :email, autofocus: true %>
-		  </div>
+        <div class="field">
+   		  <%= f.label :correo_electrónico %><br />
+		    <%= f.email_field :email, autofocus: true %>
+		    </div>
 
       <div class="field">
-        <%= f.label :nickname %>
+        <%= f.label :nombre_de_usuario %>
         <%= f.text_field :nickname, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label :contraseña %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
@@ -30,12 +33,12 @@
 
 
 		  <div class="field">
-		    <%= f.label :password_confirmation %><br />
+		    <%= f.label :confirma_tu_contraseña %><br />
 		    <%= f.password_field :password_confirmation, autocomplete: "off" %>
   		  </div>
       </div>
       <div class="modal-footer">
-    	<%= f.submit "Sign up" %>
+    	<%= f.submit "Crear mi cuenta", class:"btn-login" %>
       </div>
 	<% end %>
 

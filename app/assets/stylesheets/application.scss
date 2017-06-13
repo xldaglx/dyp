@@ -971,9 +971,6 @@ li > a:hover{
   text-align: center;
   width: 30px;
 }
-.radios-filter .fa-shopping-bag{
-  font-size: 15px;
-}
 .form-filtros{
     text-align: left;
     padding: 5px 30px;
@@ -983,85 +980,101 @@ li > a:hover{
   border-radius: 0px;
 }
 .titulo-modal{
-    font-size: 16px;
-    font-weight:bold;
-    color: #d93438;
-    line-height: 18px;
-  }
-  .titulo-modal:hover{
-    color: #d93438;
-  }
-  .titulo-modal span{
-    font-size: 14px;
-    font-weight:200;
-    color: #525457;
-  }
-  .modal-body{
-    padding: 20px 20px 0px 20px;
-  }
-  .modal-body2{
-    padding: 10px 20px 15px 20px;
-  }
-  .field{
-    font-size: 14px;
-    font-weight: bold;
-    color: #525457;
-  }
-  .field input{
-    font-size: 14px;
-    font-weight: 400;
-    padding: 10px;
-    width: 100%;
-    color: #666;
-    background-color: #FFF;
-    border: 1px solid #e5e5e5;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    margin-top: -3px;
-  }
-  .password{
-    margin: 13px 0px 20px 0px;
-  }
-  .check-filter{
-    margin-top: 12px;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 0px;
-  }
-  .separador{
-    height: 1px;
-    background-color: #e5e5e5;
-    width: 100%;
-    margin: 20px 0px 10px 0px;
-  }
-  .modal-footer{
-    text-align: center;
-  }
-  .icono-face{
-    text-align: center;
-    background: #000;
-    font-size: 20px;
-    color: #FFF;
-    line-height: 35px;
-    -webkit-border-radius: 2px 0px 0px 2px;
-    -moz-border-radius: 2px 0px 0px 2px;
-    border-radius: 2px 0px 0px 2px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e52d27+0,b31217+96,7f0707+100 */
-    background: #3b5998; /* Old browsers */
-    background: -moz-linear-gradient(#4e69a2, #3b5998 50%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(#4e69a2, #3b5998 50%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(#4e69a2, #3b5998 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e69a2', endColorstr='#3b5998',GradientType=0 ); /* IE6-9 */
-    background-color: #3b5998;
-  }
-  .bloque-facebook{
-    padding: 0px 15px;
-  }
+  font-size: 16px;
+  font-weight:bold;
+  color: #d93438;
+  line-height: 18px;
+}
+.titulo-modal:hover{
+  color: #d93438;
+}
+.titulo-modal span{
+  font-size: 14px;
+  font-weight:200;
+  color: #525457;
+}
+.modal-body{
+  padding: 20px 20px 0px 20px;
+}
+.modal-body2{
+  padding: 10px 20px 20px 20px;
+}
+.field{
+  font-size: 14px;
+  font-weight: bold;
+  color: #525457;
+}
+.crear-cuenta > .field{
+  margin-bottom: 10px;
+}
+.field input{
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px;
+  width: 100%;
+  color: #666;
+  background-color: #FFF;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-top: -3px;
+}
+.password{
+  margin: 13px 0px 20px 0px;
+}
+.check-filter{
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0px;
+}
+.separador{
+  height: 1px;
+  background-color: #e5e5e5;
+  width: 100%;
+  margin: 20px 0px 10px 0px;
+}
+.modal-footer{
+  text-align: center;
+}
+.icono-face{
+  text-align: center;
+  background: #000;
+  font-size: 20px;
+  color: #FFF;
+  line-height: 35px;
+  -webkit-border-radius: 2px 0px 0px 2px;
+  -moz-border-radius: 2px 0px 0px 2px;
+  border-radius: 2px 0px 0px 2px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e52d27+0,b31217+96,7f0707+100 */
+  background: #3b5998; /* Old browsers */
+  background: -moz-linear-gradient(#4e69a2, #3b5998 50%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(#4e69a2, #3b5998 50%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(#4e69a2, #3b5998 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e69a2', endColorstr='#3b5998',GradientType=0 ); /* IE6-9 */
+  background-color: #3b5998;
+}
+.bloque-facebook{
+  padding: 0px 15px;
+}
+.modal-header{
+  padding: 7px 20px;
+}
+.img-login{
+  padding: 10px 10px 5px 10px;
+}
+
 @media screen and (max-width: 767px) {
   .bloque-facebook{
-      padding: 0px 0px;
-    }
+    padding: 0px 0px;
+  }
+  .modal-body2{
+    padding: 10px 20px 10px 20px;
+  }
+  .crear-cuenta{
+   padding-bottom: 16px
+  }
   .radios-filter i{
     font-size: 18px !important;
     margin: 0px 3px 0px 0px !important;
