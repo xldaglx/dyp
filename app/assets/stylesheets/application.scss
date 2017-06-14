@@ -274,6 +274,7 @@ h1{
   font-weight: 200;
   line-height:38px;
   color: #FFF;
+  outline:0;
 }
 .mi-cuenta a:hover{
   color: #d93438;
@@ -289,6 +290,7 @@ h1{
   font-weight: 400;
   font-size: 13px;
   padding:15px 13px;
+  outline:0;
 }
 li > a:hover{
   color: #d93438;
@@ -452,6 +454,7 @@ li > a:hover{
   font-size: 17px;
   line-height: 35px;
   text-decoration: none;
+  outline:0;
 }
 .menu-desktop{
   display: none;
@@ -501,7 +504,8 @@ li > a:hover{
 }
 .submenu li a{
   color: #525457;
-  font-size: 12px; 
+  font-size: 12px;
+  outline:0; 
 }
 .flecha-down{
   font-size: 10px;
@@ -516,6 +520,7 @@ li > a:hover{
 .cerrar-menu a{
   color: #FFF !important;
   font-size: 13px;
+  outline:0;
 }
 .icono-cerrar{
   float: right;
@@ -579,6 +584,7 @@ li > a:hover{
 }
 .dropdown-menu .ver-mas-link a{
   color: #d93438;
+  outline:0;
 }
 .submenu-cat li{
   text-align: left;
@@ -606,6 +612,7 @@ li > a:hover{
 .footer .nav li a{
   background:#FFF;
   font-size: 12px;
+  outline:0;
 }
 .menu-footer{
   margin:0 auto;
@@ -641,6 +648,7 @@ li > a:hover{
   line-height: 30px;
   float: left;
   margin-left: 10px;
+  outline:0;
 }
 .social-opt li a{
   width: 32px;
@@ -650,6 +658,7 @@ li > a:hover{
   -moz-border-radius: 30px;
   border-radius: 30px;
   color: #666;
+  outline:0;
 }
 .social-opt li a:hover{
   color: #d93438;
@@ -725,6 +734,7 @@ li > a:hover{
 }
 .cont-hot-deal .name a, .carousel-inner h2.name a, .oferta-individual .name a{
   color: #333;
+  outline:0;
 }
 .carousel-inner h2.name{
   color: #333;
@@ -740,6 +750,7 @@ li > a:hover{
 }
 .oferta-individual .category a{
   font-size: 12px;
+  outline:0;
 }
 .oferta-individual .price{
   font-size: 20px;
@@ -751,6 +762,7 @@ li > a:hover{
 }
 .oferta-individual .store a{
   color: #333;
+  outline:0;
 }
 .oferta-individual .comments{
   margin: 13px 10px 0px 0px;
@@ -770,6 +782,7 @@ li > a:hover{
   color: #666;
   font-weight: bold;
   font-size: 12px;
+  outline:0;
 }
 .oferta-head .fecha{
   color: #999;
@@ -785,6 +798,7 @@ li > a:hover{
   color: #999;
   font-weight: 200;
   font-size: 16px;
+  outline:0;
 }
 .content-box .price{
   font-size: 35px;
@@ -812,12 +826,15 @@ li > a:hover{
 }
 .store a{
   color: #333;
+  outline:0;
 }
 .comments a, .carousel-inner .comments a, .oferta-individual a{
   color: #666;
+  outline:0;
 }
 .carousel-inner .comments a{
   line-height: 45px;
+  outline:0;
 }
 .hot-deal-img{
   padding: 20px 25px;
@@ -958,6 +975,7 @@ li > a:hover{
   font-size:13px;
   margin-right:25px;
   font-weight: 200;
+  outline:0;
 }
 .radios-filter{
   padding: 5px 2px;
