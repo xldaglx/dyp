@@ -32,14 +32,13 @@
             <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
             <% if user_signed_in? %>
               <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:'visible-lg' %>
-              <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: "visible-lg glyphicon glyphicon-user"%>
+              <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: "visible-lg glyphicon glyphicon-user login-account"%>
               <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
             <% else %>
             <div class="menu-sign">
               <div class="mi-cuenta visible-lg">
-                <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal"%>
+                <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
               </div>
-              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
             </div>
             <% end %>
             <button type="button" class="visible-xs buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>
@@ -130,11 +129,26 @@
     <footer class="footer white">
       <%= render "layouts/menu_footer" %>
     </footer>
-    <%= render "welcome/login_modal" %>
-    <%= render "welcome/sign_up_modal" %>
+    <!-- Login -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="login">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" id="login-modal">
+        <%= render "welcome/login_modal" %>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <script type="text/javascript">
       $(document).on('click', '.dropdown-menu', function (e) {
         e.stopPropagation();
+      });
+      jQuery(document).ready(function($) {
+
+        $('.login-account').click(function(event) {
+          $("#login-modal").html("<%= j (render 'welcome/login_modal') %>");
+          $('.create-account').click(function(event) {
+            $("#login-modal").html("<%= j (render 'welcome/sign_up_modal') %>");
+          });
+        });
       });
       </script>
   </body>
