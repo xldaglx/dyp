@@ -22,32 +22,33 @@
           <span class="icon-bar"></span>
         </button-->
         <!-- Menu PRINCIPAL-->
-        <div class="container no-padding">
-          <div class="col-xs-4 no-padding">
-            <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
-            <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
-          </div>
-          <div class="col-xs-8 menu-mobile">
-            <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
-            <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
-            <% if user_signed_in? %>
-              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
-            <% else %>
-            <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
-            <% end %>
-            <div class="menu-sign">
-              <div class="mi-cuenta visible-lg">
-              <% if user_signed_in? %>
-                <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:'visible-lg' %>
-                <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
-              <% else %>
-                <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
-              <% end %>
-              </div>
+          <div class="container no-padding">
+            <div class="col-xs-4 no-padding">
+              <a class="navbar-brand logotipo" href="/"><img src="/images/logo.png" /></a>
+              <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
             </div>
-            
-            <button type="button" class="visible-xs buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>
-            </button>
+            <div class="col-xs-8 menu-mobile">
+              <% if user_signed_in? %>
+                <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
+                <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
+                <a style="margin-top: 8px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user visible-xs"></span></a>
+              <% else %>
+              <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
+              <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
+              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
+              <% end %>
+              <div class="menu-sign">
+                <div class="mi-cuenta visible-lg">
+                  <% if user_signed_in? %>
+                    <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:'visible-lg' %>
+                    <a style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta</a>
+                  <% else %>
+                    <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
+                  <% end %>
+                </div>
+                <button type="button" class="visible-xs buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>
+                </button>
+              </div>
             </div>
           </div>        
       </div>      
@@ -73,11 +74,6 @@
           <% if current_user.try(:admin?) %>
             <li class="visible-lg"><a href="/moderate">Moderar </a></li>
           <% end %>
-          <% if user_signed_in? %>
-            <li class="visible-lg">
-              <a href="#" class="filtrar">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
-            </li>
-          <% else %>
             <li class="dropdown visible-lg">
               <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
               <!-- INICIA SUBMENU DESKTOP -->
@@ -105,7 +101,6 @@
             <!--li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
             <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
             <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li-->
-          <% end %>
       </ul>
     </div><!-- /.container -->
       <!-- INICIA FILTROS MOBILE -->

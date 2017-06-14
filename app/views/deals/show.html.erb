@@ -1,3 +1,223 @@
+<style type="text/css">
+  .deal-detail{
+    margin-top:30px;
+  }
+  .banners img{
+    margin-bottom: 10px;
+  }
+  .deal-det{
+    padding: 20px 40px;
+    background-color: #FFF;
+    border: 1px solid #efefef;
+    margin-bottom: 30px;
+  }
+  .deal-det .usuario{
+    font-size: 12px;
+    color: #666;
+    font-weight: 200;
+    float: left;
+  }
+  .deal-det .usuario a{
+    font-size: 12px;
+    color: #666;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  .deal-det .fecha{
+    font-size: 11px;
+    color: #999;
+    font-weight: 200;
+    float: left;
+    margin-top: 1px;
+    margin-right: 20px;
+  }
+  .deal-det .comments{
+    font-size: 13px;
+    color: #999;
+    font-weight: bold;
+    float: left;
+  }
+  .deal-det .comments i{
+    font-size: 14px;
+  }
+  .deal-det .category a{
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 5px;
+    float: left;
+    width: 100%;
+  }
+  .rank-det .grades{
+    border: 1px solid #eaeaea;
+    padding: 5px 10px 5px 20px;
+    font-size: 30px;
+    float: right;
+  }
+  .rank-det .grados-sign {
+    top: -10px;
+    font-size: 20px;
+  }
+  .rank-det .thumbs-quality{
+    font-size: 31px;
+    border:1px solid #eaeaea;
+    padding: 4px 20px;
+    float: right;
+    margin-left: -1px;
+  }
+  .rank-det .up{
+      padding: 0px 0px 0px 10px;
+      border-left: 1px solid #eaeaea;
+  }
+  .publicado{
+    float: left;
+    margin-right: 5px;
+  }
+  .deal-title, .det-descripcion{
+    margin-top: 30px;
+  }
+  .deal-title .img-tit img{
+    padding: 20px;
+  }
+  .deal-title h1{
+    font-size: 27px;
+    color: #525457;
+    line-height: 35px;
+    font-weight: 300;
+  }
+  .deal-title .det-price{
+    font-size: 27px;
+    font-weight: 400;
+    color: #d93438;
+    float: left;
+    margin-right: 30px;
+  }
+  .deal-title .det-btn{
+    float: left;
+  }
+  .det-descripcion{
+    font-size: 14px;
+    color: #525457;
+  }
+  @media screen and (max-width: 767px) {
+    .deal-det{
+      padding: 10px;
+    }
+    .rank-det{
+      float: left;
+    }
+    .deal-det .fecha{
+      margin-right: 10px;
+    }
+    .rank-det .grades {
+      font-size: 23px;
+    }
+    .rank-det .thumbs-quality{
+      font-size: 24px;
+    }
+    .rank-det .down{
+      padding-right: 5px;
+    }
+    .rank-det .up{
+      padding-left: 15px;
+    }
+  }
+</style>
+<div class="row deal-detail">
+  <div class="container">
+    <div class="col-md-9 deal-det">
+      <!--CATEGORÍA, USUARIO, COMENTARIOS Y RANKING-->
+      <div class="row">
+        <div class="col-md-7">
+            <div class="category">
+              <a href="descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>
+            </div>
+            <div class="usuario">
+              <span class="visible-lg publicado">Publicado por:</span><span class="visible-xs publicado">Por: </span><a href=""><%= @deal.user.nickname %></a>
+            </div>
+            <div class="fecha">
+            <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
+            <% 
+              t1 = Time.now
+              t2 = @deal.created_at
+              f1 = Date.today
+              f2 = @deal.created_at.to_date
+              d1 = f1.day
+              d2 = f2.day
+            %>
+            <% if f1 == f2 %>
+              Hace <%= distance_of_time_in_words(t2, t1) %>
+              <% else %>
+              Hace <%= distance_of_time_in_words(f2, f1) %>
+            <% end %>
+            </div>
+            <p class="comments"><a href="descuentos/<%= @deal.id %>-<%= @deal.slug %>#comments"><%= @deal.comments.count %> <%= fa_icon 'comment' %></a></p>
+        </div>
+        <div class="col-md-5 rank-det">
+          <span class="thumbs-quality">
+            <% if user_signed_in? %> 
+              <% if @deal.behaviors.exists? user_id: current_user.id  %>
+                <% @deal.behaviors.each do |item| %>
+                  <% if item.grade == 1 %>
+                    <span class="up" vote="positive"><span><%= fa_icon "thumbs-up" %></span></span>
+                  <% else %>
+                    <span class="down" vote="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                  <% end %>
+                <% end %>
+              <% else %>
+                    <span vote="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-down" %></span>
+                    <span href="#" vote="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-up" %></span>
+              <% end %>
+            <% else %>
+                    <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
+                    <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
+            <% end %>
+          </span>
+           <span class="<%= rank_style(@deal.rank) %> grades">
+            <%= fa_icon "thermometer-empty" %>
+            <span class="rank-meter"><%= @deal.rank %></span>
+            <span class="grados-sign">&#186;</span>
+          </span>
+        </div>
+      </div>
+      <!--CATEGORÍA, USUARIO, COMENTARIOS Y RANKING-->
+      <!--IMAGEN, TÍTULO, PRECIO Y BOTÓN-->
+      <div class="row deal-title">
+        <div class="col-md-4 img-tit">
+          <% if @deal.imagen.present? %>
+            <%= image_tag @deal.imagen, class: 'img-responsive' %>
+          <% else %>
+            <%= image_tag @deal.promoimage.url(:medium), class: 'img-responsive' %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <h1><%= @deal.title %></h1>
+          <div class="det-price">
+            <%= number_to_currency(@deal.price) %>
+          </div>
+          <div class="det-btn">
+          <% if @deal.link.present? %>
+            <a href="<%= @deal.link %>" class="btn btn-rojo" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <!--IMAGEN, TÍTULO, PRECIO Y BOTÓN-->
+      <!--DESCRIPCIÓN DE LA PROMOCIÓN-->
+      <div class="row det-descripcion">
+        <div class="col-md-12">
+          <%= @deal.description %>
+        </div>
+      </div>
+      <!--DESCRIPCIÓN DE LA PROMOCIÓN-->
+    </div>
+    <div class="col-md-3 banners">
+      <img src="/images/detalle/banner-demo.jpg" class="img-responsive" />
+      <img src="/images/detalle/banner-demo.jpg" class="img-responsive" />
+    </div>
+  </div>
+</div>
+
 <p>
   <strong>Title:</strong>
   <%= @deal.title %>
