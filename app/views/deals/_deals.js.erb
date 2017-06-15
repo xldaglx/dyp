@@ -1,0 +1,30 @@
+jQuery(document).ready(function($) {
+    $('.rank').click(function(event) {
+      thumb = $(this);   
+      promoid = $(this).attr('promoid');
+      number = $(this).attr('vote');
+      $.ajax({
+        url:  "/updateRank",
+        dataType: "json",
+        data: {
+           promoid: promoid,
+           number: number
+        },
+        success: function(data) { 
+          thumb.parent().parent().find('.rank-meter').text(data.rank);
+          thumb.parent().parent().find('.grades').append('<span class="down"><span><%= fa_icon "thumbs-down" %></span></span><span class="up"><span><%= fa_icon "thumbs-up" %></span></span>');
+          thumb.parent().parent().find('.thumbs-quality').remove();
+          
+        }
+      });
+    });
+	$("#deals .page").infinitescroll({
+	    loading: {
+	      img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+	      msgText: "loading..."
+	    },
+	    navSelector: "nav.pagination",
+	    nextSelector: "nav.pagination a[rel=next]",
+	    itemSelector: "#deals div.deal" 
+	});
+});
