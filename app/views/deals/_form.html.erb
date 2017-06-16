@@ -1,4 +1,6 @@
-
+<style type="text/css">
+  
+</style>
 <%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
@@ -12,21 +14,48 @@
     </div>
   <% end %>
 
-    <%= f.text_field :link, label: "Enlace de la promoción", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción" %>
-    <div id="scrapp-images" class="row"></div>  
-    <div class="loader-image"><img src="/images/spinner.gif"></div>
-    <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
-    <%= f.file_field :promoimage, label: "Sube tu imagen (opcional)" %>
-    <%= f.text_field :title, label: "Título", placeholder: "Artículo o Promoción" %>
-    <label>Descripción</label>
-    <%= f.trix_editor :description, placeholder: "Si es en tienda física menciona qué sucursal e incluye una foto Si es por internet, incluye el link Por favor evita mayúsculas Describe la oferta con tus propias palabras y comparte con la comunidad por qué vale la pena esta promoción. Si no ves la tuya, puedes ser por una de estas razones: duplicado, promoción personal, links de referidos, no hay inventario, no es oferta, es un concurso (al menos que sea uno en el que todos ganan)"%>
-    <%= f.number_field :price, label: "Precio" %>
-    <%= f.text_field :expiration, label: "Fecha de Expiración (opcional)" %>
-    <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Selecciona una opción", label: "Categoria" %>
-    <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una opción", label: "Tienda" %>
-    <%= f.hidden_field :type_deal %>
-    <%= f.hidden_field :imagen %>
-    <%= f.submit %>
+    <div class="col-md-12">
+      <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción" %>
+      <div id="scrapp-images" class="row"></div>  
+      <div class="loader-image"><img src="/images/spinner.gif"></div>
+      <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
+      <div class="img-upload">
+        <%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Elije tu imagen", :class => 'btn-upload' %>
+      </div>
+      <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
+    </div>
+    <div class="row">
+      <div class="col-md-8 no-padding">
+        <div class="col-xs-6">
+          <%= f.number_field :price, label: "Precio:" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.text_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
+        <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 description-new">
+        <label>Descripción:</label>
+        <%= f.trix_editor :description, label: "Expira el:", placeholder: "Describe la oferta con tus propias palabras y comparte con la comunidad por qué vale la pena esta promoción."%>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <%= f.hidden_field :type_deal %>
+      <%= f.hidden_field :imagen %>
+      <%= f.submit :value => 'Compartir Promoción', :class => 'btn btn-compartir' %>
+    </div>
+    
 
 <% end %>
 <script type="text/javascript">
