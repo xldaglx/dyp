@@ -1,6 +1,6 @@
 class Deal < ApplicationRecord
 	before_validation :generate_slug
-	belongs_to :user
+	belongs_to :user, optional: true
 	belongs_to :category
 	belongs_to :store
 	has_many :behaviors, :dependent => :destroy

@@ -133,7 +133,15 @@
               <a href="descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>
             </div>
             <div class="usuario">
-              <span class="visible-lg publicado">Publicado por:</span><span class="visible-xs publicado">Por: </span><a href=""><%= @deal.user.nickname %></a>
+              <% if @deal.user_id.present? %>
+              <span class="visible-lg publicado">Publicado por:</span>
+                <span class="visible-xs publicado">Por: </span>
+                <a href=""><%= @deal.user.nickname %></a>
+              <% else %>
+              <span class="visible-lg publicado">Publicado por:</span>
+                <span class="visible-xs publicado">Por: </span>
+              <a href=""> Invitado </a>
+              <% end %>
             </div>
             <div class="fecha">
             <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
@@ -248,10 +256,6 @@
   <%= @deal.expiration %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @deal.user.email %>
-</p>
 
 <%= @deal.rank %>
 <% if user_signed_in? %>

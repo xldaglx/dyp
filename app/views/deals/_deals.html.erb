@@ -1,11 +1,14 @@
-
     <% @deals.each do |deal| %>
-    <div id="offer-container">
+    <div id="offer-container" class="deal">
       <div class="col-sm-4 no-padding-m">
         <div class="col-xs-12 oferta-head no-padding">
           <div class="col-xs-5">
             <div class="usuario">
+              <% if deal.user_id.present? %>
               <a href=""><%= deal.user.nickname %></a>
+              <% else %>
+              <a href=""> Invitado </a>
+              <% end %>
             </div>
             <div class="fecha">
             <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
@@ -70,7 +73,7 @@
         </div>   
         <div class="row oferta">
           <div class="col-xs-5">
-            <a href="descuentos/<%= deal.id %>-<%= deal.slug %>">
+            <a href="/descuentos/<%= deal.id %>-<%= deal.slug %>">
               <% if deal.imagen.present? %>
                 <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
               <% else %>
@@ -80,13 +83,13 @@
           </div>
           <div class="col-xs-7 oferta-individual no-padding">
             <div class="category">
-              <a href="descuentos-por-categoria/<%= deal.category.id %>/<%= deal.category.slug %>"><%= deal.category.description %></a>
+              <a href="/descuentos-por-categoria/<%= deal.category.id %>/<%= deal.category.slug %>"><%= deal.category.description %></a>
             </div>
             <div class="name">
-              <a href="descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a>
+              <a href="/descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a>
             </div>
             <div class="price"><%= number_to_currency(deal.price) %></div>
-            <div class="store"><a href="descuentos-por-tienda/<%= deal.store.id %>/<%= deal.store.slug %>"><%= deal.store.description %></a>
+            <div class="store"><a href="/descuentos-por-tienda/<%= deal.store.id %>/<%= deal.store.slug %>"><%= deal.store.description %></a>
               <span class="fis-web">
                 <% if deal.type_deal == 1 %> 
                   Online 

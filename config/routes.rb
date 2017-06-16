@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :behaviors
   resources :categories
+  resources :deals
   resources :descuentos, :controller => "deals"
 
   get 'welcome/index'

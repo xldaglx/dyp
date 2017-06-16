@@ -44,7 +44,10 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
-    @deal.user_id = current_user.id
+    @deal.user_id = nil
+    if user_signed_in?
+      @deal.user_id = current_user.id
+    end
     @deal.status = 0
     @deal.rank = 0
     respond_to do |format|

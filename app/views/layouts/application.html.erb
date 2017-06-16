@@ -28,15 +28,8 @@
               <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
             </div>
             <div class="col-xs-8 menu-mobile">
-              <% if user_signed_in? %>
-                <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
-                <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
-                <a style="margin-top: 8px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user visible-xs"></span></a>
-              <% else %>
-              <%= link_to "+ Compartir", "#login", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
-              <%= link_to "Compartir", "#login", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
-              <%= link_to "", "#login", "data-toggle" => "modal", class: "visible-xs glyphicon glyphicon-user"%>
-              <% end %>
+                <%= link_to "+ Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
+                <%= link_to "Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
               <div class="menu-sign">
                 <div class="mi-cuenta visible-lg">
                   <% if user_signed_in? %>
