@@ -9,26 +9,66 @@ class DealsController < ApplicationController
   end
 
   def stores
-    @deals = Deal.where("store_id = "+params[:id]).page(params[:page]).per(9)
+    if params['filter-promo'].present?
+      if params['filter-promo'] == "all"
+        @deals = Deal.where("store_id = "+params[:id]).page(params[:page])
+      else   
+        @deals = Deal.where("store_id = "+params[:id]).where("type_deal = "+ params['filter-promo']).page(params[:page])
+      end
+    else
+      @deals = Deal.where("store_id = "+params[:id]).page(params[:page])
+    end
     @tienda = Store.find(params[:id])
   end
 
   def categories
-    @deals = Deal.where("category_id = "+params[:id]).page(params[:page]).per(9)
+    if params['filter-promo'].present?
+      if params['filter-promo'] == "all"
+        @deals = Deal.where("category_id = "+params[:id]).page(params[:page])
+      else   
+        @deals = Deal.where("category_id = "+params[:id]).where("type_deal = "+ params['filter-promo']).page(params[:page])
+      end
+    else
+      @deals = Deal.where("category_id = "+params[:id]).page(params[:page])
+    end
     @category = Category.find(params[:id])
   end
 
   def newdeals
-    @deals = Deal.all  
+    if params['filter-promo'].present?
+      if params['filter-promo'] == "all"
+        @deals = Deal.all.page(params[:page]).order('created_at DESC')
+      else   
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
+      end
+    else
+      @deals = Deal.all.page(params[:page]).order('created_at DESC')
+    end 
   end
 
   def search
-    @deals = Deal.all.order('created_at DESC')
+    if params['filter-promo'].present?
+      if params['filter-promo'] == "all"
+        @deals = Deal.all.page(params[:page]).order('created_at DESC')
+      else   
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
+      end
+    else
+      @deals = Deal.all.page(params[:page]).order('created_at DESC')
+    end 
     @deals = @deals.search(params[:search]) if params[:search].present?
   end
 
   def topdeals
-    @deals = Deal.all  
+    if params['filter-promo'].present?
+      if params['filter-promo'] == "all"
+        @deals = Deal.all.page(params[:page]).order('rank DESC')
+      else   
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('rank DESC')
+      end
+    else
+      @deals = Deal.all.page(params[:page]).order('rank DESC')
+    end 
   end
 
   def moderate

@@ -124,7 +124,8 @@
                 Hace <%= distance_of_time_in_words(f2, f1) %>
               <% end %>
               <%= item.user.nickname %>
-              <%= item.description %>
+              <%= item.description.html_safe %>
+              <br>
             <% end %>
           <% end %>
         </div>

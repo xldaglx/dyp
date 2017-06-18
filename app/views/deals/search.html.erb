@@ -8,3 +8,8 @@
 <script>
   <%= render(:partial => '/deals/deals', :formats => [:js] ) %>
 </script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('#filter-search').append('<input type="text" name="search" value="<%= params[:search] %>">');
+	});
+</script>
