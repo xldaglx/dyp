@@ -28,3 +28,19 @@ jQuery(document).ready(function($) {
 	    itemSelector: "#deals div.deal" 
 	});
 });
+    function rankUpdate(thumb, number){
+       $.ajax({
+        url:  "/updateRank",
+        dataType: "json",
+        data: {
+           promoid: thumb,
+           number: number
+        },
+        success: function(data) { 
+          $('#'+thumb).parent().parent().find('.rank-meter').text(data.rank);
+          $('#'+thumb).parent().parent().find('.grades').append('<span class="down"><span><%= fa_icon "thumbs-down" %></span></span><span class="up"><span><%= fa_icon "thumbs-up" %></span></span>');
+          $('#'+thumb).parent().parent().find('.thumbs-quality').remove();
+          
+        }
+      });    
+    }

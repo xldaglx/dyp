@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="col-xs-7">
-            <div class="thumbs thumbs-oferta">
+            <div class="thumbs thumbs-oferta" id="<%= deal.id %>">
                 <span class="<%= rank_style(deal.rank) %> grades">
                   <%= fa_icon "thermometer-empty" %>
                   <span class="rank-meter"><%= deal.rank %></span>
@@ -45,8 +45,8 @@
                         <% end %>
                       <% end %>
                     <% else %>
-                          <span vote="negative" class="rank down" promoid="<%= deal.id %>"><%= fa_icon "thumbs-down" %></span>
-                          <span href="#" vote="positive" class="rank up" promoid="<%= deal.id %>"><%= fa_icon "thumbs-up" %></span>
+                          <span vote="negative" class="down" onclick="rankUpdate(<%= deal.id %>, 'negative');" promoid="<%= deal.id %>"><%= fa_icon "thumbs-down" %></span>
+                          <span href="#" vote="positive" class="up" onclick="rankUpdate(<%= deal.id %>, 'positive');" promoid="<%= deal.id %>"><%= fa_icon "thumbs-up" %></span>
                     <% end %>
                   <% else %>
                           <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
