@@ -4,7 +4,8 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    @deals = Deal.all  
+
   end
 
   def stores
@@ -15,6 +16,19 @@ class DealsController < ApplicationController
   def categories
     @deals = Deal.where("category_id = "+params[:id]).page(params[:page]).per(9)
     @category = Category.find(params[:id])
+  end
+
+  def newdeals
+    @deals = Deal.all  
+  end
+
+  def search
+    @deals = Deal.all.order('created_at DESC')
+    @deals = @deals.search(params[:search]) if params[:search].present?
+  end
+
+  def topdeals
+    @deals = Deal.all  
   end
 
   def moderate

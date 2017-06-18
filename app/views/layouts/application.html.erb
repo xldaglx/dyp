@@ -12,15 +12,9 @@
   <body>
   <nav class="navbar navbar-blue">
     <div class="container no-padding-head">
+
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <!--button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="glyphicon glyphicon-search"></span>
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button-->
         <!-- Menu PRINCIPAL-->
           <div class="container no-padding">
             <div class="col-xs-4 no-padding">
@@ -50,9 +44,9 @@
   <nav class="navbar navbar-white">
     <div class="container no-padding-head">
       <ul class="nav navbar-nav">
-          <li class=" active"><a href="#">Nuevas</a></li>
-          <li class="visible-lg promotop"><a href="#">Promociones Top</a></li>
-          <li class="visible-xs"><a href="#">TOP</a></li>
+          <li class=" active"><a href="/nuevas">Nuevas</a></li>
+          <li class="visible-lg promotop"><a href="/top">Promociones Top</a></li>
+          <li class="visible-xs"><a href="/top">TOP</a></li>
           <li class="dropdown visible-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
             <!-- INICIA SUBMENU DESKTOP -->
             <div class="row dropdown-menu">
@@ -79,9 +73,10 @@
             </li>
             <li>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-right">
+
+                <form class="navbar-form navbar-right" method="get" action="buscar-descuentos" >
                   <div class="input-group stylish-input-group">
-                      <input type="text" class="form-control"  placeholder="Buscar ..." >
+                      <input type="text" class="form-control" name="search"  placeholder="Buscar ..." >
                       <span class="input-group-addon">
                           <button type="submit" class="btn-lupa">
                               <span class="glyphicon glyphicon-search"></span>

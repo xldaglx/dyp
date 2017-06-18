@@ -16,4 +16,9 @@ class Deal < ApplicationRecord
 	def generate_slug
 		self.slug = title.to_s.parameterize
 	end
+
+	def self.search(search)
+	  where("title LIKE ?", "%#{search}%") 
+	  where("description LIKE ?", "%#{search}%") 
+	end
 end

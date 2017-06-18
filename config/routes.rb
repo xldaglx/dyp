@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get "myprofile/:id" => "users#profile"
   get "descuentos-por-tienda/:id/:slug" => "deals#stores"
   get "descuentos-por-categoria/:id/:slug" => "deals#categories"
-  get "descuentos-por-categoria/:id/:slug/nuevas" => "deals#categories", :hotnew => 1
-  get "descuentos-por-categoria/:id/:slug/hot" => "deals#categories", :hotnew => 2
   get 'todas-las-categorias', to: 'categories#list'
   get 'todas-las-tiendas', to: 'stores#list'
+  get 'nuevas', to: 'deals#newdeals'
+  get 'top', to: 'deals#topdeals'
+  get 'buscar-descuentos', to: 'deals#search'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end
