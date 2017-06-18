@@ -107,14 +107,33 @@
       <!--COMENTARIOS-->
       <div class="row det-comentarios">
         <div class="col-md-12">
-          <h2><%= @deal.comments.count %> Comentarios</h2>
-          <p>Aquí irán los comentarios...</p>
+          <h4><%= @deal.comments.count %> Comentarios</h4>
           <% if @deal.comments.exists? %>
             <% @deal.comments.each do |item| %>
+              <% 
+                t1 = Time.now
+                t2 = item.created_at
+                f1 = Date.today
+                f2 = item.created_at.to_date
+                d1 = f1.day
+                d2 = f2.day
+              %>
+              <% if f1 == f2 %>
+                Hace <%= distance_of_time_in_words(t2, t1) %>
+                <% else %>
+                Hace <%= distance_of_time_in_words(f2, f1) %>
+              <% end %>
+              <%= item.user.nickname %>
               <%= item.description %>
             <% end %>
           <% end %>
         </div>
+      </div>
+      <div class="row comments-box">
+        <h4>Publica un comentario</h4>
+          <input id="commentContent" value="Editor content goes here" type="hidden" name="content">
+          <trix-editor input="commentContent"></trix-editor>
+          <button class="btn btn-primary" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
       </div>
       <!--COMENTARIOS-->
     </div>
@@ -125,39 +144,25 @@
   </div>
 </div>
 
-<!--p>
-  <strong>Link:</strong>
-  <%= @deal.link %>
-</p>
-<p>
-  <strong>Expiration:</strong>
-  <%= @deal.expiration %>
-</p-->
-
-<%= @deal.rank %>
-<% if user_signed_in? %>
-  <% if @deal.behaviors.exists? user_id: current_user.id  %>
-   <% @deal.behaviors.each do |item| %>
-      <% @grade = item.grade %>
-      <% if @grade == 1 %>
-        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
-      <% else %>
-        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a>
-      <% end %>
-    <% end %>
-  <% else %>
-        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
-        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a> 
-  <% end %>
-<% else %>
-        <a href="#" id="positive" class="rank" promoid="<%= @deal.id %>"> + 1 </a>
-        <a href="#" id="negative" class="rank" promoid="<%= @deal.id %>"> - 1 </a> 
-<% end %>
-
 
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('#save_comment').click(function(event) {
+      description = $('#commentContent').val();
+      var promoid = $(this).attr('promoid');
+      $.ajax({
+        url:  "/saveComment",
+        dataType: "json",
+        data: {
+           promoid: promoid,
+           description: description
+        },
+        success: function(data) { 
+          $('.comments-box').replaceWith('<h4>Tú comentario está en validación</h4>');
+        }
+      });
+    });
     $('.rank').click(function(event) {   
       promoid = $(this).attr('promoid');
       number = $(this).attr('id');

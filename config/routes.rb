@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'image/scrapp', to: 'deals#scrapp'
   get 'validate/link', to: 'deals#validatelink'
   get 'updateRank', to: 'deals#rank'
+  get 'saveComment', to: 'comments#saveComment'
   get 'moderate', to: 'deals#moderate'
   get "myprofile/:id" => "users#profile"
   get "descuentos-por-tienda/:id/:slug" => "deals#stores"

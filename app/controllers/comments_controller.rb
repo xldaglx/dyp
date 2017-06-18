@@ -21,11 +21,28 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def saveComment
+    if user_signed_in?
+    promoid = params[:promoid]
+    description = params[:description]
+    status = 2
+    userid = current_user.id
+    @comment = Comment.new(description: description, user_id: userid, deal_id: promoid, status: status)
+    @comment.save
+    respond_to do |format|
+       format.html
+       format.js {} 
+       format.json { 
+          render json: {:message => 'Tu commentario está en revisión, pronto lo publicaremos.'}
+      } 
+    end
+    end    
+  end
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comment.status = 2
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -69,6 +86,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:description, :user_id, :deal_id)
+      params.require(:comment).permit(:description, :user_id, :deal_id, :status)
     end
 end
