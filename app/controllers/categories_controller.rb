@@ -12,6 +12,10 @@ class CategoriesController < ApplicationController
   def show
   end
 
+  def list
+    @categories = Category.all
+  end
+
   # GET /categories/new
   def new
     @category = Category.new
@@ -69,6 +73,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:description)
+      params.require(:category).permit(:description, :name, :slug)
     end
 end

@@ -1,0 +1,11 @@
+<div class="col-lg-6 col-lg-offset-3">
+	<div class="list-group">
+	  <% @categories.each do |category| %>
+		  <a href="/descuentos-por-categoria/<%= category.id %>/<%= category.slug %>" class="list-group-item">
+		    <h4 class="list-group-item-heading"><%= category.name %>
+			    <span class="badge"><%= category.deals.count %></span></h4>
+		    <p class="list-group-item-text"><%= category.description %></p>
+		  </a>
+	    <% end %>
+	</div>
+</div>

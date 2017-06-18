@@ -5,11 +5,11 @@ class Store < ApplicationRecord
 	validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 	
 	def to_param
-		"#{id}-#{description.parameterize}"
+		"#{id}-#{name.parameterize}"
 	end
 	
 	private
 	def generate_slug
-		self.slug = description.to_s.parameterize
+		self.slug = name.to_s.parameterize
 	end
 end

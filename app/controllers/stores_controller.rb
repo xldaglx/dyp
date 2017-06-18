@@ -12,6 +12,10 @@ class StoresController < ApplicationController
   def show
   end
 
+  def list
+    @stores = Store.all
+  end
+  
   # GET /stores/new
   def new
     @store = Store.new
