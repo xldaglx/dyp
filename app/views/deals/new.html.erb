@@ -1,20 +1,25 @@
-<div class="row deal-detail">
-	<div class="col-md-2"></div>
-	<div class="col-md-8 deal-det new-promo">
-		<h1>Compartir promoción</h1>
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#online" aria-controls="online" role="tab" data-toggle="tab">Online</a></li>
-			<li role="presentation"><a href="#fisica" aria-controls="fisica" role="tab" data-toggle="tab">En Tienda física</a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div class="tab-pane active" id="online"></div>
-			<div class="tab-pane" id="fisica"></div>
+<style type="text/css">
+	.button_row .history_tools{
+		display: none;
+	}
+</style>
+	<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Compartir promoción</h1>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#online" aria-controls="online" role="tab" data-toggle="tab">Online</a></li>
+				<li role="presentation"><a href="#fisica" aria-controls="fisica" role="tab" data-toggle="tab">En Tienda física</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="online"></div>
+				<div class="tab-pane" id="fisica"></div>
+			</div>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
-	<div class="col-md-2"></div>
-</div>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	var type = $('.nav-tabs li a').attr('href');

@@ -22,15 +22,19 @@
               <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" /></a>
             </div>
             <div class="col-xs-8 menu-mobile">
-                <%= link_to "+ Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'visible-lg btn btn-compartir btn-default' %>
+                <%= link_to "+ Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'hidden-xs btn btn-compartir btn-default' %>
                 <%= link_to "Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
               <div class="menu-sign">
-                <div class="mi-cuenta visible-lg">
+                <div class="mi-cuenta">
                   <% if user_signed_in? %>
-                    <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:'visible-lg' %>
-                    <a style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta</a>
+                    <%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:'hidden-xs' %>
+                    <a class="hidden-xs" style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta</a>
+                    <a class="visible-xs" style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span></a>
                   <% else %>
-                    <span class="glyphicon glyphicon-user"></span><%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
+                    <div class="hidden-xs">
+                      <span class="glyphicon glyphicon-user"></span> <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>
+                    </div>
+                    <%= link_to "", "#login", "data-toggle" => "modal", class: 'visible-xs glyphicon glyphicon-user login-account'%>
                   <% end %>
                 </div>
                 <button type="button" class="visible-xs buscar-s collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="glyphicon glyphicon-search"></span>
@@ -45,9 +49,9 @@
     <div class="container no-padding-head">
       <ul class="nav navbar-nav">
           <li class=" active"><a href="/nuevas">Nuevas</a></li>
-          <li class="visible-lg promotop"><a href="/top">Promociones Top</a></li>
+          <li class="hidden-xs promotop"><a href="/top">Promociones Top</a></li>
           <li class="visible-xs"><a href="/top">TOP</a></li>
-          <li class="dropdown visible-lg"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
+          <li class="dropdown hidden-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown" >Categorías y Tiendas <span class="flecha-down glyphicon glyphicon-chevron-down"></a>
             <!-- INICIA SUBMENU DESKTOP -->
             <div class="row dropdown-menu">
               <%= render "layouts/tiendas_menu" %><!-- Carga el submenu de Categorías y Tiendas -->
@@ -59,9 +63,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
-            <li class="visible-lg"><a href="/moderate">Moderar </a></li>
+            <li class="hidden-xs"><a href="/moderate">Moderar </a></li>
           <% end %>
-            <li class="dropdown visible-lg">
+            <li class="dropdown hidden-xs">
               <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>
               <!-- INICIA SUBMENU DESKTOP -->
               <div class="row dropdown-menu">
@@ -103,12 +107,14 @@
       <!-- TERMINA SUBMENU MOBILE -->
     
   </nav>
-    <% if notice.present? %>
-   	<div class="notice"><%= notice %></div>
-    <% end %>
-    <% if alert.present? %>
-    <div class="alert"><%= alert %></div>
-    <% end %>
+    <div class="container">
+      <% if notice.present? %>
+      <div class="notice"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+      <div class="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= alert %></div>
+      <% end %>
+    </div>
     <div class="container">
       <%= yield %>
     </div>

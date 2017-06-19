@@ -1,3 +1,8 @@
+<style type="text/css">
+  .button_row .history_tools{
+    display: none;
+  }
+</style>
 <div class="row deal-detail">
   <div class="container">
     <div class="col-md-9 deal-det">
@@ -9,11 +14,11 @@
             </div>
             <div class="usuario">
               <% if @deal.user_id.present? %>
-              <span class="visible-lg publicado">Publicado por:</span>
+              <span class="hidden-xs publicado">Publicado por:</span>
                 <span class="visible-xs publicado">Por: </span>
                 <a href=""><%= @deal.user.nickname %></a>
               <% else %>
-              <span class="visible-lg publicado">Publicado por:</span>
+              <span class="hidden-xs publicado">Publicado por:</span>
                 <span class="visible-xs publicado">Por: </span>
               <a href=""> Invitado </a>
               <% end %>

@@ -3,11 +3,14 @@
 	<li class="sub-titulo">FILTRAR PROMOCIONES</li>
 	<form action="">
     <li>
-		<div class="radios-filter">
-			<input type="radio" name="gender" value="male" checked> <i class="fa fa-laptop" aria-hidden="true"></i> Ver Promociones Online
+    	<div class="radios-filter">
+			<input type="radio" name="filter-promo" value="all" checked> <i class="fa fa-check-square-o" aria-hidden="true"></i> Ver todas
 		</div>
+		<div class="radios-filter">
+	  		<input type="radio" name="filter-promo" value="1"> <i class="fa fa-laptop" aria-hidden="true"></i> Sólo Online
+	  	</div>
 	  	<div class="radios-filter">
-	  		<input type="radio" name="gender" value="female"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Ver Promociones en Tienda Física
+	  		<input type="radio" name="filter-promo" value="2"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Sólo en Tienda Física
 	  	</div>
 	  	<div class="btn-filtros">
 	  		<input class="btn-negro" type="submit" value="Aplicar Filtros">

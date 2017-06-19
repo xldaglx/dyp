@@ -1,32 +1,9 @@
-
-
-	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="titulo-modal">Ingresar</h4>
+        <h4 class="titulo-modal">Iniciar Sesión</h4>
       </div>
-      <div class="modal-body">
-    		<%= devise_error_messages! %>
-        <div class="field">
-       		<%= f.label :email, "Usuario*" %><br />
-    		  <%= f.email_field :email, autofocus: true%>
-  		  </div>
-
-  		  <div class="field password">
-  		    <%= f.label :password, "Contraseña*" %>
-  		    <% if @minimum_password_length %>
-  		    <em>(<%= @minimum_password_length %> characters minimum)</em>
-  		    <% end %><br />
-      		<%= f.password_field :password, autocomplete: "off" %>
-  		  </div>
-        <%= f.submit "Iniciar sesión", class:"btn btn-login" %>
-        <div class="check-filter">
-          <input type="checkbox" name="vehicle" value="Bike"> Recordar mi sesión
-        </div>
-      </div>
-      <div class="separador"></div>
       <div class="modal-body2">
-        <p class="titulo-modal">¿Aún no tienes Cuenta? <span>no te preocupes, también puedes:</span></p>
         <div class="row bloque-facebook">
           <div class="col-xs-2 no-padding icono-face">
             <span class=""><i class="fa fa-facebook" aria-hidden="true"></i></span>
@@ -36,7 +13,28 @@
           </div>
         </div>
       </div>
+      <div class="separador"></div>
+      <div class="modal-body">
+    		<%= devise_error_messages! %>
+        <div class="field">
+       		<%= f.label :email, "Correo electrónico*" %><br />
+    		  <%= f.email_field :email, autofocus: true%>
+  		  </div>
+
+  		  <div class="field password">
+  		    <%= f.label :password, "Contraseña*" %>
+          <%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class:"olvide-password" %>
+  		    <% if @minimum_password_length %>
+  		    <% end %><br />
+      		<%= f.password_field :password, autocomplete: "off" %>
+  		  </div>
+        <%= f.submit "Iniciar sesión", class:"btn btn-login" %>
+        <div class="check-filter">
+          <input type="checkbox" name="vehicle" value="Bike"> Recordar mi sesión
+        </div>
+      </div>
+      
       <div class="modal-footer">
-            <%= link_to "Crear mi cuenta", "#sign_up", "data-toggle" => "modal", class:"titulo-modal create-account" %>
+            ¿Aún No tienes cuenta? <%= link_to "Crea una", "#sign_up", "data-toggle" => "modal", class:"titulo-modal create-account" %>
       </div>
 	<% end %>

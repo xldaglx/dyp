@@ -1,6 +1,3 @@
-<style type="text/css">
-  
-</style>
 <%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
@@ -20,7 +17,9 @@
       <div class="loader-image"><img src="/images/spinner.gif"></div>
       <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
       <div class="img-upload">
-        <%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Elije tu imagen", :class => 'btn-upload' %>
+        <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
+        <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>
+        <!--%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %-->
       </div>
       <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
     </div>
@@ -55,8 +54,6 @@
       <%= f.hidden_field :imagen %>
       <%= f.submit :value => 'Compartir Promoción', :class => 'btn btn-compartir' %>
     </div>
-    
-
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
