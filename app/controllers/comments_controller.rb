@@ -25,9 +25,10 @@ class CommentsController < ApplicationController
     if user_signed_in?
     promoid = params[:promoid]
     description = params[:description]
+    parent = params[:parent]
     status = 2
     userid = current_user.id
-    @comment = Comment.new(description: description, user_id: userid, deal_id: promoid, status: status)
+    @comment = Comment.new(description: description, user_id: userid, deal_id: promoid, status: status, parent: parent)
     @comment.save
     respond_to do |format|
        format.html

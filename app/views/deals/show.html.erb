@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('.use-current-location-text').click(function(event) {
+      dataLayer.push({
+        'event': 'storelocator', 
+        'eventCategory': 'storelocator', 
+        'type-search': 'Geolocation', 
+        'zipcodecity': 'Geolocation' 
+      });
+    });
+    $('.find-stores').click(function(event) {
+      zipcodecity = $('#zip-city-state').val();
+      dataLayer.push({
+        'event': 'storelocator', 
+        'eventCategory': 'storelocator', 
+        'type-search': 'Search', 
+        'zipcodecity': zipcodecity 
+      });
+    });
+  });
+</script>
 <div class="row deal-detail">
   <div class="container">
     <div class="col-md-9 deal-det">
@@ -125,6 +146,10 @@
               <% end %>
               <%= item.user.nickname %>
               <%= item.description.html_safe %>
+              <% if item.parent.present? %>
+                 Respondio un comentario (Hay q poner el comentario que se respondió)
+              <% end %>
+              <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
               <br>
             <% end %>
           <% end %>
@@ -132,6 +157,8 @@
       </div>
       <div class="row comments-box">
         <h4>Publica un comentario</h4>
+          <div class="reply-answer"></div>
+          <input type="text" id="parentid">
           <input id="commentContent" value="Editor content goes here" type="hidden" name="content">
           <trix-editor input="commentContent"></trix-editor>
           <button class="btn btn-primary" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
@@ -149,15 +176,21 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('.reply').click(function(event) {
+     $('.reply-answer').text('Respondiendo comentario de '+($(this).attr('de')));
+     $('#parentid').val($(this).attr('commentid'));
+    });
     $('#save_comment').click(function(event) {
       description = $('#commentContent').val();
-      var promoid = $(this).attr('promoid');
+      promoid = $(this).attr('promoid');
+      parent = $('#parentid').val();
       $.ajax({
         url:  "/saveComment",
         dataType: "json",
         data: {
            promoid: promoid,
-           description: description
+           description: description,
+           parent: parent
         },
         success: function(data) { 
           $('.comments-box').replaceWith('<h4>Tú comentario está en validación</h4>');
