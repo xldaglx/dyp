@@ -22,7 +22,7 @@
       <div class="field">
         <%= f.label :contraseña %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> characteres mínimo)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>

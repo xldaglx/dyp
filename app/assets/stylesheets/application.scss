@@ -228,7 +228,19 @@ h1{
 }
 .alert{
   padding: 10px;
-  margin-bottom: 10px;
+  color: #e74c3c;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  border: 2px solid #e74c3c;
+  border-radius: 0px;
+}
+.notice{
+  padding: 10px;
+  color: #3498DB;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  border: 2px solid #3498DB;
+  border-radius: 0px;
 }
 .stylish-input-group .input-group-addon{
   background: transparent; 
@@ -440,7 +452,7 @@ li > a:hover{
 .nav .visible-xs,  .visible-xs{
   display: block;
 }
-.nav .visible-lg, .visible-lg{
+.nav .hidden-xs, .hidden-xs{
   display: none;
 }
 .menu-mobile{
@@ -670,7 +682,7 @@ li > a:hover{
   padding: 0px 0px 10px 0px;
   background-color: #FFF;
   border:1px solid #efefef;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   min-height: 425px;
 }
 .mas-votadas{
@@ -686,7 +698,7 @@ li > a:hover{
   border:1px solid #efefef;
   margin: 0px 0px 20px 0px;
   padding: 23px 15px;
-  min-height: 240px;
+  min-height: 247px;
 }
 .oferta img{
   margin-top: 20px;
@@ -769,7 +781,7 @@ li > a:hover{
 .oferta-individual .comments{
   margin: 13px 10px 0px 0px;
   font-size: 14px;
-  float: right;
+  float: left;
 }
 .oferta-head{
   padding: 7px 0px;
@@ -795,6 +807,7 @@ li > a:hover{
 .btn-oferta-individual{
   float: left;
   margin-top: 10px;
+  margin-right: 15px;
 }
 .category a{
   color: #999;
@@ -1014,10 +1027,19 @@ li > a:hover{
   color: #525457;
 }
 .modal-body{
-  padding: 20px 20px 0px 20px;
+  padding: 10px 20px 20px 20px;
 }
 .modal-body2{
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 0px 20px;
+}
+.modal-body2-login{
+  padding: 20px 40px 0px 40px;
+}
+.modal-body-login{
+  padding: 10px 40px 20px 40px;
+}
+.deal-det-login .modal-header .titulo-modal{
+  margin: 0px 0px 10px 20px;
 }
 .field{
   font-size: 14px;
@@ -1044,10 +1066,21 @@ li > a:hover{
   margin: 13px 0px 20px 0px;
 }
 .check-filter{
-  margin-top: 12px;
+  margin-top: 20px;
   font-size: 13px;
   font-weight: 400;
   padding: 0px;
+  width:100%;
+}
+.check-filter input{
+  width: 20px;
+  float:left;
+}
+.check-filter label{
+  font-size: 14px;
+  font-weight: normal;
+  float:left;
+  margin: -7px 0px 30px 0px;
 }
 .separador{
   height: 1px;
@@ -1057,6 +1090,11 @@ li > a:hover{
 }
 .modal-footer{
   text-align: center;
+  width:100%;
+  float:left;
+  background: #FFF;
+  margin-top: -5px;
+  border-bottom: 1px solid #eaeaea;
 }
 .icono-face{
   text-align: center;
@@ -1092,6 +1130,12 @@ margin-bottom: 10px;
 }
 .deal-det{
   padding: 20px 40px;
+  background-color: #FFF;
+  border: 1px solid #efefef;
+  margin-bottom: 30px;
+}
+.deal-det-login{
+  padding: 20px 0px 40px 0px;
   background-color: #FFF;
   border: 1px solid #efefef;
   margin-bottom: 30px;
@@ -1306,7 +1350,82 @@ trix-editor{
 .new-promo .nav-tabs > li a:hover{
   color: #d93438;
 }
+.img-upload{
+  margin: 0px 0px 20px 0px;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
+}
+.no-js .inputfile + label {
+  display: none;
+}
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  margin-right: 0.25em;
+}
+.inputfile-2 + label,
+.inputfile-2:focus + label,
+.inputfile-2:focus {
+  color: #999;
+  outline: none;
+  border: 2px solid #999;
+}
+.inputfile-2 + label:hover {
+    color: #d93438;
+    border: 2px solid #d93438;
+}
+.olvide-password{
+  margin: 2px 0px 0px 0px;
+  float:right;
+  font-size: 12px;
+  font-weight: normal;
+}
+.modal-body-login .actions{
+  margin-top:20px;
+}
 @media screen and (max-width: 767px) {
+  .deal-det-login .modal-header .titulo-modal{
+    margin: 0px 0px 10px 0px;
+  }
+  .modal-body2-login{
+    padding: 5px 20px 5px 20px;
+  }
+  .modal-body-login{
+    padding: 10px 20px 20px 20px;
+  }
+  .mi-cuenta .glyphicon-user{
+    margin-top: 2px;
+  }
+  .separador{
+    margin: 0px 0px 10px 0px;
+  }
   .new-promo .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
     color: #d93438;
     font-size: 15px;
@@ -1547,7 +1666,7 @@ trix-editor{
   .nav .visible-xs, .visible-xs{
     display: none;
   }
-  .nav .visible-lg, .visible-lg{
+  .nav .hidden-xs, .hidden-xs{
     display: block;
   }
   .navbar-white{

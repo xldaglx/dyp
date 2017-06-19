@@ -13,7 +13,11 @@
   <% end %>
     <div class="col-md-12">
       <%= f.text_field :title, label: "Título de la Promoción:", placeholder: "Artículo o Promoción" %>
-      <%= f.file_field :promoimage, label: "Sube tu imagen" %>
+      <div class="img-upload">
+        <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
+        <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>
+        <!--%= f.file_field :promoimage, label: "Sube tu imagen" %-->
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8 no-padding">
@@ -25,6 +29,14 @@
         </div>
       </div>
       <div class="col-md-4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
+        <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
+      </div>
+      <div class="col-md-6">
       </div>
     </div>
     <div class="row">
