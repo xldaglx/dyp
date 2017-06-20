@@ -9,4 +9,14 @@ module CommentsHelper
 			return html.html_safe
 		end
 	end
+	def getParent(commentid)
+		@comment = Comment.find(commentid)
+		if @comment.present?
+			html = '<div class="parent_comment">Citando ->:'+@comment.description+'</div>'
+			return html.html_safe
+		else
+			html = 'No extra comments'
+			return html.html_safe
+		end
+	end
 end

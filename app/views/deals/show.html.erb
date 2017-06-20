@@ -150,14 +150,16 @@
                     <% else %>
                     Hace <%= distance_of_time_in_words(f2, f1) %>
                   <% end %>
-                  <%= item.user.nickname %>
-                  <%= item.description.html_safe %>
+                  <%= item.user.nickname %><br>
+                  <%= item.description.html_safe %><br>
                   Likes (<%= item.likes.count %>)<br>
                   <% if item.parent.present? %>
-                     Respondio un comentario (Hay q poner el comentario que se respondió)
+                     <%= getParent(item.parent) %>
                   <% end %>
-                  <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
-                  <%= likeExists(item.id) %>
+                  <div class="actions">
+                    <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
+                    <%= likeExists(item.id) %>
+                  </div>
                   <br>
                 </div>
                 <% end %>
