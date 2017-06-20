@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :stores
   resources :comments
   resources :behaviors
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   get 'nuevas', to: 'deals#newdeals'
   get 'top', to: 'deals#topdeals'
   get 'buscar-descuentos', to: 'deals#search'
+  get 'likeComment', to: 'likes#add'
+  get 'removeComment', to: 'likes#delete'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end

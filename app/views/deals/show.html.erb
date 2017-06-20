@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('.use-current-location-text').click(function(event) {
@@ -135,30 +134,34 @@
       <div class="row det-comentarios">
         <div class="col-md-12">
           <h4><%= @deal.comments.count %> Comentarios</h4>
-          <% if @deal.comments.exists? %>
-            <% @deal.comments.each do |item| %>
-              <% 
-                t1 = Time.now
-                t2 = item.created_at
-                f1 = Date.today
-                f2 = item.created_at.to_date
-                d1 = f1.day
-                d2 = f2.day
-              %>
-              <% if f1 == f2 %>
-                Hace <%= distance_of_time_in_words(t2, t1) %>
-                <% else %>
-                Hace <%= distance_of_time_in_words(f2, f1) %>
-              <% end %>
-              <%= item.user.nickname %>
-              <%= item.description.html_safe %>
-              <% if item.parent.present? %>
-                 Respondio un comentario (Hay q poner el comentario que se respondió)
-              <% end %>
-              <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
-              <br>
+            <% if @deal.comments.exists? %>
+                <% @deal.comments.each do |item| %>
+                <div id="comment-<%= item.id %>">
+                  <% 
+                    t1 = Time.now
+                    t2 = item.created_at
+                    f1 = Date.today
+                    f2 = item.created_at.to_date
+                    d1 = f1.day
+                    d2 = f2.day
+                  %>
+                  <% if f1 == f2 %>
+                    Hace <%= distance_of_time_in_words(t2, t1) %>
+                    <% else %>
+                    Hace <%= distance_of_time_in_words(f2, f1) %>
+                  <% end %>
+                  <%= item.user.nickname %>
+                  <%= item.description.html_safe %>
+                  Likes (<%= item.likes.count %>)<br>
+                  <% if item.parent.present? %>
+                     Respondio un comentario (Hay q poner el comentario que se respondió)
+                  <% end %>
+                  <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
+                  <%= likeExists(item.id) %>
+                  <br>
+                </div>
+                <% end %>
             <% end %>
-          <% end %>
         </div>
       </div>
       <div class="row comments-box">
@@ -185,6 +188,37 @@
     $('.reply').click(function(event) {
      $('.reply-answer').text('Respondiendo comentario de '+($(this).attr('de')));
      $('#parentid').val($(this).attr('commentid'));
+    });
+    $('.like').click(function(event) {
+      commentid = $(this).attr('commentid');
+      if($(this).hasClass('liked')){
+      like =$(this).attr('likeid');
+        $.ajax({
+          url:  "/removeComment",
+          dataType: "json",
+          data: {
+             like: like
+          },
+          success: function(data) { 
+            $('#comment-'+commentid).find('.like').text('Ya le quitaste Like');
+            $('#comment-'+commentid).find('.like').removeClass('liked');
+            $('#comment-'+commentid).find('.like').removeAttr('likedid');
+          }
+        });
+      }else{
+        $.ajax({
+          url:  "/likeComment",
+          dataType: "json",
+          data: {
+             commentid: commentid
+          },
+          success: function(data) { 
+            $('#comment-'+commentid).find('.like').text('Ya le pusiste Like');
+            $('#comment-'+commentid).find('.like').addClass('liked');
+            $('#comment-'+commentid).find('.like').attr('likeid',data.id );
+          }
+        });
+      }
     });
     $('#save_comment').click(function(event) {
       description = $('#commentContent').val();
