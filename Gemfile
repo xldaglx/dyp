@@ -64,3 +64,4 @@ gem 'bootstrap_form'
 gem 'trix' #Editor TextArea WYWYG
 gem "font-awesome-rails"
 gem 'kaminari'
+gem 'bootsy'

@@ -19,3 +19,4 @@
 //= require jquery.validate.localization/messages_es
 //= require trix
 //= require jquery.infinitescroll
+//= require bootsy

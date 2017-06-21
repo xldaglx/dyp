@@ -1,4 +1,5 @@
 class Deal < ApplicationRecord
+  	include Bootsy::Container
 	before_validation :generate_slug
 	belongs_to :user, optional: true
 	belongs_to :category
