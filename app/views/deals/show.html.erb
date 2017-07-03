@@ -16,7 +16,7 @@
               <% if @deal.user_id.present? %>
               <span class="hidden-xs publicado">Publicado por:</span>
                 <span class="visible-xs publicado">Por: </span>
-                <a href=""><%= @deal.user.nickname %></a>
+                <a href="/perfil-publico/<%=@deal.user_id%>"><%= @deal.user.nickname %></a>
               <% else %>
               <span class="hidden-xs publicado">Publicado por:</span>
                 <span class="visible-xs publicado">Por: </span>
@@ -39,7 +39,7 @@
               Hace <%= distance_of_time_in_words(f2, f1) %>
             <% end %>
             </div>
-            <p class="comments"><a href="descuentos/<%= @deal.id %>-<%= @deal.slug %>#comments"><%= @deal.comments.count %> <%= fa_icon 'comment' %></a></p>
+            <p class="comments"><a href="#box-comm"><%= @deal.comments.count %> <%= fa_icon 'comment' %></a></p>
         </div>
         <div class="col-md-5 rank-det">
           <span class="thumbs-quality">
@@ -117,7 +117,7 @@
       </div>
       <!--BARRA PARA COMPARTIR O REPORTAR-->
       <!--COMENTARIOS-->
-      <div class="row det-comentarios">
+      <div class="row det-comentarios" id="box-comm">
         <div class="col-md-12">
           <h4><%= @deal.comments.count %> Comentarios</h4>
             <% if @deal.comments.exists? %>
