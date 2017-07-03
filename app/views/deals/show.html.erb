@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-7">
             <div class="category">
-              <a href="descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>
+              <a href="/descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>
             </div>
             <div class="usuario">
               <% if @deal.user_id.present? %>
@@ -184,8 +184,6 @@
              dealid: dealid
           },
           success: function(data) { 
-            alert('Exito');
-            console.log(data);
           }
         });
     });
@@ -198,8 +196,6 @@
              dealid: dealid
           },
           success: function(data) { 
-            alert('Exito');
-            console.log(data);
           }
         });
     });
