@@ -111,6 +111,12 @@
                   $(this).parent().remove();
                 }
               });
+              $('.imgscrappcontainer img').click(function(event) {
+                $('.imgscrappcontainer img').css('opacity', '0.7');
+                $(this).css('opacity', '1');
+                route = $(this).attr('src');
+                $('#deal_imagen').val(route);
+              });
 
 
               /*
@@ -200,4 +206,33 @@
 function checkURL(url) {
     return(url.match(/\.(jpeg|jpg)$/) != null);
 }
+var inputs = document.querySelectorAll( '.inputfile' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+  var label  = input.nextElementSibling,
+    labelVal = label.innerHTML;
+
+  input.addEventListener( 'change', function( e )
+  {
+    var fileName = '';
+    if( this.files && this.files.length > 1 )
+      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+    else
+      fileName = e.target.value.split( '\\' ).pop();
+
+    if( fileName )
+      label.querySelector( 'span' ).innerHTML = fileName;
+    else
+      label.innerHTML = labelVal;
+  });
+});
 </script>
+<style type="text/css">
+  .imgscrappcontainer img{
+    opacity: 0.7
+  }
+  .imgscrappcontainer img:hover{
+    opacity: 1;
+    cursor:pointer;
+  }
+</style>
