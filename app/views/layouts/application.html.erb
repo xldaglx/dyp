@@ -28,8 +28,8 @@
                 <div class="mi-cuenta">
                   <% if user_signed_in? %>
                     <%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete, class:'hidden-xs' %>
-                    <a class="hidden-xs" style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta</a>
-                    <a class="visible-xs" style="margin-top: 1px;" href="/myprofile/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span></a>
+                    <a class="hidden-xs" style="margin-top: 1px;" href="/mi-cuenta/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span> Mi Cuenta</a>
+                    <a class="visible-xs" style="margin-top: 1px;" href="/mi-cuenta/<%= current_user.id%>"><span class="glyphicon glyphicon-user"></span></a>
                   <% else %>
                     <div class="hidden-xs">
                       <span class="glyphicon glyphicon-user"></span> <%= link_to "Mi Cuenta", "#login", "data-toggle" => "modal", class: 'login-account'%>

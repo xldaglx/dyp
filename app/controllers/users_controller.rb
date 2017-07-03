@@ -4,6 +4,14 @@ class UsersController < ApplicationController
 		@account = User.find(params[:id])
 	end
 
+	def deals
+    	@deals = Deal.where('user_id',params[:id])  
+	end
+
+	def favorites
+    	@deals = Deal.joins('LEFT JOIN favorites ON deals.id = favorites.deal_id').where('favorites.user_id = '+current_user.id.to_s)
+	end
+
 	def require_permission
 		if current_user.id != User.find(params[:id]).id
 		redirect_to root_path

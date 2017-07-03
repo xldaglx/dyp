@@ -33,7 +33,8 @@ References user_id
 
 rails g scaffold Deals title:string description:string imagen:string link:string price:string expiration:string user:references
 rails g scaffold Categories description:string
-rails g scaffold Behavior grade:integer user:references deal:references
+rails g scaffold Behaviors grade:integer user:references deal:references
+rails g scaffold Favorites user:references deal:references
 rails g scaffold Comments description:string user:references deal:references
 rails g scaffold Stores description:string
 rails g scaffold Likes user:references comment:references

@@ -1,24 +1,3 @@
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $('.use-current-location-text').click(function(event) {
-      dataLayer.push({
-        'event': 'storelocator', 
-        'eventCategory': 'storelocator', 
-        'type-search': 'Geolocation', 
-        'zipcodecity': 'Geolocation' 
-      });
-    });
-    $('.find-stores').click(function(event) {
-      zipcodecity = $('#zip-city-state').val();
-      dataLayer.push({
-        'event': 'storelocator', 
-        'eventCategory': 'storelocator', 
-        'type-search': 'Search', 
-        'zipcodecity': zipcodecity 
-      });
-    });
-  });
-</script>
 <style type="text/css">
   .button_row .history_tools{
     display: none;
@@ -124,7 +103,14 @@
         <div class="col-md-12">
           <ul class="social-list">
             <li><a href=""><i class="fa fa-share-alt" aria-hidden="true"></i> Compartir</a></li>
-            <li><a href=""><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas</a></li>
+            <% if @deal.favorites.count == 0 %>
+              <li><a href="#" class="addtofavorites" dealid="<%= @deal.id %>"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
+            <% else %>
+              <% @deal.favorites.each do |favorites| %>
+                <li><a href="#" class="removefromfavorites" dealid="<%= favorites.id %>"><i class="fa fa-star" aria-hidden="true"></i> Eliminar de Favoritas </a></li>
+              <% end %>
+              
+            <% end %>
             <li><a href=""><i class="fa fa-volume-up" aria-hidden="true"></i> Reportar</a></li>
           </ul>
         </div>
@@ -166,21 +152,20 @@
             <% end %>
         </div>
       </div>
-      <!--
+      
       <div class="row comments-box">
         <h4>Publica un comentario</h4>
           <div class="reply-answer"></div>
-          <input type="text" id="parentid">
+          <input type="hidden" id="parentid">
           <input id="commentContent" value="Editor content goes here" type="hidden" name="content">
           <trix-editor input="commentContent"></trix-editor>
           <button class="btn btn-primary" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
-      </div>-->
+      </div>
 
       <!--COMENTARIOS-->
     </div>
     <div class="col-md-3 banners">
-      <img src="/images/detalle/banner-demo.jpg" class="img-responsive" />
-      <img src="/images/detalle/banner-demo.jpg" class="img-responsive" />
+      <%= render 'deals/banners' %>
     </div>
   </div>
 </div>
@@ -189,6 +174,35 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('.addtofavorites').click(function(event) {
+        var dealid = $(this).attr('dealid');
+
+        $.ajax({
+          url:  "/addtofavorites",
+          dataType: "json",
+          data: {
+             dealid: dealid
+          },
+          success: function(data) { 
+            alert('Exito');
+            console.log(data);
+          }
+        });
+    });
+    $('.removefromfavorites').click(function(event) {
+        var dealid = $(this).attr('dealid');
+        $.ajax({
+          url:  "/removefromfavorites",
+          dataType: "json",
+          data: {
+             dealid: dealid
+          },
+          success: function(data) { 
+            alert('Exito');
+            console.log(data);
+          }
+        });
+    });
     $('.reply').click(function(event) {
      $('.reply-answer').text('Respondiendo comentario de '+($(this).attr('de')));
      $('#parentid').val($(this).attr('commentid'));
