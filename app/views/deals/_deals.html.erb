@@ -11,21 +11,22 @@
           <% end %>
         </div>
         <div class="fecha">
-        <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
-        <% 
-          t1 = Time.now
-          t2 = deal.created_at
-          f1 = Date.today
-          f2 = deal.created_at.to_date
-          d1 = f1.day
-          d2 = f2.day
-        %>
-        <% if f1 == f2 %>
-          Hace <%= distance_of_time_in_words(t2, t1) %>
-          <% else %>
-          Hace <%= distance_of_time_in_words(f2, f1) %>
-        <% end %>
-        </div>
+          <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
+          <% 
+            t1 = Time.now
+            t2 = deal.created_at
+            f1 = Date.today
+            f2 = deal.created_at.to_date
+            d1 = f1.day
+            d2 = f2.day
+          %>
+          <% if f1 == f2 %>
+            Hace <%= distance_of_time_in_words(t2, t1) %>
+            <% else %>
+            Hace <%= distance_of_time_in_words(f2, f1) %>
+          <% end %>
+        </div>  
+      </div>
         <div class="col-xs-7">
           <div class="thumbs thumbs-oferta" id="<%= deal.id %>">
               <span class="<%= rank_style(deal.rank) %> grades">
@@ -54,7 +55,6 @@
               </span>
           </div>
         </div>
-      </div>
       <div class="col-sm-12 termo-gris no-padding">
         <% if deal.rank < 0 %>
               <span class="bar-cold">
