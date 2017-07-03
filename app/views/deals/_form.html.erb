@@ -86,6 +86,7 @@
                url_host: url_input
             },
             success: function(data) { 
+              console.log(data);
               $('.loader-image').hide();
               if(data.title != ""){
                 $('#deal_title').val(data.title);  
@@ -99,7 +100,7 @@
                 idIm = $(this).attr('id');
                 if (checkURL($("#"+idIm).attr('src'))){
                   $("#"+idIm).load(function() {
-                      if($(this).height() > 200 && $(this).width() > 200){
+                      if($(this).height() > 100 && $(this).width() > 100){
                         $(this).show();
                         $(this).addClass('img-responsive');
                       }else{
