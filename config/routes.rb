@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "mi-cuenta/mis-favoritas/:id" => "users#favorites"
   get "mi-cuenta/mis-votadas/:id" => "users#rated"
   get "mi-cuenta/mi-ranking/:id" => "users#ranking"
+  get "perfil-publico/:id" => "users#publicprofile"
   get "descuentos-por-tienda/:id/:slug" => "deals#stores"
   get "descuentos-por-categoria/:id/:slug" => "deals#categories"
   get 'todas-las-categorias', to: 'categories#list'
