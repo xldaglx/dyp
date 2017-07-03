@@ -1,0 +1,16 @@
+<div class="col-md-12">
+Nickname: <%= current_user.nickname %><br>
+promociones: <%= current_user.deals.count %><br>
+promociones hot: <%= @promoHot %><br>
+Seguidos : (Falta funcionalidad)
+</div>
+<div class="col-xs-3">
+	<ul class="list-group">
+	  <li class="list-group-item"><a href="/mi-cuenta/<%= current_user.id %>">Mi cuenta</a></li>
+	  <li class="list-group-item"><a href="/mi-cuenta/mis-votadas/<%= current_user.id %>">Calificadas</a></li>
+	  <li class="list-group-item"><a href="/mi-cuenta/mis-descuentos/<%= current_user.id %>">Mis Promociones</a></li>
+	  <li class="list-group-item"><a href="/mi-cuenta/mis-favoritas/<%= current_user.id %>">Favoritas</a></li>
+	  <li class="list-group-item"><a href="/mi-cuenta/mi-ranking/<%= current_user.id %>">Ranking</a></li>
+	  <li class="list-group-item"><%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %><!--a href="#">Cerrar Sesion</a--></li>
+	</ul>
+</div>

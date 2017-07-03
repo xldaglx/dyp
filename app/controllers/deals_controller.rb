@@ -163,6 +163,28 @@ class DealsController < ApplicationController
     end
   end
   def scrapp
+    img_urls = Array.new
+    url = params['url_host']
+    require 'open-uri'
+    page = Nokogiri::HTML(open(url))
+    page.xpath('//img').each do |img|
+      img_urls.push (img['src'])
+    end
+    title = page.css("title")[0].text
+    case url
+    when /amazon/
+      title = page.css("title")[0].text
+    end
+
+     respond_to do |format|
+       format.html
+       format.js {}   
+       format.json { 
+          render json: {:images => img_urls, :title => title}
+       } 
+     end
+  end
+  def scrapp1
     require 'nokogiri' #start by loading the nokogiri gem
     require 'open-uri' #this is required to open the URLs we are going to scrape
     require 'openssl'
@@ -240,6 +262,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank)
+      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:bootsy_image_gallery_id)
     end
 end

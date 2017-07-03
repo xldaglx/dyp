@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-md-12 description-new">
         <label>Descripción:</label>
-        <%= f.trix_editor :description, label: "Expira el:", placeholder: "Describe la oferta con tus propias palabras y comparte con la comunidad por qué vale la pena esta promoción."%>
+        <%= f.bootsy_area :description %>
       </div>
     </div>
     <div class="col-md-12">
@@ -57,6 +57,87 @@
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('#deal_link').on('paste', function (e) {
+      var url_input = e.originalEvent.clipboardData.getData('text');
+      $.ajax({
+        url:  "/validate/link",
+        dataType: "json",
+        data: {
+           url_host: url_input
+        },
+        success: function(data) { 
+          if(data.message == "exists"){
+            console.log("La promoción ya existe");
+          }else{
+            console.log("La promoción no existe");
+          }
+        }
+      });
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if (url_input.match(regex)) {
+        if(url_input.length > 10){ 
+        $('#scrapp-images').html('');
+          $('.loader-image').show();
+          $.ajax({
+            url:  "/image/scrapp",
+            dataType: "json",
+            data: {
+               url_host: url_input
+            },
+            success: function(data) { 
+              $('.loader-image').hide();
+              if(data.title != ""){
+                $('#deal_title').val(data.title);  
+              }
+              for (i in data.images) {
+                console.log(data.images[i]);
+                  $('#scrapp-images').append('<div class="col-lg-2 imgscrappcontainer"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none"></div>');  
+              }
+
+              $('.imgscrappcontainer img').each(function(index, el) {
+                idIm = $(this).attr('id');
+                if (checkURL($("#"+idIm).attr('src'))){
+                  $("#"+idIm).load(function() {
+                      if($(this).height() > 200 && $(this).width() > 200){
+                        $(this).show();
+                        $(this).addClass('img-responsive');
+                      }else{
+                        $(this).parent().remove();
+                      }
+                  });
+                }else{
+                  $(this).parent().remove();
+                }
+              });
+
+
+              /*
+              count=0;
+              for (i in data.images) {
+                  $('#scrapp-images').append('<div class="col-sm-2"><img src="'+data.images[i]+'" class="img-responsive image-to-load"></div>');
+                  if(count == 0){
+                    $('#deal_imagen').val(data.images[i]);
+                    $('#deal_title').val(data.title);                
+                  }
+                  count++;
+              }
+
+              $('.image-to-load').click(function(event) {
+                $('#deal_imagen').val($(this).attr('src'));
+              });
+              if(count > 0){
+                $(".LabelHelper").show();
+              }*/
+            }
+          });
+        }
+      } 
+      else {
+        alert("Error");
+      }
+    });
+    /*
     $('#deal_link').change(function(event) {
       var url_input = $(this).val();
       $.ajax({
@@ -112,5 +193,10 @@
       }
     
     });
+    */
   });
+
+function checkURL(url) {
+    return(url.match(/\.(jpeg|jpg)$/) != null);
+}
 </script>
