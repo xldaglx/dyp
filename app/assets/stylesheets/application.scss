@@ -683,10 +683,10 @@ li > a:hover{
   background-color: #FFF;
   border:1px solid #efefef;
   margin-bottom: 15px;
-  min-height: 425px;
+  min-height: 445px;
 }
 .mas-votadas{
-  min-height: 425px;
+  min-height: 445px;
   border:1px solid #efefef;
   background: #FFF;
 }
@@ -710,6 +710,7 @@ li > a:hover{
 }
 .image-box img{
   margin: 0 auto;
+  height: 125px;
 }
 .title-big{
   padding: 15px;
@@ -753,6 +754,7 @@ li > a:hover{
 .carousel-inner h2.name{
   color: #525457;
   max-height: 60px;
+  height: 60px;
   line-height: 20px;
   margin-top: 0px;
   overflow:hidden;
@@ -926,7 +928,14 @@ li > a:hover{
   color: #525457;
 }
 .no-padding-m{
-  padding: 0px 10px;
+  padding: 0px 10px 0px 0px;
+}
+.padding-l{
+  padding-left: 10px;
+}
+.padding-r{
+  padding-right: 20px;
+  padding-left: 0px;
 }
 .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active{
   text-align: left;
@@ -1411,6 +1420,10 @@ trix-editor{
   margin-top:20px;
 }
 @media screen and (max-width: 767px) {
+  .image-box img{
+    margin: 0 auto;
+    height: auto;
+  }
   .deal-det-login .modal-header .titulo-modal{
     margin: 0px 0px 10px 0px;
   }
@@ -1612,6 +1625,13 @@ trix-editor{
   }
   .no-padding-m{
     padding: 0px 0px 0px 0px;
+  }
+  .padding-l{
+    padding-left: 0px;
+  }
+  .padding-r{
+    padding-right: 0px;
+    padding-left: 0px;
   }
   .no-padding-head{
     padding: 0px 10px;
