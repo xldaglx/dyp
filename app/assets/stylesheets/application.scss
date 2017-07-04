@@ -694,6 +694,19 @@ li > a:hover{
 .promo-votada{
   padding: 0px 30px 30px 30px;
 }
+.oferta-ind{
+  background:#FFF;
+  border:1px solid #efefef;
+  margin: 0px 0px 15px 0px;
+  float:left;
+  width:100%;
+}
+.oferta-individual{
+    background: #FFFFFF;
+    float:left;
+    padding:20px 10px;
+    min-height: 210px;
+}
 .oferta{
   background:#FFF;
   border:1px solid #efefef;
@@ -762,9 +775,6 @@ li > a:hover{
   text-overflow:ellipsis;
   margin-bottom: 13px;
 }
-.oferta-individual .category{
-  margin-top: 15px;
-}
 .oferta-individual .category a{
   font-size: 12px;
   outline:0;
@@ -788,6 +798,7 @@ li > a:hover{
 }
 .oferta-head{
   padding: 7px 0px;
+  width:100%;
 }
 .termo-gris{
   width: 100%;
@@ -950,8 +961,8 @@ li > a:hover{
   border-left: 1px solid #eaeaea;
 }
 .thumbs-oferta .down{
-  margin-left:10px;
-  margin-right:5px;
+  margin-left:0px;
+  margin-right:2px;
 }
 .fa-thumbs-up{
   color: #d93438;
@@ -1135,20 +1146,31 @@ li > a:hover{
 .deal-detail{
   margin-top:30px;
 }
-  .banners img{
-margin-bottom: 10px;
+.banners img{
+  margin-bottom: 10px;
 }
-.deal-det{
-  padding: 20px 40px;
+.deal-deta{
   background-color: #FFF;
   border: 1px solid #efefef;
   margin-bottom: 30px;
+  margin-top:30px;
+  float:left;
+  width:100%;
+}
+.deal-deta .col-md-4, .deal-deta .col-md-8{
+  padding: 10px;
 }
 .deal-det-login{
   padding: 20px 0px 40px 0px;
   background-color: #FFF;
   border: 1px solid #efefef;
   margin-bottom: 30px;
+}
+.deal-det{
+  padding: 20px 30px;
+  background-color: #FFF;
+  border: 1px solid #efefef;
+  margin-bottom: 20px;
 }
 .deal-det .usuario{
   font-size: 12px;
@@ -1420,7 +1442,116 @@ trix-editor{
 .modal-body-login .actions{
   margin-top:20px;
 }
+.lista-compartir{
+  padding: 20px 25px 0px 25px;
+  min-width: 170px;
+}
+.lista-compartir li{
+  margin-right: 15px;
+}
+.det-social .lista-compartir li a{
+  font-size: 33px;
+  margin-left: 0px;
+  float: left;
+  padding: 3px 0px;
+}
+.lista-compartir li a:hover{
+  background-color: transparent;
+}
+.fa-whatsapp{
+  color: #009846;
+}
+.fa-whatsapp:hover{
+  color: #01823c;
+}
+.fa-facebook-official{
+  color: #4e69a2;
+}
+.fa-facebook-official:hover{
+  color: #3d5587;
+}
+.fa-twitter-square{
+  color: #32ccfe;
+}
+.fa-twitter-square:hover{
+  color: #2ab5e2;
+}
+.profile-header{
+  background-color: #efefef;
+  border-top: 4px solid #d93438;
+  padding: 20px 10px 20px 10px;
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #e7e7e7;
+}
+.profile-header img{
+  border: 4px solid #FFF;
+  border-radius: 100%;
+  max-width: 200px;
+}
+.profile-header .usuario{
+  color: #d93438;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 55px;
+}
+.profile-header .correo{
+  color: #333;
+  font-size: 14px;
+  font-weight: regular;
+}
+.profile-header .miembro{
+  color: #666;
+  font-size: 12px;
+  font-weight: regular;
+}
+.det-resumen{
+  text-align: center;
+}
+.resumen{
+  border-left: 1px solid #FFF;
+  margin-top: 40px;
+}
+.resumen .n-resumen{
+  font-size: 48px;
+  color: #d93438;
+}
+.resumen .txt-resumen{
+  font-size: 14px;
+  color: #333;
+  line-height: 18px;
+}
 @media screen and (max-width: 767px) {
+  .profile-header{
+    padding: 20px 10px 50px 10px;
+  }
+  .profile-header .usuario{
+    margin-top: 12px;
+    text-align: center;
+  }
+  .profile-header .correo{
+    text-align: center;
+  }
+  .profile-header img{
+    max-width: 150px;
+    margin: 0 auto;
+  }
+  .resumen{
+    border-left: none;
+    margin-top: 30px;
+  }
+  .resumen .n-resumen{
+    font-size: 35px;
+    line-height: 40px;
+  }
+  .resumen .txt-resumen{
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .lista-compartir{
+    padding: 20px 25px 0px 25px;
+    min-width: 200px;
+  }
   .image-box img{
     margin: 0 auto;
     height: auto;
@@ -1559,7 +1690,7 @@ trix-editor{
     text-align:center;
   }
   .grados-sign{
-    margin-left: 0px;
+    margin-left: -4px;
     top: -5px; 
   }
   .hot-deal{
@@ -1575,13 +1706,15 @@ trix-editor{
   }
   .oferta{
     padding: 15px 10px;
-    margin: 0px 0px 7px 0px !important;
+    margin: 0px 0px 200px 0px !important;
   }
   .oferta-head{
     background: #FFF;
     float:left;
-    border-top: 1px solid #efefef;
-    border-left: 1px solid #efefef;
+  }
+  .oferta-individual{
+    background: #FFFFFF;
+    float:left;
   }
   .oferta-individual .name{
     max-height: 35px;

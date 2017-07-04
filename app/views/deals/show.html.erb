@@ -102,7 +102,19 @@
       <div class="row det-social">
         <div class="col-md-12">
           <ul class="social-list">
-            <li><a href=""><i class="fa fa-share-alt" aria-hidden="true"></i> Compartir</a></li>
+            <li>
+              <div class="dropdown">
+                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i> Compartir
+                </a>
+                <ul class="dropdown-menu lista-compartir" aria-labelledby="dLabel">
+                  <li><a href=""><i class="visible-xs fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                  <li><a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                  <li><a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </li>
+
             <% if @deal.favorites.count == 0 %>
               <li><a href="#" class="addtofavorites" dealid="<%= @deal.id %>"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
             <% else %>
@@ -111,8 +123,21 @@
               <% end %>
               
             <% end %>
-            <li><a href=""><i class="fa fa-volume-up" aria-hidden="true"></i> Reportar</a></li>
+            <li><a href=""></a></li>
+            <!--li>
+              <div class="dropdown">
+                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-volume-up" aria-hidden="true"></i> Reportar <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                </ul>
+              </div>
+            </li-->
           </ul>
+          
         </div>
       </div>
       <!--BARRA PARA COMPARTIR O REPORTAR-->

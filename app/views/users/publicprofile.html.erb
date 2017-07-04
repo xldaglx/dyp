@@ -1,9 +1,10 @@
-<div class="row deal-detail">
-	<div class="container deal-det-login">
-	Estás viendo las publicaciones de este brother: <%= @user.nickname %>
-	Este brother tiene <%= @promoHot %> promocione shot
-	<a href="#">Seguir usuario </a>
-		<div class="col-xs-12">
+<div class="col-md-12 no-padding-m">
+	<div class="deal-deta">
+		<div class="col-md-12">
+			<p>Estás viendo las publicaciones de este brother: <%= @user.nickname %></p>
+			<p>Este brother tiene <%= @promoHot %> Promociones HOT <a href="#">Seguir usuario </a></p>
+		</div>
+		<div class="col-md-12">
     		<%= render "deals/deals" %>
 		</div>
 	</div>
