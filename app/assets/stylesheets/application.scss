@@ -1615,7 +1615,91 @@ trix-editor{
   border-left: 1px solid #e7e7e7;
   min-height: 350px;
 }
+.menu-moderar{
+    background: transparent;
+    margin: 0px 0px 10px 0px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 15px 15px 20px 15px;
+    float: left;
+    width: 100%;
+    list-style: none;
+}
+.menu-moderar li{
+  float: left;
+  margin-right: 30px;
+}
+.menu-moderar a{
+  color: #333;
+  font-size: 16px;
+}
+.menu-moderar a:hover{
+  color: #d93438;
+  text-decoration: none;
+}
+.menu-moderar a:focus, .menu-moderar a:activate {
+  color: #d93438;
+  text-decoration: none;
+  font-weight: bold;
+}
+.menu-moderar .activo{
+  font-weight: bold;
+  color: #d93438;
+}
+.btn-ver-promo{
+  float: right;
+  background: #043152;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.btn-ver-promo:hover{
+  background: #105587;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-aceptar{
+  background: transparent;
+  margin: 0px 0px 10px 0px;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 15px 15px 20px 15px;
+  float: right;
+  width: 100%;
+  list-style: none;
+}
+.menu-aceptar li{
+  float: right;
+  margin-left: 10px;
+}
+.btn-rechazar{
+  font-size: 14px;
+  background-color: #666;
+  color: #FFF;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 8px 25px;
+}
+.btn-rechazar:hover{
+  background-color: #555;
+  color: #FFF;
+  text-decoration: none;
+}
 @media screen and (max-width: 767px) {
+  .btn-rechazar{
+    margin-top:8px;
+  }
+  .menu-moderar a{
+    color: #333;
+    font-size: 13px;
+  }
+  .menu-moderar li{
+    margin-bottom: 15px;
+    margin-right: 15px;
+  }
   .public-profile{
     text-align: center;
   }

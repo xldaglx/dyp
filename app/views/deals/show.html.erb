@@ -8,6 +8,15 @@
     <div class="col-md-9 deal-det">
       <!--CATEGORÍA, USUARIO, COMENTARIOS Y RANKING-->
       <div class="row">
+        <!--Comienza barra para aceptar-->
+        <div class="col-md-12">
+          <ul class="menu-aceptar">
+            <a href="#"><li class="btn-seguir"><span class="glyphicon glyphicon-ok"></span> Aceptar y Publicar</li></a>
+            <a href="#"><li class="btn-rechazar"><span class="glyphicon glyphicon-remove"></span> Rechazar</li></a>
+            <a href="#"><li class="btn-rechazar"><span class="glyphicon glyphicon-trash"></span> Eliminar</li></a>
+          </ul>
+        </div>
+        <!--Termina barra para aceptar-->
         <div class="col-md-7">
             <div class="category">
               <a href="/descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>

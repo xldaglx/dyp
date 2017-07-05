@@ -1,51 +1,53 @@
 <% @deals.each do |deal| %>
 <div id="offer-container" class="deal">
   <div class="col-sm-4 no-padding-m">
-    <div class="col-xs-12 oferta-head no-padding">
-      <div class="col-xs-5">
-        <div class="usuario">
-          <% if deal.user_id.present? %>
-          <a href="/perfil-publico/<%=deal.user_id%>"><%= deal.user.nickname %></a>
-          <% else %>
-          <a href=""> Invitado </a>
-          <% end %>
-        </div>
-        <div class="fecha">
-          <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
-          <% 
-            t1 = Time.now
-            t2 = deal.created_at
-            f1 = Date.today
-            f2 = deal.created_at.to_date
-            d1 = f1.day
-            d2 = f2.day
-          %>
-          <% if f1 == f2 %>
-            Hace <%= distance_of_time_in_words(t2, t1) %>
+    <div class="oferta-ind">
+      <div class="col-md-12 oferta-head no-padding">
+        <div class="col-xs-4">
+          <div class="usuario">
+            <% if deal.user_id.present? %>
+            <a href="/perfil-publico/<%=deal.user_id%>"><%= deal.user.nickname %></a>
             <% else %>
-            Hace <%= distance_of_time_in_words(f2, f1) %>
-          <% end %>
-        </div>  
-      </div>
-        <div class="col-xs-7">
-          <a href="#">asdasd</a>
-        </div>
-      <div class="col-sm-12 termo-gris no-padding">
-        <% if deal.rank < 0 %>
-              <span class="bar-cold">
-              </span>
-            <% elsif deal.rank >= 0 && deal.rank <= 100 %>
-              <span class="bar-warm">
-              </span>
-            <% elsif deal.rank >= 101 && deal.rank <= 200 %>
-              <span class="bar-warmer">
-              </span>
-            <% else %>
-              <span class="bar-hot">
-              </span>
+            <a href=""> Invitado </a>
             <% end %>
+          </div>
+          <div class="fecha">
+            <!--%= (Datetime.today - deal.created_at.to_datetime).to_i %-->
+            <% 
+              t1 = Time.now
+              t2 = deal.created_at
+              f1 = Date.today
+              f2 = deal.created_at.to_date
+              d1 = f1.day
+              d2 = f2.day
+            %>
+            <% if f1 == f2 %>
+              Hace <%= distance_of_time_in_words(t2, t1) %>
+              <% else %>
+              Hace <%= distance_of_time_in_words(f2, f1) %>
+            <% end %>
+          </div>  
+        </div>
+        <div class="col-xs-8">
+          <a class="btn-ver-promo" href="#"><span class="glyphicon glyphicon-cog"></span> Ver promoción</a>
+        </div>
+      </div>
+      <div class="col-sm-12 termo-gris no-padding">
+          <% if deal.rank < 0 %>
+                <!--span class="bar-cold">
+                </span-->
+              <% elsif deal.rank >= 0 && deal.rank <= 100 %>
+                <!--span class="bar-warm">
+                </span-->
+              <% elsif deal.rank >= 101 && deal.rank <= 200 %>
+                <!--span class="bar-warmer">
+                </span-->
+              <% else %>
+                <!--span class="bar-hot">
+                </span-->
+              <% end %>
       </div>   
-      <div class="row oferta">
+      <div class="oferta-individual col-xs-12">
         <div class="col-xs-5">
           <a href="/descuentos/<%= deal.id %>-<%= deal.slug %>">
             <% if deal.imagen.present? %>
@@ -81,6 +83,7 @@
           <a class="comments hidden-xs" href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a> 
         </div>
       </div>
+      
     </div>
   </div>
 </div>
