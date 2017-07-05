@@ -1,5 +1,5 @@
 <!--MENU PROFILE PARA DESKTOP-->
-<div class="col-xs-12 no-padding visible-lg visible-md" style="border-right: 1px solid #e7e7e7;">
+<div class="col-xs-12 no-padding visible-lg visible-md">
 	<ul class="list-group">
 	  <li class="list-group-item">
 	  	<a href="/mi-cuenta/<%= current_user.id %>">
@@ -22,7 +22,7 @@
 	  	</a>
 	  </li>
 	  <li class="list-group-item">
-	  	<i class="fa fa-times" aria-hidden="true"></i> <%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
+	  	<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	  </li>
 	  <!--<li class="list-group-item"><a href="/mi-cuenta/mi-ranking/<%= current_user.id %>">Ranking</a></li>-->
 	</ul>
@@ -31,20 +31,18 @@
 <!--MENU PROFILE PARA MOBILE-->
 <div class="col-md-12 visible-sm visible-xs no-padding">
 	<div class="scrollmenu-2">
-		<a href="#">
+		<a href="/mi-cuenta/<%= current_user.id %>">
 			<i class="fa fa-user-circle-o" aria-hidden="true"></i> Mis Datos
 		</a>
-		<a href="#">
+		<a href="/mi-cuenta/mis-descuentos/<%= current_user.id %>">
 			<i class="fa fa-check" aria-hidden="true"></i> Promociones Publicadas
 		</a>
-		<a href="#">
+		<a href="/mi-cuenta/mis-votadas/<%= current_user.id %>">
 			<i class="fa fa-thermometer-full" aria-hidden="true"></i> Promociones HOT
 		</a>
-		<a href="#">
+		<a href="/mi-cuenta/mis-favoritas/<%= current_user.id %>">
 			<i class="fa fa-star" aria-hidden="true"></i> Favoritas
 		</a>
-		<a href="#">
-			<i class="fa fa-times" aria-hidden="true"></i> Cerrar Sesión
-		</a>
+		<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	</div>
 </div>

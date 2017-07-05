@@ -1610,6 +1610,11 @@ trix-editor{
 .list-group i{
   margin-right: 7px;
 }
+.contenedor-pub{
+  padding: 0px 10px 10px 20px;
+  border-left: 1px solid #e7e7e7;
+  min-height: 350px;
+}
 @media screen and (max-width: 767px) {
   .public-profile{
     text-align: center;
