@@ -1521,12 +1521,58 @@ trix-editor{
   color: #333;
   line-height: 18px;
 }
+.public-profile img{
+  max-width: 150px;
+  margin: 0 auto;
+}
+.public-profile .usuario{
+  margin-top: 30px;
+}
+.public-profile .miembro{
+  margin-bottom: 10px;
+}
+.public-profile .resumen{
+  margin-top: 23px;
+}
+.public-profile .n-resumen{
+  font-size: 40px;
+}
+.cont-public{
+  padding: 30px 10px;
+  float: left;
+}
+.btn-seguir{
+  font-size: 14px;
+  background-color: #16A086;
+  color: #FFF;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 8px 25px;
+}
+.btn-seguir:hover{
+  background-color: #0B8389;
+  color: #FFF;
+  text-decoration: none;
+}
 @media screen and (max-width: 767px) {
+  .public-profile{
+    text-align: center;
+  }
+  .public-profile .usuario{
+    margin-top: 10px;
+  }
+  .cont-public{
+    padding: 20px 0px;
+  }
   .profile-header{
     padding: 20px 10px 50px 10px;
   }
   .profile-header .usuario{
     margin-top: 12px;
+    text-align: center;
+  }
+  .profile-header .miembro{
     text-align: center;
   }
   .profile-header .correo{

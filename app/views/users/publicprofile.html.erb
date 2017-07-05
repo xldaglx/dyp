@@ -1,11 +1,68 @@
 <div class="col-md-12 no-padding-m">
 	<div class="deal-deta">
-		<div class="col-md-12">
-			<p>Estás viendo las publicaciones de este brother: <%= @user.nickname %></p>
-			<p>Este brother tiene <%= @promoHot %> Promociones HOT <a href="#">Seguir usuario </a></p>
+		<div class="col-md-12 profile-header public-profile">
+			<div class="col-md-5">
+				<div class="col-md-6">
+					<img src="/images/users/profile/profile.png" class="img-responsive">
+				</div>
+				<div class="col-md-6">
+					<div class="usuario"><%= current_user.nickname %></div>
+					<div class="miembro">Miembro desde: <strong>FALTA</strong></div>
+					<a class="btn-seguir" href="#"><i class="fa fa-bell-o" aria-hidden="true"></i> Seguir</a>
+				</div>
+			</div>
+			<div class="col-md-12 visible-xs" style="height: 15px;"></div>
+			<div class="col-md-7">
+				<div class="col-md-6">
+					<div class="col-xs-6 det-resumen">
+						<div class="resumen">
+							<div class="n-resumen">
+								--
+							</div>
+							<div class="txt-resumen">
+								Ranking
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 det-resumen">
+						<div class="resumen">
+							<div class="n-resumen">
+								<%= current_user.deals.count %>
+							</div>
+							<div class="txt-resumen">
+								Promociones<br>Publicadas
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="col-xs-6 det-resumen">
+						<div class="resumen">
+							<div class="n-resumen">
+								<%= @promoHot %>
+							</div>
+							<div class="txt-resumen">
+								Promociones<br>HOT
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 det-resumen">
+						<div class="resumen">
+							<div class="n-resumen">
+								--
+							</div>
+							<div class="txt-resumen">
+								Seguidores
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-12">
-    		<%= render "deals/deals" %>
+			<div class="cont-public">
+				<%= render "deals/deals" %>
+			</div>
 		</div>
 	</div>
 </div>
