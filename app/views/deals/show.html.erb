@@ -8,15 +8,19 @@
     <div class="col-md-9 deal-det">
       <!--CATEGORÍA, USUARIO, COMENTARIOS Y RANKING-->
       <div class="row">
+        <% if current_user.try(:admin?) %>
         <!--Comienza barra para aceptar-->
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align: center;margin: auto;">
           <ul class="menu-aceptar">
-            <a href="#"><li class="btn-seguir"><span class="glyphicon glyphicon-ok"></span> Aceptar y Publicar</li></a>
-            <a href="#"><li class="btn-rechazar"><span class="glyphicon glyphicon-remove"></span> Rechazar</li></a>
-            <a href="#"><li class="btn-rechazar"><span class="glyphicon glyphicon-trash"></span> Eliminar</li></a>
+            <a href="#"><li class="btn-aceptar"><span class="glyphicon glyphicon-ok"></span> Aceptar y Publicar</li></a>
+            <a href="#"><li class="btn-editar"><span class="glyphicon glyphicon-pencil"></span> Editar</li></a>
+            <a href="#rechazar" data-toggle="modal"><li class="btn-rechazar"><span class="glyphicon glyphicon-remove"></span> Rechazar</li></a>
+            <a href="#eliminar" data-toggle="modal"><li class="btn-rechazar"><span class="glyphicon glyphicon-trash"></span> Eliminar</li></a>
+            <%= render 'deals/modal' %>
           </ul>
         </div>
         <!--Termina barra para aceptar-->
+        <% end %>
         <div class="col-md-7">
             <div class="category">
               <a href="/descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>

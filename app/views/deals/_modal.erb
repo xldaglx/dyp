@@ -1,0 +1,55 @@
+<style type="text/css">
+  .modal-body .glyphicon-trash, .modal-body .glyphicon-remove{
+    border:2px solid #d93438;
+    color: #d93438;
+    font-size: 70px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    padding: 30px;
+  }
+  .modal-body h4{
+    margin: 10px 0px 20px 0px;
+  }
+  .modal-body textarea{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+  }
+</style>
+            <div class="modal fade bs-example-modal-sm" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <h4>¿Estás seguro de eliminar esta promoción?</h4>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Eliminar promoción</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade bs-example-modal-sm" id="rechazar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    <h4>Esta promoción no cumple con los requisitos para ser publicada debido a:</h4>
+                    <form>
+                      <div class="col-md-12 no-padding">
+                        <textarea name="comentarios" rows="4" placeholder="Escribe aquí los comentarios para el usuario"></textarea>
+                      </div>
+                    </form>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Rechazar promoción</button>
+                  </div>
+                </div>
+              </div>
+            </div>

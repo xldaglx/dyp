@@ -1665,31 +1665,63 @@ trix-editor{
   margin: 0px 0px 10px 0px;
   border-top: 1px solid #e7e7e7;
   border-bottom: 1px solid #e7e7e7;
-  padding: 15px 15px 20px 15px;
-  float: right;
+  padding: 15px 0px 20px 0px;
+  float: left;
   width: 100%;
   list-style: none;
+  text-align:center;
 }
 .menu-aceptar li{
-  float: right;
   margin-left: 10px;
+  display: inline-block;
 }
 .btn-rechazar{
   font-size: 14px;
-  background-color: #666;
-  color: #FFF;
+  border: 2px solid #666;
+  color: #666;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  padding: 8px 25px;
+  padding: 6px 20px;
 }
-.btn-rechazar:hover{
-  background-color: #555;
+.btn-rechazar:hover, .btn-rechazar:focus{
+  background-color: #666;
   color: #FFF;
   text-decoration: none;
+  outline:0px;
+}
+.btn-editar{
+  font-size: 14px;
+  border: 2px solid #3498DB;
+  color: #3498DB;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 6px 20px;
+}
+.btn-editar:hover, .btn-editar:focus{
+  background-color: #3498DB;
+  color: #FFF;
+  text-decoration: none;
+  outline:0px;
+}
+.btn-aceptar{
+  font-size: 14px;
+  border: 2px solid #16A086;
+  color: #16A086;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 6px 20px;
+}
+.btn-aceptar:hover, .btn-aceptar:focus{
+  background-color: #16A086;
+  color: #FFF;
+  text-decoration: none;
+  outline:0px;
 }
 @media screen and (max-width: 767px) {
-  .btn-rechazar{
+  .btn-rechazar, .btn-editar{
     margin-top:8px;
   }
   .menu-moderar a{
