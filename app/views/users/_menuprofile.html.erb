@@ -22,6 +22,11 @@
 	  	</a>
 	  </li>
 	  <li class="list-group-item">
+	  	<a href="/ranking">
+	  		<i class="fa fa-line-chart" aria-hidden="true"></i> Ranking <span class="flecha-down glyphicon glyphicon-chevron-right"></span>
+	  	</a>
+	  </li>
+	  <li class="list-group-item">
 	  	<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	  </li>
 	  <!--<li class="list-group-item"><a href="/mi-cuenta/mi-ranking/<%= current_user.id %>">Ranking</a></li>-->
@@ -43,6 +48,9 @@
 		<a href="/mi-cuenta/mis-favoritas/<%= current_user.id %>">
 			<i class="fa fa-star" aria-hidden="true"></i> Favoritas
 		</a>
+		<a href="/ranking">
+	  		<i class="fa fa-line-chart" aria-hidden="true"></i> Ranking
+	  	</a>
 		<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	</div>
 </div>

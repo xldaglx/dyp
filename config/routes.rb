@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get 'updateRank', to: 'deals#rank'
   get 'saveComment', to: 'comments#saveComment'
   get 'moderate', to: 'deals#moderate'
+  get 'nosotros', to: 'welcome#nosotros'
+  get 'contacto', to: 'welcome#contacto'
+  get 'ayuda', to: 'welcome#ayuda'
+  get 'terminos-condiciones', to: 'welcome#terminos-condiciones'
   get "mi-cuenta/:id" => "users#profile"
   get "mi-cuenta/mis-descuentos/:id" => "users#deals"
   get "mi-cuenta/mis-favoritas/:id" => "users#favorites"

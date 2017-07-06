@@ -1,8 +1,7 @@
-
 		<div class="col-md-12 profile-header">
 			<div class="col-md-5">
 				<div class="col-md-6">
-					<%= image_tag current_user.avatar.url(:desktop), class: 'img-responsive' %>
+					<%= image_tag current_user.avatar.url("users/desktop"), class: 'img-responsive' %>
 				</div>
 				<div class="col-md-6">
 					<div class="usuario"><%= current_user.nickname %></div>
