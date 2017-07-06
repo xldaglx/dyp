@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'addtofavorites', to: 'favorites#create'
   get 'removefromfavorites', to: 'favorites#delete'
   get 'removeComment', to: 'likes#delete'
+  get 'cranking', to: 'users#cranking'
+  get 'ranking', to: 'users#ranking'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end

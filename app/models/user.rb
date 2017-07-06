@@ -3,7 +3,7 @@ class User < ApplicationRecord
 	has_many :behaviors
 	has_many :comments
   	has_many :favorites
-	has_attached_file :avatar, styles: { big: "150x150>" ,thumb: "20x20>" }, :path => ":rails_root/public/images/users/:style/:filename", :url => "/images/users/:style/:filename",  default_url: "/images/:style/user-no-photo.png"
+	has_attached_file :avatar, styles: { desktop: "200x200#" ,mobile: "150x150#" }, :path => ":rails_root/public/images/users/:style/:filename", :url => "/images/users/:style/:filename",  default_url: "/images/:style/user-no-photo.png"
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
