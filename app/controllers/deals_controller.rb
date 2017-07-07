@@ -70,9 +70,48 @@ class DealsController < ApplicationController
       @deals = Deal.all.page(params[:page]).order('rank DESC')
     end 
   end
+  def updateStatus
+    id = params[:id]
+    iddeal = params[:iddeal]
+    if id == "accept"
+      @deal = Deal.find(iddeal)
+      @deal.status = 1
+    else 
+      if id == "reject"
+        @deal = Deal.find(iddeal)
+        @deal.status = 2
+        reason = params[:reason]
+        #send-email
+      else
+        id = "error"
+      end
+    end
+    if @deal.save  
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => id}
+        } 
+      end
+    else
+      format.html { render :show }
+      format.json { render json: @deal.errors, status: :unprocessable_entity }
+
+    end
+
+  end
 
   def moderate
-    @deals = Deal.all
+    if params[:status].present?
+      @deals = Deal.where('status = '+params[:status])
+    else
+      @deals = Deal.all
+    end
+      @deals0 = Deal.where('status = 0').count
+      @deals1 = Deal.where('status = 1').count
+      @deals2 = Deal.where('status = 2').count
+      @deals3 = Deal.all.count
   end
 
   # GET /deals/1

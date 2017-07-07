@@ -11,10 +11,17 @@
         <% if current_user.try(:admin?) %>
         <!--Comienza barra para aceptar-->
         <div class="col-md-12" style="text-align: center;margin: auto;">
+          <% if @deal.status == 2 %>
+            <p> Estatus: Rechazada</p>
+          <% end %>
           <ul class="menu-aceptar">
-            <a href="#"><li class="btn-aceptar"><span class="glyphicon glyphicon-ok"></span> Aceptar y Publicar</li></a>
-            <a href="#"><li class="btn-editar"><span class="glyphicon glyphicon-pencil"></span> Editar</li></a>
+            <% if @deal.status != 1 %>
+            <a href="#aceptar" id="accept" class='deal-action'><li class="btn-aceptar"><span class="glyphicon glyphicon-ok"></span> Publicar</li></a>
+            <a href="/descuentos/<%= @deal.id %>/edit"><li class="btn-editar"><span class="glyphicon glyphicon-pencil"></span> Editar</li></a>
+            <% end %>
+            <% if @deal.status != 2 %>
             <a href="#rechazar" data-toggle="modal"><li class="btn-rechazar"><span class="glyphicon glyphicon-remove"></span> Rechazar</li></a>
+            <% end %>
             <a href="#eliminar" data-toggle="modal"><li class="btn-rechazar"><span class="glyphicon glyphicon-trash"></span> Eliminar</li></a>
             <%= render 'deals/modal' %>
           </ul>
@@ -88,7 +95,7 @@
           <% if @deal.imagen.present? %>
             <%= image_tag @deal.imagen, class: 'img-responsive' %>
           <% else %>
-            <%= image_tag @deal.promoimage.url(:medium), class: 'img-responsive' %>
+            <%= image_tag @deal.promoimage.url(:big), class: 'img-responsive' %>
           <% end %>
         </div>
         <div class="col-md-8">
@@ -212,6 +219,21 @@
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('.deal-action').click(function(event) {
+     id = $(this).attr('id');
+     iddeal = <%= @deal.id %>
+      $.ajax({
+        url:  "/dealaction",
+        dataType: "json",
+        data: {
+           id: id,
+           iddeal:iddeal
+        },
+        success: function(data) { 
+          window.location.reload();
+        }
+      });
+    });
     $('.addtofavorites').click(function(event) {
         var dealid = $(this).attr('dealid');
 

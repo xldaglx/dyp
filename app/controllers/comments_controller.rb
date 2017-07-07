@@ -21,12 +21,46 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def updateStatus
+    id = params[:id]
+    idcomment = params[:idcomment]
+    if id == "accept"
+      @comment = Comment.find(idcomment)
+      @comment.status = 1
+    end
+    if @comment.save  
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => id}
+        } 
+      end
+    else
+      format.html { render :show }
+      format.json { render json: @deal.errors, status: :unprocessable_entity }
+
+    end
+
+  end
+  def moderate
+    if params[:status].present?
+      @comments = Comment.where('status = '+params[:status])
+    else
+      @comments = Comment.all
+    end
+      @comments0 = Comment.where('status = 0').count
+      @comments1 = Comment.where('status = 1').count
+      @comments2 = Comment.where('status = 2').count
+      @comments3 = Comment.all.count
+  end
+
   def saveComment
     if user_signed_in?
     promoid = params[:promoid]
     description = params[:description]
     parent = params[:parent]
-    status = 2
+    status = 0
     userid = current_user.id
     @comment = Comment.new(description: description, user_id: userid, deal_id: promoid, status: status, parent: parent)
     @comment.save
@@ -74,7 +108,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to '/moderatecomments/', notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

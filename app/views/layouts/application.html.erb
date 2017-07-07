@@ -63,7 +63,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
-            <li class="hidden-xs"><a href="/moderate">Moderar </a></li>
+            <li class="hidden-xs"><a href="/moderate">Moderar Promociones </a></li>
+            <li class="hidden-xs"><a href="/moderatecomments">Moderar Comentarios</a></li>
           <% end %>
             <li class="dropdown hidden-xs">
               <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down"></span></a>

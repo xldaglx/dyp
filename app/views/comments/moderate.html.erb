@@ -1,0 +1,49 @@
+<div class="row" id="deals">
+	<h1 style="padding: 0px 15px;">Moderar Comentarios</h1>
+	<div class="container">
+		<ul class="menu-moderar">
+			<a href="/moderatecomments"><li><span class="glyphicon glyphicon-list"></span> Todas (<%= @comments3 %>)</li></a>
+			<a href="?status=0"><li><span class="glyphicon glyphicon-bell"></span> Por Aceptar (<%= @comments0 %>)</li></a>
+			<a href="?status=1"><li><span class="glyphicon glyphicon-ok"></span> Aceptadas (<%= @comments1 %>)</li></a>
+		</ul>
+	</div>
+	<!-- INICIA LISTADO DE PROMOCIONES -->
+	<div class="container page">
+		<table>
+			<tr>
+				<th>Comentario</th>
+				<th>Promocion</th>
+				<th>Publicar</th>
+				<th>Eliminar</th>
+			</tr>
+			<% @comments.each do |comment| %>
+			<tr>
+				<td><%= comment.description.html_safe %></td>
+				<td><a href="/descuentos/<%=comment.deal.id%>-<%= comment.deal.slug %>" target="_blank">Ver promoción</a></td>
+				
+				<td id="accept" idcomment="<%= comment.id %>"><% if comment.status != 1 %><a href="#Publicar" class='comment-action'>Publicar</a><% end %></td>
+
+        		<td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<!-- TERMINA LISTADO DE PROMOCIONES -->
+</div>
+<script type="text/javascript">
+    $('.comment-action').click(function(event) {
+     id = $(this).parent('td').attr('id');
+     idcomment = $(this).parent('td').attr('idcomment');
+      $.ajax({
+        url:  "/commentaction",
+        dataType: "json",
+        data: {
+           id: id,
+           idcomment:idcomment
+        },
+        success: function(data) { 
+          window.location.reload();
+        }
+      });
+    });
+</script>

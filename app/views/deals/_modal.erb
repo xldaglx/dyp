@@ -28,7 +28,8 @@
                     <span class="glyphicon glyphicon-trash"></span>
                     <h4>¿Estás seguro de eliminar esta promoción?</h4>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Eliminar promoción</button>
+
+                    <%= link_to 'Eliminar promoción', @deal, method: :delete, class: "btn btn-primary" %>
                   </div>
                 </div>
               </div>
@@ -48,8 +49,13 @@
                       </div>
                     </form>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Rechazar promoción</button>
+                    <button type="button" class="btn btn-primary deal-action" id="reject">Rechazar promoción</button>
                   </div>
                 </div>
               </div>
             </div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    
+  });
+</script>
