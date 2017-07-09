@@ -58,15 +58,15 @@ ActiveRecord::Schema.define(version: 20170706161927) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
-    t.string   "link"
+    t.string   "link",                    limit: 355
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.integer  "type_deal"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"

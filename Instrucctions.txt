@@ -1,3 +1,5 @@
+bundle exec ruby app.rb -p 8080conRAILS_ENV=production rake assets:precompile
+rails server -e production
 
 Agregar -> gem 'devise' a gemfile
 rails generate devise:install

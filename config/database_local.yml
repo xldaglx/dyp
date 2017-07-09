@@ -1,0 +1,27 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: DaG09080$
+  host: 127.0.0.1
+  port: 3306
+
+development:
+  <<: *default
+  database: promodescuentos
+
+test:
+  <<: *default
+  database: promodescuentos
+
+production:
+   adapter: mysql2
+   encoding: utf8
+   pool: 5
+   timeout: 5000
+   username: root
+   password: 4gnd12facgueEqAO
+   database: dyp
+   socket: /cloudsql/dypv1-173102:us-central1:descuentosypromociones
+    
+

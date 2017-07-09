@@ -7,7 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '05a9901969d3e62848d0cffbdc0a9962f5981b5c54ef9e6b8b60abb47b271b2d9973a88e3a8e47e052e9041c2c024d2c5eca2a15adae85b7a490b7dc3a40e53d'
-
+  config.secret_key = 'b197028fd3aded50fbc533a5b77c006aaa612d320427a3e35d79fd80955bbd632f14d3ee1fb99e53f175676e90d501adaa8f8fb11086626bb9c9c5c20c091520'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -251,7 +251,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, "184974078627156", "468af90735252a1fc185918a00d17efa",   scope: 'email', info_fields: 'email'
+  config.omniauth :facebook, "1927605467495785", "636dfa524373374d5836d663a2f67fd0",   scope: 'email', info_fields: 'email'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

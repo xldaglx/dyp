@@ -134,16 +134,17 @@
                 </ul>
               </div>
             </li>
-
-            <% if @deal.favorites.count == 0 %>
-              <li><a href="#" class="addtofavorites" dealid="<%= @deal.id %>"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
-            <% else %>
-              <% @deal.favorites.each do |favorites| %>
-                <li><a href="#" class="removefromfavorites" dealid="<%= favorites.id %>"><i class="fa fa-star" aria-hidden="true"></i> Eliminar de Favoritas </a></li>
+            <% if user_signed_in? %>
+              <% if @deal.favorites.count == 0 %>
+                <li><a href="#" class="addtofavorites" dealid="<%= @deal.id %>"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
+              <% else %>
+                <% @deal.favorites.each do |favorites| %>
+                  <li><a href="#" class="removefromfavorites" dealid="<%= favorites.id %>"><i class="fa fa-star" aria-hidden="true"></i> Eliminar de Favoritas </a></li>
+                <% end %>
               <% end %>
-              
+            <% else %>
+            <li><a href="#login" class="down" data-toggle="modal"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
             <% end %>
-            <li><a href=""></a></li>
             <!--li>
               <div class="dropdown">
                 <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

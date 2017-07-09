@@ -65,3 +65,5 @@ gem 'trix' #Editor TextArea WYWYG
 gem "font-awesome-rails"
 gem 'kaminari'
 gem 'bootsy'
+gem 'therubyracer'
+gem 'execjs'

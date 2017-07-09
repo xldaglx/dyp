@@ -1,0 +1,1 @@
+window.Bootsy=window.Bootsy||{},window.Bootsy.imageTemplate=function(t,i){return'<li><a class="btn btn-default '+(i&&i.size?" btn-"+i.size:"")+'" data-wysihtml5-command="customCommand" title="'+t.image.insert+'" tabindex="-1"><span class="glyphicon glyphicon-picture"></span></a></li>'};
