@@ -7238,7 +7238,7 @@ a.badge:hover, a.badge:focus {
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 21px;
-  font-weight: 200;
+  font-weight: normal;
 }
 /* line 24, /Users/aa321936/.rvm/gems/ruby-2.3.0/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_jumbotron.scss */
 .jumbotron > hr {
@@ -13229,7 +13229,7 @@ body {
 
 /* line 41, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .navbar-brand {
-  font-weight: 200;
+  font-weight: normal;
 }
 
 /* line 44, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
@@ -13445,7 +13445,7 @@ body {
 
 /* line 183, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .grados-sign {
-  font-weight: 200;
+  font-weight: normal;
   margin-left: -4px;
   top: -5px;
   position: relative;
@@ -13579,7 +13579,7 @@ h1 {
 /* line 276, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .mi-cuenta {
   float: right;
-  font-weight: 200;
+  font-weight: normal;
   color: #FFF;
 }
 
@@ -13594,7 +13594,7 @@ h1 {
 /* line 287, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .mi-cuenta a {
   font-size: 13px;
-  font-weight: 200;
+  font-weight: normal;
   line-height: 38px;
   color: #FFF;
   outline: 0;
@@ -13663,7 +13663,7 @@ li > a:hover {
   margin-top: 8px;
   color: #525457;
   font-size: 18px;
-  font-weight: 200;
+  font-weight: normal;
 }
 
 /* line 344, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
@@ -14042,7 +14042,7 @@ li > a:hover {
   text-align: left;
   padding: 5px 0px;
   font-size: 13px;
-  font-weight: 200;
+  font-weight: normal;
 }
 
 /* line 611, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
@@ -14333,7 +14333,7 @@ li > a:hover {
 /* line 816, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .oferta-head .fecha {
   color: #999;
-  font-weight: 200;
+  font-weight: normal;
   font-size: 10px;
   line-height: 10px;
 }
@@ -14348,7 +14348,7 @@ li > a:hover {
 /* line 827, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .category a {
   color: #999;
-  font-weight: 200;
+  font-weight: normal;
   font-size: 16px;
   outline: 0;
 }
@@ -14375,7 +14375,7 @@ li > a:hover {
 /* line 846, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .fis-web {
   margin-left: 5px;
-  font-weight: 200;
+  font-weight: normal;
   font-size: 12px;
   text-transform: none;
 }
@@ -14616,7 +14616,7 @@ li > a:hover {
 .menu-sign a {
   font-size: 13px;
   margin-right: 25px;
-  font-weight: 200;
+  font-weight: normal;
   outline: 0;
 }
 
@@ -14664,7 +14664,7 @@ li > a:hover {
 /* line 1046, /Users/aa321936/Sites/Dyp/app/assets/stylesheets/application.scss */
 .titulo-modal span {
   font-size: 14px;
-  font-weight: 200;
+  font-weight: normal;
   color: #525457;
 }
 
@@ -14850,7 +14850,7 @@ li > a:hover {
 .deal-det .usuario {
   font-size: 12px;
   color: #666;
-  font-weight: 200;
+  font-weight: normal;
   float: left;
 }
 
@@ -14866,7 +14866,7 @@ li > a:hover {
 .deal-det .fecha {
   font-size: 11px;
   color: #999;
-  font-weight: 200;
+  font-weight: normal;
   float: left;
   margin-top: 1px;
   margin-right: 20px;
