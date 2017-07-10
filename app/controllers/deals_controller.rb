@@ -196,7 +196,7 @@ class DealsController < ApplicationController
          format.html
          format.js {} 
          format.json { 
-            render json: {:message => 'success'}
+            render json: {:message => 'error'}
         }       
       end
     end

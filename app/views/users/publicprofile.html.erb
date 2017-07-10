@@ -6,9 +6,10 @@
 					<img src="/images/users/profile/profile.png" class="img-responsive">
 				</div>
 				<div class="col-md-6">
-					<div class="usuario"><%= current_user.nickname %></div>
-					<div class="miembro">Miembro desde: <strong>FALTA</strong></div>
-					<a class="btn-seguir" href="#"><i class="fa fa-bell-o" aria-hidden="true"></i> Seguir</a>
+					<div class="usuario"><%= @user.nickname %></div>
+					<div class="miembro">Miembro desde: <%= @user.created_at.strftime("%m/%d/%Y") %></div>
+					<%= relationship(current_user.id, @user.id)  %>
+					
 				</div>
 			</div>
 			<div class="col-md-12 visible-xs" style="height: 15px;"></div>
@@ -27,7 +28,7 @@
 					<div class="col-xs-6 det-resumen">
 						<div class="resumen">
 							<div class="n-resumen">
-								<%= current_user.deals.count %>
+								<%=  @user.deals.count %>
 							</div>
 							<div class="txt-resumen">
 								Promociones<br>Publicadas
@@ -66,3 +67,35 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('.follow').click(function(event) {
+			followed = <%= @user.id %>
+			follower = <%= current_user.id %>
+			 $.ajax({
+		        url:  "/follow",
+		        dataType: "json",
+		        data: {
+		           followed: followed,
+		           follower: follower
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+		$('.unfollow').click(function(event) {
+			follow = $(this).attr('idf');
+			 $.ajax({
+		        url:  "/unfollow",
+		        dataType: "json",
+		        data: {
+		           follow: follow
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+	});
+</script>

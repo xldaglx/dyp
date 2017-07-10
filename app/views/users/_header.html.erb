@@ -46,7 +46,7 @@
 					<div class="col-xs-6 det-resumen">
 						<div class="resumen">
 							<div class="n-resumen">
-								<%= @promoHot.present? ? @promoHot : "--" %>
+								<%= current_user.relationships.count %>
 							</div>
 							<div class="txt-resumen">
 								Seguidores

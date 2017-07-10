@@ -24,6 +24,50 @@ class UsersController < ApplicationController
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
+	def follow
+		@relationships = Relationship.new
+		@relationships.follower_id = params[:follower]
+		@relationships.followed_id = params[:followed]
+		if @relationships.save
+			respond_to do |format|
+         	format.html
+         	format.js {} 
+         	format.json { 
+            	render json: {:message => 'success'}
+        	} 
+      		end
+      	else
+			respond_to do |format|
+         	format.html
+         	format.js {} 
+         	format.json { 
+            	render json: {:message => 'error'}
+        	} 
+      		end      		
+      	end
+	end
+
+	def unfollow
+		@relationship = Relationship.find(params[:follow])
+		if @relationship.destroy
+			respond_to do |format|
+	     	format.html
+	     	format.js {} 
+	     	format.json { 
+	        	render json: {:message => 'success'}
+	    	} 
+	  		end     
+		else
+			respond_to do |format|
+	     	format.html
+	     	format.js {} 
+	     	format.json { 
+	        	render json: {:message => 'error'}
+	    	} 
+	  		end     
+		end
+	end
+
 	def cranking
 		@users = User.all
 	 	@users.each do |user|

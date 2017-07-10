@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get 'removeComment', to: 'likes#delete'
   get 'cranking', to: 'users#cranking'
   get 'ranking', to: 'users#ranking'
+  get 'follow', to: 'users#follow'
+  get 'unfollow', to: 'users#unfollow'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end
