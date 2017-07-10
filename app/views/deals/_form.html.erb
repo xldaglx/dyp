@@ -92,8 +92,9 @@
                 $('#deal_title').val(data.title);  
               }
               for (i in data.images) {
-                console.log(data.images[i]);
-                  $('#scrapp-images').append('<div class="col-lg-2 imgscrappcontainer"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none"></div>');  
+                  if(i < 25){
+                  $('#scrapp-images').append('<div class="col-lg-2 imgscrappcontainer"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none"></div>');
+                  }
               }
 
               $('.imgscrappcontainer img').each(function(index, el) {

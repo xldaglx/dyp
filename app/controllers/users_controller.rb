@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-	def profile
-		@account = User.find(current_user)
-		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id', current_user.id).count
-	end
 
 	def deals
     	@deals = Deal.where('user_id ='+params[:id])

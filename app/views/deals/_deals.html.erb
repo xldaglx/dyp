@@ -1,3 +1,6 @@
+<% if @deals.count == 0 %>
+  <h4>Aún no existen descuentos</h4>
+<% end %>
 <% @deals.each do |deal| %>
 <div id="offer-container" class="deal">
   <div class="col-sm-4 no-padding-m">
