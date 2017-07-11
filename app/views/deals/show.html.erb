@@ -2,6 +2,70 @@
   .button_row .history_tools{
     display: none;
   }
+  .comment-likes, .replay, .like, .like2{
+    float: left;
+    margin-right: 10px;
+    font-size: 13px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .likes-number{
+    float: left;
+  }
+  .like, .like2{
+    margin-left: 3px;
+  }
+  .parent_comment{
+    margin-top: 5px;
+    color: #999;
+    float: left;
+    width: 100%;
+    font-size: 13px;
+    font-style: italic;
+  }
+  .fa-comments{
+    color: #d93438;
+  }
+  .fa-thumbs-up{
+    float: left;
+    margin-top: 2px;
+    margin-right: 2px;
+  }
+  .parent_comment span{
+    font-size: 10px;
+  }
+  .parent_comment div{
+    color: #999;
+    margin-bottom: 5px;
+  }
+  .actions{
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .comment-comment{
+    width: 100%;
+    color: #333;
+    margin: 1px 0px 5px 0px;
+    float: left;
+  }
+  .acciones{
+    width: 100%;
+    float: left;
+    padding: 0px 2px 10px 2px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+  }
+  .reply-answer{
+    font-weight: bold;
+    margin: 10px 0px;
+    color: #d93438;
+  }
+  .comments-box{
+    margin-top: 20px;
+  }
 </style>
 <div class="row deal-detail">
   <div class="container">
@@ -165,7 +229,7 @@
       <!--COMENTARIOS-->
       <div class="row det-comentarios" id="box-comm">
         <div class="col-md-12">
-          <h4><%= @deal.comments.count %> Comentarios</h4>
+          <h3><%= @deal.comments.count %> Comentarios</h3>
             <% if @deal.comments.exists? %>
                 <% @deal.comments.each do |item| %>
                 <div id="comment-<%= item.id %>">
@@ -177,35 +241,44 @@
                     d1 = f1.day
                     d2 = f2.day
                   %>
+                  <a class="usuario" style="float: none;" href="/perfil-publico/<%=@deal.user_id%>">
+                    <strong><%= item.user.nickname %></strong>
+                  </a>
                   <% if f1 == f2 %>
-                    Hace <%= distance_of_time_in_words(t2, t1) %>
+                    <span class="fecha" style="float: none;">Hace <%= distance_of_time_in_words(t2, t1) %></span>
                     <% else %>
-                    Hace <%= distance_of_time_in_words(f2, f1) %>
+                    <span class="fecha" style="float: none;">Hace <%= distance_of_time_in_words(f2, f1) %></span>
                   <% end %>
-                  <%= item.user.nickname %><br>
-                  <%= item.description.html_safe %><br>
-                  Likes (<%= item.likes.count %>)<br>
-                  <% if item.parent.present? %>
-                     <%= getParent(item.parent) %>
-                  <% end %>
-                  <div class="actions">
-                    <div class="reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" >Reply</div>
-                    <%= likeExists(item.id) %>
+                  <span class="comment-comment"><%= item.description.html_safe %></span>
+                  <div class="acciones">
+
+                    <span class="comment-likes"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+ <strong class="likes-number"><%= item.likes.count %> </strong><%= likeExists(item.id) %></span>
+                    <div class="actions">
+                      <div class="comment-likes reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" ><i class="fa fa-comments" aria-hidden="true"></i> Responder</div>
+                      
+                    </div>
+                    
                   </div>
-                  <br>
                 </div>
+                  <br>
+                  <% if item.parent.present? %>
+                      <%= getParent(item.parent)%>
+                    <% end %>
                 <% end %>
             <% end %>
         </div>
       </div>
       
       <div class="row comments-box">
-        <h4>Publica un comentario</h4>
-          <div class="reply-answer"></div>
-          <input type="hidden" id="parentid">
-          <input id="commentContent" value="Editor content goes here" type="hidden" name="content">
-          <trix-editor input="commentContent"></trix-editor>
-          <button class="btn btn-primary" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
+        <div class="col-md-12">
+          <h4>Publica un comentario</h4>
+            <div class="reply-answer"></div>
+            <input type="hidden" id="parentid">
+            <input id="commentContent" value="Escribe un comentario" type="hidden" name="content" >
+            <trix-editor input="commentContent"></trix-editor>
+            <button class="btn-negro" style="margin-left: 0px;" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
+          </div>
       </div>
 
       <!--COMENTARIOS-->
@@ -275,7 +348,7 @@
              like: like
           },
           success: function(data) { 
-            $('#comment-'+commentid).find('.like').text('Ya le quitaste Like');
+            $('#comment-'+commentid).find('.like').text('Me gusta');
             $('#comment-'+commentid).find('.like').removeClass('liked');
             $('#comment-'+commentid).find('.like').removeAttr('likedid');
           }
@@ -288,7 +361,7 @@
              commentid: commentid
           },
           success: function(data) { 
-            $('#comment-'+commentid).find('.like').text('Ya le pusiste Like');
+            $('#comment-'+commentid).find('.like').text('Ya no me gusta');
             $('#comment-'+commentid).find('.like').addClass('liked');
             $('#comment-'+commentid).find('.like').attr('likeid',data.id );
           }
@@ -308,7 +381,7 @@
            parent: parent
         },
         success: function(data) { 
-          $('.comments-box').replaceWith('<h4>Tú comentario está en validación</h4>');
+          $('.comments-box').replaceWith('<h4>Gracias, tu comentario esta en validación</h4>');
         }
       });
     });
