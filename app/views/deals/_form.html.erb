@@ -59,6 +59,7 @@
   jQuery(document).ready(function($) {
     $('#deal_link').on('paste', function (e) {
       var url_input = e.originalEvent.clipboardData.getData('text');
+      /*
       $.ajax({
         url:  "/validate/link",
         dataType: "json",
@@ -73,6 +74,7 @@
           }
         }
       });
+      */
       var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp(expression);
       if (url_input.match(regex)) {
@@ -85,58 +87,44 @@
             data: {
                url_host: url_input
             },
-            success: function(data) { 
-              console.log(data);
+            success: function(data) {
               $('.loader-image').hide();
-              if(data.title != ""){
-                $('#deal_title').val(data.title);  
-              }
-              for (i in data.images) {
-                  if(i < 25){
-                  $('#scrapp-images').append('<div class="col-lg-2 imgscrappcontainer"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none"></div>');
-                  }
-              }
-
-              $('.imgscrappcontainer img').each(function(index, el) {
-                idIm = $(this).attr('id');
-                if (checkURL($("#"+idIm).attr('src'))){
-                  $("#"+idIm).load(function() {
-                      if($(this).height() > 100 && $(this).width() > 100){
-                        $(this).show();
-                        $(this).addClass('img-responsive');
-                      }else{
-                        $(this).parent().remove();
-                      }
-                  });
-                }else{
-                  $(this).parent().remove();
+              if(data.message != "error"){
+                if(data.title != ""){
+                  $('#deal_title').val(data.title);  
                 }
-              });
-              $('.imgscrappcontainer img').click(function(event) {
-                $('.imgscrappcontainer img').css('opacity', '0.7');
-                $(this).css('opacity', '1');
-                route = $(this).attr('src');
-                $('#deal_imagen').val(route);
-              });
-
-
-              /*
-              count=0;
-              for (i in data.images) {
-                  $('#scrapp-images').append('<div class="col-sm-2"><img src="'+data.images[i]+'" class="img-responsive image-to-load"></div>');
-                  if(count == 0){
-                    $('#deal_imagen').val(data.images[i]);
-                    $('#deal_title').val(data.title);                
+                for (i in data.images) {
+                    $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none"></div>');
+                }
+                count=0;
+                $('.imgscrappcontainer img').each(function(index, el) {
+                  
+                  idIm = $(this).attr('id');
+                  if (checkURL($("#"+idIm).attr('src'))){
+                    $("#"+idIm).load(function() {
+                        if($(this).height() > 100 && $(this).width() > 100){
+                          if(count < 24){
+                          $(this).show();
+                          $(this).addClass('img-responsive');
+                          count++;
+                          }
+                        }else{
+                          $(this).parent().remove();
+                        }
+                    });
+                  }else{
+                    $(this).parent().remove();
                   }
-                  count++;
+                });
+                $('.imgscrappcontainer img').click(function(event) {
+                  $('.imgscrappcontainer img').css('opacity', '0.7');
+                  $(this).css('opacity', '1');
+                  route = $(this).attr('src');
+                  $('#deal_imagen').val(route);
+                });
+              }else{
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
               }
-
-              $('.image-to-load').click(function(event) {
-                $('#deal_imagen').val($(this).attr('src'));
-              });
-              if(count > 0){
-                $(".LabelHelper").show();
-              }*/
             }
           });
         }

@@ -205,24 +205,45 @@ class DealsController < ApplicationController
     img_urls = Array.new
     url = params['url_host']
     require 'open-uri'
-    page = Nokogiri::HTML(open(url))
+
+begin
+  page = Nokogiri::HTML(open(url))
+
+  case url
+  when /amazon/
+    title = page.css("title")[0].text
     page.xpath('//img').each do |img|
       img_urls.push (img['src'])
     end
-    title = page.css("title")[0].text
-    case url
-    when /amazon/
-      title = page.css("title")[0].text
+  when /liverpool/
+    title = "Notitle"
+    page.xpath('//img').each do |img|
+      img_urls.push (img['src'])
     end
-
-     respond_to do |format|
-       format.html
-       format.js {}   
-       format.json { 
-          render json: {:images => img_urls, :title => title}
-       } 
-     end
+  else
+    page.xpath('//img').each do |img|
+    img_urls.push (img['src'])
+    end
   end
+
+  respond_to do |format|
+   format.html
+   format.js {}   
+   format.json { 
+      render json: {:images => img_urls, :title => title}
+   } 
+  end
+      
+rescue Exception => e
+   respond_to do |format|
+     format.html
+     format.js {}   
+     format.json { 
+        render json: {:message => "error"}
+     } 
+   end
+end
+end
   def scrapp1
     require 'nokogiri' #start by loading the nokogiri gem
     require 'open-uri' #this is required to open the URLs we are going to scrape
