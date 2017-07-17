@@ -41,6 +41,7 @@ rails g scaffold Comments description:string user:references deal:references
 rails g migration Followers follower:references follow:references
 rails g scaffold Stores description:string
 rails g scaffold Likes user:references comment:references
+rails g scaffold Banners alt:string link:string impressions:int hits:int 
 
 
 
@@ -73,7 +74,7 @@ http://rubythursday.com/episodes/ruby-snack-27-upgrade-paperclip-and-aws-sdk-in-
 
 
 rails generate paperclip deal promoimage
-rails generate paperclip store logo
+rails generate paperclip banner image
 
 
 

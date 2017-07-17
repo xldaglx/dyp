@@ -1,0 +1,45 @@
+<%= form_for(banner) do |f| %>
+  <% if banner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+
+      <ul>
+      <% banner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :alt %>
+    <%= f.text_field :alt %>
+  </div>
+
+  <div class="field">
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= f.label :impressions %>
+    <%= f.text_field :impressions %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hits %>
+    <%= f.text_field :hits %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image, label: "Sube tu imagen (opcional)" %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

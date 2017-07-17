@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :banners
   resources :favorites
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :likes

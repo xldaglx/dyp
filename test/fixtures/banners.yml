@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alt: MyString
+  link: MyString
+  impressions: 
+  hits: 
+
+two:
+  alt: MyString
+  link: MyString
+  impressions: 
+  hits: 

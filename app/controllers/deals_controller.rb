@@ -117,6 +117,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @banners = Banner.all
   end
 
   # GET /deals/new
