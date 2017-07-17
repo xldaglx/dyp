@@ -1792,6 +1792,30 @@ trix-editor{
 .comments-box{
   margin-top: 20px;
 }
+.deal-det table tr{
+  padding: 8px 0px;
+  float: left;
+  border-bottom: 1px solid #e7e7e7;
+  width: 100%;
+}
+.deal-det table .tabla-cat{
+  font-size: 16px;
+  float: left;
+}
+.deal-det table .tabla-edit{
+  float: right;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid #e7e7e7;
+}
+.deal-det table span{
+  font-size: 10px;
+  color: #337ab7;
+}
+.deal-det table .btn-rojo{
+  margin: 10px 0px;
+  float: right;
+}
 @media screen and (max-width: 767px) {
   .btn-rechazar, .btn-editar{
     margin-top:8px;

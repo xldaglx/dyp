@@ -14,6 +14,7 @@ class StoresController < ApplicationController
 
   def list
     @stores = Store.all
+    @banners = Banner.all
   end
   
   # GET /stores/new

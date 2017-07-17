@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
 
   def list
     @categories = Category.all
+    @banners = Banner.all
   end
 
   # GET /categories/new

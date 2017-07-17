@@ -8,27 +8,30 @@
 		</ul>
 	</div>
 	<!-- INICIA LISTADO DE PROMOCIONES -->
-	<div class="container page">
-		<table>
-			<tr>
-				<th>Comentario</th>
-				<th>Promocion</th>
-				<th>Publicar</th>
-				<th>Eliminar</th>
-			</tr>
-			<% @comments.each do |comment| %>
-			<tr>
-				<td><%= comment.description.html_safe %></td>
-				<td><a href="/descuentos/<%=comment.deal.id%>-<%= comment.deal.slug %>" target="_blank">Ver promoción</a></td>
-				
-				<td id="accept" idcomment="<%= comment.id %>"><% if comment.status != 1 %><a href="#Publicar" class='comment-action'>Publicar</a><% end %></td>
+	<div class="row">
+	  	<div class="container">
+	      	<div class="col-lg-12 deal-det">
+					<table>
+						<tr>
+							<th>Comentario</th>
+							<th>Promocion</th>
+							<th>Publicar</th>
+							<th>Eliminar</th>
+						</tr>
+						<% @comments.each do |comment| %>
+						<tr>
+							<td class="tabla-cat"><%= comment.description.html_safe %></td>
+							<td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <a href="/descuentos/<%=comment.deal.id%>-<%= comment.deal.slug %>" target="_blank">Ver promoción</a></td>
+							
+							<td class="tabla-edit" id="accept" idcomment="<%= comment.id %>"><% if comment.status != 1 %><a href="#Publicar" class='comment-action'><span class="glyphicon glyphicon-ok"></span> Publicar</a><% end %></td>
 
-        		<td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			</tr>
-			<% end %>
-		</table>
+			        		<td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar este comentario?' } %></td>
+						</tr>
+						<% end %>
+					</table>
+			</div>
+		</div>
 	</div>
-	<!-- TERMINA LISTADO DE PROMOCIONES -->
 </div>
 <script type="text/javascript">
     $('.comment-action').click(function(event) {
