@@ -100,9 +100,11 @@
         </div>
         <div class="col-md-8">
           <h1><%= title @deal.title %></h1>
+            <% if @deal.price.present? %>
           <div class="det-price">
             <%= number_to_currency(@deal.price) %>
           </div>
+          <% end %>
           <div class="det-btn">
           <% if @deal.link.present? %>
             <a href="<%= @deal.link %>" class="btn btn-rojo" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
@@ -165,9 +167,9 @@
       <!--COMENTARIOS-->
       <div class="row det-comentarios" id="box-comm">
         <div class="col-md-12">
-          <h3><%= @deal.comments.count %> Comentarios</h3>
+          <h3><%= @deal.comments.where('status = 1').count %> Comentarios</h3>
             <% if @deal.comments.exists? %>
-                <% @deal.comments.each do |item| %>
+                <% @deal.comments.where('status = 1').each do |item| %>
                 <div id="comment-<%= item.id %>">
                   <% 
                     t1 = Time.now
@@ -187,9 +189,8 @@
                   <% end %>
                   <span class="comment-comment"><%= item.description.html_safe %></span>
                   <div class="acciones">
-
-                    <span class="comment-likes"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
- <strong class="likes-number"><%= item.likes.count %> </strong><%= likeExists(item.id) %></span>
+                    <span class="comment-likes">
+                    <strong class="likes-number"><%= item.likes.count %> </strong><%= likeExists(item.id) %></span>
                     <div class="actions">
                       <div class="comment-likes reply" commentid="<%= item.id %>" de="<%= item.user.nickname %>" ><i class="fa fa-comments" aria-hidden="true"></i> Responder</div>
                       
@@ -211,7 +212,7 @@
           <h4>Publica un comentario</h4>
             <div class="reply-answer"></div>
             <input type="hidden" id="parentid">
-            <input id="commentContent" value="Escribe un comentario" type="hidden" name="content" >
+            <input id="commentContent" placeholder="Escribe un comentario" type="hidden" name="content" >
             <trix-editor input="commentContent"></trix-editor>
             <button class="btn-negro" style="margin-left: 0px;" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
           </div>
@@ -284,6 +285,9 @@
              like: like
           },
           success: function(data) { 
+            var num = $('#comment-'+commentid).find('.likes-number').text();
+            num = parseInt(num) - 1
+            $('#comment-'+commentid).find('.likes-number').text(num);
             $('#comment-'+commentid).find('.like').text('Me gusta');
             $('#comment-'+commentid).find('.like').removeClass('liked');
             $('#comment-'+commentid).find('.like').removeAttr('likedid');
@@ -297,6 +301,9 @@
              commentid: commentid
           },
           success: function(data) { 
+            var num = $('#comment-'+commentid).find('.likes-number').text();
+            num = parseInt(num) + 1
+            $('#comment-'+commentid).find('.likes-number').text(num);
             $('#comment-'+commentid).find('.like').text('Ya no me gusta');
             $('#comment-'+commentid).find('.like').addClass('liked');
             $('#comment-'+commentid).find('.like').attr('likeid',data.id );

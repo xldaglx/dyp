@@ -92,7 +92,9 @@
           <div class="name">
             <a href="/descuentos/<%= deal.id %>-<%= deal.slug %>"><%= deal.title %></a>
           </div>
+          <% if deal.price.present? %>
           <div class="price"><%= number_to_currency(deal.price) %></div>
+          <% end %>
           <div class="store"><a href="/descuentos-por-tienda/<%= deal.store.id %>/<%= deal.store.slug %>"><%= deal.store.description %></a>
             <span class="fis-web">
               <% if deal.type_deal == 1 %> 

@@ -1,6 +1,5 @@
 <div class="row deal-detail">
-  <div class="col-md-4"></div>
-  <div class="col-md-4 deal-det-login">
+  <div class="col-md-4 deal-det-login col-md-offset-4">
     <div class="modal-header">
           <h4 class="titulo-modal">Crear Cuenta</h4>
     </div>
@@ -11,6 +10,11 @@
       <div class="field">
         <%= f.label :Correo_Electrónico %><br />
         <%= f.email_field :email, autofocus: true %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :usuario %><br />
+        <%= f.text_field :nickname %>
       </div>
 
       <div class="field password">
@@ -33,7 +37,6 @@
     </div>
   </div>
   </div>
-  <div class="col-md-4"></div>
 </div>
 
 <!--%= render "users/shared/links" %-->

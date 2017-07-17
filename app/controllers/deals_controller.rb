@@ -117,7 +117,6 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
-    @comments = Comment.where("deal_id = "+params[:id])
   end
 
   # GET /deals/new

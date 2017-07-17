@@ -62,9 +62,17 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
-            <li class="hidden-xs"><a href="/moderate">Moderar Promociones </a></li>
-            <li class="hidden-xs"><a href="/moderatecomments">Moderar Comentarios</a></li>
+     <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moderar <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/moderate">Promociones </a></li>
+            <li><a href="/moderatecomments">Comentarios</a></li>
+            <li><a href="/stores">Tiendas</a></li>
+            <li><a href="/categories">Categorias</a></li>
+          </ul>
+        </li>
           <% end %>
+          <% if @deals.present? %>
             <li class="dropdown hidden-xs">
               <a href="#" class="filtrar dropdown-toggle" data-toggle="dropdown">Filtrar Promociones <span class="flecha-down glyphicon glyphicon-chevron-down visible-lg" style="float: right;margin-top: 8px;"></span></a>
               <!-- INICIA SUBMENU DESKTOP -->
@@ -75,6 +83,7 @@
               </div>
               <!-- TERMINA SUBMENU DESKTOP -->
             </li>
+          <% end %>
             <li>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 

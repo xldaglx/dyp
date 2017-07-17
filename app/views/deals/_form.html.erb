@@ -26,10 +26,10 @@
     <div class="row">
       <div class="col-md-8 no-padding">
         <div class="col-xs-6">
-          <%= f.number_field :price, label: "Precio:" %>
+          <%= f.number_field :price, label: "Precio:", placeholder: "5999" %>
         </div>
         <div class="col-xs-6">
-          <%= f.text_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %>
+          <%= f.date_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %>
         </div>
       </div>
       <div class="col-md-4">
@@ -37,8 +37,8 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
-        <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
+        <%= f.collection_select :category_id,  @categories, :id, :name, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
+        <%= f.collection_select :store_id,  @stores, :id, :name, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
       </div>
       <div class="col-md-6">
       </div>
@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-md-12 description-new">
         <label>Descripción:</label>
-        <%= f.bootsy_area :description %>
+        <%= f.trix_editor :description, placeholder: "Describe la oferta con tus propias palabras y comparte con la comunidad por qué vale la pena esta promoción."%>
       </div>
     </div>
     <div class="col-md-12">
@@ -57,10 +57,12 @@
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#deal_link').on('paste', function (e) {
-      var url_input = e.originalEvent.clipboardData.getData('text');
+    $('#deal_link').on('paste blur', function (e) {
+
+      //var url_input = e.originalEvent.clipboardData.getData('text');
+      var url_input = $(this).val();
       /*
-      $.ajax({
+        $.ajax({
         url:  "/validate/link",
         dataType: "json",
         data: {
@@ -73,7 +75,7 @@
             console.log("La promoción no existe");
           }
         }
-      });
+        });
       */
       var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp(expression);
@@ -133,63 +135,6 @@
         alert("Error");
       }
     });
-    /*
-    $('#deal_link').change(function(event) {
-      var url_input = $(this).val();
-      $.ajax({
-        url:  "/validate/link",
-        dataType: "json",
-        data: {
-           url_host: url_input
-        },
-        success: function(data) { 
-          if(data.message == "exists"){
-            alert("La promoción ya existe");
-          }else{
-
-          }
-        }
-      });
-      
-      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-      var regex = new RegExp(expression);
-      if (url_input.match(regex)) {
-        if(url_input.length > 10){ 
-        $('#scrapp-images').html('');
-          $('.loader-image').show();
-          $.ajax({
-            url:  "/image/scrapp",
-            dataType: "json",
-            data: {
-               url_host: url_input
-            },
-            success: function(data) { 
-              console.log(data);
-              $('.loader-image').hide();
-              count=0;
-              for (i in data.images) {
-                  $('#scrapp-images').append('<div class="col-sm-2"><img src="'+data.images[i]+'" class="img-responsive image-to-load"></div>');
-                  if(count == 0){
-                    $('#deal_imagen').val(data.images[i]);
-                    $('#deal_title').val(data.title);                
-                  }
-                  count++;
-              }
-              $('.image-to-load').click(function(event) {
-                $('#deal_imagen').val($(this).attr('src'));
-              });
-              if(count > 0){
-                $(".LabelHelper").show();
-              }
-            }
-          });
-        }
-      } else {
-        alert("No match");
-      }
-    
-    });
-    */
   });
 
 function checkURL(url) {

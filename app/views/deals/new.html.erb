@@ -27,10 +27,51 @@ jQuery(document).ready(function($) {
 		$('#fisica').html("");
 		$("#online").html("<%= j (render 'form') %>");
 		$("#deal_type_deal").val("1");
+		$('#new_deal').validate({
+		  rules: {
+		  	'deal[link]': {
+		      required: true
+		    },
+		    'deal[title]': {
+		      required: true
+		    },
+		    'deal[description]': {
+		      required: true
+		    },
+		    'deal[category_id]': {
+		      required: true
+		    },
+		    'deal[store_id]': {
+		      required: true
+		    },
+		    'deal[type_deal]': {
+		      required: true
+		    }
+		  }
+		});
 	}else{
 		$('#online').html("");
 		$("#fisica").html("<%= j (render 'formfisica') %>");
-		$("#deal_type_deal").val("2");
+		$("#deal_type_deal").val("2");	
+		$('#new_deal').validate({
+		  rules: {
+		    'deal[title]': {
+		      required: true
+		    },
+		    'deal[description]': {
+		      required: true
+		    },
+		    'deal[category_id]': {
+		      required: true
+		    },
+		    'deal[store_id]': {
+		      required: true
+		    },
+		    'deal[type_deal]': {
+		      required: true
+		    }
+		  }
+		});
 	}
 	$('.nav-tabs li a').click(function(event) {
 		var type = $(this).attr('aria-controls');
@@ -38,30 +79,52 @@ jQuery(document).ready(function($) {
 			$('#fisica').html("");
 			$("#online").html("<%= j (render 'form') %>");
 			$("#deal_type_deal").val("1");
+			$('#new_deal').validate({
+			  rules: {
+			  	'deal[link]': {
+			      required: true
+			    },
+			    'deal[title]': {
+			      required: true
+			    },
+			    'deal[description]': {
+			      required: true
+			    },
+			    'deal[category_id]': {
+			      required: true
+			    },
+			    'deal[store_id]': {
+			      required: true
+			    },
+			    'deal[type_deal]': {
+			      required: true
+			    }
+			  }
+			});
 		}else{
 			$('#online').html("");
 			$("#fisica").html("<%= j (render 'formfisica') %>");
 			$("#deal_type_deal").val("2");
+			$('#new_deal').validate({
+		  rules: {
+		    'deal[title]': {
+		      required: true
+		    },
+		    'deal[description]': {
+		      required: true
+		    },
+		    'deal[category_id]': {
+		      required: true
+		    },
+		    'deal[store_id]': {
+		      required: true
+		    },
+		    'deal[type_deal]': {
+		      required: true
+		    }
+		  }
+			});
 		}
-	});
-	$('#new_deal').validate({
-	  rules: {
-	    'deal[title]': {
-	      required: true
-	    },
-	    'deal[description]': {
-	      required: true
-	    },
-	    'deal[price]': {
-	      required: true
-	    },
-	    'deal[category_id]': {
-	      required: true
-	    },
-	    'deal[type_deal]': {
-	      required: true
-	    }
-	  }
 	});
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault()
