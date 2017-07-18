@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
       super
+      ExampleMailer.welcome_email(@user).deliver
   end
 
   # GET /resource/edit

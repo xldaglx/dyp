@@ -57,10 +57,10 @@
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#deal_link').on('paste blur', function (e) {
+    $('#deal_link').on('paste', function (e) {
 
-      //var url_input = e.originalEvent.clipboardData.getData('text');
-      var url_input = $(this).val();
+      var url_input = e.originalEvent.clipboardData.getData('text');
+      //var url_input = $(this).val();
       /*
         $.ajax({
         url:  "/validate/link",
@@ -125,7 +125,7 @@
                   $('#deal_imagen').val(route);
                 });
               }else{
-                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div><br>');
               }
             }
           });

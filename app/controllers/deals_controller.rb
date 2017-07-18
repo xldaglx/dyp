@@ -243,53 +243,38 @@ rescue Exception => e
      } 
    end
 end
+end  
+def scrapromotion
+  
 end
-  def scrapp1
-    require 'nokogiri' #start by loading the nokogiri gem
-    require 'open-uri' #this is required to open the URLs we are going to scrape
-    require 'openssl'
-    require 'watir'
-    OpenSSL::SSL.const_set(:VERIFY_PEER, OpenSSL::SSL::VERIFY_NONE)    
-    url = params['url_host']
+def scrapromotionajax
     img_urls = Array.new
-    title = ""
-    #img_urls = Array.new #create an empty array to store the image urls in
-    browser = Watir::Browser.new
-    browser.goto url
-    doc = Nokogiri::HTML.parse(browser.html)
-    case url
-    when /liverpool/
-      p 'liverpool'
-      img_urls = doc.css('.pzlcontainerviewer img').map{ |i| i['src'] }
-    when /bestbuy/
-      p 'bestbuy'
-      img_urls = doc.xpath('//div[@class="product-img-box"]/descendant::img/@src').map(&:value)
+    url = params['url_host']
+    require 'open-uri'
 
-    when /amazon/
-      p 'Amazon'
-      img_urls = doc.css('.imgTagWrapper img').map{ |i| i['src'] }
-      p title = doc.xpath('//span[@id="productTitle"]/text()[1]')
-    when /elektra/
-      p 'Elektra'
-      img_urls = doc.css('.ccz-small').map{ |i| i['src'] }
-    when /walmart/
-      p 'Walmart'
-      img_urls = doc.xpath('//meta[@property="og:image"]/@content').map(&:value)
-    else
-       img_urls = doc.xpath('/descendant::img/@src').map(&:value)
-    end 
-    if img_urls.present?
-    p "si hay imagenes"
-    end
+begin
+    page = Nokogiri::HTML(open(url))
+    title = page.css("title")[0].text
+
+
+  respond_to do |format|
+   format.html
+   format.js {}   
+   format.json { 
+      render json: {:images => img_urls, :title => title}
+   } 
+  end
+      
+rescue Exception => e
    respond_to do |format|
      format.html
      format.js {}   
      format.json { 
-        render json: {:images => img_urls, :title => title}
+        render json: {:message => "error"}
      } 
    end
-    browser.close
-  end
+end
+end
   # PATCH/PUT /deals/1
   # PATCH/PUT /deals/1.json
   def update

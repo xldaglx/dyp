@@ -1,0 +1,48 @@
+<input type="text" id="scrapp" placeholder="Insert URL" class="form-control" style="color:black">
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('#scrapp').on('change', function (e) {
+
+      //var url_input = e.originalEvent.clipboardData.getData('text');
+      var url_input = $(this).val();
+      /*
+        $.ajax({
+        url:  "/validate/link",
+        dataType: "json",
+        data: {
+           url_host: url_input
+        },
+        success: function(data) { 
+          if(data.message == "exists"){
+            console.log("La promoción ya existe");
+          }else{
+            console.log("La promoción no existe");
+          }
+        }
+        });
+      */
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if (url_input.match(regex)) {
+        if(url_input.length > 10){ 
+        $('#scrapp-images').html('');
+          $('.loader-image').show();
+          $.ajax({
+            url:  "/moderatescrappajax",
+            dataType: "json",
+            data: {
+               url_host: url_input
+            },
+            success: function(data) {
+       			console.log(data);
+
+            }
+          });
+        }
+      } 
+      else {
+        alert("Error");
+      }
+    });
+  });
+</script>

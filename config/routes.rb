@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'updateRank', to: 'deals#rank'
   get 'saveComment', to: 'comments#saveComment'
   get 'moderatecomments', to: 'comments#moderate'
+  get 'moderatescrappajax', to: 'deals#scrapromotionajax'
+  get 'moderatescrapp', to: 'deals#scrapromotion'
   get 'moderate', to: 'deals#moderate'
   get 'nosotros', to: 'welcome#nosotros'
   get 'contacto', to: 'welcome#contacto'
