@@ -4,7 +4,7 @@
 				
 					<%= image_tag current_user.avatar.url("desktop"), class: 'img-responsive' %>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" >
 					<div class="usuario"><%= current_user.nickname %></div>
 					<div class="correo"><%= current_user.email %></div>
 					<div class="miembro">Miembro desde: <%= current_user.created_at.strftime("%m/%d/%Y") %></div>

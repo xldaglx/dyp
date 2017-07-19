@@ -9,7 +9,6 @@
 					<div class="usuario"><%= @user.nickname %></div>
 					<div class="miembro">Miembro desde: <%= @user.created_at.strftime("%m/%d/%Y") %></div>
 					<%= relationship(current_user.id, @user.id)  %>
-					
 				</div>
 			</div>
 			<div class="col-md-12 visible-xs" style="height: 15px;"></div>

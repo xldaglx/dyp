@@ -930,6 +930,11 @@ li > a:hover{
   color: #FFF !important;
   background: #d93438;
 }
+.btn-rojo-out{
+  border: 2px solid #d93438;
+  padding: 6px 10px;
+  border-radius: 2px;
+}
 .carousel-control.right, .carousel-control.left{
   background: transparent;
 }
@@ -1250,6 +1255,7 @@ li > a:hover{
 }
 .deal-title .img-tit img{
   padding: 20px;
+  cursor:pointer;
 }
 .deal-title h1{
   font-size: 27px;
@@ -1498,7 +1504,7 @@ trix-editor{
 }
 .profile-header .usuario{
   color: #d93438;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
   margin-top: 50px;
 }
@@ -1559,6 +1565,20 @@ trix-editor{
 }
 .btn-seguir:hover{
   background-color: #0B8389;
+  color: #FFF;
+  text-decoration: none;
+}
+.btn-noseguir{
+  font-size: 14px;
+  background-color: #d9534f;
+  color: #FFF;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 8px 25px;
+}
+.btn-noseguir:hover{
+  background-color: #d43f3a;
   color: #FFF;
   text-decoration: none;
 }
@@ -1838,10 +1858,12 @@ trix-editor{
   }
   .profile-header{
     padding: 20px 10px 50px 10px;
+    text-align:center;
   }
   .profile-header .usuario{
     margin-top: 12px;
     text-align: center;
+    font-size:18px;
   }
   .profile-header .miembro{
     text-align: center;

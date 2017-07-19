@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<div style="padding: 40px;background: #FFF;border:1px solid #efefef;margin: 20px auto 20px auto;">
+    <h4 style="font-size: 24px;font-weight: bold;color: #d93438;">CONFIRMA TU CUENTA</h4>
+	<p><strong>Hola <%= @email %>!</strong></p>
+	<p>Por favor confirma tu Cuenta dando clic al siguiente enlace:</p>
+	<p><%= link_to 'Confirmar mi Cuenta', confirmation_url(@resource, confirmation_token: @token), class:"btn-rojo" %></p>
+</div>
 
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

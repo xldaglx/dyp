@@ -125,9 +125,6 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
         <div class="col-md-8">
           <h1><%= title @deal.title %></h1>
             <% if @deal.price.present? %>
-            <% if @deal.mpn.present? %>
-              <a href="#ModalImage" data-toggle="modal" data-target="#ModalImage" class="main-image" src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx">Ver comportamiento</a>
-            <% end %>
           <div class="det-price">
             <%= number_to_currency(@deal.price) %>
           </div>
@@ -192,18 +189,13 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
             <% else %>
             <li><a href="#login" class="down" data-toggle="modal"><i class="fa fa-star" aria-hidden="true"></i> Agregar a Favoritas </a></li>
             <% end %>
-            <!--li>
-              <div class="dropdown">
-                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-volume-up" aria-hidden="true"></i> Reportar <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dLabel">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                </ul>
-              </div>
-            </li-->
+            <% if @deal.price.present? %>
+            <% if @deal.mpn.present? %>
+            <li>
+              <a href="#ModalImage" data-toggle="modal" data-target="#ModalImage" class="main-image btn-rojo-out" src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx"><i class="fa fa-area-chart" aria-hidden="true" style="float: none;"></i> Ver comportamiento</a>
+            </li>
+            <% end %>
+            <% end %>
           </ul>
           
         </div>

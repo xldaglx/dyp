@@ -1,7 +1,7 @@
-<p>Hello <%= @resource.email %>!</p>
-
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
-
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<div style="padding: 40px;background: #FFF;border:1px solid #efefef;margin: 20px auto 20px auto;">
+    <h4 style="font-size: 24px;font-weight: bold;color: #d93438;">BLOQUEO TEMPORAL DE CUENTA</h4>
+	<p><strong>Hola <%= @resource.email %>!</strong></p>
+	<p>Lo sentimos, tu cuenta ha sido bloqueada debido a una cantidad excesiva de intentos para acceder.</p>
+	<p>Para desbloquearla por favor haz clic a continuación:</p>
+	<p><%= link_to 'Desbloquear mi Cuenta', unlock_url(@resource, unlock_token: @token), class:"btn-rojo" %></p>
+</div>
