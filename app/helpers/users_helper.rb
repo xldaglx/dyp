@@ -7,7 +7,7 @@ module UsersHelper
 				button = '<a class="btn-danger unfollow" href="#" idf="'+relationship.id.to_s+'"><i class="fa fa-delete" aria-hidden="true"></i> Dejar de seguir</a>'
 			end			
 		else
-			button = '<a class="btn-seguir follow" href="#"><i class="fa fa-bell-o" aria-hidden="true"></i> Seguir</a>'
+			button = '<a class="btn-seguir follow" href="#" user_followed="'+followed.to_s+'"><i class="fa fa-bell-o" aria-hidden="true"></i> Seguir</a>'
 		end
 		return button.html_safe
 	end

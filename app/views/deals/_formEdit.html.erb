@@ -14,8 +14,9 @@
     <%= f.text_field :description %>
     <%= f.text_field :link %>
     <%= f.text_field :price %>
+    <%= f.text_field :mpn %>
     <%= f.text_field :expiration %>
-    <% if current_user.admin? %>
+    <% if current_user.try(:admin?) %>
         <%= f.text_field :status %>
     <% end %>
     <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>

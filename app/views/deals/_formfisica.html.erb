@@ -14,9 +14,7 @@
     <div class="col-md-12">
       <%= f.text_field :title, label: "Título de la Promoción:", placeholder: "Artículo o Promoción" %>
       <div class="img-upload">
-        <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
-        <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>
-        <!--%= f.file_field :promoimage, label: "Sube tu imagen" %-->
+        <%= f.file_field :promoimage, label: "Sube tu imagen" %>
       </div>
     </div>
     <div class="row">

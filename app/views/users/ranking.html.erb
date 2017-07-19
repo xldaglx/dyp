@@ -32,10 +32,43 @@
 					<span class="rank-number"><%= user.rank %></span> <strong><%= user.nickname %></strong>
 				</div>
 				<div class="col-xs-6 right">
-					<a href="" class="btn-seguir"><i class="fa fa-bell-o" aria-hidden="true"></i> Seguir</a>
+					<%= relationship(current_user.id, user.id)  %>
 				</div>
 			</div>
 			<% end %>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('.follow').click(function(event) {
+			followed = $(this).attr("user_followed");
+			follower = <%= current_user.id %>
+			 $.ajax({
+		        url:  "/follow",
+		        dataType: "json",
+		        data: {
+		           followed: followed,
+		           follower: follower
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+		$('.unfollow').click(function(event) {
+			follow = $(this).attr('idf');
+			 $.ajax({
+		        url:  "/unfollow",
+		        dataType: "json",
+		        data: {
+		           follow: follow
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+	});
+</script>

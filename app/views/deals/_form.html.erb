@@ -17,9 +17,10 @@
       <div class="loader-image"><img src="/images/spinner.gif"></div>
       <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
       <div class="img-upload">
+      <!--
         <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
-        <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>
-        <!--%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %-->
+        <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>-->
+        <%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
       </div>
       <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
     </div>
@@ -27,6 +28,7 @@
       <div class="col-md-8 no-padding">
         <div class="col-xs-6">
           <%= f.number_field :price, label: "Precio:", placeholder: "5999" %>
+          <%= f.hidden_field :mpn, label: "Model:", placeholder: "000000000" %>
         </div>
         <div class="col-xs-6">
           <%= f.date_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %>

@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:moderate, :show]
 
   # GET /deals
   # GET /deals.json
@@ -145,7 +146,7 @@ class DealsController < ApplicationController
     @deal.rank = 0
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to @deal, notice: 'Tu promoción ha sido enviada, la revisaremos y la publicaremos tan pronto como sea posible.' }
+        format.html { redirect_to root_path, notice: 'Tu promoción ha sido enviada, la revisaremos y la publicaremos tan pronto como sea posible.' }
         format.json { render :show, status: :created, location: @deal }
       else
         format.html { render :new }
@@ -205,9 +206,10 @@ class DealsController < ApplicationController
     img_urls = Array.new
     url = params['url_host']
     require 'open-uri'
+     p page = Nokogiri::HTML(open(url))
 
-begin
-  page = Nokogiri::HTML(open(url))
+=begin
+  p page = Nokogiri::HTML(open(url))
 
   case url
   when /amazon/
@@ -242,7 +244,7 @@ rescue Exception => e
         render json: {:message => "error"}
      } 
    end
-end
+=end
 end  
 def scrapromotion
   
@@ -307,6 +309,13 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:bootsy_image_gallery_id)
+      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn)
+    end
+    def admin_user
+      if current_user.try(:admin?)
+       flash.now[:success] = "Admin Access Granted"
+      else
+       redirect_to root_path
+      end
     end
 end
