@@ -86,4 +86,29 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  #Config Mailes
+  ActionMailer::Base.default :from => 'default@development-server.com'
+# port 3000 or whatever port you are using for your localhost
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000, :from => "foo@bar.com" }    
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.delivery_method = :smtp
+# this line is what you want to be true, else you won't get messages!
+config.action_mailer.perform_deliveries = true 
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "gmail.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: "gerayalad@gmail.com",
+  password: "090809DaG"
+  }
+
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end

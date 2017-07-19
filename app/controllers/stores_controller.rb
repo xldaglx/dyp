@@ -79,7 +79,7 @@ class StoresController < ApplicationController
     end
 
     def admin_user
-      if current_user.try(:admin?)
+     if current_user.try(:admin?)
        flash.now[:success] = "Admin Access Granted"
       else
        redirect_to root_path

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:moderate]
 
   # GET /comments
   # GET /comments.json
@@ -122,5 +123,13 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:description, :user_id, :deal_id, :status)
+    end
+
+    def admin_user
+     if current_user.try(:admin?)
+       flash.now[:success] = "Admin Access Granted"
+      else
+       redirect_to root_path
+      end
     end
 end

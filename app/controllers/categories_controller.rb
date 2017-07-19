@@ -79,10 +79,10 @@ class CategoriesController < ApplicationController
     end
 
     def admin_user
-      if current_user.try(:admin?)
-       flash.now[:success] = "Admin Access Granted"
-      else
-       redirect_to root_path
-      end
+        if current_user.try(:admin?)
+         flash.now[:success] = "Admin Access Granted"
+        else
+         redirect_to root_path
+        end
     end
 end

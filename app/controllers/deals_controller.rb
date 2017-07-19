@@ -1,6 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user, only: [:moderate, :show]
+  before_action :admin_user, only: [:moderate]
 
   # GET /deals
   # GET /deals.json
@@ -80,6 +80,9 @@ class DealsController < ApplicationController
     else 
       if id == "reject"
         @deal = Deal.find(iddeal)
+        if @deal.user_id.present?
+          ExampleMailer.reject_email(@deal.user).deliver
+        end
         @deal.status = 2
         reason = params[:reason]
         #send-email
@@ -206,9 +209,7 @@ class DealsController < ApplicationController
     img_urls = Array.new
     url = params['url_host']
     require 'open-uri'
-     p page = Nokogiri::HTML(open(url))
-
-=begin
+begin
   p page = Nokogiri::HTML(open(url))
 
   case url
@@ -244,7 +245,7 @@ rescue Exception => e
         render json: {:message => "error"}
      } 
    end
-=end
+end
 end  
 def scrapromotion
   
@@ -312,7 +313,7 @@ end
       params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn)
     end
     def admin_user
-      if current_user.try(:admin?)
+     if current_user.try(:admin?)
        flash.now[:success] = "Admin Access Granted"
       else
        redirect_to root_path
