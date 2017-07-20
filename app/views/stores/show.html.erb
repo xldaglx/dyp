@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @store.description %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Tienda: <%= @store.name %></h1>
+			<strong>Description:</strong>
+  			<%= @store.description %>
+			<hr>
+			<%= link_to 'Regresar', stores_path %> &nbsp; | &nbsp; 
+			<%= link_to 'Editar', edit_store_path(@store) %>	
+		</div>
+		<div class="col-md-2"></div>
+</div>

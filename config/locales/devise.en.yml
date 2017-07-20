@@ -58,5 +58,5 @@ en:
       not_found: "no encontrado"
       not_locked: "no ha sido bloqueada"
       not_saved:
-        one: "Ha ocurrido 1 error:"
-        other: "Han ocurrido %{count} errores:"
+        one: "Lo sentimos, ha ocurrido 1 error:"
+        other: "Lo sentimos, han ocurrido %{count} errores:"

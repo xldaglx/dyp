@@ -5,7 +5,7 @@
     </div>
     <div class="modal-body-login">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <span class="alerta-cuenta"><%= devise_error_messages! %></span>
 
       <div class="field">
         <%= f.label :Correo_Electrónico %><br />

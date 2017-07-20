@@ -1,6 +1,12 @@
-<h1>Editing Setting</h1>
-
-<%= render 'form', setting: @setting %>
-
-<%= link_to 'Show', @setting %> |
-<%= link_to 'Back', settings_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Editar Settings</h1>
+			<%= render 'form', setting: @setting %>
+			<br>
+			 <%= link_to 'Regresar', settings_path %> &nbsp; | &nbsp; 
+			 <%= link_to 'Ver', @setting %>
+					
+		</div>
+		<div class="col-md-2"></div>
+</div>

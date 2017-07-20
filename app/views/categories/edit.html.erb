@@ -1,5 +1,11 @@
-<h1>Editar Categoría</h1>
-
-<%= render 'form', category: @category %>
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Editar Categoría: <%= @category.description %></h1>
+			<%= render 'form', category: @category %>
+			<br>
+			<%= link_to 'Regresar', categories_path %> &nbsp; | &nbsp; 
+			<%= link_to 'Ver', @category %>		
+		</div>
+		<div class="col-md-2"></div>
+</div>

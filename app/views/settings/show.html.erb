@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Core:</strong>
-  <%= @setting.core %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @setting.value %>
-</p>
-
-<%= link_to 'Edit', edit_setting_path(@setting) %> |
-<%= link_to 'Back', settings_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1><%= @setting.core %></h1>
+			<p>
+			  	<strong>Core:</strong>
+  				<%= @setting.core %>
+			</p>
+			<p>
+			  	<strong>Value:</strong>
+  				<%= @setting.value %>
+			</p>
+			<hr>
+			<%= link_to 'Regresar', settings_path %> &nbsp; | &nbsp; 
+			<%= link_to 'Editar', edit_setting_path(@setting) %>	
+		</div>
+		<div class="col-md-2"></div>
+</div>

@@ -11,13 +11,12 @@
 	<div class="row">
 	  	<div class="container">
 	      	<div class="col-lg-12 deal-det">
-					<table>
-						<tr>
-							<th>Comentario</th>
-							<th>Promocion</th>
-							<th>Publicar</th>
-							<th>Eliminar</th>
-						</tr>
+					<table class="table table-striped">
+						<thead>
+		      				<tr>
+		      					<th><th colspan="4">Comentarios</th></th>
+		      				</tr>
+		      			</thead>
 						<% @comments.each do |comment| %>
 						<tr>
 							<td class="tabla-cat"><%= comment.description.html_safe %></td>

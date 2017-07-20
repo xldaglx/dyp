@@ -1,6 +1,12 @@
-<h1>Editar Banner</h1>
-
-<%= render 'form', banner: @banner %>
-
-<%= link_to 'Ver', @banner %> |
-<%= link_to 'Regresar', banners_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Editar Banner</h1>
+			<%= render 'form', banner: @banner %>
+			<br>
+			<%= link_to 'Regresar', banners_path %> &nbsp; | &nbsp; 
+			 <%= link_to 'Ver', @banner %>
+					
+		</div>
+		<div class="col-md-2"></div>
+</div>
