@@ -10,23 +10,28 @@
       </ul>
     </div>
   <% end %>
-
   
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :Nombre %>
     <%= f.text_field :name %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label :slug %>
+    <%= f.label :Slug %>
     <%= f.text_field :slug %>
   </div>
+  <br>
+  <div class="field">
+    <%= f.label :Imagen %>
     <%= f.file_field :logo, label: "Sube tu imagen (opcional)" %>
-
+  </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Agregar Tienda', :class => 'btn-rojo' %>
   </div>
 <% end %>

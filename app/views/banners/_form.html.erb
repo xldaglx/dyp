@@ -15,31 +15,28 @@
     <%= f.label :alt %>
     <%= f.text_field :alt %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :link %>
     <%= f.text_field :link %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :impressions %>
     <%= f.text_field :impressions %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :hits %>
     <%= f.text_field :hits %>
   </div>
-
-
+  <br>
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image, label: "Sube tu imagen (opcional)" %>
   </div>
-
-
-
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Agregar Banner', :class => 'btn-rojo'%>
   </div>
 <% end %>

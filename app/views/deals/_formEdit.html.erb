@@ -2,7 +2,6 @@
   <% if deal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-
       <ul>
       <% deal.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,20 +9,42 @@
       </ul>
     </div>
   <% end %>
-    <%= f.text_field :title, :required => true %>
-    <%= f.text_field :description %>
-    <%= f.text_field :link %>
-    <%= f.text_field :price %>
-    <%= f.text_field :mpn %>
-    <%= f.text_field :expiration %>
-    <% if current_user.try(:admin?) %>
-        <%= f.text_field :status %>
-    <% end %>
-    <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
-    <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una opción", label: "Tienda" %>
-    <%= f.text_field :type_deal %>
-    <%= f.file_field :promoimage %>
-    <%= f.submit %>
+    <div class="field">
+      <%= f.text_field :title, :required => true %>
+    </div>
+    <div class="field">
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.text_field :link %>
+    </div>
+    <div class="field">
+      <%= f.text_field :price %>
+    </div>
+    <div class="field">
+      <%= f.text_field :mpn %>
+    </div>
+    <div class="field">
+      <%= f.text_field :expiration %>
+    </div>
+    <div class="field">
+      <% if current_user.try(:admin?) %>
+          <%= f.text_field :status %>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.collection_select :category_id,  @categories, :id, :description, multiple: true, :prompt => "Please Select" %>
+    </div>
+    <div class="field">
+      <%= f.collection_select :store_id,  @stores, :id, :description, multiple: true, :prompt => "Selecciona una opción", label: "Tienda" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :type_deal %>
+    </div>
+    <div class="field">
+      <%= f.file_field :promoimage %>
+    </div>
+    <%= f.submit 'Actualizar Promoción', :class => 'btn-rojo' %>
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {

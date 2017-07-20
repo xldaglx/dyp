@@ -5,8 +5,8 @@
 		    <div class="list-group">
 			  <% @stores.each do |store| %>
 				  <a href="/descuentos-por-tienda/<%= store.id %>/<%= store.slug %>" class="list-group-item">
-				    <!--p class="list-group-item-heading"><%= store.name %></p-->
-				    <h4 class="list-group-item-text"><%= store.description %> <span class="badge"><%= store.deals.count %></span></h4>
+				    <h4 class="list-group-item-heading"><%= store.name %></h4>
+				    <p class="list-group-item-text"><%= store.description %> <span class="badge"><%= store.deals.count %></span></p>
 				  </a>
 			    <% end %>
 			</div>

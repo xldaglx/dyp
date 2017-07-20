@@ -1,5 +1,5 @@
     <% @banners.each do |banner| %>
-        <a href="<%= banner.link %>">
+        <a target="_blank" href="<%= banner.link %>">
         <%= image_tag banner.image.url(:original), class: 'img-responsive', alt: banner.alt %>
         </a>
     <% end %>

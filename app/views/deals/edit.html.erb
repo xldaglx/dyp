@@ -1,6 +1,12 @@
-<h1>Editing Deal</h1>
-
-<%= render 'formEdit', deal: @deal %>
-
-<%= link_to 'Show', @deal %> |
-<%= link_to 'Back', deals_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Editar Promoción</h1>
+			<%= render 'formEdit', deal: @deal %>
+			<br>
+			<%= link_to 'Regresar', deals_path %> |
+			<%= link_to 'Ver promoción', @deal %>
+					
+		</div>
+		<div class="col-md-2"></div>
+</div>

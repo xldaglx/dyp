@@ -1,5 +1,10 @@
-<h1>New Store</h1>
-
-<%= render 'form', store: @store %>
-
-<%= link_to 'Back', stores_path %>
+<div class="row deal-detail">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 deal-det new-promo">
+			<h1>Nueva Tienda</h1>
+			<%= render 'form', store: @store %>
+			<br>
+			<%= link_to 'Regresar', stores_path %>		
+		</div>
+		<div class="col-md-2"></div>
+</div>
