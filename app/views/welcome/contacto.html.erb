@@ -1,7 +1,47 @@
+<style type="text/css">
+	.btn-enviar{
+		font-size: 14px;
+		padding: 8px 35px;
+		margin-top: 0px;
+	}
+	.margin-0 input{
+		margin-top: 0px;
+	}
+</style>
 <div class="row deal-detail">
   <div class="container">
     <div class="col-md-9 deal-det">
-      <h1>Contacto</h1>
+    	<h1>Contacto</h1>
+      	<hr>
+      	<h4>Ayúdanos a mejorar tu experiencia</h4>
+      	<p>
+      		Si tienes alguna duda acerca del sitio o si sólo deseas enviarnos tu opinión, siéntete libre de escribirnos a continuación:
+      	</p>
+      	<div class="col-md-6 no-padding">
+      		<form style="margin-top: 20px;">
+	     		<div class="field margin-0">
+		     		Nombre:*<br>
+				  	<input type="text" name="firstname" placeholder="Escribe tu nombre">
+	     		</div>
+			  	<br>
+			  	<div class="field margin-0">
+			  		Correo Electrónico:*<br>
+			  		<input type="text" name="email" placeholder="Escribe tu correo electrónico">
+			  	</div>
+			  	<br>
+			  	<div class="field margin-0">
+			  		Asunto:*<br>
+			  		<input type="text" name="phone" placeholder="Acerca de que nos escribes">
+			  	</div>
+			  	<br>
+			  	<div class="field margin-0">
+			  		Mensaje:*<br>
+			  		<textarea style="width: 100%;" name="message" rows="5" placeholder="Escribe tu mensaje a DescuentosyPromociones.com"></textarea>
+			  	</div>
+			  	<br>
+			  	<button class="btn-rojo btn-enviar">Enviar</button>
+			</form>
+      	</div>
     </div>
     <div class="col-md-3 banners">
       <%= render 'deals/banners' %>
