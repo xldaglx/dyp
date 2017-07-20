@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # [START app_yaml]
-runtime: ruby
+runtime: custom
 env: flex
 entrypoint: bundle exec rails server -e production -p $PORT
 
