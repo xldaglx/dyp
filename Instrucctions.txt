@@ -42,6 +42,7 @@ rails g migration Followers follower:references follow:references
 rails g scaffold Stores description:string
 rails g scaffold Likes user:references comment:references
 rails g scaffold Banners alt:string link:string impressions:int hits:int 
+rails g scaffold Settings core:string value:string
 
 
 

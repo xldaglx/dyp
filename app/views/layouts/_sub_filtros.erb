@@ -1,4 +1,4 @@
-<form action="" id="filter-search">
+<form action="<% if controller.controller_name+controller.action_name == "welcomeindex" %>/nuevas/<% end %>" id="filter-search">
 <div class="row">
 	<div class="col-md-6">
 		<img class="img-responsive" src="/images/banner-filtros.jpg" />
@@ -12,6 +12,8 @@
 	  	</div>
 	  	<div class="radios-filter">
 	  		<input type="radio" name="filter-promo" value="2"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Ver sólo Promociones en Tienda Física
+	  		
+
 	  	</div>
 	</div>
 </div>
