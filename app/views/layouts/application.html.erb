@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
-1927605467495785
-<%
-set_meta_tags og: {
-  app_id:    "1927605467495785",
-}
-%>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <head>
-  <link rel="shortcut icon" href="/images/favicon2.ico" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WLG9BGF');</script>
-  <!-- End Google Tag Manager -->
+  <head><!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WLG9BGF');</script>
+    <!-- End Google Tag Manager -->
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="fb:app_id" content="1927605467495785" />
     <%= display_meta_tags site: 'Descuentos y Promociones' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" href="/images/favicon2.ico" />
   </head>
 
   <body>
@@ -58,8 +52,8 @@ set_meta_tags og: {
                 </button>
               </div>
             </div>
-          </div>        
-      </div>      
+          </div>
+      </div>
     </div><!-- /.container -->
   </nav>
   <nav class="navbar navbar-white">
@@ -88,6 +82,7 @@ set_meta_tags og: {
             <li><a href="/stores"><i class="fa fa-shopping-bag" aria-hidden="true"></i> TIENDAS</a></li>
             <li><a href="/categories"><i class="fa fa-filter" aria-hidden="true"></i> CATEGORÍAS</a></li>
             <li><a href="/banners"><i class="fa fa-picture-o" aria-hidden="true"></i> BANNERS</a></li>
+            <li><a href="/settings"><i class="fa fa-gear" aria-hidden="true"></i> SETTINGS</a></li>
           </ul>
         </li>
           <% end %>
@@ -112,7 +107,7 @@ set_meta_tags og: {
                       <span class="input-group-addon">
                           <button type="submit" class="btn-lupa">
                               <span class="glyphicon glyphicon-search"></span>
-                          </button>  
+                          </button>
                       </span>
                   </div>
                 </form>
@@ -133,7 +128,7 @@ set_meta_tags og: {
         <%= render "layouts/tiendas_menu_m" %><!-- carga el submenu de Categorías y Tiendas para mobile -->
       </div>
       <!-- TERMINA SUBMENU MOBILE -->
-    
+
   </nav>
     <div class="container">
       <% if notice.present? %>
@@ -146,7 +141,7 @@ set_meta_tags og: {
     <div class="container">
       <%= yield %>
     </div>
-    
+
     <br><br>
     <footer class="footer white" style="margin-top: 50px;">
       <%= render "layouts/menu_footer" %>

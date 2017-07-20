@@ -1,7 +1,7 @@
 <ul class="visible-xs submenu">
 	<li></li>
 	<li class="sub-titulo">FILTRAR PROMOCIONES</li>
-	<form action="">
+	<form action="<% if controller.controller_name+controller.action_name == "welcomeindex" %>/nuevas/<% end %>">
     <li>
     	<div class="radios-filter">
 			<input type="radio" name="filter-promo" value="all" checked> <i class="fa fa-check-square-o" aria-hidden="true"></i> Ver todas
@@ -16,6 +16,7 @@
 	  		<input class="btn-negro" type="submit" value="Aplicar Filtros">
 	  	</div>
     </li>
+    
 	</form>
 	<a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><li class="cerrar-menu">Cerrar filtros<span class="icono-cerrar glyphicon glyphicon-chevron-up"></li></a>
 </ul>
