@@ -12,12 +12,12 @@ class DealsController < ApplicationController
   def stores
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.where("store_id = "+params[:id]).page(params[:page])
+        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page])
       else   
-        @deals = Deal.where("store_id = "+params[:id]).where("type_deal = "+ params['filter-promo']).page(params[:page])
+        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page])
       end
     else
-      @deals = Deal.where("store_id = "+params[:id]).page(params[:page])
+      @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page])
     end
     @tienda = Store.find(params[:id])
   end
@@ -25,12 +25,12 @@ class DealsController < ApplicationController
   def categories
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.where("category_id = "+params[:id]).page(params[:page])
+        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page])
       else   
-        @deals = Deal.where("category_id = "+params[:id]).where("type_deal = "+ params['filter-promo']).page(params[:page])
+        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page])
       end
     else
-      @deals = Deal.where("category_id = "+params[:id]).page(params[:page])
+      @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page])
     end
     @category = Category.find(params[:id])
   end
@@ -38,37 +38,37 @@ class DealsController < ApplicationController
   def newdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).order('created_at DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('created_at DESC')
       end
     else
-      @deals = Deal.all.page(params[:page]).order('created_at DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
     end 
   end
 
   def search
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).order('created_at DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('created_at DESC')
       end
     else
-      @deals = Deal.all.page(params[:page]).order('created_at DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
     end 
-    @deals = @deals.search(params[:search]) if params[:search].present?
+    @deals = @deals.search(params[:search]).where('status = 1') if params[:search].present?
   end
 
   def topdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).order('rank DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').order('rank DESC')
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).page(params[:page]).order('rank DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('rank DESC')
       end
     else
-      @deals = Deal.all.page(params[:page]).order('rank DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').order('rank DESC')
     end 
   end
   def updateStatus

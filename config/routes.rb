@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'nosotros', to: 'welcome#nosotros'
   get 'contacto', to: 'welcome#contacto'
   get 'ayuda', to: 'welcome#ayuda'
-  get 'terminos-condiciones', to: 'welcome#terminos-condiciones'
+  get 'terminos', to: 'welcome#terminos'
   get "mi-cuenta/:id" => "users#profile"
   get "mi-cuenta/mis-descuentos/:id" => "users#deals"
   get "mi-cuenta/mis-favoritas/:id" => "users#favorites"

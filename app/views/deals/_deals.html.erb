@@ -1,9 +1,12 @@
 <% if @deals.count == 0 %>
   <h4>No existen promociones para mostrar.</h4>
 <% end %>
+<%
+  @number_columns = Setting.find_by(core: 'columns')
+%>
 <% @deals.each do |deal| %>
-<div id="offer-container" class="deal">
-  <div class="col-sm-4 no-padding-m">
+<div id="offer-container-<%=deal.id%>" class="deal">
+  <div class="col-sm-<%= @number_columns.value %> no-padding-m">
     <div class="oferta-ind">
       <div class="col-md-12 oferta-head no-padding">
         <div class="col-xs-4">
@@ -11,7 +14,7 @@
               <% if deal.user_id.present? %>
               <a href="/perfil-publico/<%=deal.user_id%>"><%= deal.user.nickname %></a>
               <% else %>
-              <a href=""> Invitado </a>
+              <a> Invitado </a>
               <% end %>
             </div>
             <div class="fecha">
@@ -113,8 +116,6 @@
           <a class="comments hidden-xs" href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a> 
         </div>
       </div>
-    </div>
-    <div class="col-xs-12">          
     </div>
   </div>
 </div>

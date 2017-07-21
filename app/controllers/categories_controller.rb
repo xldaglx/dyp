@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user
+  before_action :admin_user, :except => [:list]
 
   # GET /categories
   # GET /categories.json

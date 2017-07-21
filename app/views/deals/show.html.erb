@@ -245,12 +245,16 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
       </div>     
       <div class="row comments-box">
         <div class="col-md-12">
-          <h4>Publica un comentario</h4>
-            <div class="reply-answer"></div>
-            <input type="hidden" id="parentid">
-            <input id="commentContent" placeholder="Escribe un comentario" type="hidden" name="content" >
-            <trix-editor input="commentContent"></trix-editor>
-            <button class="btn-negro" style="margin-left: 0px;" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
+            <% if user_signed_in? %>  
+          <h4>Publica un comentario</h4>   
+              <div class="reply-answer"></div>
+              <input type="hidden" id="parentid">
+              <input id="commentContent" placeholder="Escribe un comentario" type="hidden" name="content" >
+              <trix-editor input="commentContent"></trix-editor>
+              <button class="btn-negro" style="margin-left: 0px;" id="save_comment" promoid="<%= @deal.id %>">Publicar comentario</button>
+            <% else %>
+              <button href="#login" class="btn-negro" data-toggle="modal">Publicar Comentario</button>       
+            <% end %>
           </div>
       </div>
       <!--COMENTARIOS-->
