@@ -106,3 +106,6 @@ rails runner populate-slug.rb
 2017-06-09
 rake db:migrate
 rails runner populate-slug.rb
+
+Agregar a settings hot_deal para configurar una oferta en específico
+Agregar a settings top_voted para congigurar ofertas en específico
