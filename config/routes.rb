@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'contacto', to: 'welcome#contacto'
   get 'ayuda', to: 'welcome#ayuda'
   get 'terminos', to: 'welcome#terminos'
-  get "mi-cuenta/:id" => "users#profile"
+  get "mi-cuenta/mis-descuentos/" => "users#deals"
   get "mi-cuenta/mis-descuentos/:id" => "users#deals"
   get "mi-cuenta/mis-favoritas/:id" => "users#favorites"
   get "mi-cuenta/mis-votadas/:id" => "users#rated"
@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   get 'ranking', to: 'users#ranking'
   get 'follow', to: 'users#follow'
   get 'unfollow', to: 'users#unfollow'
+  get 'followers', to: 'users#followers'
+  get 'followed', to: 'users#followed'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end
