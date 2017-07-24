@@ -209,7 +209,7 @@ class DealsController < ApplicationController
     url = params['url_host']
     require 'open-uri'
 begin
-  p page = Nokogiri::HTML(open(url))
+  page = Nokogiri::HTML(open(url))
 
   case url
   when /amazon/

@@ -69,12 +69,12 @@
             </div>
             <!-- TERMINA SUBMENU DESKTOP -->
           </li>
-          <li class="visible-xs"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
-          <li class="visible-xs"><a class="collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
+          <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
+          <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
-     <li class="dropdown">
+         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moderar <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/moderate"><i class="fa fa-certificate" aria-hidden="true"></i> PROMOCIONES </a></li>
@@ -113,9 +113,6 @@
                 </form>
               </div><!-- /.navbar-collapse -->
             </li>
-            <!--li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
-            <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
-            <li><%= link_to "Sign up", "#sign_up", "data-toggle" => "modal"%></li-->
       </ul>
     </div><!-- /.container -->
       <!-- INICIA FILTROS MOBILE -->

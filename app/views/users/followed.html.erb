@@ -1,0 +1,72 @@
+<style type="text/css">
+.contenedor-pub .rank-user{
+	border-bottom: 1px solid #e7e7e7;
+	padding: 10px 0px;
+	float: left;
+	width: 100%;
+} 
+.rank-number{
+	font-size: 20px;
+	padding: 5px;
+	font-weight: bold;
+	color: #d93438;
+}
+</style>
+<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+</script>
+<div class="col-md-12 no-padding-m">
+	<div class="deal-deta">
+		<%= render 'users/header' %>
+		<div class="col-md-3 no-padding">
+		<%= render 'users/menuprofile' %>
+		</div>
+		<div class="col-md-9 contenedor-pub">
+			<% @users.each do |user| %>
+			<div class="col-md-12 rank-user">
+				<div class="col-xs-6">
+					<strong><%= user.nickname %></strong>
+				</div>
+				<div class="col-xs-6 right">
+					<%= relationship(current_user.id, user.followed_id)  %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('.follow').click(function(event) {
+			followed = $(this).attr("user_followed");
+			follower = <%= current_user.id %>
+			 $.ajax({
+		        url:  "/follow",
+		        dataType: "json",
+		        data: {
+		           followed: followed,
+		           follower: follower
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+		$('.unfollow').click(function(event) {
+			follow = $(this).attr('idf');
+			 $.ajax({
+		        url:  "/unfollow",
+		        dataType: "json",
+		        data: {
+		           follow: follow
+		        },
+		        success: function(data) { 
+		        	console.log(data);		          
+		        }
+		      });
+		});
+	});
+</script>

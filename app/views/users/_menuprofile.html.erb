@@ -22,6 +22,16 @@
 	  	</a>
 	  </li>
 	  <li class="list-group-item">
+	  	<a href="/followers">
+	  		<i class="fa fa-user-circle" aria-hidden="true"></i> Seguidores
+	  	</a>
+	  </li>
+	  <li class="list-group-item">
+	  	<a href="/followed">
+	  		<i class="fa fa-user-o" aria-hidden="true"></i> Siguiendo
+	  	</a>
+	  </li>
+	  <li class="list-group-item">
 	  	<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	  </li>
 	  <!--<li class="list-group-item"><a href="/mi-cuenta/mi-ranking/<%= current_user.id %>">Ranking</a></li>-->
@@ -45,6 +55,12 @@
 		</a>
 		<a href="/ranking">
 	  		<i class="fa fa-line-chart" aria-hidden="true"></i> Ranking
+	  	</a>
+		<a href="/followers">
+	  		<i class="fa fa-user-circle" aria-hidden="true"></i> Seguidores
+	  	</a>
+		<a href="/followed">
+	  		<i class="fa fa-user-o" aria-hidden="true"></i> Siguiendo
 	  	</a>
 		<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
 	</div>

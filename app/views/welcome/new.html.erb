@@ -56,12 +56,12 @@
           </div>
           <div class="col-sm-7 white cont-hot-deal">
             <div class="row no-margin">
-              <div class="col-xs-6 no-padding"><p class="category"><a href="descuentos-por-categoria/<%= @hot_deal.category.id %>/<%= @hot_deal.category.slug %>"><%= @hot_deal.category.description %></a></p></div>
+              <div class="col-xs-6 no-padding"><p class="category"><a href="descuentos-por-categoria/<%= @hot_deal.category.id %>/<%= @hot_deal.category.slug %>"><%= @hot_deal.category.name %></a></p></div>
               <div class="col-xs-6 right"><p class="comments"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>#comments"><%= @hot_deal.comments.count %> <%= fa_icon 'comment' %></a></p></div>
             </div>        
             <h2 class="name"><a href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>"><%= @hot_deal.title %></a></h2>
             <p class="price"><%= number_to_currency(@hot_deal.price) %></p>
-            <p class="store"><a href="descuentos-por-tienda/<%= @hot_deal.store.id %>/<%= @hot_deal.store.slug %>"><%= @hot_deal.store.description %></a>
+            <p class="store"><a href="descuentos-por-tienda/<%= @hot_deal.store.id %>/<%= @hot_deal.store.slug %>"><%= @hot_deal.store.name %></a>
               <span class="fis-web">
                 <% if @hot_deal.type_deal == 1 %> 
                   Online 
@@ -85,6 +85,7 @@
           <div class="header-box">
             <div class="title-big">Más votadas</div>
           </div>
+          <% if @top_voted.present? %>
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <!-- Wrapper for slides -->
             <div class="carousel-inner white" role="listbox">
@@ -169,6 +170,7 @@
             </a>
           </div>
         </div>
+        <% end %>
     </div>
     <!-- TERMINA MÁS VOTADAS -->
   </div>

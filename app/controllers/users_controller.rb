@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
+	def followers
+		@users = Relationship.select('users.*, relationships.*').joins('LEFT JOIN users ON relationships.follower_id = users.id').where('relationships.followed_id='+current_user.id.to_s)
+		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
+	end
+	def followed
+		@users = Relationship.select('users.*, relationships.*').joins('LEFT JOIN users ON relationships.followed_id = users.id').where('relationships.follower_id='+current_user.id.to_s)
+		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
+	end
 
 	def deals
-    	@deals = Deal.where('user_id ='+params[:id])
+    	@deals = Deal.where('user_id ='+current_user.id.to_s)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
