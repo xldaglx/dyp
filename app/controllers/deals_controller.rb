@@ -6,7 +6,6 @@ class DealsController < ApplicationController
   # GET /deals.json
   def index
     @deals = Deal.all  
-
   end
 
   def stores
