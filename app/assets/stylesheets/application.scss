@@ -1860,6 +1860,9 @@ trix-editor{
   float: right;
 }
 @media screen and (max-width: 767px) {
+  .deal-title, .det-descripcion{
+    margin-top: 30px !important;
+  }
   .deal-det table .tabla-cat{
     width:100%;
     float:none;

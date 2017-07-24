@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'contacto', to: 'welcome#contacto'
   get 'ayuda', to: 'welcome#ayuda'
   get 'terminos', to: 'welcome#terminos'
+  get 'error404', to: 'welcome#404'
+  get 'error500', to: 'welcome#500'
   get "mi-cuenta/:id" => "users#profile"
   get "mi-cuenta/mis-descuentos/:id" => "users#deals"
   get "mi-cuenta/mis-favoritas/:id" => "users#favorites"
