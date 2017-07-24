@@ -31,8 +31,8 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <%= f.collection_select :category_id,  @categories, :id, :name, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
-        <%= f.collection_select :store_id,  @stores, :id, :name, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
+        <%= f.collection_select :category_id,  @categories.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
+        <%= f.collection_select :store_id,  @stores.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
       </div>
       <div class="col-md-6">
       </div>
