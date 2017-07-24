@@ -4,23 +4,23 @@
   <div class="container">
       <div class="col-lg-12 deal-det">
         <table class="table table-striped">
-          <tbody>
-            <% @banners.each do |banner| %>
-              <tr>
-                <td class="tabla-cat" colspan="4"><strong><%= banner.alt %></strong><br><%= banner.link %><br><%= banner.impressions %><br><%= banner.hits %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', banner, method: :delete, data: { confirm: 'Estás seguro de eliminar este Banner?' } %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Editar', edit_banner_path(banner) %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <%= link_to 'Ver', banner %></td>
-              </tr>
-            <% end %>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>
-                <%= link_to 'Agregar Banner', new_banner_path, class:"btn-rojo" %>
-              </td>
-            </tr>
-          </tfoot>
+          <% @banners.each do |banner| %>
+          <tr>
+            <td class="tabla-cat" colspan="4"><strong><%= banner.alt %></strong>
+              <br><span class="descripcion-tabla"><%= banner.link %></span>
+              <br><span class="descripcion-tabla"><%= banner.impressions %></span>
+              <br><span class="descripcion-tabla"><%= banner.hits %></span>
+            </td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', banner, method: :delete, data: { confirm: 'Estás seguro de eliminar este Banner?' } %></td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Editar', edit_banner_path(banner) %></td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <%= link_to 'Ver', banner %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td colspan="4">
+              <%= link_to 'Agregar Banner', new_banner_path, class:"btn-rojo" %>
+            </td>
+          </tr>
         </table>
       </div>
   </div>

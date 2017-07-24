@@ -1830,9 +1830,14 @@ trix-editor{
 }
 .deal-det table .tabla-cat{
   font-size: 16px;
-  float: left;
+  width:75%;
+  float:left;
   border-top:0px;
   padding: 3px 20px;
+}
+.deal-det table .descripcion-tabla{
+  font-size:13px;
+  color:#666;
 }
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
   border-top: 0px;
@@ -1842,7 +1847,6 @@ trix-editor{
 }
 .deal-det table .tabla-edit{
   float: right;
-  margin-left: 12px;
   padding-left: 12px;
   border-top: 0px;
   border-left: 0px;
@@ -1856,6 +1860,10 @@ trix-editor{
   float: right;
 }
 @media screen and (max-width: 767px) {
+  .deal-det table .tabla-cat{
+    width:100%;
+    float:none;
+  }
   .btn-rechazar, .btn-editar{
     margin-top:8px;
   }

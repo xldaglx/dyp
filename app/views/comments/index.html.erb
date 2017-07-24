@@ -4,32 +4,22 @@
   <div class="container">
       <div class="col-lg-12 deal-det">
         <table class="table table-striped">
-          <thead>
-            <tr>
-              <th colspan="5">Descripción</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @comments.each do |comment| %>
-              <tr>
-                <td class="tabla-cat"><%= comment.description %></td>
-                <td class="tabla-cat"><%= comment.user %></td>
-                <td class="tabla-cat"><%= comment.deal %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <%= link_to 'Ver', comment %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Editar', edit_comment_path(comment) %></td>
-                <td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar este comentario?' } %></td>
-              </tr>
-            <% end %>
-            
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>
-                <%= link_to 'Agregar Tienda', new_comment_path, class:"btn-rojo" %>
-              </td>
-            </tr>
-          </tfoot>
+          <tr>
+            <th colspan="4">Descripción</th>
+          </tr>
+          <% @comments.each do |comment| %>
+          <tr>
+            <td class="tabla-cat"><strong><%= comment.user %> : <%= comment.deal %></strong><br><%= comment.description %></td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <%= link_to 'Ver', comment %></td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Editar', edit_comment_path(comment) %></td>
+            <td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', comment, method: :delete, data: { confirm: 'Estás seguro de eliminar este comentario?' } %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td colspan="4">
+              <%= link_to 'Agregar Tienda', new_comment_path, class:"btn-rojo" %>
+            </td>
+          </tr>
         </table>
       </div>
   </div>
