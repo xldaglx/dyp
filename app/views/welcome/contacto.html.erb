@@ -48,3 +48,30 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	var type = $('.nav-tabs li a').attr('href');
+		$('#new_deal').validate({
+		  rules: {
+		  	'deal[link]': {
+		      required: true
+		    },
+		    'deal[title]': {
+		      required: true
+		    },
+		    'deal[description]': {
+		      required: true
+		    },
+		    'deal[category_id]': {
+		      required: true
+		    },
+		    'deal[store_id]': {
+		      required: true
+		    },
+		    'deal[type_deal]': {
+		      required: true
+		    }
+		  }
+		});
+	});
+</script>
