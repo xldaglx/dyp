@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get 'moderatescrapp', to: 'deals#scrapromotion'
   get 'moderate', to: 'deals#moderate'
   get 'nosotros', to: 'welcome#nosotros'
-  get 'contacto', to: 'welcome#contacto'
   get 'ayuda', to: 'welcome#ayuda'
   get 'terminos', to: 'welcome#terminos'
   get "mi-cuenta/:id" => "users#profile"
@@ -51,6 +50,8 @@ Rails.application.routes.draw do
   get 'unfollow', to: 'users#unfollow'
   get 'followers', to: 'users#followers'
   get 'followed', to: 'users#followed'
+  get 'contact', to: 'messages#new', as: 'contact'
+  post 'contact', to: 'messages#create'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end

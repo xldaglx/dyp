@@ -9,9 +9,6 @@ class WelcomeController < ApplicationController
   def ayuda
   	@banners = Banner.all
   end
-  def contacto
-  	@banners = Banner.all
-  end
   def terminos
   	@banners = Banner.all
   end
