@@ -941,6 +941,8 @@ li > a:hover{
   border: 2px solid #d93438;
   padding: 6px 10px;
   border-radius: 2px;
+  font-weight:bold;
+  float:none;
 }
 .carousel-control.right, .carousel-control.left{
   background: transparent;
@@ -1563,6 +1565,7 @@ trix-editor{
 .cont-public{
   padding: 30px 10px;
   float: left;
+  width:100%;
 }
 .btn-seguir{
   font-size: 14px;
@@ -1575,6 +1578,11 @@ trix-editor{
 }
 .btn-seguir:hover{
   background-color: #0B8389;
+  color: #FFF;
+  text-decoration: none;
+}
+.btn-seguir:focus, btn-seguir:active{
+  background-color: #16A086;
   color: #FFF;
   text-decoration: none;
 }
@@ -1591,6 +1599,11 @@ trix-editor{
   background-color: #d43f3a;
   color: #FFF;
   text-decoration: none;
+}
+.btn-noseguir:focus, .btn-noseguir:active{
+  text-decoration:none;
+  background-color: #d9534f;
+  color: #FFF;
 }
 .list-group-item:first-child{
   border-top-right-radius: 0px;
@@ -1860,6 +1873,17 @@ trix-editor{
   float: right;
 }
 @media screen and (max-width: 767px) {
+  .deal-title .det-btn .btn-rojo{
+    width: 100%;
+  }
+  .btn-rojo-out{
+    border: 2px solid #d93438;
+    padding: 6px 20px;
+    border-radius: 2px;
+    font-weight:bold;
+    float:left;
+    margin-top:10px !important;
+  }
   .deal-title, .det-descripcion{
     margin-top: 30px !important;
   }

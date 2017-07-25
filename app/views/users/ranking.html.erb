@@ -29,7 +29,7 @@
 			<% @users.each do |user| %>
 			<div class="col-md-12 rank-user">
 				<div class="col-xs-6">
-					<span class="rank-number"><%= user.rank %></span> <strong><%= user.nickname %></strong>
+					<span class="rank-number"><%= user.rank %></span> <a href="/perfil-publico/<%= user.id%>" style="color:#49494a;"><strong><%= user.nickname %></strong></a>
 				</div>
 				<div class="col-xs-6 right">
 					<%= relationship(current_user.id, user.id)  %>

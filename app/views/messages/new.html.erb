@@ -8,41 +8,60 @@
   .margin-0 input{
     margin-top: 0px;
   }
+  .asterisco{
+    color: #d93438;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 15px;
+  }
+  .span-legal{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #999999;
+    font-weight: 300;
+  }
 </style>
 <div class="row deal-detail">
   <div class="container">
-    <div class="col-md-9 deal-det">
+    <div class="col-md-8 col-md-offset-2 deal-det">
       <h1>Contacto</h1>
         <hr>
         <h4>Ayúdanos a mejorar tu experiencia</h4>
         <p>
-          Si tienes alguna duda acerca del sitio o si sólo deseas enviarnos tu opinión, siéntete libre de escribirnos a continuación:
+          Si tienes alguna duda acerca del sitio o si sólo deseas enviarnos tu opinión, siéntete libre de escribirnos a continuación, recuerda que los campos marcados on un <span class="asterisco">*</span> son necesarios:
         </p>
         <div class="col-md-6 no-padding">
          <%= form_for @message, url: contact_path do |message_form| %>
-            <div class="field margin-0">
-              <%= message_form.text_field :name, placeholder: "Escribe tu nombre" %>
-            </div>
-            
                   <br>
                   <div class="field margin-0">
-              <%= message_form.email_field :email, placeholder: "Escribe tu correo electrónico"%>
-            </div>
-            
-                  <br>
+                    <p>Nombre<span class="asterisco">*</span>:
+                    <%= message_form.text_field :name, placeholder: "Escribe tu nombre" %><br>
+                    <span class="span-legal">Puedes ingresar tu nombre real o tu nombre de usuario.</span>
+                    </p>
+                  </div>
                   <div class="field margin-0">
-              <%= message_form.text_area :content, placeholder: "Acerca de que nos escribes"%>
-            </div>
-                  <br>
+                    <p>Correo Electrónico<span class="asterisco">*</span>:
+                      <%= message_form.email_field :email, placeholder: "Escribe tu correo electrónico"%>
+                      <span class="span-legal">Recuerda ingresar un correo electrónico válido.</span>
+                    </p>
+                  </div>
                   <div class="field margin-0">
-              <%= message_form.submit "Enviar", class: "btn-rojo btn-enviar" %>
-            </div>
+                    <p>Mensaje<span class="asterisco">*</span>:
+                      <%= message_form.text_area :content, placeholder: "Acerca de que nos escribes"%>
+                    </p>
+                  </div>
+                  <br>
+                  <div class="margin-0">
+                    <%= message_form.submit "Enviar", class: "btn-rojo btn-enviar" %>
+                  </div>
         <% end %>
         </div>
     </div>
-    <div class="col-md-3 banners">
+    <!--div class="col-md-3 banners">
       <%= render 'banners/right_column.html.erb' %>
-    </div>
+    </div-->
   </div>
 </div>
 <script type="text/javascript">
