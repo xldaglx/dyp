@@ -123,7 +123,18 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
           <% end %>
         </div>
         <div class="col-md-8">
-          <h1><%= title @deal.title %></h1>
+          <div class="store">
+            <a href="/descuentos-por-tienda/<%= @deal.store.id %>/<%= @deal.store.slug %>"><%= @deal.store.name %></a>
+            <span class="fis-web">
+              <% if @deal.type_deal == 1 %> 
+                Online 
+              <% else %> 
+                Tienda Física 
+              <%end%>
+            </span>
+          </div>
+          <h1 style="margin: 5px 0px 10px 0px;"><%= title @deal.title %></h1>
+          
             <% if @deal.price.present? %>
           <div class="det-price">
             <%= number_to_currency(@deal.price) %>
