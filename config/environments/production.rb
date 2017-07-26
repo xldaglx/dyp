@@ -41,7 +41,9 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  #config.force_ssl = true
+  #config.action_controller.default_url_options = {host: "www.descuentosypromociones.com"}
+  #config.action_controller.asset_host = "www.descuentosypromociones.com"
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -87,26 +89,22 @@ Rails.application.configure do
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
   #Config Mailes
-  ActionMailer::Base.default :from => 'default@development-server.com'
+  ActionMailer::Base.default :from => 'default@descuentosypromociones.com'
 # port 3000 or whatever port you are using for your localhost
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000, :from => "foo@bar.com" }    
-config.action_mailer.raise_delivery_errors = false
-config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'www.descuentosypromociones.com',:protocol => 'http', :from => "foo@bar.com" }    
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
 # this line is what you want to be true, else you won't get messages!
-config.action_mailer.perform_deliveries = true 
-
+  config.action_mailer.perform_deliveries = true 
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
   domain: "gmail.com",
-  authentication: "plain",
+  authentication: plain,
   enable_starttls_auto: true,
   user_name: "gerayalad@gmail.com",
   password: "090809DaG"
   }
-
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Paperclip.options[:command_path] = "/usr/local/bin/"

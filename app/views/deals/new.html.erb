@@ -30,13 +30,14 @@ jQuery(document).ready(function($) {
 		$('#new_deal').validate({
 		  rules: {
 		  	'deal[link]': {
-		      required: true
+		      required: true,
+          	  minlength:10,
+          	  maxlength:255
 		    },
 		    'deal[title]': {
-		      required: true
-		    },
-		    'deal[description]': {
-		      required: true
+		      required: true,
+          	  minlength:10,
+          	  maxlength:255
 		    },
 		    'deal[category_id]': {
 		      required: true
@@ -56,10 +57,9 @@ jQuery(document).ready(function($) {
 		$('#new_deal').validate({
 		  rules: {
 		    'deal[title]': {
-		      required: true
-		    },
-		    'deal[description]': {
-		      required: true
+		      required: true,
+          	  minlength:10,
+          	  maxlength:255
 		    },
 		    'deal[category_id]': {
 		      required: true
@@ -82,13 +82,14 @@ jQuery(document).ready(function($) {
 			$('#new_deal').validate({
 			  rules: {
 			  	'deal[link]': {
-			      required: true
+			      required: true,
+	          	  minlength:10,
+	          	  maxlength:255
 			    },
 			    'deal[title]': {
-			      required: true
-			    },
-			    'deal[description]': {
-			      required: true
+			      required: true,
+	          	  minlength:10,
+	          	  maxlength:255
 			    },
 			    'deal[category_id]': {
 			      required: true
@@ -108,10 +109,9 @@ jQuery(document).ready(function($) {
 			$('#new_deal').validate({
 		  rules: {
 		    'deal[title]': {
-		      required: true
-		    },
-		    'deal[description]': {
-		      required: true
+		      required: true,
+          	  minlength:10,
+          	  maxlength:255
 		    },
 		    'deal[category_id]': {
 		      required: true

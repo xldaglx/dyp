@@ -113,7 +113,7 @@
             <a class="btn btn-rojo-small" href="<%= deal.link %>" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
           </div>
           <% end %>
-          <a class="comments hidden-xs" href=""><%= deal.comments.count %> <%= fa_icon 'comment' %></a> 
+          <a class="comments hidden-xs" href="/descuentos/<%= deal.id %>-<%= deal.slug %>#box-comm"><%= deal.comments.count %> <%= fa_icon 'comment' %></a> 
         </div>
       </div>
     </div>
