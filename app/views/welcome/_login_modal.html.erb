@@ -23,15 +23,17 @@
 
   		  <div class="field password">
   		    <%= f.label :password, "Contraseña*" %>
-          <%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class:"olvide-password" %>
   		    <% if @minimum_password_length %>
   		    <% end %><br />
       		<%= f.password_field :password, autocomplete: "off" %>
+          <%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class:"olvide-password" %>
+          <br>
   		  </div>
         <%= f.submit "Iniciar sesión", class:"btn btn-login" %>
-        <div class="check-filter">
+
+        <!--div class="check-filter">
           <input type="checkbox" name="vehicle" value="Bike"> Recordar mi sesión
-        </div>
+        </div-->
       </div>
       
       <div class="modal-footer">
