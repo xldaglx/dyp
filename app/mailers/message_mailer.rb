@@ -1,7 +1,7 @@
 class MessageMailer < ActionMailer::Base
 
   default from: "Your Mailer <noreply@promocionesydescuentos.com>"
-  default to: "Your Name <gerardoayalad@outlook.com>"
+  default to: "Your Name <contacto@promocionesydescuentos.com>"
 
   def new_message(message)
     @message = message
