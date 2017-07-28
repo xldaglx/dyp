@@ -7,7 +7,7 @@ end
 @current_url = request.protocol+request.host_with_port
 set_meta_tags og: {
   title:    @deal.title,
-  description:    @deal.description,
+  description:    strip_tags(@deal.description),
   type:     'product',
   url:      @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
   image:    @current_url+@imageurl,
@@ -17,7 +17,7 @@ set_meta_tags twitter: {
   card: "summary",
   site: "@gerardoayalad",
   title:    @deal.title,
-  description:    @deal.description,
+  description:    strip_tags(@deal.description),
   image:    @current_url+@imageurl
 }
 set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug
