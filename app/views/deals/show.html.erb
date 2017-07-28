@@ -160,6 +160,9 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
           $('.main-image').click(function(event) {
             $('#ModalImage .modal-body').html('');
             var src = $(this).attr('src');
+            if (src.includes("keepa")){
+            $('#ModalImage .modal-body').append('<p style="text-align:center; font-weight:700; margin:10px;">Aquí podrás ver el comportamiento en cuanto a precio de este producto durante este tiempo.</p>');
+            }
             $('#ModalImage .modal-body').append('<img src="'+src+'" class="img-responsive">');
           });
         </script>
