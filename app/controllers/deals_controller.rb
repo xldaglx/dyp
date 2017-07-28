@@ -120,7 +120,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
-    @banners = Banner.all
+    @banners = Banner.order("RAND()").limit(3)
     @banners.each do |banner|
       banner.impressions = banner.impressions + 1
       banner.save

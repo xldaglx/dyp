@@ -7,12 +7,24 @@ class WelcomeController < ApplicationController
     @deals = Deal.all.where('status = 1').order('created_at DESC').page(params[:page])
   end
   def ayuda
-  	@banners = Banner.all
+  	@banners = Banner.order("RAND()").limit(3)
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
   end
   def terminos
-  	@banners = Banner.all
+  	@banners = Banner.order("RAND()").limit(3)
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
   end
   def nosotros
-  	@banners = Banner.all
+  	@banners = Banner.order("RAND()").limit(3)
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
   end
 end

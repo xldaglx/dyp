@@ -2,11 +2,19 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @banners = Banner.all
+    @banners = Banner.order("RAND()").limit(3)
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
   end
 
   def create
-    @banners = Banner.all
+    @banners = Banner.order("RAND()").limit(3)
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
     @message = Message.new(message_params)
     
     if @message.valid?
