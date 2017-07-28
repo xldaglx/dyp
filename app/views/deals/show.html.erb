@@ -201,7 +201,7 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
             <% end %>
             <% if @deal.price.present? %>
             <% if @deal.mpn.present? %>
-            <li>
+            <li class="btn-ver-mobile">
               <a href="#ModalImage" data-toggle="modal" data-target="#ModalImage" class="main-image btn-rojo-out" src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx"><i class="fa fa-area-chart" aria-hidden="true" style="float: none;"></i> Ver comportamiento</a>
             </li>
             <% end %>
