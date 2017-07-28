@@ -3,7 +3,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  config.serve_static_assets = false
+  #config.serve_static_assets = true
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -24,7 +24,7 @@ Rails.application.configure do
   #config.assets.precompile += %w( *.js *.css )
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -91,7 +91,7 @@ Rails.application.configure do
   #Config Mailes
   ActionMailer::Base.default :from => 'default@descuentosypromociones.com'
 # port 3000 or whatever port you are using for your localhost
-  config.action_mailer.default_url_options = { host: 'www.descuentosypromociones.com',:protocol => 'http', :from => "foo@bar.com" }    
+  config.action_mailer.default_url_options = { host: 'www.descuentosypromociones.com'}    
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
 # this line is what you want to be true, else you won't get messages!
@@ -100,11 +100,12 @@ Rails.application.configure do
   address: "smtp.gmail.com",
   port: 587,
   domain: "gmail.com",
-  authentication: plain,
+  authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "gerayalad@gmail.com",
-  password: "090809DaG"
+  user_name: Rails.application.secrets.email_user_name,
+  password: Rails.application.secrets.email_password,
   }
+
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   Paperclip.options[:command_path] = "/usr/local/bin/"

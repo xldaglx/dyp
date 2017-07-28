@@ -1,5 +1,22 @@
     <% @banners.each do |banner| %>
-        <a target="_blank" href="<%= banner.link %>">
+        <a target="_blank" href="<%= banner.link %>" id="<%=banner.id%>" class="banner-action">
         <%= image_tag banner.image.url(:original), class: 'img-responsive', alt: banner.alt %>
         </a>
     <% end %>
+    <script type="text/javascript">
+    	jQuery(document).ready(function($) {	
+		    $('.banner-action').click(function(event) {
+		     id = $(this).attr('id');
+		      $.ajax({
+		        url:  "/bannersclick",
+		        dataType: "json",
+		        data: {
+		           id: id
+		        },
+		        success: function(data) { 
+		          window.location.reload();
+		        }
+		      });
+		    });
+    	});	
+    </script>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :deals
   resources :descuentos, :controller => "deals"
-
+  get '/_ah/health', to: 'app_engine#health'
   get 'welcome/index'
   root 'welcome#index'
   get 'image/scrapp', to: 'deals#scrapp'
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get 'unfollow', to: 'users#unfollow'
   get 'followers', to: 'users#followers'
   get 'followed', to: 'users#followed'
+  get 'bannersclick', to: 'banners#click'
   get 'contact', to: 'messages#new', as: 'contact'
   post 'contact', to: 'messages#create'
 

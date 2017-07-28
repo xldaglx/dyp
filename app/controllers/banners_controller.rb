@@ -12,6 +12,12 @@ class BannersController < ApplicationController
   def show
   end
 
+  def click
+    @banner = Banner.find(params[:id])
+    @banner.hits = @banner.hits + 1
+    @banner.save
+  end
+
   # GET /banners/new
   def new
     @banner = Banner.new

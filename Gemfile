@@ -51,6 +51,7 @@ end
 
 group :production do
   gem 'listen', '~> 3.0.5'
+  gem 'rails_12factor'
 end
 
 

@@ -54,7 +54,7 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
         <% end %>
         <div class="col-md-7">
             <div class="category">
-              <a href="/descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.description %></a>
+              <a href="/descuentos-por-categoria/<%= @deal.category.id %>/<%= @deal.category.slug %>"><%= @deal.category.name %></a>
             </div>
             <div class="usuario">
               <% if @deal.user_id.present? %>
@@ -182,10 +182,10 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
                   <i class="fa fa-share-alt" aria-hidden="true"></i> Compartir
                 </a>
                 <ul class="dropdown-menu lista-compartir" aria-labelledby="dLabel">
-                  <li><a href=""><i class="visible-xs fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                  <li><a href="whatsapp://send?text=<%=  @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" data-action="share/whatsapp/share"><i class="visible-xs fa fa-whatsapp" aria-hidden="true"></i></a></li>
                   <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u="+@current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                  <li><a href="https://twitter.com/share" class="twitter-share-button"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                  <li><a href="https://twitter.com/share"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                 </ul>
               </div>
             </li>

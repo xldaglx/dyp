@@ -121,6 +121,10 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @banners = Banner.all
+    @banners.each do |banner|
+      banner.impressions = banner.impressions + 1
+      banner.save
+    end
   end
 
   # GET /deals/new
