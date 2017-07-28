@@ -14,7 +14,7 @@ class StoresController < ApplicationController
   end
 
   def list
-    @stores = Store.all
+    @stores = Store.all.order('name ASC')
     @banners = Banner.order("RAND()").limit(3)
     @banners.each do |banner|
       banner.impressions = banner.impressions + 1

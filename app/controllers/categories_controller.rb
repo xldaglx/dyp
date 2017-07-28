@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   end
 
   def list
-    @categories = Category.all
+    @categories = Category.all.order('name ASC')
     @banners = Banner.order("RAND()").limit(3)
   end
 
