@@ -41,8 +41,8 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
           <ul class="menu-aceptar">
             <% if @deal.status != 1 %>
             <a href="#aceptar" id="accept" class='deal-action'><li class="btn-aceptar"><span class="glyphicon glyphicon-ok"></span> Publicar</li></a>
-            <a href="/descuentos/<%= @deal.id %>/edit"><li class="btn-editar"><span class="glyphicon glyphicon-pencil"></span> Editar</li></a>
             <% end %>
+            <a href="/descuentos/<%= @deal.id %>/edit"><li class="btn-editar"><span class="glyphicon glyphicon-pencil"></span> Editar</li></a>
             <% if @deal.status != 2 %>
             <a href="#rechazar" data-toggle="modal"><li class="btn-rechazar"><span class="glyphicon glyphicon-remove"></span> Rechazar</li></a>
             <% end %>

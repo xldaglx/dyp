@@ -23,8 +23,9 @@
           </div>
 
           <div class="field password">
-            <%= f.label :Contraseña %><%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class:"olvide-password" %><br />
+            <%= f.label :Contraseña %>
             <%= f.password_field :password, autocomplete: "off" %>
+            <%= link_to "Olvidé mi contraseña", new_password_path(resource_name), class:"olvide-password" %>
           </div>
 
           <div class="actions">
