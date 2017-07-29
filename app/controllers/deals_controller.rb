@@ -73,6 +73,7 @@ class DealsController < ApplicationController
   def updateStatus
     id = params[:id]
     iddeal = params[:iddeal]
+    notify = params[:notify]
     if id == "accept"
       @deal = Deal.find(iddeal)
       @deal.status = 1
@@ -80,11 +81,12 @@ class DealsController < ApplicationController
       if id == "reject"
         @deal = Deal.find(iddeal)
         if @deal.user_id.present?
-          ExampleMailer.reject_email(@deal.user).deliver
+          if notify == 1
+            ExampleMailer.reject_email(@deal.user).deliver
+          end
         end
         @deal.status = 2
         reason = params[:reason]
-        #send-email
       else
         id = "error"
       end

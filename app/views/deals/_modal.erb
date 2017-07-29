@@ -42,26 +42,27 @@
                   </div>
                   <div class="modal-body">
                     <span class="glyphicon glyphicon-remove"></span>
-                    <h4>Esta promoción no cumple con los requisitos para ser publicada debido a:</h4>
-                    <form>
+                    <h4>Esta promoción no cumple con los requisitos para ser publicada</h4>
                       <div class="col-md-12">
                         <div class="radios-filter">
-                          <input type="checkbox" name="" value=""><strong> <span style="color:#d93438;">NOTIFICAR AL USUARIO</span></strong>
+                          <input type="checkbox" name="notify" id="notify" checked="checked"><strong> <span style="color:#d93438;">NOTIFICAR AL USUARIO</span></strong>
+                          <input type="hidden" id="notifyvalue" value="1">
                           <BR><BR>
                         </div>
                       </div>
                       <div class="col-md-12 no-padding">
-                        <textarea name="comentarios" rows="4" placeholder="En caso de notificarle, escribe aquí los comentarios para el usuario"></textarea>
+                        <!--
+                        <textarea name="comentarios" rows="4" placeholder="En caso de notificarle, escribe aquí los comentarios para el usuario"></textarea>-->
                       </div>
-                    </form>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary deal-action" id="reject">Rechazar promoción</button>
                   </div>
                 </div>
               </div>
             </div>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    
-  });
-</script>
+            <script type="text/javascript">
+   
+     $('#notify').change(function(){
+        var notify = this.checked ? 1 : 0;
+        $('#notifyvalue').val(notify);
+      });</script>

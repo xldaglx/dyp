@@ -285,12 +285,14 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
     $('.deal-action').click(function(event) {
      id = $(this).attr('id');
      iddeal = <%= @deal.id %>
+     notify = $('#notifyvalue').val();
       $.ajax({
         url:  "/dealaction",
         dataType: "json",
         data: {
            id: id,
-           iddeal:iddeal
+           iddeal:iddeal,
+           notify:notify
         },
         success: function(data) { 
           window.location.reload();
