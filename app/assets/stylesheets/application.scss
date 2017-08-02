@@ -1879,6 +1879,9 @@ trix-editor{
   float: right;
 }
 @media screen and (max-width: 767px) {
+  .content-box .name, .carousel-inner h2.name, .oferta-individual .name{
+    font-weight: 400;
+  }
   .btn-rojo-small{
     font-size: 13px;
     width:100%;
@@ -2144,7 +2147,10 @@ trix-editor{
   .oferta-individual .name{
     max-height: 35px;
     line-height: 18px;
-    font-size: 13px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   .oferta-individual .price{
     font-size: 15px;
