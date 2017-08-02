@@ -121,8 +121,13 @@
                   }
                 });
                 $('.imgscrappcontainer img').click(function(event) {
-                  $('.imgscrappcontainer img').css('opacity', '0.7');
-                  $(this).css('opacity', '1');
+                  $('.imgscrappcontainer img').css({
+                    'opacity': '0.7'
+                  });
+                  $(this).css({
+                    'opacity': '1',
+                    'border': '2px solid #d93438'
+                  });
                   route = $(this).attr('src');
                   $('#deal_imagen').val(route);
                 });
