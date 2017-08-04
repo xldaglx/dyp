@@ -33,8 +33,8 @@
               <a class="navbar-brand logotipo-s" href="/"><img src="/images/logo-s.png" alt="Descuentos y Promociones" title="Descuentos y Promociones" /></a>
             </div>
             <div class="col-xs-8 menu-mobile">
-                <%= link_to "+ Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'hidden-xs btn btn-compartir btn-default' %>
-                <%= link_to "Compartir", "/descuentos/new", "data-toggle" => "modal", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
+                <%= link_to "+ Compartir", "/descuentos/new", class: 'hidden-xs btn btn-compartir btn-default' %>
+                <%= link_to "Compartir", "/descuentos/new", class: 'visible-xs btn btn-compartir-s btn-compartir btn-default' %>
               <div class="menu-sign">
                 <div class="mi-cuenta">
                   <% if user_signed_in? %>

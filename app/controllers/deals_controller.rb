@@ -188,7 +188,6 @@ class DealsController < ApplicationController
         } 
       end
     else
-      p promoid
     @behavior = Behavior.new(grade: number, user_id: userid, deal_id: promoid)
     @behavior.save
       respond_to do |format|
@@ -222,15 +221,30 @@ class DealsController < ApplicationController
     end
   end
   def scrapp
+    price = ""
+    model = ""
+    title = ""
     img_urls = Array.new
     url = params['url_host']
     require 'open-uri'
 begin
-  page = Nokogiri::HTML(open(url))
+
+  page = HTTParty.get(url)
+  page = Nokogiri::HTML(page)
 
   case url
   when /amazon/
     title = page.css("title")[0].text
+    price = page.xpath("//span[@id='priceblock_ourprice']").text
+    price_special = page.xpath("//span[@id='priceblock_dealprice']").text
+    price_salesprice = page.xpath("//span[@id='priceblock_saleprice']").text
+    if price_special != ""
+      price = price_special
+    end
+    if price_salesprice != ""
+      price = price_salesprice
+    end
+    model = page.xpath("//input[@id='ASIN']/@value").map(&:value)
     page.xpath('//img').each do |img|
       img_urls.push (img['src'])
     end
@@ -239,6 +253,9 @@ begin
     page.xpath('//img').each do |img|
       img_urls.push (img['src'])
     end
+  when /linio/
+    #Lazy loading is messing with scrapping
+    p title = page.xpath("//meta[@property='og:title']/@content").text
   else
     page.xpath('//img').each do |img|
     img_urls.push (img['src'])
@@ -249,7 +266,7 @@ begin
    format.html
    format.js {}   
    format.json { 
-      render json: {:images => img_urls, :title => title}
+      render json: {:images => img_urls, :title => title, :price => price, :url => url, :model => model}
    } 
   end
       
