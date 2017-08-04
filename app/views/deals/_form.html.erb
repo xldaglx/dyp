@@ -16,8 +16,8 @@
         <div class="col-md-9 no-padding">
           <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
         </div>
-        <div class="col-md-3">
-          <button class="btn-rojo" style="margin-top: 25px;height: 40px;width: 145px;">Obtener imagen</button>
+        <div class="col-md-3 no-padding">
+          <button class="btn-obtener" style="">Obtener imagen</button>
         </div>
       </div>
       <div id="scrapp-images" class="row"></div>  
@@ -27,7 +27,7 @@
       <!--
         <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
         <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>-->
-        <%= f.file_field :promoimage, label: "Sube tu imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
+        <%= f.file_field :promoimage, label: "Sube tu propia imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
       </div>
       <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
     </div>
