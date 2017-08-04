@@ -947,6 +947,32 @@ li > a:hover{
   font-weight:bold;
   float:none;
 }
+.btn-obtener, .btn-obtener:focus, .btn-obtener:active{
+  font-size: 13px;
+  color: #666 !important;
+  font-weight: 400;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: 2px solid #d1cfcf;
+  line-height: 22px;
+  background: #FFF;
+  margin-left: 4%;
+  margin-top: 25px;
+  margin-bottom: 0px;
+  height: 40px;
+  width: 95%;
+  outline: none;
+}
+.btn-obtener:hover{
+  color: #d93438 !important;
+  border: 2px solid #d93438;
+}
+.btn-upload{
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+}
 .carousel-control.right, .carousel-control.left{
   background: transparent;
 }
@@ -981,6 +1007,7 @@ li > a:hover{
   text-align: right;
   font-size: 22px;
   cursor: pointer;
+  line-height: inherit;
 }
 .thumbs-oferta .up{
   padding-left:9px;
@@ -1884,6 +1911,13 @@ trix-editor{
 @media screen and (max-width: 767px) {
   .content-box .name, .carousel-inner h2.name, .oferta-individual .name{
     font-weight: 400;
+  }
+  .btn-obtener{
+    margin-left:0%;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    height: 35px;
+    width: 100%;
   }
   .btn-rojo-small{
     font-size: 13px;

@@ -87,11 +87,6 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
         </div>
         <div class="col-md-5 rank-det">
             <div class="thumbs thumbs-oferta" id="<%= @deal.id %>">
-                <span class="<%= rank_style(@deal.rank) %> grades">
-                  <%= fa_icon "thermometer-empty" %>
-                  <span class="rank-meter"><%= @deal.rank %></span>
-                  <span class="grados-sign">&#186;</span>
-                </span>
                 <span class="thumbs-quality">
                   <% if user_signed_in? %> 
                     <% if @deal.behaviors.exists? user_id: current_user.id  %>
@@ -110,6 +105,11 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
                           <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
                           <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
                   <% end %>
+                </span>
+                <span class="<%= rank_style(@deal.rank) %> grades">
+                  <%= fa_icon "thermometer-empty" %>
+                  <span class="rank-meter"><%= @deal.rank %></span>
+                  <span class="grados-sign">&#186;</span>
                 </span>
             </div>
         </div>
