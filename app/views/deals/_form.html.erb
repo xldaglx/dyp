@@ -12,7 +12,14 @@
   <% end %>
 
     <div class="col-md-12">
-      <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción" %>
+      <div class="col-md-12 no-padding">
+        <div class="col-md-9 no-padding">
+          <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
+        </div>
+        <div class="col-md-3">
+          <button class="btn-rojo" style="margin-top: 25px;height: 40px;width: 145px;">Obtener imagen</button>
+        </div>
+      </div>
       <div id="scrapp-images" class="row"></div>  
       <div class="loader-image"><img src="/images/spinner.gif"></div>
       <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
@@ -93,21 +100,21 @@
             },
             success: function(data) {
               console.log(data);
-              if (typeof data.model !== 'undefined' && data.model.length > 0) {
-                  $('#deal_mpn').val(data.model[0]);
-              }
-              if (data.url != ""){
-                url = data.url
-                $("#deal_store_id option").each(function()
-                {
-                  substring = $(this).text().toLowerCase();
-                  if (url.indexOf(substring) !=-1) {
-                    $(this).attr('selected','selected')
-                  }
-                });
-              }
               $('.loader-image').hide();
               if(data.message != "error"){
+                if (typeof data.model !== 'undefined' && data.model.length > 0) {
+                    $('#deal_mpn').val(data.model[0]);
+                }
+                if (data.url != ""){
+                  url = data.url
+                  $("#deal_store_id option").each(function()
+                  {
+                    substring = $(this).text().toLowerCase();
+                    if (url.indexOf(substring) !=-1) {
+                      $(this).attr('selected','selected')
+                    }
+                  });
+                }
                 if(data.title != ""){
                   $('#deal_title').val(data.title);  
                   $('#deal_price').val(data.price);  
