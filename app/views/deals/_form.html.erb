@@ -67,6 +67,7 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('#deal_link').on('paste', function (e) {
+      $('#scrapp-images').html('');
 
       var url_input = e.originalEvent.clipboardData.getData('text');
       //var url_input = $(this).val();
@@ -90,7 +91,6 @@
       var regex = new RegExp(expression);
       if (url_input.match(regex)) {
         if(url_input.length > 10){ 
-        $('#scrapp-images').html('');
           $('.loader-image').show();
           $.ajax({
             url:  "/image/scrapp",
@@ -101,7 +101,7 @@
             success: function(data) {
               console.log(data);
               $('.loader-image').hide();
-              if(data.message != "error"){
+              if(data.message != "error" && data.title != "Server Busy"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
                     $('#deal_mpn').val(data.model[0]);
                 }
@@ -110,6 +110,7 @@
                   $("#deal_store_id option").each(function()
                   {
                     substring = $(this).text().toLowerCase();
+                    substring = substring.replace( /\s/g, "");
                     if (url.indexOf(substring) !=-1) {
                       $(this).attr('selected','selected')
                     }
@@ -124,7 +125,7 @@
                   $('#deal_price').val(price);  
                 }
                 for (i in data.images) {
-                    $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none; max-height:101px;"></div>');
+                  $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none; max-height:101px;"></div>');
                 }
                 count=0;
                 $('.imgscrappcontainer img').each(function(index, el) {
@@ -166,7 +167,7 @@
         }
       } 
       else {
-        alert("Error");
+        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div><br>');
       }
     });
   });
