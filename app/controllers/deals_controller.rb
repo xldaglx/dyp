@@ -174,19 +174,30 @@ class DealsController < ApplicationController
       @deal.rank = @deal.rank.to_i - 1
     end
     @deal.save
-
     userid = 1
     if user_signed_in?
       userid = current_user.id
     end
+    @behavior = Behavior.all.where('user_id = '+userid.to_s).where('deal_id ='+promoid.to_s)
+    if @behavior.exists?
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => 'error'}
+        } 
+      end
+    else
+      p promoid
     @behavior = Behavior.new(grade: number, user_id: userid, deal_id: promoid)
     @behavior.save
-    respond_to do |format|
-       format.html
-       format.js {} 
-       format.json { 
-          render json: {:message => 'success', :rank => @deal.rank, :number => number}
-      } 
+      respond_to do |format|
+         format.html
+         format.js {} 
+         format.json { 
+            render json: {:message => 'success', :rank => @deal.rank, :number => number}
+        } 
+      end
     end
   end
   def validatelink

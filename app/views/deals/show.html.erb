@@ -86,30 +86,32 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
             <p class="comments"><a href="#box-comm"><%= @deal.comments.count %> <%= fa_icon 'comment' %></a></p>
         </div>
         <div class="col-md-5 rank-det">
-          <span class="thumbs-quality">
-            <% if user_signed_in? %> 
-              <% if @deal.behaviors.exists? user_id: current_user.id  %>
-                <% @deal.behaviors.each do |item| %>
-                  <% if item.grade == 1 %>
-                    <span class="up" vote="positive"><span><%= fa_icon "thumbs-up" %></span></span>
+            <div class="thumbs thumbs-oferta" id="<%= @deal.id %>">
+                <span class="<%= rank_style(@deal.rank) %> grades">
+                  <%= fa_icon "thermometer-empty" %>
+                  <span class="rank-meter"><%= @deal.rank %></span>
+                  <span class="grados-sign">&#186;</span>
+                </span>
+                <span class="thumbs-quality">
+                  <% if user_signed_in? %> 
+                    <% if @deal.behaviors.exists? user_id: current_user.id  %>
+                     <% @deal.behaviors.each do |item| %>
+                        <% if item.grade == 1 %>
+                          <span class="up" vote="positive"><span><%= fa_icon "thumbs-up" %></span></span>
+                        <% else %>
+                          <span class="down" vote="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                          <span vote="negative" class="down" onclick="rankUpdate(<%= @deal.id %>, 'negative');" promoid="<%= @deal.id %>"><%= fa_icon "thumbs-down" %></span>
+                          <span href="#" vote="positive" class="up" onclick="rankUpdate(<%= @deal.id %>, 'positive');" promoid="<%= @deal.id %>"><%= fa_icon "thumbs-up" %></span>
+                    <% end %>
                   <% else %>
-                    <span class="down" vote="negative"><span><%= fa_icon "thumbs-down" %></span></span>
+                          <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
+                          <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
                   <% end %>
-                <% end %>
-              <% else %>
-                    <span vote="negative" class="rank down" promoid="<%= @deal.id %>"><%= fa_icon "thumbs-down" %></span>
-                    <span href="#" vote="positive" class="rank up" promoid="<%= @deal.id %>"><%= fa_icon "thumbs-up" %></span>
-              <% end %>
-            <% else %>
-                    <a href="#login" class="down" data-toggle="modal"><%= fa_icon "thumbs-down" %></a>
-                    <a href="#login" class="up" data-toggle="modal"><%= fa_icon "thumbs-up" %></a>
-            <% end %>
-          </span>
-           <span class="<%= rank_style(@deal.rank) %> grades">
-            <%= fa_icon "thermometer-empty" %>
-            <span class="rank-meter"><%= @deal.rank %></span>
-            <span class="grados-sign">&#186;</span>
-          </span>
+                </span>
+            </div>
         </div>
       </div>
       <!--CATEGORÍA, USUARIO, COMENTARIOS Y RANKING-->
@@ -385,9 +387,10 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
         }
       });
     });
-    $('.rank').click(function(event) {   
+    $('.rank').click(function(event) {
+      thumb = $(this);   
       promoid = $(this).attr('promoid');
-      number = $(this).attr('id');
+      number = $(this).attr('vote');
       $.ajax({
         url:  "/updateRank",
         dataType: "json",
@@ -396,9 +399,30 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
            number: number
         },
         success: function(data) { 
-          console.log(data);
+          thumb.parent().parent().find('.rank-meter').text(data.rank);
+          thumb.parent().parent().find('.grades').append('<span class="down"><span><%= fa_icon "thumbs-down" %></span></span><span class="up"><span><%= fa_icon "thumbs-up" %></span></span>');
+          thumb.parent().parent().find('.thumbs-quality').remove();
+          
         }
       });
     });
+
   });
+  
+    function rankUpdate(thumb, number){
+       $.ajax({
+        url:  "/updateRank",
+        dataType: "json",
+        data: {
+           promoid: thumb,
+           number: number
+        },
+        success: function(data) { 
+          $('#'+thumb).parent().parent().find('.rank-meter').text(data.rank);
+          $('#'+thumb).parent().parent().find('.grades').append('<span class="down"><span><%= fa_icon "thumbs-down" %></span></span><span class="up"><span><%= fa_icon "thumbs-up" %></span></span>');
+          $('#'+thumb).parent().parent().find('.thumbs-quality').remove();
+          
+        }
+      });    
+    }
 </script>
