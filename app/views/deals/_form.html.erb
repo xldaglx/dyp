@@ -1,3 +1,8 @@
+<style type="text/css">
+  #scrapp-images .alert{
+    margin-top: 0px !important;
+  }
+</style>
 <%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
@@ -14,9 +19,6 @@
     <div class="col-md-12 no-padding">
 
       <div class="row">
-        <div class="col-md-12">
-          <div id="scrapp-images" class="row" style="margin-top: 0px;"></div> 
-        </div>
         <div class="col-md-9">
           <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
           <div class="loader-image"><img src="/images/spinner.gif"></div>
@@ -24,6 +26,9 @@
         </div>
         <div class="col-md-3 no-padding">
           <div class="btn-obtener" style="">Obtener imagen</div>
+        </div>
+        <div class="col-md-12">
+          <div id="scrapp-images" class="row" style="margin-top: 0px;"></div> 
         </div>
       </div>
 
@@ -37,8 +42,12 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_field :title, label: "Título:", placeholder: "Artículo o Promoción" %>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8 no-padding">
@@ -50,13 +59,13 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= f.collection_select :category_id,  @categories.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= f.collection_select :store_id,  @stores.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
         </div>
       </div>

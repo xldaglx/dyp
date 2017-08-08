@@ -962,8 +962,9 @@ li > a:hover{
   height: 40px;
   width: 100%;
   outline: none;
-    text-align: center;
-    padding: 6px;
+  text-align: center;
+  padding: 6px;
+  cursor:pointer;
 }
 .btn-obtener:hover{
   color: #d93438 !important;

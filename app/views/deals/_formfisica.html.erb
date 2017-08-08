@@ -19,31 +19,22 @@
     </div>
     <div class="row">
       <div class="col-md-8 no-padding">
-        <div class="col-xs-6">
+        <div class="col-md-6">
           <%= f.number_field :price, label: "Precio:", placeholder: "999.00" %>
         </div>
-        <div class="col-md-4">
-          <%= f.number_field :price, label: "Precio:", placeholder: "5999" %>
-          <!--%= f.date_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %-->
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="img-upload">
-            <%= f.file_field :promoimage, label: "Sube tu imagen" %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
         <div class="col-md-6">
+          <%= f.date_field :expiration, label: "Expira el:", placeholder: "DD/MM/YYYY" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
           <%= f.collection_select :category_id,  @categories.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Categoría", label: "Categoría:" %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
            <%= f.collection_select :store_id,  @stores.order('name ASC'), :id, :name, multiple: true, :prompt => "Selecciona una Tienda", label: "Tienda:" %>
         </div>
       </div>
