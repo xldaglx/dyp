@@ -2,6 +2,29 @@
   #scrapp-images .alert{
     margin-top: 0px !important;
   }
+  .carousel{
+    margin: 0px 0px 10px 0px;
+    float: left;
+    width: 100%;
+    padding: 10px 10px;
+  }
+  .carousel-inner{
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .carousel-control{
+    width: 5%;
+  }
+  .margen-b{
+    margin-bottom: 10px;
+  }
+  .margen-b img{
+    margin: 0 auto;
+    cursor: pointer;
+    max-width: 100%;
+  }
 </style>
 <%= bootstrap_form_for @deal,  html: { multipart: true } do |f| %>
   <% if @deal.errors.any? %>
@@ -30,6 +53,64 @@
         <div class="col-md-12">
           <div id="scrapp-images" class="row" style="margin-top: 0px;"></div> 
         </div>
+
+        <!--INICIA CARRUSEL-->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+            </div>
+            <div class="item">
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+        </div>
+        <!--TERMINA CARRUSEL-->
       </div>
 
       <div class="row">
