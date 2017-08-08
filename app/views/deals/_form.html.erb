@@ -17,7 +17,7 @@
           <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
         </div>
         <div class="col-md-3 no-padding">
-          <button class="btn-obtener" style="">Obtener imagen</button>
+          <div class="btn-obtener" style="">Obtener imagen</div>
         </div>
       </div>
       <div id="scrapp-images" class="row"></div>  
@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col-md-8 no-padding">
         <div class="col-xs-6">
-          <%= f.number_field :price, label: "Precio:", placeholder: "5999" %>
+          <%= f.number_field :price, label: "Precio:", placeholder: "999.00" %>
           <%= f.hidden_field :mpn, label: "Model:", placeholder: "000000000" %>
         </div>
         <div class="col-xs-6">
@@ -66,6 +66,111 @@
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('.btn-obtener').click(function(event) {
+      $('#scrapp-images').html('');
+
+      //var url_input = e.originalEvent.clipboardData.getData('text');
+      var url_input = $("#deal_link").val();
+      /*
+        $.ajax({
+        url:  "/validate/link",
+        dataType: "json",
+        data: {
+           url_host: url_input
+        },
+        success: function(data) { 
+          if(data.message == "exists"){
+            console.log("La promoción ya existe");
+          }else{
+            console.log("La promoción no existe");
+          }
+        }
+        });
+      */
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if (url_input.match(regex)) {
+        if(url_input.length > 10){ 
+          $('.loader-image').show();
+          $.ajax({
+            url:  "/image/scrapp",
+            dataType: "json",
+            data: {
+               url_host: url_input
+            },
+            success: function(data) {
+              console.log(data);
+              $('.loader-image').hide();
+              if(data.message != "error" && data.title != "Server Busy"){
+                if (typeof data.model !== 'undefined' && data.model.length > 0) {
+                    $('#deal_mpn').val(data.model[0]);
+                }
+                if (data.url != ""){
+                  url = data.url
+                  $("#deal_store_id option").each(function()
+                  {
+                    substring = $(this).text().toLowerCase();
+                    substring = substring.replace( /\s/g, "");
+                    if (url.indexOf(substring) !=-1) {
+                      $(this).attr('selected','selected')
+                    }
+                  });
+                }
+                if(data.title != ""){
+                  $('#deal_title').val(data.title);  
+                  $('#deal_price').val(data.price);  
+                }
+                if(data.price != ""){ 
+                  var price = Number(data.price.replace(/[^0-9\.]+/g,""));
+                  $('#deal_price').val(price);  
+                }
+                for (i in data.images) {
+                  $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none; max-height:101px;"></div>');
+                }
+                count=0;
+                $('.imgscrappcontainer img').each(function(index, el) {
+                  
+                  idIm = $(this).attr('id');
+                  if (checkURL($("#"+idIm).attr('src'))){
+                    $("#"+idIm).load(function() {
+                        if($(this).height() > 100 && $(this).width() > 100){
+                          if(count < 24){
+                          $(this).show();
+                          $(this).addClass('img-responsive');
+                          count++;
+                          }
+                        }else{
+                          $(this).parent().remove();
+                        }
+                    });
+                  }else{
+                    $(this).parent().remove();
+                  }
+                });
+                $('.imgscrappcontainer img').click(function(event) {
+                  $('.imgscrappcontainer img').css({
+                    'opacity': '0.7',
+                    'border': 'none'
+                  });
+                  $(this).css({
+                    'opacity': '1',
+                    'border': '2px solid #d93438'
+                  });
+                  route = $(this).attr('src');
+                  $('#deal_imagen').val(route);
+                });
+              }else{
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div><br>');
+              }
+            }
+          });
+        }
+      } 
+      else {
+        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div><br>');
+      }
+      
+    });
     $('#deal_link').on('paste', function (e) {
       $('#scrapp-images').html('');
 

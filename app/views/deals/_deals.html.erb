@@ -44,7 +44,7 @@
                 <span class="thumbs-quality">
                   <% if user_signed_in? %> 
                     <% if deal.behaviors.exists? user_id: current_user.id  %>
-                     <% deal.behaviors.each do |item| %>
+                     <% deal.behaviors.where("user_id = "+current_user.id.to_s).each do |item| %>
                         <% if item.grade == 1 %>
                           <span class="up" vote="positive"><span><%= fa_icon "thumbs-up" %></span></span>
                         <% else %>

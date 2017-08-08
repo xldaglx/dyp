@@ -2,6 +2,10 @@ bundle exec ruby app.rb -p 8080conRAILS_ENV=production rake assets:precompile
 rails server -e production
 ./cloud_sql_proxy -instances="dypv1-173102:us-central1:descuentosypromociones" -dir=/cloudsql
 
+ssh -i ~/.ssh/my-ssh-key aa321936@146.148.111.66
+
+GOOG5J32USKGQQSURB22 KecNrdPTnKW6FYbIDRPnWwQv6bnCwyXxQHjzgFsP
+
 
 Agregar -> gem 'devise' a gemfile
 rails generate devise:install

@@ -1,0 +1,15 @@
+default: &default
+  project_id: dypv1-173102
+  cloud_storage:
+    bucket: descuentosypromociones
+    access_key_id: GOOG5J32USKGQQSURB22
+    secret_access_key: KecNrdPTnKW6FYbIDRPnWwQv6bnCwyXxQHjzgFsP
+  oauth2:
+    client_id: CLIENT
+    client_secret: SECRET
+
+development:
+  <<: *default
+
+production:
+  <<: *default

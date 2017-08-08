@@ -89,7 +89,7 @@ Rails.application.configure do
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
   #Config Mailes
-  ActionMailer::Base.default :from => 'default@descuentosypromociones.com'
+  ActionMailer::Base.default :from => 'admin@descuentosypromociones.com'
 # port 3000 or whatever port you are using for your localhost
   config.action_mailer.default_url_options = { host: 'www.descuentosypromociones.com'}    
   config.action_mailer.raise_delivery_errors = false
