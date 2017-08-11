@@ -53,14 +53,59 @@
         <div class="col-md-12">
           <div id="scrapp-images" class="row" style="margin-top: 0px;"></div> 
         </div>
-        <div id="carousel-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <!--INICIA CARRUSEL-->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+            </div>
+            <div class="item">
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+              <div class="col-md-2 col-xs-4 margen-b">
+                <img src="/images/big/missing.png">
+              </div>
+            </div>
+          </div>
+
           <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>
           </a>
-          <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Siguiente</span>
           </a>
@@ -117,7 +162,7 @@
         <div class="col-md-12">
           <%= f.hidden_field :type_deal %>
           <%= f.hidden_field :imagen %>
-          <%= f.submit :value => 'Compartir Promoción', :class => 'btn btn-compartir'%>
+          <%= f.submit :value => 'Compartir Promoción', :class => 'btn btn-compartir' %>
         </div>
       </div>
       
@@ -126,8 +171,7 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('.btn-obtener').click(function(event) {
-      $('.item').remove();
-      $('.alert').remove();
+      $('#scrapp-images').html('');
 
       //var url_input = e.originalEvent.clipboardData.getData('text');
       var url_input = $("#deal_link").val();
@@ -184,32 +228,29 @@
                   var price = Number(data.price.replace(/[^0-9\.]+/g,""));
                   $('#deal_price').val(price);  
                 }
-                classactive ="";
-                items = "";
                 for (i in data.images) {
-
-                  $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                  $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none; max-height:101px;"></div>');
                 }
-
                 count=0;
-              
-                $('.imgscrappcontainer img').each(function(index, el) { 
-                  if (checkURL($(this).attr('src'))){
-                    $(this).show();
+                $('.imgscrappcontainer img').each(function(index, el) {
+                  
+                  idIm = $(this).attr('id');
+                  if (checkURL($("#"+idIm).attr('src'))){
+                    $("#"+idIm).load(function() {
+                        if($(this).height() > 100 && $(this).width() > 100){
+                          if(count < 24){
+                          $(this).show();
+                          $(this).addClass('img-responsive');
+                          count++;
+                          }
+                        }else{
+                          $(this).parent().remove();
+                        }
+                    });
                   }else{
                     $(this).parent().remove();
                   }
                 });
-
-                active = 0;
-                $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
-                    if(active == 0){activeclass="active";}else{activeclass="";}
-                    if( i % 6 == 0 ) {
-                      $(this).nextAll().andSelf().slice(0,6).wrapAll('<div class="item '+activeclass+' "></div>');
-                    }
-                    active++;
-                });
-                
                 $('.imgscrappcontainer img').click(function(event) {
                   $('.imgscrappcontainer img').css({
                     'opacity': '0.7',
@@ -222,21 +263,20 @@
                   route = $(this).attr('src');
                   $('#deal_imagen').val(route);
                 });
-                
               }else{
-                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div><br>');
               }
             }
           });
         }
       } 
       else {
-        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div>');
+        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div><br>');
       }
       
     });
-    $('#deal_link_1').on('paste', function (e) {
-      $('.carousel-inner').html('');
+    $('#deal_link').on('paste', function (e) {
+      $('#scrapp-images').html('');
 
       var url_input = e.originalEvent.clipboardData.getData('text');
       //var url_input = $(this).val();
@@ -344,6 +384,26 @@
 function checkURL(url) {
     return(url.match(/\.(jpeg|jpg)$/) != null);
 }
+var inputs = document.querySelectorAll( '.inputfile' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+  var label  = input.nextElementSibling,
+    labelVal = label.innerHTML;
+
+  input.addEventListener( 'change', function( e )
+  {
+    var fileName = '';
+    if( this.files && this.files.length > 1 )
+      fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+    else
+      fileName = e.target.value.split( '\\' ).pop();
+
+    if( fileName )
+      label.querySelector( 'span' ).innerHTML = fileName;
+    else
+      label.innerHTML = labelVal;
+  });
+});
 </script>
 <style type="text/css">
   .imgscrappcontainer img{

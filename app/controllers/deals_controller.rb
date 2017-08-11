@@ -11,12 +11,12 @@ class DealsController < ApplicationController
   def stores
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page])
+        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page]).order('created_at DESC')
       else   
-        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page])
+        @deals = Deal.where("store_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
       end
     else
-      @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page])
+      @deals = Deal.where("store_id = "+params[:id]).where('status = 1').page(params[:page]).order('created_at DESC')
     end
     @tienda = Store.find(params[:id])
   end
@@ -24,12 +24,12 @@ class DealsController < ApplicationController
   def categories
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page])
+        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page]).order('created_at DESC')
       else   
-        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page])
+        @deals = Deal.where("category_id = "+params[:id]).where('status = 1').where("type_deal = "+ params['filter-promo']).page(params[:page]).order('created_at DESC')
       end
     else
-      @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page])
+      @deals = Deal.where("category_id = "+params[:id]).where('status = 1').page(params[:page]).order('created_at DESC')
     end
     @category = Category.find(params[:id])
   end
@@ -62,12 +62,12 @@ class DealsController < ApplicationController
   def topdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).where('status = 1').order('rank DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('rank DESC')
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('rank DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').where("created_at > ?", Time.now-15.days).page(params[:page]).order('rank DESC')
       end
     else
-      @deals = Deal.all.page(params[:page]).where('status = 1').order('rank DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('rank DESC')
     end 
   end
   def updateStatus
@@ -255,7 +255,7 @@ begin
     end
   when /linio/
     #Lazy loading is messing with scrapping
-    p title = page.xpath("//meta[@property='og:title']/@content").text
+    title = page.xpath("//meta[@property='og:title']/@content").text
   else
     page.xpath('//img').each do |img|
     img_urls.push (img['src'])
@@ -271,6 +271,7 @@ begin
   end
       
 rescue Exception => e
+  p e
    respond_to do |format|
      format.html
      format.js {}   

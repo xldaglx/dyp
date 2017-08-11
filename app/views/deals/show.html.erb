@@ -10,7 +10,7 @@ set_meta_tags og: {
   description:    strip_tags(@deal.description),
   type:     'product',
   url:      @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
-  image:    @current_url+@imageurl,
+  image:    @imageurl,
   site_name: 'Descuentos y Promociones'
 }
 set_meta_tags twitter: {
@@ -18,7 +18,7 @@ set_meta_tags twitter: {
   site: "@gerardoayalad",
   title:    @deal.title,
   description:    strip_tags(@deal.description),
-  image:    @current_url+@imageurl
+  image:    @imageurl
 }
 set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug
 %>
