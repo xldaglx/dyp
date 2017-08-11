@@ -97,7 +97,7 @@ Rails.application.configure do
 # this line is what you want to be true, else you won't get messages!
   config.action_mailer.perform_deliveries = true 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
+  address: "smtp-relay.gmail.com",
   port: 587,
   domain: "gmail.com",
   authentication: "plain",
