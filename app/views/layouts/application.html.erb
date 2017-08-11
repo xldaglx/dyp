@@ -158,9 +158,9 @@
       jQuery(document).ready(function($) {
         $('.login-account').click(function(event) {
           $("#login-modal").html("<%= j (render 'welcome/login_modal') %>");
-        });
-        $('.create-account').click(function(event) {
-          $("#login-modal").html("<%= j (render 'welcome/sign_up_modal') %>");
+          $('.create-account').click(function(event) {
+            $("#login-modal").html("<%= j (render 'welcome/sign_up_modal') %>");
+          });
         });
       });
       </script>
