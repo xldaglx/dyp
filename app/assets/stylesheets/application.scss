@@ -979,9 +979,9 @@ li > a:hover{
   background: transparent;
 }
 .carousel-control{
-  color: #525457;
+  color: #000;
   width: 10%;
-  text-shadow: 0 0px 0px rgba(0, 0, 0, 0.6)
+  text-shadow: none;
 }
 .carousel-control:hover{
   color: #525457;
@@ -1004,6 +1004,13 @@ li > a:hover{
 }
 .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active{
   text-align: left;
+}
+.carousel-inner > .item {
+  width: 90%;
+  margin: 0 auto;
+}
+.carousel-inner{
+  width: 100% !important;
 }
 .thumbs-oferta{
   text-align: right;
@@ -1443,6 +1450,7 @@ trix-editor{
 }
 .img-upload{
   margin: 0px 0px 20px 0px;
+  float:left;
 }
 .inputfile {
   width: 0.1px;
@@ -1918,6 +1926,8 @@ trix-editor{
     margin-top: 0px;
     margin-bottom: 20px;
     height: 35px;
+    width: 93%;
+    margin: 0 auto;
   }
   .btn-rojo-small{
     font-size: 13px;
@@ -2076,7 +2086,7 @@ trix-editor{
   .deal-title h1{
     font-size: 16px;
     line-height: 21px;
-    font-weight: 300;
+    font-weight: 400;
   }
   .deal-title .det-price{
     font-size: 23px;
