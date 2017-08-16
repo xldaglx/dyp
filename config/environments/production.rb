@@ -89,21 +89,23 @@ Rails.application.configure do
 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
   #Config Mailes
-  ActionMailer::Base.default :from => 'admin@descuentosypromociones.com'
+  ActionMailer::Base.default :from => 'no-reply@descuentosypromociones.com'
 # port 3000 or whatever port you are using for your localhost
   config.action_mailer.default_url_options = { host: 'www.descuentosypromociones.com'}    
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
 # this line is what you want to be true, else you won't get messages!
   config.action_mailer.perform_deliveries = true 
+
   config.action_mailer.smtp_settings = {
-  address: "smtp-relay.gmail.com",
+  address: "smtp.gmail.com",
   port: 587,
-  domain: "gmail.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
+  domain: "descuentosypromociones.com",
   user_name: Rails.application.secrets.email_user_name,
   password: Rails.application.secrets.email_password,
+  authentication: "plain",
+  tis: true,
+  enable_starttls_auto: true
   }
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

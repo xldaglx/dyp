@@ -3,7 +3,7 @@ class ExampleMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Bienvenido! Empieza a comprar inteligente')
+    mail(to: @user.email, subject: 'Bienvenido! Empieza a comprar inteligente', from: 'no-reply@descuentosypromociones.com')
   end
 
   def reject_email(user)

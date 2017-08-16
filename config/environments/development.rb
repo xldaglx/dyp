@@ -58,13 +58,14 @@ config.action_mailer.delivery_method = :smtp
 config.action_mailer.perform_deliveries = true 
 
   config.action_mailer.smtp_settings = {
-  address: "smtp-relay.gmail.com",
+  address: "smtp.gmail.com",
   port: 587,
   domain: "descuentosypromociones.com",
+  user_name: Rails.application.secrets.email_user_name,
+  password: Rails.application.secrets.email_password,
   authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: "admin@descuentosypromociones.com",
-  password: "DaG09080$"
+  tis: true,
+  enable_starttls_auto: true
   }
 
   # Use an evented file watcher to asynchronously detect changes in source code,
