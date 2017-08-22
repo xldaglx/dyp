@@ -128,25 +128,7 @@
     $('.btn-obtener').click(function(event) {
       $('.item').remove();
       $('.alert').remove();
-
-      //var url_input = e.originalEvent.clipboardData.getData('text');
       var url_input = $("#deal_link").val();
-      /*
-        $.ajax({
-        url:  "/validate/link",
-        dataType: "json",
-        data: {
-           url_host: url_input
-        },
-        success: function(data) { 
-          if(data.message == "exists"){
-            console.log("La promoción ya existe");
-          }else{
-            console.log("La promoción no existe");
-          }
-        }
-        });
-      */
       var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp(expression);
       if (url_input.match(regex)) {
@@ -161,7 +143,7 @@
             success: function(data) {
               console.log(data);
               $('.loader-image').hide();
-              if(data.message != "error" && data.title != "Server Busy"){
+              if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
                     $('#deal_mpn').val(data.model[0]);
                 }
@@ -186,20 +168,52 @@
                 }
                 classactive ="";
                 items = "";
-                for (i in data.images) {
-
-                  $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                switch(data.store){
+                  case "liverpool":
+                    for (i in data.images) {
+                      if (data.images[0] != ""){
+                        var JsonObj = JSON.parse(data.images[0]);
+                        console.log(JsonObj);
+                        for (var key in JsonObj) {
+                        $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+JsonObj[key]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                        }
+                      }
+                    }
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  case "costco":
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  default:
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).parent().remove();
+                      }
+                    });           
                 }
 
                 count=0;
               
-                $('.imgscrappcontainer img').each(function(index, el) { 
-                  if (checkURL($(this).attr('src'))){
-                    $(this).show();
-                  }else{
-                    $(this).parent().remove();
-                  }
-                });
 
                 active = 0;
                 $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
@@ -235,27 +249,10 @@
       }
       
     });
-    $('#deal_link_1').on('paste', function (e) {
-      $('.carousel-inner').html('');
-
+    $('#deal_link').on('paste', function (e) {
+      $('.item').remove();
+      $('.alert').remove();
       var url_input = e.originalEvent.clipboardData.getData('text');
-      //var url_input = $(this).val();
-      /*
-        $.ajax({
-        url:  "/validate/link",
-        dataType: "json",
-        data: {
-           url_host: url_input
-        },
-        success: function(data) { 
-          if(data.message == "exists"){
-            console.log("La promoción ya existe");
-          }else{
-            console.log("La promoción no existe");
-          }
-        }
-        });
-      */
       var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
       var regex = new RegExp(expression);
       if (url_input.match(regex)) {
@@ -270,7 +267,7 @@
             success: function(data) {
               console.log(data);
               $('.loader-image').hide();
-              if(data.message != "error" && data.title != "Server Busy"){
+              if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
                     $('#deal_mpn').val(data.model[0]);
                 }
@@ -293,29 +290,64 @@
                   var price = Number(data.price.replace(/[^0-9\.]+/g,""));
                   $('#deal_price').val(price);  
                 }
-                for (i in data.images) {
-                  $('#scrapp-images').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load" id="imgscrapp-'+i+'" style="display:none; max-height:101px;"></div>');
-                }
-                count=0;
-                $('.imgscrappcontainer img').each(function(index, el) {
-                  
-                  idIm = $(this).attr('id');
-                  if (checkURL($("#"+idIm).attr('src'))){
-                    $("#"+idIm).load(function() {
-                        if($(this).height() > 100 && $(this).width() > 100){
-                          if(count < 24){
-                          $(this).show();
-                          $(this).addClass('img-responsive');
-                          count++;
-                          }
-                        }else{
-                          $(this).parent().remove();
+                classactive ="";
+                items = "";
+                switch(data.store){
+                  case "liverpool":
+                    for (i in data.images) {
+                      if (data.images[0] != ""){
+                        var JsonObj = JSON.parse(data.images[0]);
+                        console.log(JsonObj);
+                        for (var key in JsonObj) {
+                        $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+JsonObj[key]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
                         }
-                    });
-                  }else{
-                    $(this).parent().remove();
-                  }
+                      }
+                    }
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  case "costco":
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  default:
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).parent().remove();
+                      }
+                    });           
+                }
+
+                count=0;
+              
+
+                active = 0;
+                $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
+                    if(active == 0){activeclass="active";}else{activeclass="";}
+                    if( i % 6 == 0 ) {
+                      $(this).nextAll().andSelf().slice(0,6).wrapAll('<div class="item '+activeclass+' "></div>');
+                    }
+                    active++;
                 });
+                
                 $('.imgscrappcontainer img').click(function(event) {
                   $('.imgscrappcontainer img').css({
                     'opacity': '0.7',
@@ -328,8 +360,9 @@
                   route = $(this).attr('src');
                   $('#deal_imagen').val(route);
                 });
+                
               }else{
-                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div><br>');
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
               }
             }
           });
@@ -342,7 +375,7 @@
   });
 
 function checkURL(url) {
-    return(url.match(/\.(jpeg|jpg)$/) != null);
+    return(url.match(/\.(jpeg|jpg|png)$/) != null);
 }
 </script>
 <style type="text/css">

@@ -224,6 +224,7 @@ class DealsController < ApplicationController
     price = ""
     model = ""
     title = ""
+    store = ""
     img_urls = Array.new
     url = params['url_host']
     require 'open-uri'
@@ -249,14 +250,59 @@ begin
       img_urls.push (img['src'])
     end
   when /liverpool/
-    title = "Notitle"
+    #p page
+    title = page.xpath("//meta[@property='og:title']/@content").text
+    img_urls.push page.xpath("//input[@id='jsonImageMap']/@value").text
+    price = page.xpath("//input[@id='maximumPromoPrice']/@value").text
+    store = "liverpool"
+    
+  when /walmart/
+    store = "walmart"
+    page.xpath("//meta[@property='og:image']/@content").each do |img|
+      img_urls.push (img.text)
+    end
+    title = page.xpath("//meta[@property='og:title']/@content").text
+
+  when /chedraui/
+    store = "chedraui"
     page.xpath('//img').each do |img|
       img_urls.push (img['src'])
     end
+    title = page.at_css('title').text
+
+  when /bestbuy/
+    store ="bestbuy"
+    title = page.at_css('title').text
+    img_urls.push page.xpath("//meta[@property='og:image']/@content").text
+    price = page.xpath("//span[@itemprop='price']").text
+
+  when /palacio/
+    store ="palaciodehierro"
+    title = page.at_css('title').text
+    page.xpath('//img').each do |img|
+    img_urls.push (img['src'])
+    end
+    price = page.xpath("//span[@class='price']").text
+
+  when /costco/
+    store="costco"
+    title = page.at_css('title').text
+    page.xpath('//img').each do |img|
+    img_urls.push ("http://www.costco.com.mx"+img['src'])
+    end
+    price = page.xpath("//div[@id='inclprice']").text
+  when /adidas/
+    store="adidas"
+    title = page.at_css('title').text
+    img_urls.push page.xpath("//meta[@property='og:image']/@content").text
+    p price = page.xpath("//span[@itemprop='price']").text
   when /linio/
     #Lazy loading is messing with scrapping
     title = page.xpath("//meta[@property='og:title']/@content").text
+    img_urls.push page.xpath("//meta[@property='og:image']/@content").text
+    p price = page.xpath("//meta[@itemprop='price']/@content").text
   else
+    title = page.at_css('title').text
     page.xpath('//img').each do |img|
     img_urls.push (img['src'])
     end
@@ -266,12 +312,11 @@ begin
    format.html
    format.js {}   
    format.json { 
-      render json: {:images => img_urls, :title => title, :price => price, :url => url, :model => model}
+      render json: {:images => img_urls, :title => title, :price => price, :url => url, :model => model, :store => store}
    } 
   end
       
 rescue Exception => e
-  p e
    respond_to do |format|
      format.html
      format.js {}   
