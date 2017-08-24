@@ -13,6 +13,7 @@ set_meta_tags og: {
   description:    strip_tags(@deal.description),
   type:     'product',
   url:      @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
+
   image:    @imageurl,
   site_name: 'Descuentos y Promociones'
 }
@@ -23,7 +24,8 @@ set_meta_tags twitter: {
   description:    strip_tags(@deal.description),
   image:    @imageurl
 }
-set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug
+set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
+              description:    strip_tags(@deal.description)
 %>
 <style type="text/css">
   .button_row .history_tools{
