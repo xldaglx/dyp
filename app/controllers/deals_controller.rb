@@ -109,9 +109,9 @@ class DealsController < ApplicationController
 
   def moderate
     if params[:status].present?
-      @deals = Deal.where('status = '+params[:status])
+      @deals = Deal.where('status = '+params[:status]).page(params[:page]).order('created_at DESC')
     else
-      @deals = Deal.all
+      @deals = Deal.all.page(params[:page]).order('created_at DESC')
     end
       @deals0 = Deal.where('status = 0').count
       @deals1 = Deal.where('status = 1').count
@@ -370,7 +370,26 @@ end
       end
     end
   end
+  def generateSitemap
+    require 'rubygems'
+    require 'sitemap_generator'
 
+    SitemapGenerator::Sitemap.default_host = 'http://www.descuentosypromociones.com'
+    SitemapGenerator::Sitemap.create do
+      add '/', :changefreq => 'daily', :priority => 1
+      add '/nosotros', :changefreq => 'weekly', :priority => 0.9
+      add '/contact', :changefreq => 'weekly', :priority => 0.9
+      add '/ayuda', :changefreq => 'weekly', :priority => 0.9
+      add '/terminos', :changefreq => 'weekly', :priority => 0.9
+      add '/todas-las-categorias', :changefreq => 'weekly', :priority => 0.9
+      add '/todas-las-tiendas', :changefreq => 'weekly', :priority => 0.9
+      @deals = Deal.all
+      @deals.each do |content|
+        add "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+"", :lastmod => content.updated_at, :priority => 0.8
+      end
+    end
+    #SitemapGenerator::Sitemap.ping_search_engines # Not needed if you use the rake tasks
+  end
   # DELETE /deals/1
   # DELETE /deals/1.json
   def destroy

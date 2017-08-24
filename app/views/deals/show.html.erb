@@ -1,8 +1,11 @@
 <% 
+@imageurl = "";
 if @deal.imagen.present?
   @imageurl = @deal.imagen
 else
-  @imageurl = @deal.promoimage.url(:big)
+  if @deal.promoimage.exists? 
+    @imageurl = @deal.promoimage.url(:big)
+  end
 end
 @current_url = request.protocol+request.host_with_port
 set_meta_tags og: {
@@ -121,7 +124,9 @@ set_meta_tags canonical: @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slu
           <% if @deal.imagen.present? %>
             <%= image_tag @deal.imagen, class: 'img-responsive main-image',  "data-toggle" => "modal", "data-target"=>"#ModalImage" %>
           <% else %>
+            <% if @deal.promoimage.exists? %>
             <%= image_tag @deal.promoimage.url(:big), class: 'img-responsive main-image',  "data-toggle" => "modal", "data-target"=>"#ModalImage"  %>
+            <% end %>
           <% end %>
         </div>
         <div class="col-md-8">
