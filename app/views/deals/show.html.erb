@@ -40,6 +40,9 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
         <% if current_user.try(:admin?) %>
         <!--Comienza barra para aceptar-->
         <div class="col-md-12" style="text-align: center;margin: auto;">
+          <% @report.each do |report| %>
+            Reporte: <%= report.description %> <br>
+          <% end %>
           <% if @deal.status == 2 %>
             <p> Estatus: Rechazada</p>
           <% end %>
@@ -192,7 +195,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           <ul class="social-list">
             <li>
               <div class="dropdown">
-                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-share-alt" aria-hidden="true"></i> Compartir
                 </a>
                 <ul class="dropdown-menu lista-compartir" aria-labelledby="dLabel">
@@ -200,6 +203,19 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
                   <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u="+@current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                   <li><a href="https://twitter.com/share"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown">
+                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reportar
+                </a>
+                <ul class="dropdown-menu lista-reportar" aria-labelledby="dLabel">
+                  <li><a href="#dup" class="report" typereport="1">Duplicada</a></li>
+                  <li><a href="#cam" class="report" typereport="2">Cambio de precio</a></li>
+                  <li><a href="#of" class="report" typereport="3">Está oferta es ofensiva</a></li>
+                  <li></li>
                 </ul>
               </div>
             </li>
@@ -290,10 +306,29 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
   </div>
 </div>
 
+<input type="text" id="descriptionreport" value="HolaPonmedondedeboir">
 
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+    $('.report').click(function(event) {
+      alert();
+      report = $(this).attr('typereport');
+      reportdesc = $('#descriptionreport').val();
+      iddeal = <%= @deal.id %>
+      $.ajax({
+        url:  "/reportaction",
+        dataType: "json",
+        data: {
+           typereport: report,
+           iddeal:iddeal,
+           description: reportdesc
+        },
+        success: function(data) { 
+          window.location.reload();
+        }
+      });
+    });
     $('.deal-action').click(function(event) {
      id = $(this).attr('id');
      iddeal = <%= @deal.id %>

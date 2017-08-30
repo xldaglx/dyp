@@ -122,6 +122,8 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    id = params[:id].split('-')
+    @report = Report.where('deal_id ='+id[0])
     @banners = Banner.order("RAND()").limit(3)
     @banners.each do |banner|
       banner.impressions = banner.impressions + 1
@@ -386,6 +388,7 @@ end
       @deals = Deal.all
       @deals.each do |content|
         add "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+"", :lastmod => content.updated_at, :priority => 0.8
+        p "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+""
       end
     end
     #SitemapGenerator::Sitemap.ping_search_engines # Not needed if you use the rake tasks

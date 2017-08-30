@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :settings
   resources :banners
   resources :favorites
@@ -52,6 +53,7 @@ Rails.application.routes.draw do
   get 'unfollow', to: 'users#unfollow'
   get 'followers', to: 'users#followers'
   get 'followed', to: 'users#followed'
+  get 'reportaction', to: 'reports#addreport'
   get 'bannersclick', to: 'banners#click'
   get 'contact', to: 'messages#new', as: 'contact'
   post 'contact', to: 'messages#create'

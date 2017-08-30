@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721042929) do
+ActiveRecord::Schema.define(version: 20170826180447) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "alt"
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(version: 20170721042929) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
-    t.string   "link"
+    t.string   "link",                    limit: 355
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.integer  "type_deal"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -121,6 +121,15 @@ ActiveRecord::Schema.define(version: 20170721042929) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
     t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+  end
+
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "description"
+    t.integer  "typereport"
+    t.integer  "deal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["deal_id"], name: "index_reports_on_deal_id", using: :btree
   end
 
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -168,8 +177,6 @@ ActiveRecord::Schema.define(version: 20170721042929) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "behaviors", "deals"
-  add_foreign_key "behaviors", "users"
   add_foreign_key "comments", "deals"
   add_foreign_key "comments", "users"
   add_foreign_key "deals", "categories"
@@ -179,4 +186,5 @@ ActiveRecord::Schema.define(version: 20170721042929) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
+  add_foreign_key "reports", "deals"
 end
