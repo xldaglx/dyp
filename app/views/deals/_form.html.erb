@@ -71,9 +71,6 @@
       <div class="row">
         <div class="col-md-12">
           <div class="img-upload">
-          <!--
-            <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
-            <label for="file-1"><span class="glyphicon glyphicon-cloud-upload"></span> <span>Sube una imagen</span></label>-->
             <%= f.file_field :promoimage, label: "Sube tu propia imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
           </div>
         </div>
@@ -117,7 +114,11 @@
         <div class="col-md-12">
           <%= f.hidden_field :type_deal %>
           <%= f.hidden_field :imagen %>
+<<<<<<< HEAD
           <%= f.submit :value => 'Publicar oferta', :class => 'btn btn-compartir'%>
+=======
+          <%= f.submit 'Compartir Promoción', :class => 'btn btn-compartir'%>
+>>>>>>> origin/master
         </div>
       </div>
       
@@ -223,7 +224,6 @@
                     }
                     active++;
                 });
-                
                 $('.imgscrappcontainer img').click(function(event) {
                   $('.imgscrappcontainer img').css({
                     'opacity': '0.7',
@@ -237,6 +237,8 @@
                   $('#deal_imagen').val(route);
                 });
                 
+                $('.imgscrappcontainer img').first().trigger('click');
+
               }else{
                 $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
               }
@@ -360,6 +362,8 @@
                   route = $(this).attr('src');
                   $('#deal_imagen').val(route);
                 });
+
+                $('.imgscrappcontainer img').first().trigger('click');
                 
               }else{
                 $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');

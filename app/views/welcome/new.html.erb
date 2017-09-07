@@ -1,3 +1,4 @@
+
 <div class="row">
   <!-- HOT Deals -->
   <div class="container container-m">
@@ -50,7 +51,10 @@
               <% if @hot_deal.imagen.present? %>
                 <%= image_tag @hot_deal.imagen, class: 'img-responsive' %>
               <% else %>
+
+              <% if @hot_deal.promoimage.exists? %>
               <%= image_tag @hot_deal.promoimage.url(:big), class: 'img-responsive' %>
+              <% end %>
               <% end %>
             </a>
           </div>
@@ -135,7 +139,9 @@
                         <% if deal.imagen.present? %>
                           <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
                         <% else %>
-                           <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+                            <% if deal.promoimage.exists? %>  
+                              <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+                            <% end %>
                         <% end %>
                       </a>
                     </div>
@@ -256,7 +262,9 @@
               <% if deal.imagen.present? %>
                 <%= image_tag deal.imagen, class: 'img-responsive', style: "max-height:150px;" %>
               <% else %>
+                <% if deal.promoimage.exists? %>
                   <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
+                <% end %>
               <% end %>
             </a>
           </div>

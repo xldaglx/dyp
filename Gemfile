@@ -75,6 +75,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'meta-tags'
 gem 'rails_serve_static_assets'
+gem 'sitemap_generator'
 
 #Testing Web Scrapper
 gem 'httparty', '~> 0.15.6'

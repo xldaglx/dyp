@@ -44,6 +44,7 @@ rails g scaffold Categories description:string
 rails g scaffold Behaviors grade:integer user:references deal:references
 rails g scaffold Favorites user:references deal:references
 rails g scaffold Comments description:string user:references deal:references
+railg g scaffold Reports description:string typereport:integer deal:references 
 rails g migration Followers follower:references follow:references
 rails g scaffold Stores description:string
 rails g scaffold Likes user:references comment:references

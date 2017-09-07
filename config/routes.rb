@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :settings
   resources :banners
   resources :favorites
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  #mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :likes
   resources :stores
   resources :comments
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   resources :deals
   resources :descuentos, :controller => "deals"
   get '/_ah/health', to: 'app_engine#health'
+  #get 'users', to: 'welcome#index'
   get 'welcome/index'
   root 'welcome#index'
   get 'image/scrapp', to: 'deals#scrapp'
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   get 'todas-las-tiendas', to: 'stores#list'
   get 'nuevas', to: 'deals#newdeals'
   get 'top', to: 'deals#topdeals'
+  get 'generatesitemap', to: 'deals#generateSitemap'
   get 'dealaction', to: 'deals#updateStatus'
   get 'commentaction', to: 'comments#updateStatus'
   get 'buscar-descuentos', to: 'deals#search'
@@ -50,6 +53,7 @@ Rails.application.routes.draw do
   get 'unfollow', to: 'users#unfollow'
   get 'followers', to: 'users#followers'
   get 'followed', to: 'users#followed'
+  get 'reportaction', to: 'reports#addreport'
   get 'bannersclick', to: 'banners#click'
   get 'contact', to: 'messages#new', as: 'contact'
   post 'contact', to: 'messages#create'
