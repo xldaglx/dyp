@@ -4,6 +4,60 @@ class DealsController < ApplicationController
 
   # GET /deals
   # GET /deals.json
+  def amazonapi
+  #!/usr/bin/env ruby
+
+
+secret = "nfBx5nt3Rv+vzeKj21/Eqxa/sSLpfhZhgBcrZZhq"
+endpoint = "webservices.amazon.com.mx"
+request_uri = "/onca/xml"
+params = {
+  "Service" => "AWSECommerceService",
+  "Operation" => "ItemLookup",
+  "AWSAccessKeyId" => "AKIAIDZTT3WCPPLJPAUA",
+  "AssociateTag" => "1083f5-20",
+  "ItemId" => "B072C7TNBZ",
+  "IdType" => "ASIN",
+  "ResponseGroup" => "Images,ItemAttributes,Offers"
+}
+# Set current timestamp if not set
+params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
+
+# Generate the canonical query
+canonical_query_string = params.sort.collect do |key, value|
+  [URI.escape(key.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))].join('=')
+end.join('&')
+
+# Generate the string to be signed
+string_to_sign = "GET\n#{endpoint}\n#{request_uri}\n#{canonical_query_string}"
+
+# Generate the signature required by the Product Advertising API
+signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, string_to_sign)).strip()
+
+# Generate the signed URL
+request_url = "http://#{endpoint}#{request_uri}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
+
+result = HTTParty.get(request_url)
+#p page = Nokogiri::HTML(page)
+
+# Convert the String response into a plain old Ruby array. It is faster and saves you time compared to the standard Ruby libraries too.
+#result = JSON.parse(buffer)
+
+# An example of how to take a random sample of elements from an array. Pass the number of elements you want into .sample() method. It's probably a better idea for the server to limit the results before sending, but you can use basic Ruby skills to trim & modify the data however you'd like.
+#result = result.sample(1)
+
+# Loop through each of the elements in the 'result' Array & print some of their attributes.
+
+   respond_to do |format|
+       format.html
+       format.js {} 
+       format.xml { 
+          render xml: {:xml => result}
+      } 
+   end  
+
+  end
+
   def index
     @deals = Deal.all  
   end
@@ -247,26 +301,55 @@ class DealsController < ApplicationController
     require 'open-uri'
 begin
 
-  page = HTTParty.get(url)
-  page = Nokogiri::HTML(page)
-
   case url
   when /amazon/
-    title = page.css("title")[0].text
-    price = page.xpath("//span[@id='priceblock_ourprice']").text
-    price_special = page.xpath("//span[@id='priceblock_dealprice']").text
-    price_salesprice = page.xpath("//span[@id='priceblock_saleprice']").text
-    if price_special != ""
-      price = price_special
-    end
-    if price_salesprice != ""
-      price = price_salesprice
-    end
-    model = page.xpath("//input[@id='ASIN']/@value").map(&:value)
-    page.xpath('//img').each do |img|
-      img_urls.push (img['src'])
-    end
+
+  amazon_url = url
+  if amazon_url.match(/\/dp\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/\/gp\/\w*?\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/\/gp\/\w*?\/\w*?\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/\/gp\/[\w-]*?\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/\/product-reviews\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/[?&]asin=(\w{10})(&|#|\Z)/i)
+      asin = $1
+  else
+      asin = false
+  end
+  secret = "nfBx5nt3Rv+vzeKj21/Eqxa/sSLpfhZhgBcrZZhq"
+  endpoint = "webservices.amazon.com.mx"
+  request_uri = "/onca/xml"
+  params = {
+    "Service" => "AWSECommerceService",
+    "Operation" => "ItemLookup",
+    "AWSAccessKeyId" => "AKIAIDZTT3WCPPLJPAUA",
+    "AssociateTag" => "1083f5-20",
+    "ItemId" => asin,
+    "IdType" => "ASIN",
+    "ResponseGroup" => "Images,ItemAttributes,Offers"
+  }
+
+  params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
+  canonical_query_string = params.sort.collect do |key, value|
+    [URI.escape(key.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))].join('=')
+  end.join('&')
+  string_to_sign = "GET\n#{endpoint}\n#{request_uri}\n#{canonical_query_string}"
+  signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, string_to_sign)).strip()
+  request_url = "http://#{endpoint}#{request_uri}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
+  result = HTTParty.get(request_url)
+  data = result.parsed_response
+  model =  data['ItemLookupResponse']['Items']['Item']['ASIN']
+  img_urls.push (data['ItemLookupResponse']['Items']['Item']['LargeImage']['URL'])
+  price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
+  price = price[0...-2]
+  title =  data['ItemLookupResponse']['Items']['Item']['ItemAttributes']['Title']
   when /liverpool/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     #p page
     title = page.xpath("//meta[@property='og:title']/@content").text
     img_urls.push page.xpath("//input[@id='jsonImageMap']/@value").text
@@ -274,6 +357,8 @@ begin
     store = "liverpool"
     
   when /walmart/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store = "walmart"
     page.xpath("//meta[@property='og:image']/@content").each do |img|
       img_urls.push (img.text)
@@ -281,6 +366,8 @@ begin
     title = page.xpath("//meta[@property='og:title']/@content").text
 
   when /chedraui/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store = "chedraui"
     page.xpath('//img').each do |img|
       img_urls.push (img['src'])
@@ -288,12 +375,16 @@ begin
     title = page.at_css('title').text
 
   when /bestbuy/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store ="bestbuy"
     title = page.at_css('title').text
     img_urls.push page.xpath("//meta[@property='og:image']/@content").text
     price = page.xpath("//span[@itemprop='price']").text
 
   when /palacio/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store ="palaciodehierro"
     title = page.at_css('title').text
     page.xpath('//img').each do |img|
@@ -302,6 +393,8 @@ begin
     price = page.xpath("//span[@class='price']").text
 
   when /costco/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store="costco"
     title = page.at_css('title').text
     page.xpath('//img').each do |img|
@@ -309,16 +402,22 @@ begin
     end
     price = page.xpath("//div[@id='inclprice']").text
   when /adidas/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     store="adidas"
     title = page.at_css('title').text
     img_urls.push page.xpath("//meta[@property='og:image']/@content").text
-    p price = page.xpath("//span[@itemprop='price']").text
+    price = page.xpath("//span[@itemprop='price']").text
   when /linio/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     #Lazy loading is messing with scrapping
     title = page.xpath("//meta[@property='og:title']/@content").text
     img_urls.push page.xpath("//meta[@property='og:image']/@content").text
-    p price = page.xpath("//meta[@itemprop='price']/@content").text
+    price = page.xpath("//meta[@itemprop='price']/@content").text
   else
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
     title = page.at_css('title').text
     page.xpath('//img').each do |img|
     img_urls.push (img['src'])
