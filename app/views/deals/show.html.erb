@@ -27,11 +27,6 @@ set_meta_tags twitter: {
 set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
               description:    strip_tags(@deal.description)
 %>
-<style type="text/css">
-  .button_row .history_tools{
-    display: none;
-  }
-</style>
 <div class="row deal-detail">
   <div class="container">
     <div class="col-md-9 deal-det">
@@ -199,10 +194,11 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
                   <i class="fa fa-share-alt" aria-hidden="true"></i> Compartir
                 </a>
                 <ul class="dropdown-menu lista-compartir" aria-labelledby="dLabel">
-                  <li><a href="whatsapp://send?text=<%=  @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" data-action="share/whatsapp/share"><i class="visible-xs fa fa-whatsapp" aria-hidden="true"></i></a></li>
-                  <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u="+@current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                  <li style="width:100%;height:35px;"><h2>Comparte en:</h2></li>
+                  <li style="height:40px;"><a href="whatsapp://send?text=<%=  @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" data-action="share/whatsapp/share"><i class="visible-xs fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                  <li style="height:40px;"><a href="<%= "https://www.facebook.com/sharer/sharer.php?u="+@current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                  <li><a href="https://twitter.com/share"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                  <li style="height:40px;"><a href="https://twitter.com/share"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
                 </ul>
               </div>
             </li>
@@ -212,10 +208,12 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
                   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reportar
                 </a>
                 <ul class="dropdown-menu lista-reportar" aria-labelledby="dLabel">
-                  <li><a href="#dup" class="report" typereport="1">Duplicada</a></li>
-                  <li><a href="#cam" class="report" typereport="2">Cambio de precio</a></li>
-                  <li><a href="#of" class="report" typereport="3">Está oferta es ofensiva</a></li>
-                  <li></li>
+                  <li><h2>¿Porqué deseas reportar esta promoción?</h2></li>
+                  <li><a href="#dup" class="report" typereport="1"><span class="glyphicon glyphicon-menu-right"></span> Está duplicada</a></li>
+                  <li><a href="#cam" class="report" typereport="2"><span class="glyphicon glyphicon-menu-right"></span> El precio cambió</a></li>
+                  <li><a href="#of" class="report" typereport="3"><span class="glyphicon glyphicon-menu-right"></span> Está promoción es ofensiva</a></li>
+                  <li><h2>Otro:</h2>
+                  <li><input type="" id="descriptionreport" value=""><br><button class="btn-rojo-out">Enviar</button></li></li>
                 </ul>
               </div>
             </li>
@@ -306,7 +304,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
   </div>
 </div>
 
-<input type="hidden" id="descriptionreport" value="">
+
 
 
 <script type="text/javascript">

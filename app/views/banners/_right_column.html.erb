@@ -1,3 +1,150 @@
+<style type="text/css">
+	.promos-relacionadas h2.name {
+		font-size: 12px !important;
+		line-height: 15px;
+		font-weight: normal;
+		max-height: 30px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-bottom: 0px;
+		overflow: hidden;
+		margin-top: 5px;
+	}
+	.promos-relacionadas h2.name a {
+		color: #49494a;
+	}
+	.promos-relacionadas{
+		margin-top: 10px;
+		float: left;
+		padding: 5px 10px;
+	}
+	.relacionadas{
+		border: 1px solid #efefef;
+		background: #FFF;
+		padding-bottom: 30px;
+		float: left;
+		margin-bottom: 20px;
+	}
+	.promos-relacionadas .price {
+		font-size: 16px;
+		padding-left: 0px;
+		margin-bottom: 5px;
+		width: 100%;
+	}
+	.promos-relacionadas .thumbs, .promos-relacionadas .grades{
+		font-size: 16px !important;
+		padding-left: 0px;
+		line-height: 22px;
+	}
+	.promos-relacionadas .comments a{
+		line-height: 22px;
+    	float: left;
+    	margin-left: 20px;
+	}
+	.promos-relacionadas .image-box .thumbs{
+		position: absolute;
+	    right: 8px;
+	    background: #FFF;
+	    padding: 0px 5px;
+	    border-radius: 0 0 0 50%;
+	}
+	.promos-relacionadas .image-box{
+		margin-bottom: 0px;
+	}
+</style>
+<div class="relacionadas">
+	<div class="header-box">
+  		<div class="title-big">Promociones Relacionadas</div>
+	</div>
+	<!--1RA PROMOCIÓN RELACIONADA-->
+    <div class="promos-relacionadas">
+	    <div class="col-xs-5">
+	     	<div class="image-box">
+	      		<div class="thumbs">
+	          		<span class="<%= rank_style(@deal.rank) %> grades">
+	             	<!--%= fa_icon "thermometer-empty" %-->
+	             	<span class="rank-meter"><%= @deal.rank %></span>
+	             	<span class="grados-sign">&#186;</span>
+	         		</span>
+	          		<span class="thumbs-quality">
+	      		</div>
+		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
+		         	<% if @deal.imagen.present? %>
+		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
+		         	<% else %>
+		            <% if @deal.promoimage.exists? %>
+		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
+		            <% end %>
+		         	<% end %>
+		       	</a>
+	       	</div>
+	    </div>
+	    <div class="col-xs-7">               		
+	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
+		    <p class="price"><%= number_to_currency(@deal.price) %></p>
+	    </div>
+    </div>
+    <!--2DA PROMOCIÓN RELACIONADA-->
+    <div class="promos-relacionadas">
+	    <div class="col-xs-5">
+	     	<div class="image-box">
+	      		<div class="thumbs">
+	          		<span class="<%= rank_style(@deal.rank) %> grades">
+	             	<!--%= fa_icon "thermometer-empty" %-->
+	             	<span class="rank-meter"><%= @deal.rank %></span>
+	             	<span class="grados-sign">&#186;</span>
+	         		</span>
+	          		<span class="thumbs-quality">
+	      		</div>
+		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
+		         	<% if @deal.imagen.present? %>
+		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
+		         	<% else %>
+		            <% if @deal.promoimage.exists? %>
+		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
+		            <% end %>
+		         	<% end %>
+		       	</a>
+	       	</div>
+	    </div>
+	    <div class="col-xs-7">               		
+	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
+		    <p class="price"><%= number_to_currency(@deal.price) %></p>
+	    </div>
+    </div>
+    <!--3RA PROMOCIÓN RELACIONADA-->
+    <div class="promos-relacionadas">
+	    <div class="col-xs-5">
+	     	<div class="image-box">
+	      		<div class="thumbs">
+	          		<span class="<%= rank_style(@deal.rank) %> grades">
+	             	<!--%= fa_icon "thermometer-empty" %-->
+	             	<span class="rank-meter"><%= @deal.rank %></span>
+	             	<span class="grados-sign">&#186;</span>
+	         		</span>
+	          		<span class="thumbs-quality">
+	      		</div>
+		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
+		         	<% if @deal.imagen.present? %>
+		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
+		         	<% else %>
+		            <% if @deal.promoimage.exists? %>
+		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
+		            <% end %>
+		         	<% end %>
+		       	</a>
+	       	</div>
+	    </div>
+	    <div class="col-xs-7">               		
+	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
+		    <p class="price"><%= number_to_currency(@deal.price) %></p>
+	    </div>
+    </div>
+</div>
+
+<hr>
+    
+
     <% @banners.each do |banner| %>
         <a target="_blank" href="<%= banner.link %>" id="<%=banner.id%>" class="banner-action">
         <%= image_tag banner.image.url(:original), class: 'img-responsive', alt: banner.alt %>

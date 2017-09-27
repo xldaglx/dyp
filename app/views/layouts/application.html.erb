@@ -15,6 +15,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="shortcut icon" href="/images/favicon2.ico" />
+    <script type="text/javascript">
+      $(document).ready(function(){
+           $('#modal-bienvenida').modal('show')
+      });
+    </script>
   </head>
 
   <body>
@@ -144,11 +149,16 @@
     <footer class="footer white" style="margin-top: 50px;">
       <%= render "layouts/menu_footer" %>
     </footer>
+
+    <!--INICIA MODAL BIENVENIDA-->
+    <%= render "welcome/bienvenida_modal" %>
+    <!--TERMINA MODAL BIENVENIDA-->
+
     <!-- Login -->
     <div class="modal fade" tabindex="-1" role="dialog" id="login">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content" id="login-modal">
-        <%= render "welcome/login_modal" %>
+          <%= render "welcome/login_modal" %>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

@@ -20,6 +20,10 @@
 body{
   background-color:#f8f8f8;
 }
+h2,h3{
+  font-size:24px;
+  font-weight:bold;
+}
 .alerta-cuenta{
   color: #d93438;
 }
@@ -201,10 +205,11 @@ a, a:focus, a:active{
 }
 .carousel-inner h2.name{
   font-weight: 300;
-  font-size:16px !important;
+  font-size:18px !important;
   padding:0px 10px;
   margin-top:0px;
   margin-bottom:10px;
+  letter-spacing:1px;
 }
 .carousel-inner .store{
   font-weight: 300;
@@ -575,6 +580,10 @@ li > a:hover{
 .nav > li.dropdown.open {
   position: static;
 }
+.dropdown-menu{
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 .nav > li.dropdown.open .dropdown-menu {
   border-bottom: 3px solid #d93438;
   display: table;
@@ -695,10 +704,10 @@ li > a:hover{
   background-color: #FFF;
   border:1px solid #efefef;
   margin-bottom: 15px;
-  min-height: 445px;
+  min-height: 425px;
 }
 .mas-votadas{
-  min-height: 445px;
+  min-height: 425px;
   border:1px solid #efefef;
   background: #FFF;
 }
@@ -711,7 +720,7 @@ li > a:hover{
   margin: 0px 0px 15px 0px;
   float:left;
   width:100%;
-  min-height: 265px;
+  min-height: 275px;
 }
 .oferta-individual{
     background: #FFFFFF;
@@ -780,7 +789,7 @@ li > a:hover{
 .carousel-inner h2.name{
   color: #525457;
   max-height: 60px;
-  height: 60px;
+  height: 42px;
   line-height: 20px;
   margin-top: 0px;
   overflow:hidden;
@@ -1511,7 +1520,7 @@ trix-editor{
   margin-top:20px;
 }
 .lista-compartir{
-  padding: 20px 25px 0px 25px;
+  padding: 5px 5px 15px 5px;
   min-width: 170px;
 }
 .lista-compartir li{
@@ -1919,6 +1928,47 @@ trix-editor{
   text-align: center;
   line-height: 33px;
 }
+.button_row .history_tools{
+  display: none;
+}
+.lista-reportar, .lista-compartir{
+  padding: 5px 5px 15px 5px;
+}
+.lista-reportar h2, .lista-compartir h2{
+  text-transform: none;
+  color: #333;
+  margin-bottom: 5px;
+}
+.lista-reportar li{
+  color: #d93438;
+  height: auto;
+  margin-bottom: 0px;
+  margin-top: 3px;
+}
+.lista-reportar li a:hover{
+  color: #d93438;
+  background: transparent;
+  background-color: transparent;
+}
+.lista-reportar input{
+  margin: 0px 0px 0px 13px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  min-width: 200px;
+  color: #333;
+  padding: 0px 5px;
+}
+.lista-reportar button{
+  height: 33px;
+  width: 70px;
+  background-color: transparent;
+  line-height: normal;
+  margin: 0px 13px;
+  font-size: 13px;
+}
+.lista-reportar button:hover{
+  text-decoration: underline;
+}
 @media screen and (max-width: 767px) {
   .content-box .name, .carousel-inner h2.name, .oferta-individual .name{
     font-weight: 400;
@@ -2018,8 +2068,11 @@ trix-editor{
     line-height: 15px;
   }
   .lista-compartir{
-    padding: 20px 25px 0px 25px;
-    min-width: 255px;
+    padding: 5px 5px 10px 15px;
+    min-width: 230px;
+  }
+  .lista-compartir h2{
+    margin-left:0px;
   }
   .image-box img{
     margin: 0 auto;
@@ -2070,7 +2123,7 @@ trix-editor{
     width: 100%;
   }
   .det-social li{
-    margin-right: 15px;
+    margin-right: 30px;
     margin-bottom: 5px;
     margin-top:8px;
   }
@@ -2265,6 +2318,13 @@ trix-editor{
   }
   .container{
   padding: 0px 5px;
+  }
+  .lista-reportar button{
+    padding: 0px;
+  }
+  .lista-reportar li{
+    margin-bottom: 0px;
+    margin-top: 5px;
   }
 }
 @media screen and (min-width: 768px) {
