@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826180447) do
+ActiveRecord::Schema.define(version: 20170927031508) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "alt"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20170826180447) do
     t.integer  "store_id"
     t.string   "slug"
     t.string   "mpn"
+    t.integer  "hits"
     t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
     t.index ["store_id"], name: "index_deals_on_store_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree

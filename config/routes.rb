@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'todas-las-tiendas', to: 'stores#list'
   get 'nuevas', to: 'deals#newdeals'
   get 'top', to: 'deals#topdeals'
+  get 'dealhit', to: 'deals#dealhit'
   get 'generatesitemap', to: 'deals#generateSitemap'
   get 'dealaction', to: 'deals#updateStatus'
   get 'commentaction', to: 'comments#updateStatus'
