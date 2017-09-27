@@ -7,7 +7,22 @@ class DealsController < ApplicationController
   def index
     @deals = Deal.all  
   end
+  def dealhit
+    @deal = Deal.find(params[:dealid])
+    if @deal.hits.nil?
+      @deal.hits = 0
+    end
+    @deal.hits += 1
+    @deal.save
+    respond_to do |format|
+       format.html
+       format.js {} 
+       format.json { 
+          render json: {:message => 'success'}
+      } 
+    end
 
+  end
   def stores
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"

@@ -154,7 +154,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           <% end %>
           <div class="det-btn">
           <% if @deal.link.present? %>
-            <a href="<%= @deal.link %>" class="btn btn-rojo" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+            <a href="<%= @deal.link %>" class="btn btn-rojo hit" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
           <% end %>
           </div>
         </div>
@@ -306,13 +306,12 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
   </div>
 </div>
 
-<input type="text" id="descriptionreport" value="HolaPonmedondedeboir">
+<input type="hidden" id="descriptionreport" value="">
 
 
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     $('.report').click(function(event) {
-      alert();
       report = $(this).attr('typereport');
       reportdesc = $('#descriptionreport').val();
       iddeal = <%= @deal.id %>
@@ -347,7 +346,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       });
     });
     $('.addtofavorites').click(function(event) {
-        var dealid = $(this).attr('dealid');
+        var dealid = <%= @deal.id %>;
 
         $.ajax({
           url:  "/addtofavorites",
@@ -359,8 +358,20 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           }
         });
     });
+    $('.hit').click(function(event) {
+        var dealid = <%= @deal.id %>;
+        $.ajax({
+          url:  "/dealhit",
+          dataType: "json",
+          data: {
+             dealid: dealid
+          },
+          success: function(data) { 
+          }
+        });
+    });
     $('.removefromfavorites').click(function(event) {
-        var dealid = $(this).attr('dealid');
+        var dealid = <%= @deal.id %>;
         $.ajax({
           url:  "/removefromfavorites",
           dataType: "json",
