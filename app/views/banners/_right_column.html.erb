@@ -1,57 +1,3 @@
-<style type="text/css">
-	.promos-relacionadas h2.name {
-		font-size: 12px !important;
-		line-height: 15px;
-		font-weight: normal;
-		max-height: 30px;
-		padding-left: 0px;
-		padding-right: 0px;
-		margin-bottom: 0px;
-		overflow: hidden;
-		margin-top: 5px;
-	}
-	.promos-relacionadas h2.name a {
-		color: #49494a;
-	}
-	.promos-relacionadas{
-		margin-top: 10px;
-		float: left;
-		padding: 5px 10px;
-	}
-	.relacionadas{
-		border: 1px solid #efefef;
-		background: #FFF;
-		padding-bottom: 30px;
-		float: left;
-		margin-bottom: 20px;
-	}
-	.promos-relacionadas .price {
-		font-size: 16px;
-		padding-left: 0px;
-		margin-bottom: 5px;
-		width: 100%;
-	}
-	.promos-relacionadas .thumbs, .promos-relacionadas .grades{
-		font-size: 16px !important;
-		padding-left: 0px;
-		line-height: 22px;
-	}
-	.promos-relacionadas .comments a{
-		line-height: 22px;
-    	float: left;
-    	margin-left: 20px;
-	}
-	.promos-relacionadas .image-box .thumbs{
-		position: absolute;
-	    right: 8px;
-	    background: #FFF;
-	    padding: 0px 5px;
-	    border-radius: 0 0 0 50%;
-	}
-	.promos-relacionadas .image-box{
-		margin-bottom: 0px;
-	}
-</style>
 <div class="relacionadas">
 	<div class="header-box">
   		<div class="title-big">Promociones Relacionadas</div>
@@ -71,16 +17,16 @@
 	      		</div>
 		       	<a href="/descuentos/<%= related.id %>-<%= related.slug %>">
 		         	<% if related.imagen.present? %>
-		           		<%= image_tag related.imagen, class: 'img-responsive', style: "height:auto;" %>
+		           	<%= image_tag related.imagen, class: 'img-responsive', style: "height:auto;max-height:85px;" %> 
 		         	<% else %>
 		            <% if related.promoimage.exists? %>
-		            	<%= image_tag related.promoimage.url(:small), class: 'img-responsive' %>
+		            <%= image_tag related.promoimage.url(:small), class: 'img-responsive' %>
 		            <% end %>
 		         	<% end %>
 		       	</a>
 	       	</div>
 	    </div>
-	    <div class="col-xs-7">               		
+	    <div class="col-xs-7">    
 	     	<h2 class="name"><a href="/descuentos/<%= related.id %>-<%= related.slug %>"><%= related.title %></a></h2>
 		    <p class="price"><%= number_to_currency(related.price) %></p>
 	    </div>
