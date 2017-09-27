@@ -1969,6 +1969,86 @@ trix-editor{
 .lista-reportar button:hover{
   text-decoration: underline;
 }
+.promos-relacionadas h2.name {
+  font-size: 12px !important;
+  line-height: 15px;
+  font-weight: normal;
+  max-height: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.promos-relacionadas h2.name a {
+  color: #49494a;
+}
+.promos-relacionadas{
+  margin-top: 10px;
+  float: left;
+  padding: 5px 10px;
+}
+.relacionadas{
+  border: 1px solid #efefef;
+  background: #FFF;
+  padding-bottom: 30px;
+  float: left;
+  margin-bottom: 20px;
+}
+.promos-relacionadas .price {
+  font-size: 16px;
+  padding-left: 0px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.promos-relacionadas .thumbs, .promos-relacionadas .grades{
+  font-size: 16px !important;
+  padding-left: 0px;
+  line-height: 22px;
+}
+.promos-relacionadas .comments a{
+  line-height: 22px;
+  float: left;
+  margin-left: 20px;
+}
+.promos-relacionadas .image-box .thumbs{
+    position: absolute;
+    right: 8px;
+    background: #FFF;
+    padding: 0px 5px;
+    border-radius: 0 0 0 50%;
+}
+.promos-relacionadas .image-box{
+  margin-bottom: 0px;
+}
+.modal-bienvenida{
+  float:left;
+  padding-bottom:0px;
+  border: 0px;
+}
+.modal-bienvenida .btn-rojo-out{
+  background: transparent;
+  color: #d93438;
+}
+.modal-bienvenida .btn-rojo-out:hover{
+  text-decoration: underline;
+}
+.modal-bienvenida .modal-title{
+  margin:20px 0px;
+  line-height:28px;
+  font-size: 24px;
+}
+.modal-bienvenida .modal-body{
+  padding: 0px;
+}
+.modal-bienvenida .modal-header{
+  padding: 10px 5px;
+  border: 0px;
+}
+.modal-bienvenida .text-modal{
+  padding: 0px 20px 40px 20px;
+  float: left;
+}
 @media screen and (max-width: 767px) {
   .content-box .name, .carousel-inner h2.name, .oferta-individual .name{
     font-weight: 400;
