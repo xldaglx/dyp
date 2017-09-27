@@ -1,4 +1,16 @@
 jQuery(document).ready(function($) {
+    $('.hit').click(function(event) {
+        dealid = $(this).attr('promoid');
+        $.ajax({
+          url:  "/dealhit",
+          dataType: "json",
+          data: {
+             dealid: dealid
+          },
+          success: function(data) { 
+          }
+        });
+    });
     $('.rank').click(function(event) {
       thumb = $(this);   
       promoid = $(this).attr('promoid');
