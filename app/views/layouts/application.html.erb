@@ -149,11 +149,18 @@
     <footer class="footer white" style="margin-top: 50px;">
       <%= render "layouts/menu_footer" %>
     </footer>
-
+    <% if cookies[:new_user].present? %>
     <!--INICIA MODAL BIENVENIDA-->
-    <%= render "welcome/bienvenida_modal" %>
+    
     <!--TERMINA MODAL BIENVENIDA-->
-
+    <% else %>
+      <%= render "welcome/bienvenida_modal" %>
+      <%  cookies[:new_user] =  {
+      :value => (0...10).map{ ('a'..'z').to_a[rand(26)] }.join,
+      :expires => 6.months.from_now
+      }
+    %>
+    <% end %>
     <!-- Login -->
     <div class="modal fade" tabindex="-1" role="dialog" id="login">
       <div class="modal-dialog modal-sm" role="document">

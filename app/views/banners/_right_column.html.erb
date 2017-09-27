@@ -57,89 +57,35 @@
   		<div class="title-big">Promociones Relacionadas</div>
 	</div>
 	<!--1RA PROMOCIÓN RELACIONADA-->
+    <% @related.each do |related| %>
     <div class="promos-relacionadas">
 	    <div class="col-xs-5">
 	     	<div class="image-box">
 	      		<div class="thumbs">
-	          		<span class="<%= rank_style(@deal.rank) %> grades">
+	          		<span class="<%= rank_style(related.rank) %> grades">
 	             	<!--%= fa_icon "thermometer-empty" %-->
-	             	<span class="rank-meter"><%= @deal.rank %></span>
+	             	<span class="rank-meter"><%= related.rank %></span>
 	             	<span class="grados-sign">&#186;</span>
 	         		</span>
 	          		<span class="thumbs-quality">
 	      		</div>
-		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
-		         	<% if @deal.imagen.present? %>
-		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
+		       	<a href="/descuentos/<%= related.id %>-<%= related.slug %>">
+		         	<% if related.imagen.present? %>
+		           		<%= image_tag related.imagen, class: 'img-responsive', style: "height:auto;" %>
 		         	<% else %>
-		            <% if @deal.promoimage.exists? %>
-		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
+		            <% if related.promoimage.exists? %>
+		            	<%= image_tag related.promoimage.url(:small), class: 'img-responsive' %>
 		            <% end %>
 		         	<% end %>
 		       	</a>
 	       	</div>
 	    </div>
 	    <div class="col-xs-7">               		
-	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
-		    <p class="price"><%= number_to_currency(@deal.price) %></p>
+	     	<h2 class="name"><a href="/descuentos/<%= related.id %>-<%= related.slug %>"><%= related.title %></a></h2>
+		    <p class="price"><%= number_to_currency(related.price) %></p>
 	    </div>
     </div>
-    <!--2DA PROMOCIÓN RELACIONADA-->
-    <div class="promos-relacionadas">
-	    <div class="col-xs-5">
-	     	<div class="image-box">
-	      		<div class="thumbs">
-	          		<span class="<%= rank_style(@deal.rank) %> grades">
-	             	<!--%= fa_icon "thermometer-empty" %-->
-	             	<span class="rank-meter"><%= @deal.rank %></span>
-	             	<span class="grados-sign">&#186;</span>
-	         		</span>
-	          		<span class="thumbs-quality">
-	      		</div>
-		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
-		         	<% if @deal.imagen.present? %>
-		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
-		         	<% else %>
-		            <% if @deal.promoimage.exists? %>
-		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
-		            <% end %>
-		         	<% end %>
-		       	</a>
-	       	</div>
-	    </div>
-	    <div class="col-xs-7">               		
-	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
-		    <p class="price"><%= number_to_currency(@deal.price) %></p>
-	    </div>
-    </div>
-    <!--3RA PROMOCIÓN RELACIONADA-->
-    <div class="promos-relacionadas">
-	    <div class="col-xs-5">
-	     	<div class="image-box">
-	      		<div class="thumbs">
-	          		<span class="<%= rank_style(@deal.rank) %> grades">
-	             	<!--%= fa_icon "thermometer-empty" %-->
-	             	<span class="rank-meter"><%= @deal.rank %></span>
-	             	<span class="grados-sign">&#186;</span>
-	         		</span>
-	          		<span class="thumbs-quality">
-	      		</div>
-		       	<a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>">
-		         	<% if @deal.imagen.present? %>
-		           		<%= image_tag @deal.imagen, class: 'img-responsive', style: "height:auto;" %>
-		         	<% else %>
-		            <% if @deal.promoimage.exists? %>
-		            	<%= image_tag @deal.promoimage.url(:small), class: 'img-responsive' %>
-		            <% end %>
-		         	<% end %>
-		       	</a>
-	       	</div>
-	    </div>
-	    <div class="col-xs-7">               		
-	     	<h2 class="name"><a href="/descuentos/<%= @deal.id %>-<%= @deal.slug %>"><%= @deal.title %></a></h2>
-		    <p class="price"><%= number_to_currency(@deal.price) %></p>
-	    </div>
-    </div>
+    <% end %>
 </div>
 
 <hr>

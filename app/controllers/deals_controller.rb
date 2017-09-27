@@ -194,6 +194,7 @@ result = HTTParty.get(request_url)
     id = params[:id].split('-')
     @report = Report.where('deal_id ='+id[0])
     @banners = Banner.order("RAND()").limit(3)
+    @related = Deal.order("RAND()").limit(3)
     @banners.each do |banner|
       banner.impressions = banner.impressions + 1
       banner.save
