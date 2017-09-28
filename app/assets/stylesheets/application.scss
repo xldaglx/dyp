@@ -1318,6 +1318,7 @@ li > a:hover{
 .deal-title .img-tit img{
   padding: 20px;
   cursor:pointer;
+  max-height: 300px;
 }
 .deal-title h1{
   font-size: 27px;
@@ -2020,6 +2021,9 @@ trix-editor{
 }
 .promos-relacionadas .image-box{
   margin-bottom: 0px;
+}
+.promos-relacionadas .image-box img{
+  max-height:85px;
 }
 .modal-bienvenida{
   float:left;
