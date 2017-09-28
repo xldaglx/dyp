@@ -184,6 +184,16 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           </div>
       </div>
       <!--DESCRIPCIÓN DE LA PROMOCIÓN-->
+      <!--COMPORTAMIENTO KEEPA-->
+      <div class="row keepa-block">
+        <div class="col-md-12">
+          <h4><i class="fa fa-line-chart" aria-hidden="true" style="float: none;"></i> Comportamiento</h4>
+          <p>Aquí puedes ver el precio que ha tenido este artículo durante las últimas semanas:</p>
+          <img src="/images/keepa.png">
+          <!--p class="fecha" style="float:none;margin-top:13px;">*Exclusivo para productos Amazon.</p-->
+        </div>
+      </div>
+      <!--COMPORTAMIENTO KEEPA-->
       <!--BARRA PARA COMPARTIR O REPORTAR-->
       <div class="row det-social">
         <div class="col-md-12">
@@ -209,9 +219,11 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
                 </a>
                 <ul class="dropdown-menu lista-reportar" aria-labelledby="dLabel">
                   <li><h2>¿Porqué deseas reportar esta promoción?</h2></li>
+                  <li><a href="#of" class="report" typereport="3"><span class="glyphicon glyphicon-menu-right"></span> Está vencida</a></li>
                   <li><a href="#dup" class="report" typereport="1"><span class="glyphicon glyphicon-menu-right"></span> Está duplicada</a></li>
                   <li><a href="#cam" class="report" typereport="2"><span class="glyphicon glyphicon-menu-right"></span> El precio cambió</a></li>
-                  <li><a href="#of" class="report" typereport="3"><span class="glyphicon glyphicon-menu-right"></span> Está promoción es ofensiva</a></li>
+                  <li><a href="#of" class="report" typereport="3"><span class="glyphicon glyphicon-menu-right"></span> Es ofensiva</a></li>
+
                   <!--<li><h2>Otro:</h2>
                   <li><input type="" id="descriptionreport" value=""><br><button class="btn-rojo-out">Enviar</button></li></li>-->
                 </ul>
@@ -230,9 +242,9 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
             <% end %>
             <% if @deal.price.present? %>
             <% if @deal.mpn.present? %>
-            <li class="btn-ver-mobile">
+            <!--li class="btn-ver-mobile">
               <a href="#ModalImage" data-toggle="modal" data-target="#ModalImage" class="main-image btn-rojo-out" src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx"><i class="fa fa-area-chart" aria-hidden="true" style="float: none;"></i> Ver comportamiento</a>
-            </li>
+            </li-->
             <% end %>
             <% end %>
           </ul>
@@ -243,7 +255,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       <!--COMENTARIOS-->
       <div class="row det-comentarios" id="box-comm">
         <div class="col-md-12">
-          <h3><%= @deal.comments.where('status = 1').count %> Comentarios</h3>
+          <h4><i class="fa fa-comment" aria-hidden="true"></i> <%= @deal.comments.where('status = 1').count %> Comentarios</h4>
             <% if @deal.comments.exists? %>
                 <% @deal.comments.where('status = 1').each do |item| %>
                 <div id="comment-<%= item.id %>">

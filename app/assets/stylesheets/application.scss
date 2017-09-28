@@ -2049,6 +2049,16 @@ trix-editor{
   padding: 0px 20px 40px 20px;
   float: left;
 }
+.keepa-block{
+  margin: 50px 0px 10px 0px !important;
+  padding: 15px 0px;
+  border-top: 1px solid #efefef;
+}
+.keepa-block img{
+  max-width: 100%;
+  margin-top: 12px;
+  min-width: 70%;
+}
 @media screen and (max-width: 767px) {
   .content-box .name, .carousel-inner h2.name, .oferta-individual .name{
     font-weight: 400;
