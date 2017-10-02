@@ -226,7 +226,9 @@ result = HTTParty.get(request_url)
       if my_string.include? "Errors"
          
       else
+          if my_string.include? "DetailPageURL"
           @newurl = data['ItemLookupResponse']['Items']['Item']['DetailPageURL']
+          end
           if my_string.include? "LowestNewPrice"
           price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
           price = price[0...-2]

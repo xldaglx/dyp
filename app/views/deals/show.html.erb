@@ -148,7 +148,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
               <% if @pricevariant.to_i == 0 %>    
                 <%= number_to_currency(@price) %>
               <% else %>
-              <span style="color:gray; font-size: 18px; text-decoration: line-through;"><%= number_to_currency(@deal.price) %></span> <%= number_to_currency(@price) %>
+              <sup style="color:gray; font-size: 14px; text-decoration: line-through;"> <%= number_to_currency(@deal.price) %></sup>  <%= number_to_currency(@price) %>
               <% end %>
             <% else %>
               <%= number_to_currency(@deal.price) %>
@@ -157,9 +157,9 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
               <% if @pricevariant.to_i == 0 %>               
               <% else %>
                 <% if @pricevariant < 0 %>
-                  <p style="color:gray; font-size: 14px;">El precio es <%= number_to_percentage(@pricevariant *-1, precision: 0) %> más bajo</p>
+                  <p style="font-size: 12px;margin-top:10px;color:#27ae60;"><span class="glyphicon glyphicon-arrow-down"></span> El precio bajó un <b><%= number_to_percentage(@pricevariant *-1, precision: 0) %></b></p>
                 <% else %>
-                  <p style="color:gray; font-size: 14px;">El precio es <%= number_to_percentage(@pricevariant, precision: 0) %> más alto</p>
+                  <p style="color:gray; font-size: 14px;"><span class="glyphicon glyphicon-arrow-up"></span> El precio subió un <b><%= number_to_percentage(@pricevariant, precision: 0) %></b></p>
                 <% end %>
               <% end %>
             <% end %>
@@ -210,7 +210,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       <% if @price.present? %>
         <% if @deal.mpn.present? %>
         <div class="row keepa-block">
-          <div class="col-md-12" style="text-align:center">
+          <div class="col-md-12">
             <h4><i class="fa fa-line-chart" aria-hidden="true" style="float: none;"></i> Comportamiento del precio</h4>
             <p>Aquí puedes ver el precio que ha tenido este artículo durante las últimas semanas:</p>
             <img src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx">
