@@ -25,8 +25,8 @@
 		<%= render 'users/menuprofile' %>
 		</div>
 		<div class="col-md-9 contenedor-pub">
-			<h1>Ranking General</h1>
-			<p>Los usuarios con más <a tabindex="0" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="¿Qué son los puntos?" data-content="Los puntos se obtienen por medio de cada promoción que publicas, es la diferencia de los likes contra las personas a quienes no les gustó tu promoción, mientras más promociones publiques y mientras más likes tengas mayor será el número de puntos que generarás."><strong>puntos</strong></a> esta son:</p>
+			<h1>Ranking General de <%= I18n.t("date.month_names")[Date.today.month] %></h1>
+			<p>Los usuarios con más <a tabindex="0" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="¿Qué son los puntos?" data-content="Los puntos se obtienen por medio de cada promoción que publicas, es la diferencia de los likes contra las personas a quienes no les gustó tu promoción, mientras más promociones publiques y mientras más likes tengas mayor será el número de puntos que generarás."><strong>puntos</strong></a> son:</p>
 			<% @users.each do |user| %>
 			<div class="col-md-12 rank-user">
 				<div class="col-xs-6">

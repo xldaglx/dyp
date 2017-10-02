@@ -15,3 +15,6 @@
 	<!-- TERMINA LISTADO DE PROMOCIONES -->
 </div>
 <%= paginate @deals %>
+<script>
+  <%= render(:partial => '/deals/deals', :formats => [:js] ) %>
+</script>

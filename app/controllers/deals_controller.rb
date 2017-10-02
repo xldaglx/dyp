@@ -16,7 +16,7 @@ params = {
   "Operation" => "ItemLookup",
   "AWSAccessKeyId" => "AKIAIDZTT3WCPPLJPAUA",
   "AssociateTag" => "1083f5-20",
-  "ItemId" => "B072C7TNBZ",
+  "ItemId" => "B01GQOA54Y",
   "IdType" => "ASIN",
   "ResponseGroup" => "Images,ItemAttributes,Offers"
 }
@@ -178,7 +178,7 @@ result = HTTParty.get(request_url)
 
   def moderate
     if params[:status].present?
-      @deals = Deal.where('status = '+params[:status]).page(params[:page]).order('created_at DESC')
+      @deals = Deal.where('status = '+params[:status]).page(params[:page]).order('created_at DESC').page(params[:page]).per(24)
     else
       @deals = Deal.all.page(params[:page]).order('created_at DESC')
     end
@@ -194,10 +194,48 @@ result = HTTParty.get(request_url)
     id = params[:id].split('-')
     @report = Report.where('deal_id ='+id[0])
     @banners = Banner.order("RAND()").limit(3)
-    @related = Deal.order("RAND()").limit(3)
+    @related = Deal.where('category_id ='+ @deal.category.id.to_s).where('id !='+id[0]).where('created_at >= ?', 1.week.ago).order("RAND()").limit(3)
     @banners.each do |banner|
       banner.impressions = banner.impressions + 1
       banner.save
+    end
+    if @deal.mpn.present?
+      secret = "nfBx5nt3Rv+vzeKj21/Eqxa/sSLpfhZhgBcrZZhq"
+      endpoint = "webservices.amazon.com.mx"
+      request_uri = "/onca/xml"
+      params = {
+        "Service" => "AWSECommerceService",
+        "Operation" => "ItemLookup",
+        "AWSAccessKeyId" => "AKIAIDZTT3WCPPLJPAUA",
+        "AssociateTag" => "1083f5-20",
+        "ItemId" => @deal.mpn,
+        "IdType" => "ASIN",
+        "ResponseGroup" => "ItemAttributes,Offers"
+      }
+
+      params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
+      canonical_query_string = params.sort.collect do |key, value|
+        [URI.escape(key.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))].join('=')
+      end.join('&')
+      string_to_sign = "GET\n#{endpoint}\n#{request_uri}\n#{canonical_query_string}"
+      signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, string_to_sign)).strip()
+      request_url = "http://#{endpoint}#{request_uri}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
+      p result = HTTParty.get(request_url)
+      data = result.parsed_response
+      my_string = data.to_s
+      if my_string.include? "Errors"
+         
+      else
+          @newurl = data['ItemLookupResponse']['Items']['Item']['DetailPageURL']
+          if my_string.include? "LowestNewPrice"
+          price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
+          price = price[0...-2]
+          pricepadividir = @deal.price.to_f
+          dividir = (price.to_f/pricepadividir) - 1
+          @price = price
+          @pricevariant = dividir * 100
+        end
+      end
     end
   end
 
@@ -305,10 +343,14 @@ begin
   case url
   when /amazon/
 
-  amazon_url = url
+  p amazon_url = url
   if amazon_url.match(/\/dp\/(\w{10})(\/|\Z)/)
       asin = $1
   elsif amazon_url.match(/\/gp\/\w*?\/(\w{10})(\/|\Z)/)
+      asin = $1
+  elsif amazon_url.match(/\/gp\/\w*?\/(\w{10})(\?th=*)/)
+      asin = $1
+  elsif amazon_url.match(/\/gp\/\w*?\/(\w{10})(\?psc=*)/)
       asin = $1
   elsif amazon_url.match(/\/gp\/\w*?\/\w*?\/(\w{10})(\/|\Z)/)
       asin = $1
@@ -345,8 +387,15 @@ begin
   data = result.parsed_response
   model =  data['ItemLookupResponse']['Items']['Item']['ASIN']
   img_urls.push (data['ItemLookupResponse']['Items']['Item']['LargeImage']['URL'])
-  price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
-  price = price[0...-2]
+  my_string = data.to_s
+  if my_string.include? "Errors"
+     
+  else
+    if my_string.include? "LowestNewPrice"
+      price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
+      price = price[0...-2]
+    end
+  end
   title =  data['ItemLookupResponse']['Items']['Item']['ItemAttributes']['Title']
   when /liverpool/
     page = HTTParty.get(url)
@@ -381,7 +430,13 @@ begin
     store ="bestbuy"
     title = page.at_css('title').text
     img_urls.push page.xpath("//meta[@property='og:image']/@content").text
+    page.xpath('//img').each do |img|
+      img_urls.push (img['src'])
+    end
     price = page.xpath("//span[@itemprop='price']").text
+    if price.blank?
+     price = page.at_css('.pb-purchase-price').text
+    end
 
   when /palacio/
     page = HTTParty.get(url)
@@ -432,7 +487,6 @@ begin
       render json: {:images => img_urls, :title => title, :price => price, :url => url, :model => model, :store => store}
    } 
   end
-      
 rescue Exception => e
    respond_to do |format|
      format.html

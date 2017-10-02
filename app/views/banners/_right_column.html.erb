@@ -1,3 +1,4 @@
+<% if @related.present? %>
 <div class="relacionadas">
 	<div class="header-box">
   		<div class="title-big">Promociones Relacionadas</div>
@@ -33,8 +34,8 @@
     </div>
     <% end %>
 </div>
-
 <hr>
+<% end %>
     
 
     <% @banners.each do |banner| %>

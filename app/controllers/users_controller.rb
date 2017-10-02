@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!, only: [:deals, :rated, :favorites, :ranking, :followers]
 	def followers
 		@users = Relationship.select('users.*, relationships.*').joins('LEFT JOIN users ON relationships.follower_id = users.id').where('relationships.followed_id='+current_user.id.to_s)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
@@ -9,22 +10,22 @@ class UsersController < ApplicationController
 	end
 
 	def deals
-    	@deals = Deal.where('user_id ='+current_user.id.to_s)
+    	@deals = Deal.where('user_id ='+current_user.id.to_s).order('deals.id DESC').page(params[:page]).per(24)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
 	def favorites
-    	@deals = Deal.joins('LEFT JOIN favorites ON deals.id = favorites.deal_id').where('favorites.user_id = '+current_user.id.to_s)
+    	@deals = Deal.joins('LEFT JOIN favorites ON deals.id = favorites.deal_id').where('favorites.user_id = '+current_user.id.to_s).order('deals.id DESC').page(params[:page]).per(24)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
 	def ranking
-		@users = User.all.order('rank DESC')
+		@users = User.all.order('rank DESC').limit(10)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
 	def rated
-		@deals = Deal.joins('LEFT JOIN behaviors ON deals.id = behaviors.deal_id').where('behaviors.user_id = '+current_user.id.to_s)
+		@deals = Deal.joins('LEFT JOIN behaviors ON deals.id = behaviors.deal_id').where('behaviors.user_id = '+current_user.id.to_s).order('deals.id DESC').page(params[:page]).per(24)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
 
@@ -76,7 +77,7 @@ class UsersController < ApplicationController
 		@users = User.all
 	 	@users.each do |user|
 	 		totalrank = 0
-	 		user.deals.each do |deal|
+	 		user.deals.where("created_at > ? AND created_at < ?", Time.now.beginning_of_month, Time.now.end_of_month).each do |deal|
 	 			totalrank = totalrank + deal.rank
 	 		end
 	 		@userupdate = User.find(user.id)

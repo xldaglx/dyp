@@ -29,7 +29,6 @@ class Deal < ApplicationRecord
 	end
 
 	def self.search(search)
-	  where("title LIKE ?", "%#{search}%") 
-	  where("description LIKE ?", "%#{search}%") 
+	  where("title LIKE '%#{search}%' OR description LIKE '%#{search}%'").order('created_at DESC').limit(48)
 	end
 end

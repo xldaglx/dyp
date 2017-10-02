@@ -142,15 +142,19 @@
               $('.loader-image').hide();
               if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
-                    $('#deal_mpn').val(data.model[0]);
+                    $('#deal_mpn').val(data.model);
                 }
                 if (data.url != ""){
                   url = data.url
+                  var $url = url;
+                  var a = document.createElement('a');
+                  a.href = $url;
+                  var $finalUrl = a.protocol + '//' + a.hostname;
                   $("#deal_store_id option").each(function()
                   {
                     substring = $(this).text().toLowerCase();
                     substring = substring.replace( /\s/g, "");
-                    if (url.indexOf(substring) !=-1) {
+                    if ($finalUrl.indexOf(substring) !=-1) {
                       $(this).attr('selected','selected')
                     }
                   });
@@ -267,15 +271,19 @@
               $('.loader-image').hide();
               if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
-                    $('#deal_mpn').val(data.model[0]);
+                    $('#deal_mpn').val(data.model);
                 }
                 if (data.url != ""){
                   url = data.url
+                  var $url = url;
+                  var a = document.createElement('a');
+                  a.href = $url;
+                  var $finalUrl = a.protocol + '//' + a.hostname;
                   $("#deal_store_id option").each(function()
                   {
                     substring = $(this).text().toLowerCase();
                     substring = substring.replace( /\s/g, "");
-                    if (url.indexOf(substring) !=-1) {
+                    if ($finalUrl.indexOf(substring) !=-1) {
                       $(this).attr('selected','selected')
                     }
                   });

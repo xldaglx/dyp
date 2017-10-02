@@ -1,6 +1,21 @@
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
 
 en:
+  date:
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
   devise:
     confirmations:
       confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
