@@ -80,7 +80,7 @@
               </p>
               <!--%= link_to "Leer más", deal_path(@hot_deal), class: 'btn btn-rojo visible-xs' %-->
               <% if @hot_deal.link.present? %>
-                <a href="<%= @hot_deal.link %>" class="btn btn-rojo" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+                <a style="min-width:175px;" href="descuentos/<%= @hot_deal.id %>-<%= @hot_deal.slug %>" class="btn btn-rojo">Ver promoción <!--span class="glyphicon glyphicon-share-alt"></span--></a>
               <% end %>
             </div>
         </div>
@@ -164,7 +164,7 @@
                     <p class="price"><%= number_to_currency(deal.price) %></p>
                     <!--p class="promocion"><%= link_to "Ver mas", descuento_path(deal), class: 'btn btn-primary' %></p-->
                     <!--% if deal.link.present? %-->
-                    <p class="promocion"><a href="<%= deal.link %>" class="btn btn-rojo-small" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a></p>
+                    <p class="promocion"><a href="descuentos/<%= deal.id %>-<%= deal.slug %>" class="btn btn-rojo-small" >Ver promoción <!--span class="glyphicon glyphicon-share-alt"></span--></a></p>
                     <!--% end %-->
                   </div>
                 </div>

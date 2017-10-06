@@ -39,12 +39,14 @@
 <hr>
 <% end %>
     
-
+	<div class="row">
     <% @banners.each do |banner| %>
         <a target="_blank" href="<%= banner.link %>" id="<%=banner.id%>" class="banner-action">
         <%= image_tag banner.image.url(:original), class: 'img-responsive', alt: banner.alt %>
         </a>
     <% end %>
+	</div>
+
     <script type="text/javascript">
     	jQuery(document).ready(function($) {	
 		    $('.banner-action').click(function(event) {

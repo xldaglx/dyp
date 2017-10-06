@@ -166,13 +166,9 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           </div>
           <% end %>
           <div class="det-btn">
-          <% if @newurl.present? %>  
-              <a href="<%= @newurl %>" class="btn btn-rojo hit" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
-          <% else %>
             <% if @deal.link.present? %>
-              <a href="<%= @deal.link %>" class="btn btn-rojo hit" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+              <a style="min-width:200px;" href="<%= @deal.link %>" class="btn btn-rojo hit" target="_blank">Ver oferta en <%= @deal.store.name %> <span class="glyphicon glyphicon-share-alt"></span></a>
             <% end %>
-          <% end %>
           </div>
         </div>
       </div>

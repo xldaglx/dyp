@@ -924,7 +924,6 @@ li > a:hover{
   -moz-border-radius: 2px;
   border-radius: 2px;
   border: none;
-  width: 200px;
   height: 35px;
   line-height: 22px;
   margin-top: 5px;
@@ -932,7 +931,7 @@ li > a:hover{
 }
 .btn-rojo-small{
   font-size: 13px;
-  width:137px;
+  min-width:125px;
   height:30px;
   color: #FFF !important;
   font-weight: 400;

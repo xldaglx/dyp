@@ -110,11 +110,9 @@
             </span>
           </div>
           <!--p class="promocion"><%= link_to "Ver mas", descuento_path(deal) %></p-->
-          <% if deal.link.present? %>
           <div class="btn-oferta-individual">
-            <a class="btn btn-rojo-small hit" promoid="<%= deal.id %>" href="<%= deal.link %>" target="_blank">Ir a la promoción <span class="glyphicon glyphicon-share-alt"></span></a>
+            <a class="btn btn-rojo-small hit" promoid="<%= deal.id %>" href="/descuentos/<%= deal.id %>-<%= deal.slug %>">Ver promoción <!--span class="glyphicon glyphicon-share-alt"></span--></a>
           </div>
-          <% end %>
           <!--a class="comments hidden-xs" href="/descuentos/<%= deal.id %>-<%= deal.slug %>#box-comm"><%= fa_icon 'comment' %></a--> 
         </div>
       </div>
