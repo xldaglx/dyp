@@ -28,7 +28,7 @@
 	       	</div>
 	    </div>
 	    <div class="col-xs-7">   
-	    	<div class="store" style="font-size:10px;"><%= @deal.store.name %></div>
+	    	<div class="store" style="font-size:10px;"><%= related.store.name %></div>
 	     	<h2 class="name" style="margin-top:2px;"><a href="/descuentos/<%= related.id %>-<%= related.slug %>"><%= related.title %></a></h2>
 		    <p class="price"><%= number_to_currency(related.price) %></p>
 

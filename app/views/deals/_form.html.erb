@@ -200,6 +200,18 @@
                       }
                     });   
                     break;
+                  case "elektra":
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
                   default:
                     for (i in data.images) {
                       $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
@@ -318,6 +330,18 @@
                     });   
                     break;
                   case "costco":
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  case "elektra":
                     for (i in data.images) {
                       $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
                     }    

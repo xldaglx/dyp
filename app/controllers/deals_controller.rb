@@ -345,7 +345,7 @@ begin
   case url
   when /amazon/
 
-  p amazon_url = url
+  amazon_url = url
   if amazon_url.match(/\/dp\/(\w{10})(\/|\Z)/)
       asin = $1
   elsif amazon_url.match(/\/gp\/\w*?\/(\w{10})(\/|\Z)/)
@@ -473,6 +473,28 @@ begin
     title = page.xpath("//meta[@property='og:title']/@content").text
     img_urls.push page.xpath("//meta[@property='og:image']/@content").text
     price = page.xpath("//meta[@itemprop='price']/@content").text
+  when /radioshack/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    #Lazy loading is messing with scrapping
+    title = page.xpath("//meta[@name='twitter:title']/@content").text
+    img_urls.push  = page.xpath("//meta[@name='twitter:image']/@content").text
+  when /officedepot/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    title = page.at_css('title').text
+  when /elektra/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    title = page.at_css('title').text
+    img_urls.push (page.xpath("//meta[@itemprop='image']/@content").text)
+    price = page.xpath("//meta[@itemprop='price']/@content").text
+    store = "elektra"
+  when /homestore/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    title = page.at_css('title').text
+    price = page.at_css('.PricesalesPrice').text
   else
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
