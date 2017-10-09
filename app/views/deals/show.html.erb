@@ -214,6 +214,9 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
           </div>
         </div>
         <% end %>
+        <% if @iframeurl.present? %>
+          <iframe src="<%= @iframeurl %>" style="width: 100%" height="300" frameBorder="0"></iframe>
+        <% end %>
       <% end %>
       <!--COMPORTAMIENTO KEEPA-->
       <!--BARRA PARA COMPARTIR O REPORTAR-->

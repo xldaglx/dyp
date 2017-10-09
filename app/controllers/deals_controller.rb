@@ -16,9 +16,9 @@ params = {
   "Operation" => "ItemLookup",
   "AWSAccessKeyId" => "AKIAIDZTT3WCPPLJPAUA",
   "AssociateTag" => "1083f5-20",
-  "ItemId" => "B01GQOA54Y",
+  "ItemId" => "B00YEZQ5L0",
   "IdType" => "ASIN",
-  "ResponseGroup" => "Images,ItemAttributes,Offers"
+  "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
 }
 # Set current timestamp if not set
 params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
@@ -210,7 +210,7 @@ result = HTTParty.get(request_url)
         "AssociateTag" => "1083f5-20",
         "ItemId" => @deal.mpn,
         "IdType" => "ASIN",
-        "ResponseGroup" => "ItemAttributes,Offers"
+        "ResponseGroup" => "ItemAttributes,Offers,Reviews"
       }
 
       params["Timestamp"] = Time.now.gmtime.iso8601 if !params.key?("Timestamp")
@@ -220,14 +220,17 @@ result = HTTParty.get(request_url)
       string_to_sign = "GET\n#{endpoint}\n#{request_uri}\n#{canonical_query_string}"
       signature = Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, string_to_sign)).strip()
       request_url = "http://#{endpoint}#{request_uri}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
-      p result = HTTParty.get(request_url)
+      result = HTTParty.get(request_url)
       data = result.parsed_response
-      my_string = data.to_s
+      p my_string = data.to_s
       if my_string.include? "Errors"
          
       else
           if my_string.include? "DetailPageURL"
           @newurl = data['ItemLookupResponse']['Items']['Item']['DetailPageURL']
+          end
+          if my_string.include? "\"HasReviews\"=>\"true\""
+          @iframeurl = data['ItemLookupResponse']['Items']['Item']['CustomerReviews']['IFrameURL']
           end
           if my_string.include? "LowestNewPrice"
           price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']

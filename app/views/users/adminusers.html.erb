@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+</script>
+<div class="col-md-12 no-padding-m">
+	<h1>Usuarios</h1>
+	<p>Usuarios registrados - <%= @users.count %></p>
+	<p>Usuarios registrados en la última semana - <%= @users.where("created_at > ?", Time.now-7.days).count %></p>
+	<p>Usuarios registrados en el mes - <%= @users.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).count %></p>
+	
+	
+	<table class="table table-condensed">
+		<tr>
+			<th>Usuario</th>
+			<th>Promociones</th>
+			<th>Bloqueado</th>
+		</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.nickname %></td>
+			<td><%= user.deals.count %></td>
+			<td><%= user.banned %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+<%= paginate @users %>

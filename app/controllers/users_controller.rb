@@ -28,7 +28,9 @@ class UsersController < ApplicationController
 		@deals = Deal.joins('LEFT JOIN behaviors ON deals.id = behaviors.deal_id').where('behaviors.user_id = '+current_user.id.to_s).order('deals.id DESC').page(params[:page]).per(24)
 		@promoHot = User.joins(:deals).where('deals.rank > 1').where('deals.user_id ='+current_user.id.to_s).count
 	end
-
+	def adminusers
+		@users = User.all.page(params[:page]).per(24)
+	end
 	def follow
 		@relationships = Relationship.new
 		@relationships.follower_id = params[:follower]
