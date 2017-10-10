@@ -2,8 +2,8 @@
 
 require_relative 'config/environment'
 
-if ENV['RACK_ENV'] == "production"
-	use Rack::CanonicalHost, 'www.descuentosypromociones.com'
-end
+#if ENV['RACK_ENV'] == "production"
+#	use Rack::CanonicalHost, 'www.descuentosypromociones.com'
+#end
 
 run Rails.application

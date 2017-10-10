@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009011114) do
+ActiveRecord::Schema.define(version: 20171010150233) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "alt"
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(version: 20171009011114) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
-    t.string   "link"
+    t.string   "link",                    limit: 355
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.integer  "type_deal"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20171009011114) do
     t.string   "slug"
     t.string   "mpn"
     t.integer  "hits"
+    t.integer  "impressions"
     t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
     t.index ["store_id"], name: "index_deals_on_store_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
@@ -179,8 +180,6 @@ ActiveRecord::Schema.define(version: 20171009011114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "behaviors", "deals"
-  add_foreign_key "behaviors", "users"
   add_foreign_key "comments", "deals"
   add_foreign_key "comments", "users"
   add_foreign_key "deals", "categories"

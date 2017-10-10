@@ -131,12 +131,12 @@ result = HTTParty.get(request_url)
   def topdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('rank DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC')
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').where("created_at > ?", Time.now-15.days).page(params[:page]).order('rank DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').where("created_at > ?", Time.now-15.days).page(params[:page]).order('impressions DESC')
       end
     else
-      @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('rank DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC')
     end 
   end
   def updateStatus
@@ -199,6 +199,11 @@ result = HTTParty.get(request_url)
       banner.impressions = banner.impressions + 1
       banner.save
     end
+    if @deal.impressions.nil?
+      @deal.impressions = 0
+    end
+    @deal.impressions += 1
+    @deal.save
     if @deal.mpn.present?
       secret = "nfBx5nt3Rv+vzeKj21/Eqxa/sSLpfhZhgBcrZZhq"
       endpoint = "webservices.amazon.com.mx"
@@ -409,8 +414,7 @@ begin
     title = page.xpath("//meta[@property='og:title']/@content").text
     img_urls.push page.xpath("//input[@id='jsonImageMap']/@value").text
     price = page.xpath("//input[@id='maximumPromoPrice']/@value").text
-    store = "liverpool"
-    
+    store = "liverpool" 
   when /walmart/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -419,7 +423,6 @@ begin
       img_urls.push (img.text)
     end
     title = page.xpath("//meta[@property='og:title']/@content").text
-
   when /chedraui/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -428,7 +431,6 @@ begin
       img_urls.push (img['src'])
     end
     title = page.at_css('title').text
-
   when /bestbuy/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -442,7 +444,6 @@ begin
     if price.blank?
      price = page.at_css('.pb-purchase-price').text
     end
-
   when /palacio/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -452,7 +453,6 @@ begin
     img_urls.push (img['src'])
     end
     price = page.xpath("//span[@class='price']").text
-
   when /costco/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -481,11 +481,17 @@ begin
     page = Nokogiri::HTML(page)
     #Lazy loading is messing with scrapping
     title = page.xpath("//meta[@name='twitter:title']/@content").text
-    img_urls.push  = page.xpath("//meta[@name='twitter:image']/@content").text
+    imageurl =  page.xpath("//meta[@name='twitter:image']/@content").text
+    img_urls.push imageurl
+    store = "radioshack"
   when /officedepot/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
     title = page.at_css('title').text
+    imageurl = "https://www.officedepot.com.mx"+page.xpath("//img[@itemprop='image']/@src")[0].text
+    img_urls.push imageurl
+    price = page.xpath("//div[@id='priceData']").text
+    store = "officedepot"
   when /elektra/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
@@ -498,10 +504,20 @@ begin
     page = Nokogiri::HTML(page)
     title = page.at_css('title').text
     price = page.at_css('.PricesalesPrice').text
-  else
+  when /homedepot/
     page = HTTParty.get(url)
     page = Nokogiri::HTML(page)
     title = page.at_css('title').text
+    price = page.xpath("//div[@itemprop='price']/@content").text
+  when /sanborns/
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    title = page.at_css('title').text
+    img_urls.push page.xpath("//meta[@name='og:image']/@content").text
+  else
+    page = HTTParty.get(url)
+    page = Nokogiri::HTML(page)
+    title = page.at_css('title').page.text
     page.xpath('//img').each do |img|
     img_urls.push (img['src'])
     end
