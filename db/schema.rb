@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(version: 20171018043820) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.text     "description",             limit: 65535
+    t.string   "description"
     t.string   "imagen"
-    t.string   "link",                    limit: 355
+    t.string   "link"
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "type_deal"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(version: 20171018043820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "behaviors", "deals"
+  add_foreign_key "behaviors", "users"
   add_foreign_key "comments", "deals"
   add_foreign_key "comments", "users"
   add_foreign_key "deals", "categories"

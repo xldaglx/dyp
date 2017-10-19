@@ -23,6 +23,12 @@
            $('#modal-bienvenida').modal('show')
       });
     </script>
+    <style type="text/css">
+      .buen-fin-tit a{
+        color: #d93438 !important;
+        font-weight: bold !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -70,6 +76,7 @@
   <nav class="navbar navbar-white">
     <div class="container no-padding-head">
       <ul class="nav navbar-nav">
+          
           <li class=" active"><a href="/nuevas">Nuevas</a></li>
           <li class="hidden-xs promotop"><a href="/top">Promociones Top</a></li>
           <li class="visible-xs"><a href="/top">TOP</a></li>
@@ -81,8 +88,8 @@
             <!-- TERMINA SUBMENU DESKTOP -->
           </li>
           <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
-          <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
-          <li><a href="/descuentos-ofertas-y-promociones-del-buen-fin-2017">Buen Fin</a></li>
+          <li class="buen-fin-tit"><a href="/descuentos-ofertas-y-promociones-del-buen-fin-2017">BUEN FIN</a></li>
+          <!--SE ESCONDIÓ PARA BUEN FIN li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li-->
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>
