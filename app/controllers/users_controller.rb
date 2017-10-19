@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 	end
 	def adminusers
 		@users = User.all.page(params[:page]).per(24)
+		@userstotal = User.all.count
+		@userslastweek = User.all.where("created_at > ?", Time.now-7.days).count
+		@userslastmonth = User.all.where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).count
+
 	end
 	def follow
 		@relationships = Relationship.new

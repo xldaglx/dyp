@@ -65,6 +65,7 @@
         </div>
         <div class="col-xs-7 oferta-individual no-padding">
           <div class="category">
+            <p>Hits:<%= deal.hits %> - Impressions:<%= deal.impressions %></p>
             <a href="/descuentos-por-categoria/<%= deal.category.id %>/<%= deal.category.slug %>"><%= deal.category.name %></a>
           </div>
           <div class="name">

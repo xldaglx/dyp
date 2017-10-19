@@ -81,7 +81,7 @@
       <div class="oferta-individual col-xs-12">
         <div class="col-xs-5">
           <a href="/descuentos/<%= deal.id %>-<%= deal.slug %>">
-            <% if deal.promoimage.present? %>
+            <% if deal.promoimage.exists? %>
               <%= image_tag deal.promoimage.url(:small), class: 'img-responsive' %>
             <% else %>
               <% if deal.imagen.present? %>

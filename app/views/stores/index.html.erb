@@ -7,11 +7,13 @@
               <td>Id</td>
               <td>Nombre</td>
               <td>Descripción</td>
+              <td>Offer</td>
               <td></td>
             </tr>
             <% @stores.each do |store| %>
             <tr>
               <td class="tabla-cat"><strong><%= store.id %> <%= store.name %></strong><br><span class="descripcion-tabla"><%= store.description %></span></td>
+              <td class="tabla-cat"><strong><%= store.offer.to_s.html_safe %> </td>
               <td class="tabla-edit"><span class="glyphicon glyphicon-eye-open"></span> <%= link_to 'Ver', store %></td>
               <td class="tabla-edit"><span class="glyphicon glyphicon-pencil"></span> <%= link_to 'Editar', edit_store_path(store) %></td>
               <td class="tabla-edit"><span class="glyphicon glyphicon-trash"></span> <%= link_to 'Eliminar', store, method: :delete, data: { confirm: 'Estás seguro de eliminar esta tienda?' } %></td>

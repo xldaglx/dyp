@@ -9,7 +9,7 @@ else
 end
 @current_url = request.protocol+request.host_with_port
 set_meta_tags og: {
-  title:    @deal.title + " | Precio: " + number_to_currency(@deal.price, precision: 0),
+  title:    "Precio: "+ number_to_currency(@deal.price, precision: 0) + " | " +@deal.title,
   description:    strip_tags(@deal.description),
   type:     'product',
   url:      @current_url+"/descuentos/"+@deal.id.to_s+"-"+@deal.slug,
@@ -34,6 +34,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       <div class="row">
         <% if current_user.try(:admin?) %>
         <!--Comienza barra para aceptar-->
+        <p>Hits:<%= @deal.hits %> - Impressions:<%= @deal.impressions %></p>
         <div class="col-md-12" style="text-align: center;margin: auto;">
           <% @report.each do |report| %>
             Reporte: <%= report.description %> <br>

@@ -1,5 +1,6 @@
 <% set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos-por-tienda/"+@tienda.id.to_s+"/"+@tienda.slug %>
 <h1><%= title @tienda.name %></h1>
+<%= @tienda.offer.to_s.html_safe %>
 <% 
 set_meta_tags description: @tienda.description 
 %>

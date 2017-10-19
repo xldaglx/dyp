@@ -106,12 +106,12 @@ result = HTTParty.get(request_url)
   def newdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC').per(24)
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('created_at DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').page(params[:page]).order('created_at DESC').per(24)
       end
     else
-      @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').order('created_at DESC').per(24)
     end 
   end
 
@@ -131,12 +131,12 @@ result = HTTParty.get(request_url)
   def topdeals
     if params['filter-promo'].present?
       if params['filter-promo'] == "all"
-        @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC')
+        @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC').per(24)
       else   
-        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').where("created_at > ?", Time.now-15.days).page(params[:page]).order('impressions DESC')
+        @deals = Deal.all.where("type_deal = "+ params['filter-promo']).where('status = 1').where("created_at > ?", Time.now-15.days).page(params[:page]).order('impressions DESC').per(24)
       end
     else
-      @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC')
+      @deals = Deal.all.page(params[:page]).where('status = 1').where("created_at > ?", Time.now-15.days).order('impressions DESC').per(24)
     end 
   end
   def updateStatus

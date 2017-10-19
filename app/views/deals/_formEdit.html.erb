@@ -13,7 +13,7 @@
       <%= f.text_field :title, :required => true %>
     </div>
     <div class="field">
-      <%= f.text_field :description %>
+      <%= f.trix_editor :description %>
     </div>
     <div class="field">
       <%= f.text_field :link %>
@@ -23,6 +23,12 @@
     </div>
     <div class="field">
       <%= f.text_field :mpn %>
+    </div>
+    <div class="field">
+      <%= f.datetime_field :created_at %>
+    </div>
+    <div class="field">
+      <%= f.text_field :impressions %>
     </div>
     <div class="field">
       <%= f.text_field :expiration %>

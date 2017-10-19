@@ -1,12 +1,17 @@
 		<div class="col-md-12 profile-header">
 			<div class="col-md-5">
 				<div class="col-md-6">
-				
-					<%= image_tag current_user.avatar.url("desktop"), class: 'img-responsive' %>
+					<% if current_user.provider.blank? %>
+						<%= image_tag current_user.avatar.url("desktop"), class: 'img-responsive' %>
+					<% else %>
+						<%= image_tag current_user.avatar_file_name %>
+					<% end %>
 				</div>
 				<div class="col-md-6" >
 					<div class="usuario"><%= current_user.nickname %></div>
+					<% if current_user.provider.blank? %>
 					<div class="correo"><%= current_user.email %></div>
+					<% end %>
 					<div class="miembro">Miembro desde: <%= current_user.created_at.strftime("%m/%d/%Y") %></div>
 					<a href="/users/edit">Editar</a>
 				</div>

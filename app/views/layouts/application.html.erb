@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% if ENV['RACK_ENV'] == "production" %>
+    <% if ENV['RACK_ENV'] == "production"  %>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -26,10 +26,12 @@
   </head>
 
   <body>
+  <% if ENV['RACK_ENV'] == "production" %>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLG9BGF"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  <% end %>
   <nav class="navbar navbar-blue">
     <div class="container no-padding-head">
 
@@ -80,6 +82,7 @@
           </li>
           <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-s">Categorías <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
           <li class="visible-xs"><a class="collapsed dropcoll" data-toggle="collapse" data-target="#bs-example-navbar-collapse-menu-filtros"><span class="glyphicon glyphicon-filter"></span> <span class="flecha-down glyphicon glyphicon-chevron-down"></a></li>
+          <li><a href="/descuentos-ofertas-y-promociones-del-buen-fin-2017">Buen Fin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <% if current_user.try(:admin?) %>

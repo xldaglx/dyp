@@ -13,6 +13,9 @@ class WelcomeController < ApplicationController
       banner.save
     end
   end
+  def buenfin
+   p @category_deal = Deal.joins(:category).limit(100)
+  end
   def terminos
   	@banners = Banner.order("RAND()").limit(3)
     @banners.each do |banner|

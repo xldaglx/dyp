@@ -1,7 +1,21 @@
   <div class="row deal-detail">
-  <div class="col-md-4 deal-det-login col-md-offset-4">
+  <div class="col-md-6">
+      <p><strong>Vamos a crear la mejor comunidad de Compradores Inteligentes</strong>.</p>
+      <p>Ten en cuenta que vamos a estar <strong>regalando</strong> mes a mes tarjetas de descuento para las tiendas más importantes del país, para participar:</p>
+      <ul>
+        <li>Registra tu cuenta</li>
+        <li>Vota por los mejores descuentos y promociones</li>
+        <li>Revisa el ranking dentro de tu perfil</li>
+      </ul>
+      <p>Los puntos se obtienen por medio de cada promoción que publicas, es la diferencia de los likes contra las personas a quienes no les gustó tu promoción, mientras más promociones publiques y mientras más likes tengas mayor será el número de puntos que generarás.</p>
+      <p>Los colaboradores con mayor puntaje mes a mes podrán participar pagar ganar increibles premios.</p>
+
+  </div>
+  <div class="col-md-6 deal-det-login">
     <div class="modal-header">
-          <h4 class="titulo-modal">Crear Cuenta</h4>
+         <%= link_to " Crear cuenta con Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-facebook" %>
+         <br><br>
+          <h4 class="titulo-modal">O ingresa tus datos</h4>
     </div>
     <div class="modal-body-login">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
