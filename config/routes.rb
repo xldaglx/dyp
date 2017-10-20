@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   get 'bannersclick', to: 'banners#click'
   get 'contact', to: 'messages#new', as: 'contact'
   post 'contact', to: 'messages#create'
-  get 'descuentos-ofertas-y-promociones-del-buen-fin-2017', to: 'welcome#buenfin'
+  get 'ofertas-de-temporada/:id', to: 'welcome#season'
 
   devise_for :users, :controllers => { sessions: 'users/sessions' ,:omniauth_callbacks => "users/omniauth_callbacks",  registrations: 'users/registrations' }
 end

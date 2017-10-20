@@ -13,8 +13,8 @@ class WelcomeController < ApplicationController
       banner.save
     end
   end
-  def buenfin
-   p @category_deal = Deal.joins(:category).limit(100)
+  def season
+    @content_html = Setting.find_by(core: 'season_content')
   end
   def terminos
   	@banners = Banner.order("RAND()").limit(3)
