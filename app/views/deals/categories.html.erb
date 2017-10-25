@@ -1,6 +1,7 @@
 <% set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos-por-categoria/"+@category.id.to_s+"/"+@category.slug %>
 <h1><%= title @category.name %></h1>
 <% set_meta_tags description: @category.description %>
+<%= @category.content.to_s.html_safe %>
 <div id="deals">
 	<!-- INICIA LISTADO DE PROMOCIONES -->
 	<div class="row page">

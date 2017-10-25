@@ -24,6 +24,11 @@
   </div>
   <br>
   <div class="field">
+    <%= f.label :content,  'HTML CONTENT at the Beginning  ' %>
+    <%= f.trix_editor :content, size: "24x6" %>
+  </div>
+  <br>
+  <div class="field">
     <%= f.label :slug %>
     <%= f.text_field :slug %>
   </div>

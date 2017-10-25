@@ -195,15 +195,19 @@ result = HTTParty.get(request_url)
     @report = Report.where('deal_id ='+id[0])
     @banners = Banner.order("RAND()").limit(3)
     @related = Deal.where('category_id ='+ @deal.category.id.to_s).where('id !='+id[0]).where('created_at >= ?', 1.week.ago).order("RAND()").limit(3)
-    @banners.each do |banner|
-      banner.impressions = banner.impressions + 1
-      banner.save
+    if current_user.try(:admin?)
+
+    else
+      @banners.each do |banner|
+        banner.impressions = banner.impressions + 1
+        banner.save
+      end
+      if @deal.impressions.nil?
+        @deal.impressions = 0
+      end
+      @deal.impressions += 1
+      @deal.save
     end
-    if @deal.impressions.nil?
-      @deal.impressions = 0
-    end
-    @deal.impressions += 1
-    @deal.save
     if @deal.mpn.present?
       secret = "nfBx5nt3Rv+vzeKj21/Eqxa/sSLpfhZhgBcrZZhq"
       endpoint = "webservices.amazon.com.mx"
@@ -623,7 +627,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn)
+      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn,:impressions, :hits)
     end
     def admin_user
      if current_user.try(:admin?)

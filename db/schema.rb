@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018043820) do
+ActiveRecord::Schema.define(version: 20171020144045) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "alt"
@@ -51,10 +51,11 @@ ActiveRecord::Schema.define(version: 20171018043820) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "slug"
     t.string   "name"
+    t.text     "content",     limit: 65535
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,15 +72,15 @@ ActiveRecord::Schema.define(version: 20171018043820) do
 
   create_table "deals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",             limit: 65535
     t.string   "imagen"
-    t.string   "link"
+    t.string   "link",                    limit: 355
     t.string   "price"
     t.string   "expiration"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.integer  "type_deal"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "promoimage_file_name"
     t.string   "promoimage_content_type"
     t.integer  "promoimage_file_size"
@@ -181,8 +182,6 @@ ActiveRecord::Schema.define(version: 20171018043820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "behaviors", "deals"
-  add_foreign_key "behaviors", "users"
   add_foreign_key "comments", "deals"
   add_foreign_key "comments", "users"
   add_foreign_key "deals", "categories"
