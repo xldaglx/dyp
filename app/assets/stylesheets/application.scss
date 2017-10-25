@@ -201,15 +201,14 @@ a, a:focus, a:active{
   font-size: 15px; 
 }
 .content-box .name{
-  font-weight: 300;
+  font-weight: normal;
 }
 .carousel-inner h2.name{
-  font-weight: 300;
+  font-weight: 400;
   font-size:18px !important;
   padding:0px 10px;
   margin-top:0px;
   margin-bottom:10px;
-  letter-spacing:1px;
 }
 .carousel-inner .store{
   font-weight: 300;
@@ -766,7 +765,7 @@ li > a:hover{
   font-size: 25px;
   color: #525457;
   max-height: 100px;
-  line-height: 35px;
+  line-height: 33px;
   margin-top: 0px;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -1320,10 +1319,10 @@ li > a:hover{
   max-height: 300px;
 }
 .deal-title h1{
-  font-size: 27px;
+  font-size: 25px;
   color: #525457;
-  line-height: 35px;
-  font-weight: 300;
+  line-height: 33px;
+  font-weight: 400;
   text-align: left;
 }
 .deal-title .det-price{
