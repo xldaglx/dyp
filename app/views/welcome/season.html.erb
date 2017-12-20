@@ -1,4 +1,15 @@
-
 <% if @content_html.present? %>
-	<%= @content_html.value %>	
+	<%= @content_html.value.html_safe %>	
 <% end %>
+<div id="deals">
+<!-- INICIA LISTADO DE PROMOCIONES -->
+<div class="page">
+    <%= render "/deals/deals" %>
+</div>
+<!-- TERMINA LISTADO DE PROMOCIONES -->
+</div>
+
+<%= paginate @deals %>
+<script>
+  <%= render(:partial => '/deals/deals', :formats => [:js] ) %>
+</script>

@@ -15,6 +15,7 @@ class WelcomeController < ApplicationController
   end
   def season
     @content_html = Setting.find_by(core: 'season_content')
+    @deals = Deal.where('status = 1').order('created_at DESC').page(params[:page]).per(24)
   end
   def terminos
   	@banners = Banner.order("RAND()").limit(3)
