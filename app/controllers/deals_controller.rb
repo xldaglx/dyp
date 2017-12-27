@@ -331,7 +331,7 @@ result = HTTParty.get(request_url)
          format.html
          format.js {} 
          format.json { 
-            render json: {:message => 'exists'}
+            render json: {:message => 'exists', :deals => @deals}
         } 
       end
     else

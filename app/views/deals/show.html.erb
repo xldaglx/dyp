@@ -122,7 +122,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       <!--IMAGEN, TÍTULO, PRECIO Y BOTÓN-->
       <div class="row deal-title">
         <div class="col-md-4 img-tit">
-          <% if @deal.promoimage.present? %>
+          <% if @deal.promoimage.exists? %>
           <%= image_tag @deal.promoimage.url(:big), class: 'img-responsive main-image',  "data-toggle" => "modal", "data-target"=>"#ModalImage"  %>
           <% else %>
             <% if @deal.imagen.present? %>

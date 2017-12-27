@@ -2,6 +2,10 @@
   #scrapp-images .alert{
     margin-top: 0px !important;
   }
+  .message-alert .alert{
+    margin-bottom: 14px;
+    margin-top: 0;
+  }
   .carousel{
     margin: 0px 0px 10px 0px;
     float: left;
@@ -40,9 +44,11 @@
   <% end %>
 
     <div class="col-md-12 no-padding">
-
+      <div class="message-alert">
+      </div>
       <div class="row">
         <div class="col-md-9">
+
           <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
           <div class="loader-image"><img src="/images/spinner.gif"></div>
           <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
@@ -122,6 +128,21 @@
 <% end %>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
+
+    $('#deal_link').on('paste', function (e) {
+      $('.item').remove();
+      $('.alert').remove();
+      var url_input = e.originalEvent.clipboardData.getData('text');
+      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      var regex = new RegExp(expression);
+      if (url_input.match(regex)) {
+        if(url_input.length > 10){
+          scrappImage(url_input);
+         }
+      }else{
+        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div>');
+      }
+    });
     $('.btn-obtener').click(function(event) {
       $('.item').remove();
       $('.alert').remove();
@@ -130,265 +151,153 @@
       var regex = new RegExp(expression);
       if (url_input.match(regex)) {
         if(url_input.length > 10){ 
-          $('.loader-image').show();
-          $.ajax({
-            url:  "/image/scrapp",
-            dataType: "json",
-            data: {
-               url_host: url_input
-            },
-            success: function(data) {
-              console.log(data);
-              $('.loader-image').hide();
-              if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
-                if (typeof data.model !== 'undefined' && data.model.length > 0) {
-                    $('#deal_mpn').val(data.model);
-                }
-                if (data.url != ""){
-                  url = data.url
-                  var $url = url;
-                  var a = document.createElement('a');
-                  a.href = $url;
-                  var $finalUrl = a.protocol + '//' + a.hostname;
-                  $("#deal_store_id option").each(function()
-                  {
-                    substring = $(this).text().toLowerCase();
-                    substring = substring.replace( /\s/g, "");
-                    if ($finalUrl.indexOf(substring) !=-1) {
-                      $(this).attr('selected','selected')
-                    }
-                  });
-                }
-                if(data.title != ""){
-                  $('#deal_title').val(data.title);  
-                  $('#deal_price').val(data.price);  
-                }
-                if(data.price != ""){ 
-                  var price = Number(data.price.replace(/[^0-9\.]+/g,""));
-                  $('#deal_price').val(price);  
-                }
-                classactive ="";
-                items = "";
-                switch(data.store){
-                  case "liverpool":
-                    for (i in data.images) {
-                      if (data.images[0] != ""){
-                        var JsonObj = JSON.parse(data.images[0]);
-                        console.log(JsonObj);
-                        for (var key in JsonObj) {
-                        $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+JsonObj[key]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                        }
-                      }
-                    }
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).show();
-                      }
-                    });   
-                    break;
-                  case "costco":
-                  case "officedepot":
-                  case "elektra":
-                  case "radioshack":
-                    for (i in data.images) {
-                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                    }    
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).show();
-                      }
-                    });   
-                    break;
-                  default:
-                    for (i in data.images) {
-                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                    }    
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).parent().remove();
-                      }
-                    });           
-                }
-                count=0;
-              
-
-                active = 0;
-                $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
-                    if(active == 0){activeclass="active";}else{activeclass="";}
-                    if( i % 6 == 0 ) {
-                      $(this).nextAll().andSelf().slice(0,6).wrapAll('<div class="item '+activeclass+' "></div>');
-                    }
-                    active++;
-                });
-                $('.imgscrappcontainer img').click(function(event) {
-                  $('.imgscrappcontainer img').css({
-                    'opacity': '0.7',
-                    'border': 'none'
-                  });
-                  $(this).css({
-                    'opacity': '1',
-                    'border': '2px solid #d93438'
-                  });
-                  route = $(this).attr('src');
-                  $('#deal_imagen').val(route);
-                });
-                
-                $('.imgscrappcontainer img').first().trigger('click');
-
-              }else{
-                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
-              }
-            }
-          });
+          scrappImage(url_input);
         }
-      } 
-      else {
+      } else{
         $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div>');
       }
+
       
-    });
-    $('#deal_link').on('paste', function (e) {
-      $('.item').remove();
-      $('.alert').remove();
-      var url_input = e.originalEvent.clipboardData.getData('text');
-      var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-      var regex = new RegExp(expression);
-      if (url_input.match(regex)) {
-        if(url_input.length > 10){ 
-          $('.loader-image').show();
-          $.ajax({
-            url:  "/image/scrapp",
-            dataType: "json",
-            data: {
-               url_host: url_input
-            },
-            success: function(data) {
-              console.log(data);
-              $('.loader-image').hide();
-              if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
-                if (typeof data.model !== 'undefined' && data.model.length > 0) {
-                    $('#deal_mpn').val(data.model);
-                }
-                if (data.url != ""){
-                  url = data.url
-                  var $url = url;
-                  var a = document.createElement('a');
-                  a.href = $url;
-                  var $finalUrl = a.protocol + '//' + a.hostname;
-                  $("#deal_store_id option").each(function()
-                  {
-                    substring = $(this).text().toLowerCase();
-                    substring = substring.replace( /\s/g, "");
-                    if ($finalUrl.indexOf(substring) !=-1) {
-                      $(this).attr('selected','selected')
-                    }
-                  });
-                }
-                if(data.title != ""){
-                  $('#deal_title').val(data.title);  
-                  $('#deal_price').val(data.price);  
-                }
-                if(data.price != ""){ 
-                  var price = Number(data.price.replace(/[^0-9\.]+/g,""));
-                  $('#deal_price').val(price);  
-                }
-                classactive ="";
-                items = "";
-                switch(data.store){
-                  case "liverpool":
-                    for (i in data.images) {
-                      if (data.images[0] != ""){
-                        var JsonObj = JSON.parse(data.images[0]);
-                        console.log(JsonObj);
-                        for (var key in JsonObj) {
-                        $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+JsonObj[key]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                        }
-                      }
-                    }
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).show();
-                      }
-                    });   
-                    break;
-                  case "costco":
-                  case "officedepot":
-                  case "elektra":
-                  case "radioshack":
-                    for (i in data.images) {
-                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                    }    
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).show();
-                      }
-                    });   
-                    break;
-                  default:
-                    for (i in data.images) {
-                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
-                    }    
-                    $('.imgscrappcontainer img').each(function(index, el) { 
-                      if (checkURL($(this).attr('src'))){
-                        $(this).show();
-                      }else{
-                        $(this).parent().remove();
-                      }
-                    });           
-                }
-
-                count=0;
-              
-
-                active = 0;
-                $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
-                    if(active == 0){activeclass="active";}else{activeclass="";}
-                    if( i % 6 == 0 ) {
-                      $(this).nextAll().andSelf().slice(0,6).wrapAll('<div class="item '+activeclass+' "></div>');
-                    }
-                    active++;
-                });
-                
-                $('.imgscrappcontainer img').click(function(event) {
-                  $('.imgscrappcontainer img').css({
-                    'opacity': '0.7',
-                    'border': 'none'
-                  });
-                  $(this).css({
-                    'opacity': '1',
-                    'border': '2px solid #d93438'
-                  });
-                  route = $(this).attr('src');
-                  $('#deal_imagen').val(route);
-                });
-
-                $('.imgscrappcontainer img').first().trigger('click');
-                
-              }else{
-                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
-              }
-            }
-          });
-        }
-      } 
-      else {
-        $('#scrapp-images').append('<div class="alert alert-danger">La URL no es válida</div><br>');
-      }
+      
     });
   });
 
 function checkURL(url) {
     return(url.match(/\.(jpeg|jpg|png)$/) != null);
+}
+
+function scrappImage(url){
+    $.ajax({
+    url:  "/validate/link",
+    dataType: "json",
+    data: {
+       url_host: url
+    },
+    success: function(data) { 
+      link = "/descuentos/"+data.deals[0].id+"-"+data.deals[0].slug;
+      if(data.message == "exists"){
+        $('.message-alert').html('<div class="alert">Notamos que existe un descuento publicado con la misma dirección (<a href="'+link+'" target="_blank"> Ver Oferta </a>), si crees que tu oferta es diferente puedes ignorar este mensaje.</div>');
+      }
+    }
+    });
+
+
+          $('.loader-image').show();
+          $.ajax({
+            url:  "/image/scrapp",
+            dataType: "json",
+            data: {
+               url_host: url
+            },
+            success: function(data) {
+              console.log(data);
+              $('.loader-image').hide();
+              if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
+                if (typeof data.model !== 'undefined' && data.model.length > 0) {
+                    $('#deal_mpn').val(data.model);
+                }
+                if (data.url != ""){
+                  url = data.url
+                  var $url = url;
+                  var a = document.createElement('a');
+                  a.href = $url;
+                  var $finalUrl = a.protocol + '//' + a.hostname;
+                  $("#deal_store_id option").each(function()
+                  {
+                    substring = $(this).text().toLowerCase();
+                    substring = substring.replace( /\s/g, "");
+                    if ($finalUrl.indexOf(substring) !=-1) {
+                      $(this).attr('selected','selected')
+                    }
+                  });
+                }
+                if(data.title != ""){
+                  $('#deal_title').val(data.title);  
+                  $('#deal_price').val(data.price);  
+                }
+                if(data.price != ""){ 
+                  var price = Number(data.price.replace(/[^0-9\.]+/g,""));
+                  $('#deal_price').val(price);  
+                }
+                classactive ="";
+                items = "";
+                switch(data.store){
+                  case "liverpool":
+                    for (i in data.images) {
+                      if (data.images[0] != ""){
+                        var JsonObj = JSON.parse(data.images[0]);
+                        console.log(JsonObj);
+                        for (var key in JsonObj) {
+                        $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+JsonObj[key]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                        }
+                      }
+                    }
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  case "costco":
+                  case "officedepot":
+                  case "elektra":
+                  case "radioshack":
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).show();
+                      }
+                    });   
+                    break;
+                  default:
+                    for (i in data.images) {
+                      $('.carousel-inner').append('<div class="col-sm-2 col-xs-4 imgscrappcontainer" style="margin-bottom:5px;"><img src="'+data.images[i]+'" class="image-to-load img-responsive" id="imgscrapp-'+i+'" style="display:none"></div>');
+                    }    
+                    $('.imgscrappcontainer img').each(function(index, el) { 
+                      if (checkURL($(this).attr('src'))){
+                        $(this).show();
+                      }else{
+                        $(this).parent().remove();
+                      }
+                    });           
+                }
+                count=0;
+              
+
+                active = 0;
+                $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
+                    if(active == 0){activeclass="active";}else{activeclass="";}
+                    if( i % 6 == 0 ) {
+                      $(this).nextAll().andSelf().slice(0,6).wrapAll('<div class="item '+activeclass+' "></div>');
+                    }
+                    active++;
+                });
+                $('.imgscrappcontainer img').click(function(event) {
+                  $('.imgscrappcontainer img').css({
+                    'opacity': '0.7',
+                    'border': 'none'
+                  });
+                  $(this).css({
+                    'opacity': '1',
+                    'border': '2px solid #d93438'
+                  });
+                  route = $(this).attr('src');
+                  $('#deal_imagen').val(route);
+                });
+                
+                $('.imgscrappcontainer img').first().trigger('click');
+
+              }else{
+                $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
+              }
+            }
+          });
 }
 </script>
 <style type="text/css">
