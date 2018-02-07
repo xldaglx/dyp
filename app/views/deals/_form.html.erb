@@ -51,7 +51,6 @@
 
           <%= f.text_field :link, label: "Enlace de la promoción:", placeholder: "http://www.enlacealapromocion.com", help: "Ingresa la URL con la que los demás miembros podrán ver el artículo en promoción"%>
           <div class="loader-image"><img src="/images/spinner.gif"></div>
-          <p class="LabelHelper" style="display: none;">Si la imagen que obtuvimos automáticamente no coincide con tu promoción puedes subir una propia</p>
         </div>
         <div class="col-md-3 no-padding">
           <div class="btn-obtener" style="">Obtener imagen</div>
@@ -76,8 +75,10 @@
 
       <div class="row">
         <div class="col-md-12">
-          <div class="img-upload">
-            <%= f.file_field :promoimage, label: "Sube tu propia imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
+          <div class="img-upload" style="display: none;">
+
+          <p class="LabelHelper">Si no pudimos encontrar la imagen o no coincide con tu promoción puedes subir una propia</p>
+            <%= f.file_field :promoimage, label: "Imagen", placeholder: "Sube tu imagen", :class => 'btn-upload' %>
           </div>
         </div>
       </div>
@@ -174,9 +175,11 @@ function scrappImage(url){
        url_host: url
     },
     success: function(data) { 
+      if(data.deals){
       link = "/descuentos/"+data.deals[0].id+"-"+data.deals[0].slug;
       if(data.message == "exists"){
         $('.message-alert').html('<div class="alert">Notamos que existe un descuento publicado con la misma dirección (<a href="'+link+'" target="_blank"> Ver Oferta </a>), si crees que tu oferta es diferente puedes ignorar este mensaje.</div>');
+      }
       }
     }
     });
@@ -192,6 +195,7 @@ function scrappImage(url){
             success: function(data) {
               console.log(data);
               $('.loader-image').hide();
+              $('.img-upload').show();
               if(data.message != "error" && data.title != "Server Busy" && data.title != "500 Error de Servicio no disponible"){
                 if (typeof data.model !== 'undefined' && data.model.length > 0) {
                     $('#deal_mpn').val(data.model);
@@ -268,8 +272,6 @@ function scrappImage(url){
                     });           
                 }
                 count=0;
-              
-
                 active = 0;
                 $('div.carousel-inner > .imgscrappcontainer').each(function(i) {
                     if(active == 0){activeclass="active";}else{activeclass="";}
@@ -295,6 +297,7 @@ function scrappImage(url){
 
               }else{
                 $('#scrapp-images').append('<div class="alert alert-danger">No pudimos recuperar la imagen de tu promoción, intenta de nuevo o sube una imagen</div>');
+                $('img-upload').show();
               }
             }
           });

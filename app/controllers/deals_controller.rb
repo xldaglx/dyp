@@ -399,7 +399,7 @@ begin
   request_url = "http://#{endpoint}#{request_uri}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
   result = HTTParty.get(request_url)
   data = result.parsed_response
-  model =  data['ItemLookupResponse']['Items']['Item']['ASIN']
+  model =  data['ItemLookupResponse']#['Items']['Item']['ASIN']
   img_urls.push (data['ItemLookupResponse']['Items']['Item']['LargeImage']['URL'])
   my_string = data.to_s
   if my_string.include? "Errors"
@@ -407,6 +407,10 @@ begin
   else
     if my_string.include? "LowestNewPrice"
       price =  data['ItemLookupResponse']['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']
+      price = price[0...-2]
+    end
+    if my_string.include? "OfferListing"
+      price =  data['ItemLookupResponse']['Items']['Item']['Offers']['Offer']['OfferListing']['Price']['Amount']
       price = price[0...-2]
     end
   end

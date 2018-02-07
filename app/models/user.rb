@@ -25,7 +25,7 @@ class User < ApplicationRecord
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 	  	if (auth.info.email != nil)
 	    	user.email = auth.info.email
-		  	user.avatar_file_name = auth.info.image+"?type=large"
+		  	user.avatar_file_name = auth.info.image+"?type=normal"
 		  	usernickname = auth.info.email.split('@')
 		  	usernickname = usernickname[0]
 		  	user.nickname = usernickname

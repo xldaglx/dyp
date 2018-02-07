@@ -66,7 +66,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
 gem 'watir'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.1"
 gem 'jquery-validation-rails'
 gem 'bootstrap_form'
 gem 'trix' #Editor TextArea WYWYG

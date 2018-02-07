@@ -198,7 +198,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
             $('#ModalImage .modal-body').html('');
             var src = $(this).attr('src');
             if (src.includes("keepa")){
-            $('#ModalImage .modal-body').append('<p style="text-align:center; font-weight:700; margin:10px;">Aquí podrás ver el comportamiento en cuanto a precio de este producto durante este tiempo.</p>');
+            $('#ModalImage .modal-body').append('<p style="text-align:center; font-weight:700; margin:10px;">Keepa es un tracker de precios de Amazon, esta gráfica representa el historial de precios de los últimos meses.</p>');
             }
             $('#ModalImage .modal-body').append('<img src="'+src+'" class="img-responsive">');
           });
@@ -216,8 +216,8 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
         <% if @deal.mpn.present? %>
         <div class="row keepa-block">
           <div class="col-md-12">
-            <h4><i class="fa fa-line-chart" aria-hidden="true" style="float: none;"></i> Comportamiento del precio</h4>
-            <p>Aquí puedes ver el precio que ha tenido este artículo durante las últimas semanas:</p>
+            <h4><i class="fa fa-line-chart" aria-hidden="true" style="float: none;"></i>  Keepa - Comportamiento del precio</h4>
+            <p>Keepa es un tracker de precios de Amazon que te ayuda a hacer compras inteligentes, esta gráfica representa el historial de precios de los últimos meses, recuerda que Amazon cambia constantemente los precios, por lo que esta gráfica te puede dar una idea de cuando debes de aprovechar una oferta.</p>
             <img src="https://dyn.keepa.com/pricehistory.png?asin=<%= @deal.mpn %>&domain=com.mx">
             <!--p class="fecha" style="float:none;margin-top:13px;">*Exclusivo para productos Amazon.</p-->
           </div>
