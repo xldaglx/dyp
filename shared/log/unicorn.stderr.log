@@ -1,0 +1,333 @@
+I, [2018-03-01T08:22:03.857562 #14571]  INFO -- : Refreshing Gem list
+/var/www/descuentosypromociones.com/html/config/initializers/bypass_ssl_verification_for_open_uri.rb:2: warning: already initialized constant OpenSSL::SSL::VERIFY_PEER
+I, [2018-03-01T08:22:18.439305 #14571]  INFO -- : listening on addr=/var/www/descuentosypromociones.com/html/shared/sockets/unicorn.sock fd=13
+I, [2018-03-01T08:22:18.439549 #14571]  INFO -- : worker=0 spawning...
+I, [2018-03-01T08:22:18.447930 #14571]  INFO -- : worker=1 spawning...
+I, [2018-03-01T08:22:18.460956 #14620]  INFO -- : worker=0 spawned pid=14620
+I, [2018-03-01T08:22:18.461253 #14620]  INFO -- : worker=0 ready
+I, [2018-03-01T08:22:18.462804 #14571]  INFO -- : master process ready
+I, [2018-03-01T08:22:18.520833 #14623]  INFO -- : worker=1 spawned pid=14623
+I, [2018-03-01T08:22:18.521125 #14623]  INFO -- : worker=1 ready
+189.206.149.121 - - [01/Mar/2018:08:22:23 -0600] "GET / HTTP/1.0" 200 - 5.4594
+189.206.149.121 - - [01/Mar/2018:08:23:39 -0600] "GET / HTTP/1.0" 200 - 4.7812
+189.206.149.121 - - [01/Mar/2018:08:24:09 -0600] "GET / HTTP/1.0" 200 - 1.0601
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET / HTTP/1.0" 200 - 1.0780
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /rails_bootstrap_forms.self-10cb7d2aef696c4062f219f6678eed1d57c254a6717cea25d021726a4b9a214c.css?body=1 HTTP/1.0" 200 238 0.0361
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /trix.self-5d729c5fedfc0af39113431cc80ce5eb573cb661905cbedae98a105f288998cf.css?body=1 HTTP/1.0" 200 13214 0.0381
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /bootsy.self-d7f1bf7ba57eae6b3385f3e6a45e49cc3461e8322c42ff411f787fdcbfed98e5.css?body=1 HTTP/1.0" 200 6451 0.0262
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1 HTTP/1.0" 200 293431 0.0710
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1 HTTP/1.0" 200 21600 0.0409
+189.206.149.121 - - [01/Mar/2018:08:24:14 -0600] "GET /turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1 HTTP/1.0" 200 37484 0.0217
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /application.self-5bbbe2d38cd4595d59f251425fcade12b4819f819d80dc15aab80e19ea41e202.css?body=1 HTTP/1.0" 200 585588 0.5797
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /banners.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.4236
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /behaviors.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0234
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /action_cable.self-5454023407ffec0d29137c7110917e1e745525ae9afbc05f52104c4cd6597429.js?body=1 HTTP/1.0" 200 20472 0.0369
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /categories.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0112
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1 HTTP/1.0" 200 291 0.0289
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0201
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /deals.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0203
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /favorites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0126
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0413
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /reports.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0480
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /settings.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0228
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /stores.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0232
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.0" 200 31 0.0237
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/transition.self-6ad2488465135ab731a045a8ebbe3ea2fc501aed286042496eda1664fdd07ba9.js?body=1 HTTP/1.0" 200 1832 0.0115
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/alert.self-742145c5bb847aafdadc6e339be795628f8bc25f177e851f03a8c42278eb0312.js?body=1 HTTP/1.0" 200 2285 0.0284
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/button.self-126ac9bf0e7f2d8568f8da3a00fd5f0fac6eae0946331003370161fbf8d7975e.js?body=1 HTTP/1.0" 200 3825 0.0285
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/carousel.self-e47323f363ceb3dc0bdbce05e36e709ed428e339833a41140a85cb0af24b8127.js?body=1 HTTP/1.0" 200 7142 0.0275
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/collapse.self-2eb697f62b587bb786ff940d82dd4be88cdeeaf13ca128e3da3850c5fcaec301.js?body=1 HTTP/1.0" 200 5992 0.0278
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/dropdown.self-561cca1cbaf67474e01e9536f106bad541594860a6df997004591c1c1957a147.js?body=1 HTTP/1.0" 200 4744 0.0320
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/modal.self-3e78617ade5663314b7ee0ea10375a5b34d59ffbade44939e3f2a4e4ef2019b3.js?body=1 HTTP/1.0" 200 9988 0.0319
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/tab.self-5bf7078b682f8b131332eefa46b45fa5eff2eca745fc0d03e2991450888f7c28.js?body=1 HTTP/1.0" 200 3906 0.0245
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/affix.self-6d6f1a7fc5c8aabf3547fa1b794fab6268f54bc55ad815e55873c71f52513517.js?body=1 HTTP/1.0" 200 4839 0.0246
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/scrollspy.self-969f3c5f48cdf1e439c7fa1154c13b948715f5c689f87837c0b64521d3b46ef6.js?body=1 HTTP/1.0" 200 4708 0.0208
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/tooltip.self-05afb177e08f98997ccfc84fa08a215e4b27d48d5fe4d049080675e9dffd8199.js?body=1 HTTP/1.0" 200 16720 0.0249
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap/popover.self-0aa93860b59fe7393f1dd490f54b3cb994f9d6155adffce034d4e14ae361b041.js?body=1 HTTP/1.0" 200 3164 0.0362
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1 HTTP/1.0" 200 12 0.0353
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /jquery.validate.self-cd9ac12ca17bf9e75e536d4a8fc772dfc706f294aa48cb625827491b84136aad.js?body=1 HTTP/1.0" 200 60468 0.0304
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /jquery.validate.localization/messages_es.self-c1a4137dbcbdfd69e7cbe10b140677e0fd58744d8768cb20d13513127abe3f9a.js?body=1 HTTP/1.0" 200 1376 0.0282
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /trix.self-e0bc0a706de91177cd7d3cf457cc5cabf40fb5662c3e1fed55c0fbc56ca16e69.js?body=1 HTTP/1.0" 200 203479 0.0406
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /jquery.infinitescroll.self-e72745b1c72d72ef9857960aa50705e701d25924f71f0170222eea2b18e57a14.js?body=1 HTTP/1.0" 200 40649 0.0313
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/vendor/polyfill.self-b5009c78866362acfd086e1f6d65a94afc9017e324dfb43eccd0a4e728c4304b.js?body=1 HTTP/1.0" 200 960 0.0302
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/vendor/bootstrap-wysihtml5.self-7e4602957db7f6a9b50c9607d10dce52815de9a1246b92f409eef2dd058ae688.js?body=1 HTTP/1.0" 200 23869 0.0290
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/vendor/wysihtml5.self-5a245cb79ae490a9f2d84c7af794dd610315255d6f563422df8969f18c4b566c.js?body=1 HTTP/1.0" 200 332580 0.0600
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/vendor/bootstrap.file-input.self-59bcd06d78c4bed34040a21dccdf97231f1fb00d81b2d414f431c80bda1a0dd6.js?body=1 HTTP/1.0" 200 4605 0.0251
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/area.self-719c9e5cea3ee83c7762472867b7c4586a73258b57fa4ef94dd247fa6910cf3b.js?body=1 HTTP/1.0" 200 2621 0.0248
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/editor_options.self-f14ace67c97b97313cf39578de7c28ecd2c047957cf4f9d941285abf5bbf1a86.js?body=1 HTTP/1.0" 200 1001 0.0150
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/image_template.self-0ba3318378a6770fbc3dd421fdc0034ae6c209d0722470800f5ce64af4a9c713.js?body=1 HTTP/1.0" 200 411 0.0107
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/init.self-6673eafa650d4d7c5bb5dd56ff1e417d2057fe18e5f95e88d4ba8bd29067cfd2.js?body=1 HTTP/1.0" 200 935 0.0264
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/locales/en.self-d953580c8764af4d632dc28aa74959847ee0b246509b570e4f832c9a0697c6ce.js?body=1 HTTP/1.0" 200 1128 0.0243
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy/modal.self-400206325acbcebcbbb297998675cfe0d39866136c461662b01a472eb5074e89.js?body=1 HTTP/1.0" 200 6140 0.0242
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /bootsy.self-5c210454b1facc1e317a759f6059324f793841eb23d1f549179b64d1584c55f8.js?body=1 HTTP/1.0" 200 10 0.0442
+189.206.149.121 - - [01/Mar/2018:08:24:15 -0600] "GET /application.self-a11c9a319042ec2ad991f20009761bc3583279fc661a8f65fc899c162f49997c.js?body=1 HTTP/1.0" 200 668 0.0393
+189.206.149.121 - - [01/Mar/2018:08:24:34 -0600] "GET / HTTP/1.0" 200 - 0.9190
+/root/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/unicorn-5.4.0/lib/unicorn/http_server.rb:205:in `pid=': Already running on PID:14571 (or pid=/var/www/descuentosypromociones.com/html/shared/pids/unicorn.pid is stale) (ArgumentError)
+	from /root/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/unicorn-5.4.0/lib/unicorn/http_server.rb:137:in `start'
+	from /root/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/unicorn-5.4.0/bin/unicorn:126:in `<top (required)>'
+	from /root/.rbenv/versions/2.3.1/bin/unicorn:23:in `load'
+	from /root/.rbenv/versions/2.3.1/bin/unicorn:23:in `<main>'
+189.206.149.121 - - [01/Mar/2018:08:24:55 -0600] "GET / HTTP/1.0" 200 - 0.9669
+I, [2018-03-01T08:25:39.596565 #15506]  INFO -- : Refreshing Gem list
+/var/www/descuentosypromociones.com/html/config/initializers/bypass_ssl_verification_for_open_uri.rb:2: warning: already initialized constant OpenSSL::SSL::VERIFY_PEER
+I, [2018-03-01T08:25:55.045903 #15506]  INFO -- : unlinking existing socket=/var/www/descuentosypromociones.com/html/shared/sockets/unicorn.sock
+I, [2018-03-01T08:25:55.046291 #15506]  INFO -- : listening on addr=/var/www/descuentosypromociones.com/html/shared/sockets/unicorn.sock fd=12
+I, [2018-03-01T08:25:55.046498 #15506]  INFO -- : worker=0 spawning...
+I, [2018-03-01T08:25:55.053499 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-01T08:25:55.054905 #15551]  INFO -- : worker=0 spawned pid=15551
+I, [2018-03-01T08:25:55.055181 #15551]  INFO -- : worker=0 ready
+I, [2018-03-01T08:25:55.058446 #15506]  INFO -- : master process ready
+I, [2018-03-01T08:25:55.073368 #15554]  INFO -- : worker=1 spawned pid=15554
+I, [2018-03-01T08:25:55.073644 #15554]  INFO -- : worker=1 ready
+E, [2018-03-03T18:10:03.552199 #15506] ERROR -- : worker=0 PID:15551 timeout (31s > 30s), killing
+E, [2018-03-03T18:10:04.198942 #15506] ERROR -- : reaped #<Process::Status: pid 15551 SIGKILL (signal 9)> worker=0
+I, [2018-03-03T18:10:04.489140 #15506]  INFO -- : worker=0 spawning...
+I, [2018-03-03T18:10:04.971059 #12325]  INFO -- : worker=0 spawned pid=12325
+I, [2018-03-03T18:10:05.029301 #12325]  INFO -- : worker=0 ready
+E, [2018-03-03T18:11:55.618417 #15506] ERROR -- : worker=0 PID:12325 timeout (31s > 30s), killing
+E, [2018-03-03T18:11:55.633335 #15506] ERROR -- : reaped #<Process::Status: pid 12325 SIGKILL (signal 9)> worker=0
+I, [2018-03-03T18:11:55.633536 #15506]  INFO -- : worker=0 spawning...
+I, [2018-03-03T18:11:55.641691 #12762]  INFO -- : worker=0 spawned pid=12762
+I, [2018-03-03T18:11:55.642071 #12762]  INFO -- : worker=0 ready
+E, [2018-03-04T00:01:55.893979 #15506] ERROR -- : worker=1 PID:15554 timeout (31s > 30s), killing
+E, [2018-03-04T00:01:55.940405 #15506] ERROR -- : reaped #<Process::Status: pid 15554 SIGKILL (signal 9)> worker=1
+I, [2018-03-04T00:01:55.941236 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-04T00:01:55.950286 #32364]  INFO -- : worker=1 spawned pid=32364
+I, [2018-03-04T00:01:55.950724 #32364]  INFO -- : worker=1 ready
+E, [2018-03-04T05:38:38.498125 #15506] ERROR -- : worker=1 PID:32364 timeout (31s > 30s), killing
+E, [2018-03-04T05:38:38.626604 #15506] ERROR -- : reaped #<Process::Status: pid 32364 SIGKILL (signal 9)> worker=1
+I, [2018-03-04T05:38:38.643548 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-04T05:38:38.972666 #16895]  INFO -- : worker=1 spawned pid=16895
+I, [2018-03-04T05:38:39.020915 #16895]  INFO -- : worker=1 ready
+E, [2018-03-04T11:30:29.544489 #15506] ERROR -- : worker=0 PID:12762 timeout (31s > 30s), killing
+E, [2018-03-04T11:30:29.616402 #15506] ERROR -- : reaped #<Process::Status: pid 12762 SIGKILL (signal 9)> worker=0
+I, [2018-03-04T11:30:29.623739 #15506]  INFO -- : worker=0 spawning...
+I, [2018-03-04T11:30:29.894598 #5089]  INFO -- : worker=0 spawned pid=5089
+I, [2018-03-04T11:30:29.905363 #5089]  INFO -- : worker=0 ready
+E, [2018-03-04T17:37:29.101499 #15506] ERROR -- : worker=1 PID:16895 timeout (31s > 30s), killing
+E, [2018-03-04T17:37:29.160423 #15506] ERROR -- : reaped #<Process::Status: pid 16895 SIGKILL (signal 9)> worker=1
+I, [2018-03-04T17:37:29.204625 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-04T17:37:29.546328 #28970]  INFO -- : worker=1 spawned pid=28970
+I, [2018-03-04T17:37:29.650006 #28970]  INFO -- : worker=1 ready
+E, [2018-03-05T13:36:02.420207 #15506] ERROR -- : worker=1 PID:28970 timeout (31s > 30s), killing
+E, [2018-03-05T13:36:03.251264 #15506] ERROR -- : reaped #<Process::Status: pid 28970 SIGKILL (signal 9)> worker=1
+I, [2018-03-05T13:36:03.382196 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-05T13:36:04.265608 #27841]  INFO -- : worker=1 spawned pid=27841
+I, [2018-03-05T13:36:04.335494 #27841]  INFO -- : worker=1 ready
+E, [2018-03-05T13:36:47.466595 #15506] ERROR -- : worker=1 PID:27841 timeout (31s > 30s), killing
+E, [2018-03-05T13:36:47.485410 #15506] ERROR -- : reaped #<Process::Status: pid 27841 SIGKILL (signal 9)> worker=1
+I, [2018-03-05T13:36:47.485867 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-05T13:36:47.492610 #28004]  INFO -- : worker=1 spawned pid=28004
+I, [2018-03-05T13:36:47.493162 #28004]  INFO -- : worker=1 ready
+E, [2018-03-06T22:55:42.762351 #15506] ERROR -- : worker=1 PID:28004 timeout (31s > 30s), killing
+E, [2018-03-06T22:55:42.945171 #15506] ERROR -- : reaped #<Process::Status: pid 28004 SIGKILL (signal 9)> worker=1
+I, [2018-03-06T22:55:42.945520 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-06T22:55:43.791410 #23729]  INFO -- : worker=1 spawned pid=23729
+I, [2018-03-06T22:55:43.984570 #23729]  INFO -- : worker=1 ready
+E, [2018-03-06T22:57:17.109879 #15506] ERROR -- : worker=1 PID:23729 timeout (31s > 30s), killing
+E, [2018-03-06T22:57:17.124366 #15506] ERROR -- : reaped #<Process::Status: pid 23729 SIGKILL (signal 9)> worker=1
+I, [2018-03-06T22:57:17.124633 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-06T22:57:17.133282 #24109]  INFO -- : worker=1 spawned pid=24109
+I, [2018-03-06T22:57:17.133725 #24109]  INFO -- : worker=1 ready
+E, [2018-03-07T01:40:28.637883 #15506] ERROR -- : worker=1 PID:24109 timeout (31s > 30s), killing
+E, [2018-03-07T01:40:28.670009 #15506] ERROR -- : reaped #<Process::Status: pid 24109 SIGKILL (signal 9)> worker=1
+I, [2018-03-07T01:40:28.670342 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-07T01:40:28.675546 #30858]  INFO -- : worker=1 spawned pid=30858
+I, [2018-03-07T01:40:28.687870 #30858]  INFO -- : worker=1 ready
+E, [2018-03-07T05:20:30.132393 #15506] ERROR -- : worker=1 PID:30858 timeout (31s > 30s), killing
+E, [2018-03-07T05:20:30.185330 #15506] ERROR -- : reaped #<Process::Status: pid 30858 SIGKILL (signal 9)> worker=1
+I, [2018-03-07T05:20:30.185650 #15506]  INFO -- : worker=1 spawning...
+I, [2018-03-07T05:20:30.202697 #18706]  INFO -- : worker=1 spawned pid=18706
+I, [2018-03-07T05:20:30.203112 #18706]  INFO -- : worker=1 ready
+I, [2018-03-08T12:52:25.006646 #2193]  INFO -- : Refreshing Gem list
+/var/www/descuentosypromociones.com/html/config/initializers/bypass_ssl_verification_for_open_uri.rb:2: warning: already initialized constant OpenSSL::SSL::VERIFY_PEER
+I, [2018-03-08T12:52:40.044451 #2193]  INFO -- : unlinking existing socket=/var/www/descuentosypromociones.com/html/shared/sockets/unicorn.sock
+I, [2018-03-08T12:52:40.045002 #2193]  INFO -- : listening on addr=/var/www/descuentosypromociones.com/html/shared/sockets/unicorn.sock fd=12
+I, [2018-03-08T12:52:40.045265 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-08T12:52:40.049239 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-08T12:52:40.052327 #2193]  INFO -- : master process ready
+I, [2018-03-08T12:52:40.060077 #2202]  INFO -- : worker=0 spawned pid=2202
+I, [2018-03-08T12:52:40.060885 #2202]  INFO -- : worker=0 ready
+I, [2018-03-08T12:52:40.067501 #2204]  INFO -- : worker=1 spawned pid=2204
+I, [2018-03-08T12:52:40.067805 #2204]  INFO -- : worker=1 ready
+E, [2018-03-09T14:13:09.961590 #2193] ERROR -- : worker=0 PID:2202 timeout (31s > 30s), killing
+E, [2018-03-09T14:13:10.238943 #2193] ERROR -- : reaped #<Process::Status: pid 2202 SIGKILL (signal 9)> worker=0
+I, [2018-03-09T14:13:10.324531 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-09T14:13:10.541306 #5389]  INFO -- : worker=0 spawned pid=5389
+I, [2018-03-09T14:13:10.556211 #5389]  INFO -- : worker=0 ready
+E, [2018-03-09T16:33:41.379692 #2193] ERROR -- : worker=0 PID:5389 timeout (31s > 30s), killing
+E, [2018-03-09T16:33:41.402438 #2193] ERROR -- : reaped #<Process::Status: pid 5389 SIGKILL (signal 9)> worker=0
+I, [2018-03-09T16:33:41.402785 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-09T16:33:41.408709 #5596]  INFO -- : worker=0 spawned pid=5596
+I, [2018-03-09T16:33:41.409282 #5596]  INFO -- : worker=0 ready
+E, [2018-03-10T04:20:09.747881 #2193] ERROR -- : worker=0 PID:5596 timeout (31s > 30s), killing
+E, [2018-03-10T04:20:09.851444 #2193] ERROR -- : reaped #<Process::Status: pid 5596 SIGKILL (signal 9)> worker=0
+I, [2018-03-10T04:20:09.857606 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-10T04:20:10.246469 #7272]  INFO -- : worker=0 spawned pid=7272
+I, [2018-03-10T04:20:10.288416 #7272]  INFO -- : worker=0 ready
+D, [2018-03-12T12:41:19.356028 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-12T13:03:56.433781 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-13T11:51:11.043095 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-13T19:33:32.029609 #2193] ERROR -- : worker=1 PID:2204 timeout (31s > 30s), killing
+E, [2018-03-13T19:33:32.484834 #2193] ERROR -- : reaped #<Process::Status: pid 2204 SIGKILL (signal 9)> worker=1
+I, [2018-03-13T19:33:32.524160 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-13T19:33:33.233269 #17919]  INFO -- : worker=1 spawned pid=17919
+I, [2018-03-13T19:33:33.384052 #17919]  INFO -- : worker=1 ready
+E, [2018-03-13T19:34:51.593102 #2193] ERROR -- : worker=1 PID:17919 timeout (31s > 30s), killing
+E, [2018-03-13T19:34:51.604191 #2193] ERROR -- : reaped #<Process::Status: pid 17919 SIGKILL (signal 9)> worker=1
+I, [2018-03-13T19:34:51.604543 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-13T19:34:51.610117 #17922]  INFO -- : worker=1 spawned pid=17922
+I, [2018-03-13T19:34:51.610606 #17922]  INFO -- : worker=1 ready
+E, [2018-03-14T13:10:06.635212 #2193] ERROR -- : worker=1 PID:17922 timeout (31s > 30s), killing
+E, [2018-03-14T13:10:07.013080 #2193] ERROR -- : reaped #<Process::Status: pid 17922 SIGKILL (signal 9)> worker=1
+I, [2018-03-14T13:10:07.409656 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-14T13:10:07.850359 #20064]  INFO -- : worker=1 spawned pid=20064
+I, [2018-03-14T13:10:07.927926 #20064]  INFO -- : worker=1 ready
+E, [2018-03-14T13:11:09.487576 #2193] ERROR -- : worker=1 PID:20064 timeout (31s > 30s), killing
+E, [2018-03-14T13:11:09.497243 #2193] ERROR -- : reaped #<Process::Status: pid 20064 SIGKILL (signal 9)> worker=1
+I, [2018-03-14T13:11:09.498014 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-14T13:11:09.503380 #20067]  INFO -- : worker=1 spawned pid=20067
+I, [2018-03-14T13:11:09.505043 #20067]  INFO -- : worker=1 ready
+D, [2018-03-15T00:00:51.884937 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-15T03:35:31.117933 #2193] ERROR -- : worker=0 PID:7272 timeout (31s > 30s), killing
+E, [2018-03-15T03:35:31.220196 #2193] ERROR -- : reaped #<Process::Status: pid 7272 SIGKILL (signal 9)> worker=0
+I, [2018-03-15T03:35:31.227489 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-15T03:35:31.793716 #22290]  INFO -- : worker=0 spawned pid=22290
+I, [2018-03-15T03:35:32.108133 #22290]  INFO -- : worker=0 ready
+E, [2018-03-15T03:36:29.283723 #2193] ERROR -- : worker=0 PID:22290 timeout (31s > 30s), killing
+E, [2018-03-15T03:36:29.296387 #2193] ERROR -- : reaped #<Process::Status: pid 22290 SIGKILL (signal 9)> worker=0
+I, [2018-03-15T03:36:29.297578 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-15T03:36:29.303132 #22293]  INFO -- : worker=0 spawned pid=22293
+I, [2018-03-15T03:36:29.303594 #22293]  INFO -- : worker=0 ready
+E, [2018-03-15T06:59:54.246944 #2193] ERROR -- : worker=1 PID:20067 timeout (31s > 30s), killing
+E, [2018-03-15T06:59:54.650711 #2193] ERROR -- : reaped #<Process::Status: pid 20067 SIGKILL (signal 9)> worker=1
+I, [2018-03-15T06:59:54.666227 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-15T06:59:55.012559 #23236]  INFO -- : worker=1 spawned pid=23236
+I, [2018-03-15T06:59:55.202071 #23236]  INFO -- : worker=1 ready
+E, [2018-03-15T07:00:57.724007 #2193] ERROR -- : worker=1 PID:23236 timeout (31s > 30s), killing
+E, [2018-03-15T07:00:57.733908 #2193] ERROR -- : reaped #<Process::Status: pid 23236 SIGKILL (signal 9)> worker=1
+I, [2018-03-15T07:00:57.734257 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-15T07:00:57.739477 #23250]  INFO -- : worker=1 spawned pid=23250
+I, [2018-03-15T07:00:57.740006 #23250]  INFO -- : worker=1 ready
+E, [2018-03-15T13:54:42.473691 #2193] ERROR -- : worker=0 PID:22293 timeout (31s > 30s), killing
+E, [2018-03-15T13:54:42.536321 #2193] ERROR -- : reaped #<Process::Status: pid 22293 SIGKILL (signal 9)> worker=0
+I, [2018-03-15T13:54:42.560069 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-15T13:54:42.684020 #24282]  INFO -- : worker=0 spawned pid=24282
+I, [2018-03-15T13:54:42.694128 #24282]  INFO -- : worker=0 ready
+E, [2018-03-15T16:33:36.752239 #2193] ERROR -- : worker=1 PID:23250 timeout (31s > 30s), killing
+E, [2018-03-15T16:33:36.778405 #2193] ERROR -- : reaped #<Process::Status: pid 23250 SIGKILL (signal 9)> worker=1
+I, [2018-03-15T16:33:36.778763 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-15T16:33:36.785713 #24728]  INFO -- : worker=1 spawned pid=24728
+I, [2018-03-15T16:33:36.786233 #24728]  INFO -- : worker=1 ready
+D, [2018-03-15T23:17:19.357888 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-16T03:48:24.071527 #2193] ERROR -- : worker=1 PID:24728 timeout (31s > 30s), killing
+E, [2018-03-16T03:48:24.098333 #2193] ERROR -- : reaped #<Process::Status: pid 24728 SIGKILL (signal 9)> worker=1
+I, [2018-03-16T03:48:24.111570 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-16T03:48:24.262405 #26076]  INFO -- : worker=1 spawned pid=26076
+I, [2018-03-16T03:48:24.311051 #26076]  INFO -- : worker=1 ready
+E, [2018-03-16T03:54:15.372320 #2193] ERROR -- : worker=1 PID:26076 timeout (31s > 30s), killing
+E, [2018-03-16T03:54:15.384077 #2193] ERROR -- : reaped #<Process::Status: pid 26076 SIGKILL (signal 9)> worker=1
+I, [2018-03-16T03:54:15.384503 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-16T03:54:15.389832 #26083]  INFO -- : worker=1 spawned pid=26083
+I, [2018-03-16T03:54:15.390383 #26083]  INFO -- : worker=1 ready
+E, [2018-03-16T11:23:07.719554 #2193] ERROR -- : worker=0 PID:24282 timeout (31s > 30s), killing
+E, [2018-03-16T11:23:07.951675 #2193] ERROR -- : reaped #<Process::Status: pid 24282 SIGKILL (signal 9)> worker=0
+I, [2018-03-16T11:23:07.964849 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-16T11:23:08.351152 #27368]  INFO -- : worker=0 spawned pid=27368
+I, [2018-03-16T11:23:08.457207 #27368]  INFO -- : worker=0 ready
+E, [2018-03-17T03:57:52.899679 #2193] ERROR -- : worker=0 PID:27368 timeout (31s > 30s), killing
+E, [2018-03-17T03:57:52.967302 #2193] ERROR -- : reaped #<Process::Status: pid 27368 SIGKILL (signal 9)> worker=0
+I, [2018-03-17T03:57:52.981510 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-17T03:57:53.174030 #4710]  INFO -- : worker=0 spawned pid=4710
+I, [2018-03-17T03:57:53.279213 #4710]  INFO -- : worker=0 ready
+E, [2018-03-17T04:55:53.456342 #2193] ERROR -- : worker=0 PID:4710 timeout (31s > 30s), killing
+E, [2018-03-17T04:55:53.465331 #2193] ERROR -- : reaped #<Process::Status: pid 4710 SIGKILL (signal 9)> worker=0
+I, [2018-03-17T04:55:53.465720 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-17T04:55:53.476140 #6367]  INFO -- : worker=0 spawned pid=6367
+I, [2018-03-17T04:55:53.476624 #6367]  INFO -- : worker=0 ready
+E, [2018-03-17T05:02:07.727867 #2193] ERROR -- : worker=0 PID:6367 timeout (31s > 30s), killing
+E, [2018-03-17T05:02:07.737890 #2193] ERROR -- : reaped #<Process::Status: pid 6367 SIGKILL (signal 9)> worker=0
+I, [2018-03-17T05:02:07.738257 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-17T05:02:07.743643 #6539]  INFO -- : worker=0 spawned pid=6539
+I, [2018-03-17T05:02:07.744222 #6539]  INFO -- : worker=0 ready
+E, [2018-03-17T05:06:13.922864 #2193] ERROR -- : worker=0 PID:6539 timeout (31s > 30s), killing
+E, [2018-03-17T05:06:13.933746 #2193] ERROR -- : reaped #<Process::Status: pid 6539 SIGKILL (signal 9)> worker=0
+I, [2018-03-17T05:06:13.934167 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-17T05:06:13.939161 #6662]  INFO -- : worker=0 spawned pid=6662
+I, [2018-03-17T05:06:13.939670 #6662]  INFO -- : worker=0 ready
+D, [2018-03-18T11:28:43.832175 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-18T14:02:42.755250 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-18T20:00:14.986357 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-19T00:20:42.808719 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-21T03:23:49.938018 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-21T11:59:41.908883 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-21T15:04:33.142348 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-21T19:10:38.962978 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-22T01:14:13.512725 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-22T14:02:56.570231 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-22T15:29:47.322650 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-29T15:01:24.471430 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-29T15:58:16.181334 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-29T16:40:41.523425 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-30T00:48:58.921471 #2193] ERROR -- : worker=0 PID:6662 timeout (31s > 30s), killing
+E, [2018-03-30T00:49:00.296422 #2193] ERROR -- : reaped #<Process::Status: pid 6662 SIGKILL (signal 9)> worker=0
+I, [2018-03-30T00:49:00.370387 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-30T00:49:00.808172 #22832]  INFO -- : worker=0 spawned pid=22832
+I, [2018-03-30T00:49:00.891363 #22832]  INFO -- : worker=0 ready
+E, [2018-03-30T00:54:14.791579 #2193] ERROR -- : worker=0 PID:22832 timeout (31s > 30s), killing
+E, [2018-03-30T00:54:14.802819 #2193] ERROR -- : reaped #<Process::Status: pid 22832 SIGKILL (signal 9)> worker=0
+I, [2018-03-30T00:54:14.803287 #2193]  INFO -- : worker=0 spawning...
+I, [2018-03-30T00:54:14.808950 #22835]  INFO -- : worker=0 spawned pid=22835
+I, [2018-03-30T00:54:14.810017 #22835]  INFO -- : worker=0 ready
+E, [2018-03-30T01:54:45.583771 #2193] ERROR -- : worker=1 PID:26083 timeout (31s > 30s), killing
+E, [2018-03-30T01:54:45.611213 #2193] ERROR -- : reaped #<Process::Status: pid 26083 SIGKILL (signal 9)> worker=1
+I, [2018-03-30T01:54:45.611614 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-30T01:54:45.618332 #22949]  INFO -- : worker=1 spawned pid=22949
+I, [2018-03-30T01:54:45.618911 #22949]  INFO -- : worker=1 ready
+D, [2018-03-30T14:47:28.155510 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-30T16:18:37.582305 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-30T16:47:43.292073 #2193] ERROR -- : worker=1 PID:22949 timeout (31s > 30s), killing
+E, [2018-03-30T16:47:43.466580 #2193] ERROR -- : reaped #<Process::Status: pid 22949 SIGKILL (signal 9)> worker=1
+I, [2018-03-30T16:47:43.507496 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-30T16:47:43.820680 #25714]  INFO -- : worker=1 spawned pid=25714
+I, [2018-03-30T16:47:43.871085 #25714]  INFO -- : worker=1 ready
+E, [2018-03-30T16:48:22.525367 #2193] ERROR -- : worker=1 PID:25714 timeout (31s > 30s), killing
+E, [2018-03-30T16:48:22.535638 #2193] ERROR -- : reaped #<Process::Status: pid 25714 SIGKILL (signal 9)> worker=1
+I, [2018-03-30T16:48:22.536032 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-30T16:48:22.542778 #25717]  INFO -- : worker=1 spawned pid=25717
+I, [2018-03-30T16:48:22.543348 #25717]  INFO -- : worker=1 ready
+D, [2018-03-31T10:39:42.389028 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-03-31T12:15:34.514357 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-03-31T17:59:10.312085 #2193] ERROR -- : worker=1 PID:25717 timeout (31s > 30s), killing
+E, [2018-03-31T17:59:10.597184 #2193] ERROR -- : reaped #<Process::Status: pid 25717 SIGKILL (signal 9)> worker=1
+I, [2018-03-31T17:59:10.666287 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-31T17:59:11.689091 #28815]  INFO -- : worker=1 spawned pid=28815
+I, [2018-03-31T17:59:11.770215 #28815]  INFO -- : worker=1 ready
+E, [2018-03-31T18:00:14.806285 #2193] ERROR -- : worker=1 PID:28815 timeout (31s > 30s), killing
+E, [2018-03-31T18:00:14.819161 #2193] ERROR -- : reaped #<Process::Status: pid 28815 SIGKILL (signal 9)> worker=1
+I, [2018-03-31T18:00:14.819497 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-31T18:00:14.825587 #28828]  INFO -- : worker=1 spawned pid=28828
+I, [2018-03-31T18:00:14.826208 #28828]  INFO -- : worker=1 ready
+E, [2018-03-31T20:41:55.235666 #2193] ERROR -- : worker=1 PID:28828 timeout (31s > 30s), killing
+E, [2018-03-31T20:41:55.261472 #2193] ERROR -- : reaped #<Process::Status: pid 28828 SIGKILL (signal 9)> worker=1
+I, [2018-03-31T20:41:55.261973 #2193]  INFO -- : worker=1 spawning...
+I, [2018-03-31T20:41:55.269550 #29032]  INFO -- : worker=1 spawned pid=29032
+I, [2018-03-31T20:41:55.270553 #29032]  INFO -- : worker=1 ready
+D, [2018-04-01T18:56:07.040772 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-04-01T19:34:49.047351 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+D, [2018-04-02T03:31:55.379929 #2193] DEBUG -- : waiting 16.0s after suspend/hibernation
+E, [2018-04-03T01:53:47.572012 #2193] ERROR -- : worker=0 PID:22835 timeout (31s > 30s), killing
+E, [2018-04-03T01:53:48.478938 #2193] ERROR -- : reaped #<Process::Status: pid 22835 SIGKILL (signal 9)> worker=0
+I, [2018-04-03T01:53:48.548953 #2193]  INFO -- : worker=0 spawning...
+I, [2018-04-03T01:53:48.841397 #3236]  INFO -- : worker=0 spawned pid=3236
+I, [2018-04-03T01:53:48.911737 #3236]  INFO -- : worker=0 ready
+E, [2018-04-03T02:03:08.978840 #2193] ERROR -- : worker=0 PID:3236 timeout (31s > 30s), killing
+E, [2018-04-03T02:03:08.990744 #2193] ERROR -- : reaped #<Process::Status: pid 3236 SIGKILL (signal 9)> worker=0
+I, [2018-04-03T02:03:08.991050 #2193]  INFO -- : worker=0 spawning...
+I, [2018-04-03T02:03:08.996467 #3259]  INFO -- : worker=0 spawned pid=3259
+I, [2018-04-03T02:03:08.997084 #3259]  INFO -- : worker=0 ready
+E, [2018-04-03T02:59:38.598352 #2193] ERROR -- : worker=0 PID:3259 timeout (31s > 30s), killing
+E, [2018-04-03T02:59:38.614035 #2193] ERROR -- : reaped #<Process::Status: pid 3259 SIGKILL (signal 9)> worker=0
+I, [2018-04-03T02:59:38.614436 #2193]  INFO -- : worker=0 spawning...
+I, [2018-04-03T02:59:38.620549 #3332]  INFO -- : worker=0 spawned pid=3332
+I, [2018-04-03T02:59:38.621047 #3332]  INFO -- : worker=0 ready

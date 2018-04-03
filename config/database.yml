@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: 8Q^(y"c8j@g5ZSC_
+  host: 127.0.0.1
+  port: 3306
+
+development:
+  <<: *default
+  database: promodescuentos
+  password: DaG09080$
+
+test:
+  <<: *default
+  database: dyp_test 
+
+production:
+  <<: *default
+  database: dyp

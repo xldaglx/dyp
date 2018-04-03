@@ -1,0 +1,457 @@
+=== puma startup: 2018-02-28 22:14:13 -0600 ===
+[27952] * Starting control server on unix:///tmp/puma-status-1519877653958-27952
+[27952] - Worker 1 (pid: 28036) booted, phase: 0
+[27952] - Worker 0 (pid: 28032) booted, phase: 0
+Started GET "/" for 200.236.124.236 at 2018-02-28 22:14:20 -0600
+Cannot render console from 200.236.124.236! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (0.6ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'hot_deal' LIMIT 1[0m
+  [1m[36mSetting Load (8.7ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'top_voted' LIMIT 1[0m
+  [1m[36mDeal Load (2.7ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE `deals`.`id` = 1891 LIMIT 1[0m
+  [1m[36mDeal Load (0.9ms)[0m  [1m[34mSELECT `deals`.* FROM `deals` WHERE `deals`.`id` IN (1894, 1893, 1769, 1770)[0m
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mCategory Load (9.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m
+  [1m[36mStore Load (8.5ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mStore Load (9.3ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `deals` WHERE (status = 1) LIMIT 24 OFFSET 0) subquery_for_count[0m
+  [1m[36mSetting Load (1.5ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'columns' LIMIT 1[0m
+  [1m[36mDeal Load (3.1ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE (status = 1) ORDER BY created_at DESC LIMIT 24 OFFSET 0[0m
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  [1m[36mCategory Load (6.2ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 27 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m
+  [1m[36mCategory Load (8.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 16 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 14 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.2ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (11.8ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 26 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 48 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 21 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 20 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 29 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[36mCACHE (0.5ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  Rendered deals/_deals.html.erb (651.3ms)
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `deals` WHERE (status = 1)[0m
+  Rendered deals/_deals.js.erb (1.2ms)
+  Rendered welcome/index.html.erb within layouts/application (1789.5ms)
+Started GET "/" for 200.236.124.236 at 2018-02-28 22:14:23 -0600
+Cannot render console from 200.236.124.236! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (6.7ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'hot_deal' LIMIT 1[0m
+  [1m[36mSetting Load (6.5ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'top_voted' LIMIT 1[0m
+  [1m[36mDeal Load (12.3ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE `deals`.`id` = 1891 LIMIT 1[0m
+  [1m[36mDeal Load (0.8ms)[0m  [1m[34mSELECT `deals`.* FROM `deals` WHERE `deals`.`id` IN (1894, 1893, 1769, 1770)[0m
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mCategory Load (7.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m
+  Rendered layouts/_tiendas_menu.erb (0.9ms)
+  [1m[36mSetting Load (12.5ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'season_menu' LIMIT 1[0m
+  Rendered layouts/_sub_filtros.erb (13.7ms)
+  Rendered layouts/_filtros_m.erb (1.5ms)
+  Rendered layouts/_tiendas_menu_m.erb (0.6ms)
+  Rendered layouts/_menu_footer.erb (0.5ms)
+  [1m[36mStore Load (12.7ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  Rendered welcome/_login_modal.html.erb (92.9ms)
+  Rendered welcome/_login_modal.html.erb (1.8ms)
+  Rendered welcome/_sign_up_modal.html.erb (44.5ms)
+Completed 200 OK in 5558ms (Views: 5073.0ms | ActiveRecord: 165.7ms)
+
+
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mStore Load (9.5ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35m (13.5ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `deals` WHERE (status = 1) LIMIT 24 OFFSET 0) subquery_for_count[0m
+  [1m[36mSetting Load (0.4ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'columns' LIMIT 1[0m
+  [1m[36mDeal Load (11.4ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE (status = 1) ORDER BY created_at DESC LIMIT 24 OFFSET 0[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  [1m[36mCategory Load (2.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (4.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCategory Load (7.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 27 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m
+  [1m[36mCategory Load (5.4ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (4.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 16 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (8.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 14 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (8.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 26 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mStore Load (5.6ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 48 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (5.2ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 21 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 20 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (3.8ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 29 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  Rendered deals/_deals.html.erb (727.2ms)
+  [1m[35m (10.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `deals` WHERE (status = 1)[0m
+  Rendered deals/_deals.js.erb (9.6ms)
+  Rendered welcome/index.html.erb within layouts/application (2113.5ms)
+  Rendered layouts/_tiendas_menu.erb (0.8ms)
+  [1m[36mSetting Load (6.2ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'season_menu' LIMIT 1[0m
+  Rendered layouts/_sub_filtros.erb (0.7ms)
+  Rendered layouts/_filtros_m.erb (0.8ms)
+  Rendered layouts/_tiendas_menu_m.erb (0.5ms)
+  Rendered layouts/_menu_footer.erb (0.4ms)
+  Rendered welcome/_login_modal.html.erb (72.0ms)
+  Rendered welcome/_login_modal.html.erb (1.8ms)
+  Rendered welcome/_sign_up_modal.html.erb (39.0ms)
+Completed 200 OK in 5239ms (Views: 4584.0ms | ActiveRecord: 280.2ms)
+
+
+Started GET "/descuentos/1560-xbox-one-s-500-gb-pro-evolution-soccer-2018" for 66.249.79.66 at 2018-02-28 22:16:28 -0600
+Cannot render console from 66.249.79.66! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+[27952] - Gracefully shutting down workers...
+Processing by DealsController#show as HTML
+  Parameters: {"id"=>"1560-xbox-one-s-500-gb-pro-evolution-soccer-2018"}
+  [1m[36mDeal Load (7.8ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE `deals`.`id` = 1560 LIMIT 1[0m
+  [1m[36mCategory Load (12.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m
+  [1m[36mBanner Load (6.8ms)[0m  [1m[34mSELECT  `banners`.* FROM `banners` ORDER BY RAND() LIMIT 3[0m
+  [1m[35m (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.6ms)[0m  [1m[33mUPDATE `banners` SET `impressions` = 45096, `updated_at` = '2018-02-28 22:16:28' WHERE `banners`.`id` = 3[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.6ms)[0m  [1m[33mUPDATE `banners` SET `impressions` = 45086, `updated_at` = '2018-02-28 22:16:29' WHERE `banners`.`id` = 2[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Load (0.8ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 48 LIMIT 1[0m
+  [1m[35mSQL (14.6ms)[0m  [1m[33mUPDATE `deals` SET `impressions` = 18, `updated_at` = '2018-02-28 22:16:29' WHERE `deals`.`id` = 1560[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering deals/show.html.erb within layouts/application
+  [1m[35m (8.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`deal_id` = 1560[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`deal_id` = 1560 AND (status = 1)[0m
+  [1m[36mComment Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM `comments` WHERE `comments`.`deal_id` = 1560 LIMIT 1[0m
+  [1m[36mDeal Load (11.7ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE (category_id =18) AND (id !=1560) AND (created_at >= '2018-02-21 22:16:28.854222') ORDER BY RAND() LIMIT 3[0m
+  Rendered banners/_right_column.html.erb (31.2ms)
+  Rendered deals/show.html.erb within layouts/application (341.7ms)
+  Rendered layouts/_tiendas_menu.erb (1.0ms)
+  [1m[36mSetting Load (4.4ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'season_menu' LIMIT 1[0m
+  Rendered layouts/_filtros_m.erb (1.0ms)
+  Rendered layouts/_tiendas_menu_m.erb (8.8ms)
+  Rendered layouts/_menu_footer.erb (0.7ms)
+  Rendered welcome/_bienvenida_modal.html.erb (0.7ms)
+  Rendered welcome/_login_modal.html.erb (13.1ms)
+  Rendered welcome/_login_modal.html.erb (1.4ms)
+  Rendered welcome/_sign_up_modal.html.erb (21.7ms)
+Completed 200 OK in 1467ms (Views: 1086.5ms | ActiveRecord: 158.6ms)
+
+
+[27952] === puma shutdown: 2018-02-28 22:16:30 -0600 ===
+[27952] - Goodbye!
+Exiting
+=== puma startup: 2018-02-28 22:21:09 -0600 ===
+[29728] * Starting control server on unix:///tmp/puma-status-1519878069676-29728
+[29741] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29745] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29757] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29759] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29787] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29789] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29805] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29807] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29823] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29827] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29839] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29843] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29855] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29857] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29871] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29873] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29887] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29891] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29903] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29905] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29919] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29921] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29935] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29937] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29951] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29953] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29967] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29969] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29983] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29985] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[29999] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30003] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30015] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30017] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30031] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30033] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30047] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30051] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30063] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30065] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30079] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile[30081] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+
+[30095] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30097] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30111] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30113] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30127] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30129] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30143] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30145] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30159] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30163] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30175] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30177] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30191] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30193] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30207] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30209] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30227] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30229] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30242] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30244] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30262] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile[30260] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+
+[30279] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30281] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30298] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30296] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30312] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30314] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30324] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30326] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30340] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30344] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30356] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30358] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30372] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30374] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30390] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30388] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30404] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30408] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30423] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30408] Early termination of worker
+[29728] - Gracefully shutting down workers...
+[30425] + Gemfile in context: /var/www/descuentosypromociones.com/html/Gemfile
+[30423] Early termination of worker
+[30425] Early termination of worker
+=== puma startup: 2018-02-28 22:24:23 -0600 ===
+[30457] * Starting control server on unix:///tmp/puma-status-1519878263212-30457
+[30457] - Worker 0 (pid: 30541) booted, phase: 0
+[30457] - Worker 1 (pid: 30544) booted, phase: 0
+Started GET "/" for 200.236.124.236 at 2018-02-28 22:24:29 -0600
+Cannot render console from 200.236.124.236! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (5.9ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (9.0ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'hot_deal' LIMIT 1[0m
+  [1m[36mSetting Load (3.1ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'top_voted' LIMIT 1[0m
+  [1m[36mDeal Load (2.2ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE `deals`.`id` = 1891 LIMIT 1[0m
+  [1m[36mDeal Load (3.2ms)[0m  [1m[34mSELECT `deals`.* FROM `deals` WHERE `deals`.`id` IN (1894, 1893, 1769, 1770)[0m
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mCategory Load (9.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m
+  [1m[36mStore Load (8.3ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mStore Load (8.9ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM `deals` WHERE (status = 1) LIMIT 24 OFFSET 0) subquery_for_count[0m
+  [1m[36mSetting Load (3.2ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'columns' LIMIT 1[0m
+  [1m[36mDeal Load (3.1ms)[0m  [1m[34mSELECT  `deals`.* FROM `deals` WHERE (status = 1) ORDER BY created_at DESC LIMIT 24 OFFSET 0[0m
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  [1m[36mCategory Load (8.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 39 LIMIT 1[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mCategory Load (5.2ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 27 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m
+  [1m[36mCategory Load (9.4ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (8.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 16 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 14 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (9.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (13.9ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 26 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 15 LIMIT 1[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 48 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 21 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCategory Load (6.7ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 20 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 18 LIMIT 1[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 12 LIMIT 1[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 29 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `stores`.* FROM `stores` WHERE `stores`.`id` = 36 LIMIT 1[0m  [["id", 36], ["LIMIT", 1]]
+  Rendered deals/_deals.html.erb (731.9ms)
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `deals` WHERE (status = 1)[0m
+  Rendered deals/_deals.js.erb (1.3ms)
+  Rendered welcome/index.html.erb within layouts/application (1892.2ms)
+  Rendered layouts/_tiendas_menu.erb (5.7ms)
+  [1m[36mSetting Load (10.2ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`core` = 'season_menu' LIMIT 1[0m
+  Rendered layouts/_sub_filtros.erb (1.8ms)
+  Rendered layouts/_filtros_m.erb (1.4ms)
+  Rendered layouts/_tiendas_menu_m.erb (9.5ms)
+  Rendered layouts/_menu_footer.erb (14.6ms)
+  Rendered welcome/_login_modal.html.erb (49.3ms)
+  Rendered welcome/_login_modal.html.erb (2.4ms)
+  Rendered welcome/_sign_up_modal.html.erb (41.9ms)
+Completed 200 OK in 4826ms (Views: 4345.3ms | ActiveRecord: 187.0ms)
+
+
+[30457] - Gracefully shutting down workers...
+[30457] === puma shutdown: 2018-02-28 22:27:08 -0600 ===
+[30457] - Goodbye!
+Exiting
