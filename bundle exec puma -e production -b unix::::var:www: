@@ -1,0 +1,27 @@
+bundle exec puma -e production -b unix:///var/www/descuentosypromociones.com/html/shared/sockets/puma.sock
+puma -e production -d -b unix:///var/www/descuentosypromociones.com/html/shared/sockets/puma.sock --pidfile /var/www/descuentosypromociones.com/html/shared/pids/puma.pid
+update-rc.d unicorn_dyp defaults
+
+ps aux | grep 'unicorn' | awk '{print $2}' | xargs sudo kill -9
+unicorn -c config/unicorn.rb -E production -D
+
+# set path to application
+app_dir = File.expand_path("../..", __FILE__)
+shared_dir = "#{app_dir}/shared"
+working_directory app_dir
+
+
+# Set unicorn options
+worker_processes 2
+preload_app true
+timeout 30
+
+# Set up socket location
+listen "#{shared_dir}/sockets/unicorn.sock", :backlog => 64
+
+# Logging
+stderr_path "#{shared_dir}/log/unicorn.stderr.log"
+stdout_path "#{shared_dir}/log/unicorn.stdout.log"
+
+# Set master PID location
+pid "#{shared_dir}/pids/unicorn.pid"

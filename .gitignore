@@ -1,4 +1,6 @@
+shared/*
 config/database.yml
+config/*
 *.rbc
 capybara-*.html
 .rspec
