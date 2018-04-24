@@ -19,6 +19,9 @@
       <%= f.text_field :link %>
     </div>
     <div class="field">
+      <%= f.text_field :crawler %>
+    </div>
+    <div class="field">
       <%= f.text_field :price %>
     </div>
     <div class="field">
@@ -52,6 +55,23 @@
     </div>
     <div class="field">
       <%= f.file_field :promoimage %>
+    </div>
+    <hr>
+    <h3>Comparador de precios</h3>
+    <div class="field">
+      <%= f.text_field :liverpool %>
+    </div>
+    <div class="field">
+      <%= f.text_field :amazon %>
+    </div>
+    <div class="field">
+      <%= f.text_field :elektra %>
+    </div>
+    <div class="field">
+      <%= f.text_field :walmart %>
+    </div>
+    <div class="field">
+      <%= f.text_field :bestbuy %>
     </div>
     <%= f.submit 'Actualizar Promoción', :class => 'btn-rojo' %>
 <% end %>

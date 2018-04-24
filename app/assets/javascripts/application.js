@@ -20,3 +20,5 @@
 //= require trix
 //= require jquery.infinitescroll
 //= require bootsy
+//= require Chart.bundle
+//= require chartkick

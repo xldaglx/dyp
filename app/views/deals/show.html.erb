@@ -213,6 +213,7 @@ set_meta_tags canonical: "http://www.descuentosypromociones.com/descuentos/"+@de
       <!--DESCRIPCIÓN DE LA PROMOCIÓN-->
       <!--COMPORTAMIENTO KEEPA-->
       <% if @price.present? %>
+        <%= line_chart @pricesMin, xtitle: "Fecha", ytitle: "Precio", title: "Historial de Precios"%>
         <% if @deal.mpn.present? %>
         <div class="row keepa-block">
           <div class="col-md-12">

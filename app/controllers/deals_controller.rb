@@ -195,6 +195,11 @@ result = HTTParty.get(request_url)
     @report = Report.where('deal_id ='+id[0])
     @banners = Banner.order("RAND()").limit(3)
     @related = Deal.where('category_id ='+ @deal.category.id.to_s).where('id !='+id[0]).where('created_at >= ?', 1.week.ago).order("RAND()").limit(3)
+    @pricesMin = Price.select('*')
+      .joins('LEFT JOIN deals on deals.id = prices.Deal_id')
+      .where('prices.created_at > ?', 30.days.ago)
+      .where('prices.Deal_id = '+id[0].to_s)
+      .group('prices.store').group_by_hour('prices.created_at').minimum(:price)
     if current_user.try(:admin?)
 
     else
@@ -593,6 +598,78 @@ end
     end
   end
   def generateSitemap
+      @deals = Deal.where('crawler = 1');
+      @deals.each do |deal|
+        require 'open-uri'
+        price = ""
+        url_primary = deal.link
+        url_liverpool = deal.liverpool
+        url_walmart = deal.walmart
+        url_elektra = deal.elektra
+        url_amazon = deal.amazon
+        url_bestbuy = deal.bestbuy
+      if deal.bestbuy.present?
+          page = HTTParty.get(deal.bestbuy)
+          page = Nokogiri::HTML(page)
+          inline_script = page.xpath('//script[contains(text(), "INITIAL_PAGE_STATE")]')
+          inline = inline_script.to_s.partition('window.INITIAL_PAGE_STATE').last
+          inline = inline.to_s.partition('window.liveConfig').first
+          inline = inline.delete('\\"')
+          inline = inline.delete('\\"')
+          inline = inline.delete('\\')
+          inline = inline.delete('}')
+          inline = inline.delete('{')
+          inline = inline.split(",")
+          inline.each do |ind|
+            if ind.include? "customerPrice"
+               price = ind.to_s.partition(':').last
+            end
+          end
+          @pricing = Price.new(Deal_id: deal.id, store: "Best Buy", price: price)
+          @pricing.save
+      end
+       if deal.amazon.present?
+          page = HTTParty.get(deal.amazon)
+          page = Nokogiri::HTML(page)
+          price = page.xpath("//span[@id='priceblock_ourprice']").text 
+          price = price.gsub(/\W/, ' ')
+          price = price.gsub(/[^0-9,.]/, "")
+          price = price[0...-2]
+          @pricing = Price.new(Deal_id: deal.id, store: "Amazon", price: price)
+          @pricing.save
+        end
+
+        if deal.liverpool.present?
+          page = HTTParty.get(deal.liverpool)
+          page = Nokogiri::HTML(page)
+          price = page.xpath("//input[@id='minimumPromoPrice']/@value").text 
+          @pricing = Price.new(Deal_id: deal.id, store: "Liverpool", price: price)
+          @pricing.save
+        end
+
+        if deal.walmart.present?
+          page = HTTParty.get(deal.walmart)
+          page = Nokogiri::HTML(page)
+          page = page.xpath('//script[contains(text(), "price")]')
+          page = page.to_s.partition('price').last
+          page = page.gsub(/\W/, ' ')
+          page = page.gsub(/[^0-9,.]/, "")
+          price = page[0...-2]
+          @pricing = Price.new(Deal_id: deal.id, store: "Walmart", price: price)
+          @pricing.save
+        end
+
+        if deal.elektra.present?
+          page = HTTParty.get(deal.elektra)
+          page = Nokogiri::HTML(page)
+          price = page.at("//meta[@itemprop='price']")['content']
+          @pricing = Price.new(Deal_id: deal.id, store: "Elektra", price: price)
+          @pricing.save
+        end
+    end
+  end
+  def generateSitemap1
+    
     require 'rubygems'
     require 'sitemap_generator'
 
@@ -608,7 +685,7 @@ end
       @deals = Deal.all
       @deals.each do |content|
         add "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+"", :lastmod => content.updated_at, :priority => 0.8
-        p "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+""
+        #p "/descuentos/"+content.id.to_s+"-"+content.slug.to_s+""
       end
     end
     #SitemapGenerator::Sitemap.ping_search_engines # Not needed if you use the rake tasks
@@ -631,7 +708,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn,:impressions, :hits)
+      params.require(:deal).permit(:created_at, :title, :description, :imagen, :link, :price, :expiration, :user_id, :type_deal, :promoimage, :category_id , :store_id ,:status, :rank,:mpn,:impressions, :hits, :crawler, :liverpool, :amazon, :elektra, :walmart, :bestbuy)
     end
     def admin_user
      if current_user.try(:admin?)

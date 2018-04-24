@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020144045) do
+ActiveRecord::Schema.define(version: 20180424005210) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "alt"
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 20171020144045) do
     t.string   "mpn"
     t.integer  "hits"
     t.integer  "impressions"
+    t.string   "liverpool"
+    t.integer  "crawler"
+    t.string   "walmart"
+    t.string   "amazon"
+    t.string   "elektra"
+    t.string   "bestbuy"
     t.index ["category_id"], name: "index_deals_on_category_id", using: :btree
     t.index ["store_id"], name: "index_deals_on_store_id", using: :btree
     t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
@@ -114,6 +120,15 @@ ActiveRecord::Schema.define(version: 20171020144045) do
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_likes_on_comment_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
+
+  create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "Deal_id"
+    t.integer  "price"
+    t.string   "store"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Deal_id"], name: "index_prices_on_Deal_id", using: :btree
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -191,5 +206,6 @@ ActiveRecord::Schema.define(version: 20171020144045) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
+  add_foreign_key "prices", "Deals"
   add_foreign_key "reports", "deals"
 end

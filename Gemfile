@@ -83,3 +83,8 @@ gem 'sitemap_generator'
 gem 'httparty', '~> 0.15.6'
 gem 'pry', '~> 0.10.4'
 gem 'fog'
+
+#crawler
+gem "chartkick"
+gem 'groupdate'
+gem 'whenever'
