@@ -597,7 +597,7 @@ end
       end
     end
   end
-  def generateSitemap
+  def crawler
       @deals = Deal.where('crawler = 1');
       @deals.each do |deal|
         require 'open-uri'
@@ -668,7 +668,7 @@ end
         end
     end
   end
-  def generateSitemap1
+  def generateSitemap
     
     require 'rubygems'
     require 'sitemap_generator'

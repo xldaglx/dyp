@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'top', to: 'deals#topdeals'
   get 'dealhit', to: 'deals#dealhit'
   get 'generatesitemap', to: 'deals#generateSitemap'
+  get 'crawler', to: 'deals#crawler'
   get 'dealaction', to: 'deals#updateStatus'
   get 'commentaction', to: 'comments#updateStatus'
   get 'buscar-descuentos', to: 'deals#search'
