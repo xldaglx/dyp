@@ -123,12 +123,12 @@ ActiveRecord::Schema.define(version: 20180424005210) do
   end
 
   create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "Deal_id"
+    t.integer  "deal_id"
     t.integer  "price"
     t.string   "store"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Deal_id"], name: "index_prices_on_Deal_id", using: :btree
+    t.index ["deal_id"], name: "index_prices_on_deal_id", using: :btree
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

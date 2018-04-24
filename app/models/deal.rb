@@ -60,7 +60,7 @@ class Deal < ApplicationRecord
 		       price = ind.to_s.partition(':').last
 		    end
 		  end
-		  @pricing = Price.new(Deal_id: deal.id, store: "Best Buy", price: price)
+		  @pricing = Price.new(deal_id: deal.id, store: "Best Buy", price: price)
 		  @pricing.save
 		end
        if deal.amazon.present?
@@ -70,7 +70,7 @@ class Deal < ApplicationRecord
           price = price.gsub(/\W/, ' ')
           price = price.gsub(/[^0-9,.]/, "")
           price = price[0...-2]
-          @pricing = Price.new(Deal_id: deal.id, store: "Amazon", price: price)
+          @pricing = Price.new(deal_id: deal.id, store: "Amazon", price: price)
           @pricing.save
         end
 
@@ -78,7 +78,7 @@ class Deal < ApplicationRecord
           page = HTTParty.get(deal.liverpool)
           page = Nokogiri::HTML(page)
           price = page.xpath("//input[@id='minimumPromoPrice']/@value").text 
-          @pricing = Price.new(Deal_id: deal.id, store: "Liverpool", price: price)
+          @pricing = Price.new(deal_id: deal.id, store: "Liverpool", price: price)
           @pricing.save
         end
 
@@ -90,7 +90,7 @@ class Deal < ApplicationRecord
           page = page.gsub(/\W/, ' ')
           page = page.gsub(/[^0-9,.]/, "")
           price = page[0...-2]
-          @pricing = Price.new(Deal_id: deal.id, store: "Walmart", price: price)
+          @pricing = Price.new(deal_id: deal.id, store: "Walmart", price: price)
           @pricing.save
         end
 
@@ -98,7 +98,7 @@ class Deal < ApplicationRecord
           page = HTTParty.get(deal.elektra)
           page = Nokogiri::HTML(page)
           price = page.at("//meta[@itemprop='price']")['content']
-          @pricing = Price.new(Deal_id: deal.id, store: "Elektra", price: price)
+          @pricing = Price.new(deal_id: deal.id, store: "Elektra", price: price)
           @pricing.save
         end
     end

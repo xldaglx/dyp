@@ -1,3 +1,3 @@
 class Price < ApplicationRecord
-  belongs_to :Deal
+  belongs_to :deal
 end
